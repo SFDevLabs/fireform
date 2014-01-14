@@ -33,6 +33,8 @@
 
             }
         </style>
+        <input id='token' value='' placeholder='Firebase Key'>
+        <input type='submit' onclick='load()' >
 
         <table id="table" border="1"></table>
 
@@ -44,48 +46,53 @@
         <script>
             var dataRef = new Firebase('https://wildlandscollective.firebaseio.com');
             
-            dataRef.auth('KO1tsuET1iOckyMice4aRC7LwZUpxvfs5BgzwPPz', function(error) {
-              if(error) {
-                console.log("Login Failed!", error);
-              } else {
-                console.log("Login Succeeded!");
-              }
-            });
+            var load=function(){
+
+                var token = $('#token').val();
 
             
-            dataRef.on('value', function(snapshot) {
+                dataRef.auth(token, function(error) {
+                  if(error) {
+                    console.log("Login Failed!", error);
+                  } else {
+                    console.log("Login Succeeded!");
+                  }
+                });
 
-                var list=snapshot.val();
-                var table = $("#table");
+                
+                dataRef.on('value', function(snapshot) {
 
-                $("#table").html("");
+                    var list=snapshot.val();
+                    var table = $("#table");
+
+                    $("#table").html("");
 
 
-                for (i in list) {
-                    var item = list[i]
-                    var row=$("<tr>");
-                    var rowFirst=$("<tr>");
+                    for (i in list) {
+                        var item = list[i]
+                        var row=$("<tr>");
+                        var rowFirst=$("<tr>");
 
-                    for (var j in item) {
-                        var col = $("<td>")
-                        col.html(item[j])
-                        row.append(col)
+                        for (var j in item) {
+                            var col = $("<td>")
+                            col.html(item[j])
+                            row.append(col)
 
-                      //.  if (first){
-                        var colFirst = $("<td>")
-                        colFirst.html(j)
-                        rowFirst.append(colFirst)        
-                        //}
+                          //.  if (first){
+                            var colFirst = $("<td>")
+                            colFirst.html(j)
+                            rowFirst.append(colFirst)        
+                            //}
+                        };
+                        table.prepend(row)
                     };
-                    table.prepend(row)
-                };
 
-                    table.prepend(rowFirst)
-                    
+                        table.prepend(rowFirst)
+                        
 
 
-            });
-
+                });
+        }
 
         </script>
 
