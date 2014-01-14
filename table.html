@@ -33,7 +33,10 @@
 
             }
         </style>
-        <input id='token' value='' placeholder='Firebase Key'>
+        <input id='token' value='KO1tsuET1iOckyMice4aRC7LwZUpxvfs5BgzwPPz' placeholder='Firebase Key'>
+        <input id='fbrepo' value='https://wildlandscollective.firebaseio.com' placeholder='Firebase Repo'>
+
+
         <input type='submit' onclick='load()' >
 
         <table id="table" border="1"></table>
@@ -44,11 +47,16 @@
 
 
         <script>
-            var dataRef = new Firebase('https://wildlandscollective.firebaseio.com');
             
             var load=function(){
 
+
                 var token = $('#token').val();
+
+                var fbrepo = $('#fbrepo').val();
+
+                var dataRef = new Firebase(fbrepo);
+
 
             
                 dataRef.auth(token, function(error) {
