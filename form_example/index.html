@@ -37,10 +37,20 @@
         </style>
 
         <form id="love">
+            <p class="status" >Sumbitted</p>
             <input name="stuff" value="jeff">
             <input value="jeff2">
             <input type="submit">        
         </form>
+        <style type="text/css">
+
+        #love.submited .status{
+            visibility: visible;
+        }
+        #love .status{
+            visibility: hidden;
+        }
+        </style>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
@@ -48,7 +58,7 @@
         <script src="fireform.js"></script>
 
         <script>
-        $("#love").fireform('https://fireform.firebaseio.com/users/simplelogin%3A1/lists/r/formPosts')
+        $('#love').fireform('https://fireform.firebaseio.com/users/simplelogin:1/lists/123/formPosts');
         </script>
 
 
