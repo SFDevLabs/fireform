@@ -2,13 +2,13 @@
 <h2>Account</h2>
 
 
+	<p>Form Submit code</p>
+	<code>
+        $('#myFormDiv').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/{{ListView.id}}');
+    </code>
 
-    <p>{{auth.user.id}}</p>
 
-    <form>
-      <input placeholder="Message..." ng-model="newList">
-      <button type="submit" ng-click="addList()">send</button>
-    </form>
+ 
     <ul id="messages" ng-show="ListView.formPosts">
         <li ng-repeat="list in ListView.formPosts | orderByPriority | reverse">{{list}}</li>
     </ul>
