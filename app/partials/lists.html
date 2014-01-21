@@ -1,0 +1,20 @@
+
+<h2>Account</h2>
+
+
+
+    <p>{{auth.user.id}}</p>
+
+    <form>
+      <input placeholder="Message..." ng-model="newList">
+      <button type="submit" ng-click="addList()">send</button>
+    </form>
+    <ul id="messages" ng-show="Lists">
+        <li ng-repeat="list in Lists | orderByPriority | reverse">
+
+        	<a href="#/list/{{list.id}}">{{list.id}}</a>
+        </li>
+    </ul>
+
+
+<button ng-click="logout()">Log Out</button>
