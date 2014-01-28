@@ -223,13 +223,13 @@ watchr.watch({
         // }
 
         // Close watchers after 60 seconds
-        setTimeout(function() {
-            var i;
-            console.log('Stop watching our paths');
-            for (i = 0; i < watchers.length; i++) {
-                watchers[i].close();
-            }
-        }, 60 * 1000);
+        // setTimeout(function() {
+        //     var i;
+        //     console.log('Stop watching our paths');
+        //     for (i = 0; i < watchers.length; i++) {
+        //         watchers[i].close();
+        //     }
+        // }, 60 * 1000);
     }
 });
 
