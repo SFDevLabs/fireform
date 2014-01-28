@@ -103,93 +103,86 @@ var watchr = require('watchr');
 watchr.watch({
     paths: [__dirname],
     listeners: {
-        log: function(logLevel) {
+        log: function(logLevel, b, c) {
 
-            //console.log('a log message occured:', arguments);
+            //console.log(b.match("Watch triggered on: "));
+            //console.log(b.match(" for event error"));
+
+            if (b.match("Watch triggered on: ") !== null) {
+                var file = b.replace("Watch triggered on: ", "").replace(" for event error", "");
+                console.log(true);
+                fileParse(file);
+            }
+
+
         },
         error: function(err) {
             // console.log('an error occured:', err);
         },
         watching: function(err, watcherInstance, isWatching) {
-            // if (err) {
-            //     console.log("watching the path " + watcherInstance.path + " failed with error", err);
-            // } else {
-            //     console.log("watching the path " + watcherInstance.path + " completed");
-            // }
+            if (err) {
+                console.log("watching the path " + watcherInstance.path + " failed with error", err);
+            } else {
+                //     console.log("watching the path " + watcherInstance.path + " completed");
+            }
         },
         change: function(changeType, filePath, fileCurrentStat, filePreviousStat) {
-            //console.log('a change event occured:', arguments);
+            console.log('change:', filePath.match(/\.([^\.]+)$/)[0]);
 
-            console.log('a change event occured:', filePath.match(/\.([^\.]+)$/)[0]);
-            var fileEnd = filePath.match(/\.([^\.]+)$/)[0];
-
-
-            if (fileEnd === ".styl") {
+        },
+        next: function(err, watchers) {
 
 
-                console.log(filePath);
+            // if (err) {
+            //     return console.log("watching everything failed with error", err);
+            // } else {
+            //     console.log('watching everything completed', watchers);
+            // }
 
-                fs.readFile(filePath, 'utf8', function(err, str) {
+            // Close watchers after 60 seconds
+            // setTimeout(function() {
+            //     var i;
+            //     console.log('Stop watching our paths');
+            //     for (i = 0; i < watchers.length; i++) {
+            //         watchers[i].close();
+            //     }
+            // }, 60 * 1000);
+        }
+    }
 
+});
 
+var fileParse = function(filePath) {
+    //console.log('a change event occured:', arguments);
 
-                    stylus(str)
-                        .set('filename', 'nesting.css')
-                        .include(__dirname + '/css')
-                        .render(function(err, css) {
-
-                            console.log(css);
-
-                            console.log(err);
-
-                            newCSSpathfilePath = filePath.slice(0, -5).concat('.css')
-
-                            console.log('writeAttempt', newCSSpathfilePath, css);
-
-                            fs.writeFile(newCSSpathfilePath, css, function(err) {
-                                console.log('write', newCSSpathfilePath);
-
-                                if (err) {
-                                    console.log(err);
-                                } else {
-                                    console.log("The file was saved!");
-                                }
-                            });
+    console.log('fileparse:', filePath.match(/\.([^\.]+)$/)[0]);
+    var fileEnd = filePath.match(/\.([^\.]+)$/)[0];
 
 
+    if (fileEnd === ".styl") {
 
-                        });
+
+        console.log(filePath);
+
+        fs.readFile(filePath, 'utf8', function(err, str) {
 
 
 
+            stylus(str)
+                .set('filename', filePath)
+                .include(__dirname + '/css')
+                .render(function(err, css) {
 
-                });
+                    console.log(css);
 
+                    console.log(err);
 
-            } else if (fileEnd === ".jade") {
+                    newCSSpathfilePath = filePath.slice(0, -5).concat('.css')
 
+                    console.log('writeAttempt', newCSSpathfilePath, css);
 
-                fs.readFile(filePath, 'utf8', function(err, str) {
-
-                    console.log(filePath);
-                    console.log(str);
-
-                    var fn = jade.compile(str, {
-                        filename: filePath
-                    });
-                    var htmlOutput = fn({
-                        maintainer: {
-                            name: 'Forbes Lindesay',
-                            twitter: '@ForbesLindesay',
-                            blog: 'forbeslindesay.co.uk'
-                        }
-                    });
-
-
-                    newHTMLpathfilePath = filePath.slice(0, -5).concat('.html');
-
-
-                    fs.writeFile(newHTMLpathfilePath, htmlOutput, function(err) {
+                    fs.writeFile(newCSSpathfilePath, css, function(err) {
+                        console.log('write', newCSSpathfilePath);
 
                         if (err) {
                             console.log(err);
@@ -200,73 +193,59 @@ watchr.watch({
 
 
 
-
-
                 });
 
 
 
 
-
-            }
-
+        });
 
 
+    } else if (fileEnd === ".jade") {
 
-        }
-    },
-    next: function(err, watchers) {
-        // if (err) {
-        //     return console.log("watching everything failed with error", err);
-        // } else {
-        //     console.log('watching everything completed', watchers);
-        // }
 
-        // Close watchers after 60 seconds
-        // setTimeout(function() {
-        //     var i;
-        //     console.log('Stop watching our paths');
-        //     for (i = 0; i < watchers.length; i++) {
-        //         watchers[i].close();
-        //     }
-        // }, 60 * 1000);
+        fs.readFile(filePath, 'utf8', function(err, str) {
+
+            console.log(filePath);
+            console.log(str);
+
+            var fn = jade.compile(str, {
+                filename: filePath
+            });
+            var htmlOutput = fn({
+                maintainer: {
+                    name: 'Forbes Lindesay',
+                    twitter: '@ForbesLindesay',
+                    blog: 'forbeslindesay.co.uk'
+                }
+            });
+
+
+            newHTMLpathfilePath = filePath.slice(0, -5).concat('.html');
+
+
+            fs.writeFile(newHTMLpathfilePath, htmlOutput, function(err) {
+
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("The file was saved!");
+                }
+            });
+
+
+
+
+
+        });
+
+
+
+
+
     }
-});
-
-
-// var walk = function(dir, done) {
-//     var results = [];
-//     fs.readdir(dir, function(err, list) {
-//         if (err) return done(err);
-//         var i = 0;
-//         (function next() {
-//             var file = list[i++];
-//             if (!file) return done(null, results);
-//             file = dir + '/' + file;
-//             fs.stat(file, function(err, stat) {
-//                 if (stat && stat.isDirectory()) {
-//                     walk(file, function(err, res) {
-//                         results = results.concat(res);
-//                         next();
-//                     });
-//                 } else {
-//                     results.push(file);
-//                     next();
-//                 }
-//             });
-//         })();
-//     });
-// };
 
 
 
-// walk(__dirname, function(err, results) {
-//     if (err) throw err;
-//     console.log(results);
 
-//     for (var i = results.length - 1; i >= 0; i--) {
-//     	results[i].
-//     };
-
-
-// });
+}
