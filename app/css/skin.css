@@ -1,0 +1,378 @@
+* html {
+  font-size: 100%;
+}
+html {
+  font-size: 16px;
+  line-height: 1.875em;
+}
+body,
+input,
+textarea {
+  font-family: 'Lato', sans-serif;
+}
+a {
+  text-decoration: none;
+  color: #2d6199;
+  transition: color 0.75s;
+}
+a:hover {
+  color: #be4c00;
+  transition: color 0.75s;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 300;
+}
+h1 {
+  font-size: 3.75em;
+  line-height: 1.5em;
+  margin-top: 0.5em;
+  padding-top: 0em;
+  padding-bottom: 0.25em;
+  margin-bottom: 1em;
+  border-bottom-style: solid;
+  border-bottom-width: 0.016666666666666666em;
+  padding-bottom: 0.10833333333333334em;
+  border-color: rgba(0,0,0,0.2);
+  color: #be4c00;
+}
+.app #content h1 {
+  margin-top: 0.5em;
+  padding-top: 0em;
+  padding-bottom: 0.25em;
+  margin-bottom: 0.5em;
+}
+#list #content h1 {
+  margin-top: 0.5em;
+  padding-top: 0em;
+  padding-bottom: 0.25em;
+  margin-bottom: 0em;
+}
+h2 {
+  font-size: 2.5em;
+  line-height: 1.5em;
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0.75em;
+}
+.app h2 {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0.375em;
+}
+.app ul li h2 {
+  font-size: 1.875em;
+  line-height: 2em;
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0em;
+}
+h3 {
+  font-size: 1.875em;
+  line-height: 2em;
+  margin-top: 2em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 1em;
+}
+h4 {
+  font-size: 1.5625em;
+  line-height: 1.2em;
+  margin-top: 2em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 1em;
+}
+ol li,
+ul li,
+p {
+  color: #666;
+  font-size: 1.125em;
+  line-height: 1.6666666666666667em;
+  margin-top: 1em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 1em;
+}
+#app-home #content ul,
+#list #content ul {
+  box-sizing: border-box;
+  border-left: 1px solid rgba(0,0,0,0.2);
+  border-right: 1px solid rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+#app-home #content ul {
+  border-top-style: solid;
+  border-top-width: 0.0625em;
+  padding-top: -0.0625em;
+  border-color: rgba(0,0,0,0.2);
+}
+#app-home #content ul {
+  white-space: nowrap;
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 2em;
+}
+#app-home #content ul li,
+#list #content ul li {
+  border-bottom-style: solid;
+  border-bottom-width: 0.0625em;
+  padding-bottom: 1.8125em;
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0em;
+  border-color: rgba(0,0,0,0.2);
+}
+#app-home #content ul li:nth-child(odd),
+#list #content ul li:nth-child(odd) {
+  background: rgba(0,0,0,0.02);
+}
+#app-home #content ul li:nth-child(even),
+#list #content ul li:nth-child(even) {
+  background: rgba(0,0,0,0.05);
+}
+#app-home #content ul li a,
+#list #content ul li a {
+  display: block;
+  margin-top: 0em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin-bottom: 0em;
+}
+#list #content ul li p {
+  font-size: 1.5625em;
+  line-height: 1.2em;
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 1em;
+  font-weight: 300;
+}
+header {
+  background: #333;
+}
+header nav ul {
+  float: right;
+}
+header nav ul li {
+  display: block;
+  float: left;
+  margin-top: 0em;
+  padding-top: 1.5em;
+  padding-bottom: 0em;
+  margin-bottom: 0em;
+}
+#home nav ul li a {
+  display: block;
+  text-transform: uppercase;
+}
+header nav ul li a {
+  color: #bbb;
+  margin: 0 0 0 1.5em;
+}
+#add ul li.nav-add a,
+#list ul li.nav-list a,
+#form ul li.nav-list a,
+#account ul li.nav-account a,
+header nav ul li a:hover {
+  color: #fff;
+}
+.app header nav h1,
+header nav h1 {
+  float: left;
+  margin-top: 0em;
+  padding-top: 0.25em;
+  padding-bottom: 0em;
+  margin-bottom: 0em;
+  border: none;
+}
+header nav h1 a {
+  display: block;
+  background: transparent url("/images/fireform-logo-white.png") center center no-repeat;
+  background-size: contain;
+  width: 2.5em;
+  height: 1.5em;
+  opacity: 0.7;
+  transition: opacity 1s;
+  text-indent: -9999px;
+}
+header nav h1 a:hover {
+  opacity: 1;
+  transition: opacity 1s;
+}
+footer {
+  margin-top: 3.75em;
+  padding-top: 0em;
+  padding-bottom: 7.5em;
+  margin-bottom: 0em;
+}
+footer .container {
+  border-top-style: solid;
+  border-top-width: 0.0625em;
+  padding-top: -0.0625em;
+  border-color: rgba(0,0,0,0.2);
+}
+footer a {
+  display: block;
+  width: 3.75em;
+  margin: 0 auto;
+}
+footer img {
+  display: block;
+  width: 3.75em;
+  height: 3.75em;
+  opacity: 0.7;
+  transition: opacity 0.75s;
+}
+footer img:hover {
+  opacity: 1;
+}
+article {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 3.3333333333333335em;
+}
+#home {
+  text-align: center;
+}
+#home p#tagline {
+  font-size: 2.5em;
+  line-height: 1.5em;
+  font-weight: 300;
+  text-align: center;
+  color: #000;
+}
+#home h1 + p {
+  font-size: 1.875em;
+  line-height: 2em;
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 1em;
+}
+#home h1 {
+  border: 0;
+  text-indent: -9999px;
+  background: transparent url("/images/fireform-logo.png") center bottom no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 5em;
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0em;
+  opacity: 0.6;
+  transition: opacity 1s;
+}
+#home h1:hover {
+  opacity: 0.8;
+}
+#home nav ul {
+  margin-top: 4.5em;
+  padding-top: 4.5em;
+  padding-bottom: 0em;
+  margin-bottom: 0em;
+  border-top-style: solid;
+  border-top-width: 0.0625em;
+  padding-top: -0.0625em;
+  border-color: rgba(0,0,0,0.2);
+}
+#home nav ul li {
+  display: inline-block;
+  width: 15em;
+}
+#home nav ul li:first-child {
+  margin-right: 3.75em;
+}
+.app input,
+#center input,
+#left ul,
+#left ul li {
+  width: 100%;
+}
+nav#left ul {
+  border-top-style: solid;
+  border-top-width: 0.0625em;
+  padding-top: -0.0625em;
+  border-color: rgba(0,0,0,0.2);
+}
+nav#left ul li {
+  border-bottom-style: solid;
+  border-bottom-width: 0.05555555555555555em;
+  padding-bottom: 1.6111111111111112em;
+  border-color: rgba(0,0,0,0.2);
+  margin-top: 0em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin-bottom: 0em;
+}
+#home nav ul li a,
+header nav ul li a,
+.button,
+input[type=text],
+input[type=password],
+input[type=submit],
+textarea {
+  padding: 1.1111111em;
+  box-sizing: border-box;
+  border-radius: 0.3125em;
+  cursor: pointer;
+}
+input[type=text],
+input[type=password] {
+  border: 2px solid #bbb;
+  border-top-color: rgba(0,0,0,0.2);
+}
+header nav ul li a {
+  border: 2px solid transparent;
+}
+#home nav ul li a {
+  border: 2px solid rgba(0,0,0,0.2);
+}
+input[type=submit],
+header nav ul li a,
+.button.action {
+  display: inline-block;
+  width: auto;
+  text-align: center;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+input[type=submit] {
+  padding: 1.1111111em;
+  min-width: 15em;
+}
+#home nav ul li a,
+header nav ul li a,
+.button.action {
+  padding: 0.5em 1.5em;
+}
+input[type=submit],
+.button.action {
+  background: #8e2409;
+  border: 2px solid #8e2409;
+  color: #fff;
+  width: auto;
+  transition: all 0.5s;
+}
+input[type=submit]:hover,
+.button.action:hover {
+  background-color: #be4c00;
+  border-color: #be4c00;
+  transition: all 0.5s;
+}
+.app {
+  background: #ddd;
+}
+.app footer .container,
+.app h1 {
+  border-color: rgba(0,0,0,0.2);
+}

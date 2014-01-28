@@ -1,0 +1,52 @@
+// ----------------------------------------------------------------------------
+// Variables from https://github.com/jenius/axis
+// ----------------------------------------------------------------------------
+
+
+font-size = 16
+
+// vertical rhythm
+base-line-height = 20px
+default-rhythm-border-style = solid
+relative-font-sizing = true
+round-to-nearest-half-line = false
+min-line-padding = 2px
+
+// The base font size.
+base-font-size ?= unit(font-size, px)
+
+// The base line height determines the basic unit of vertical rhythm.
+base-line-height ?= 20px
+
+// Set the default border style for rhythm borders.
+default-rhythm-border-style ?= solid
+
+// The default font size in all browsers.
+browser-default-font-size = 16px
+
+// Set to false if you want to use absolute pixels in sizing your typography.
+relative-font-sizing ?= true
+
+// Allows the `adjust-font-size-to` mixin and the `-lines-for-font-size` function
+// to round the line height to the nearest half line height instead of the
+// nearest integral line height to avoid large spacing between lines.
+round-to-nearest-half-line ?= false
+
+// Ensure there is at least this many pixels
+// of vertical padding above and below the text.
+min-line-padding ?= 2px
+
+// $base-font-size but in your output unit of choice.
+// Defaults to 1em when `$relative-font-sizing` is true.
+font-unit ?= relative-font-sizing ? 1em : base-font-size
+
+// The basic unit of font rhythm.
+base-rhythm-unit = font-unit * base-line-height / base-font-size
+
+// The leader is the amount of whitespace in a line.
+// It might be useful in your calculations.
+base-leader = font-unit / base-font-size * (base-line-height - base-font-size)
+
+// The half-leader is the amount of whitespace above and below a line.
+// It might be useful in your calculations.
+base-half-leader = base-leader / 2

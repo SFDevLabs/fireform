@@ -1,0 +1,7 @@
+h2 Account
+  p Form Submit code And stuffkd
+    code
+      $('#myFormDiv').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');
+    ul#messages(ng-show='ListView.formPosts')
+      li(ng-repeat='list in ListView.formPosts | orderByPriority | reverse') {{list}}
+    button(ng-click='logout()') Log Out
