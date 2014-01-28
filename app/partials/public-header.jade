@@ -1,14 +1,20 @@
-.root
- hr
- h4 Public-Header
- ul
-  
-  li
-   a(href="#/home") Home
-  li.hide(show-on-auth)
-    a(href="#/list") Logged In - go to app
-  li(hide-on-auth)
-    a(href="#/login") Login
-  li(hide-on-auth)
-    a(href="#/signup") signup
- hr
+header
+    nav.container.shell
+        h1
+            a(href="#/home") Fireform
+        ul(hide-on-auth)                
+            li
+                a(href="#/docs") Docs
+            li
+                a(href="#/login") Login
+            li
+                a(href="#/signup", class="action button") Sign Up
+        ul(show-on-auth)                
+            li.nav-add
+                a(href="#/add") Add New Form
+            li.nav-list
+                a(href="#/list") Form List
+            li.nav-account
+                a(href="#/account") Account
+            li
+                a(href="#/logout") Logout
