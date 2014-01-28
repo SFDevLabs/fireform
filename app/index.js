@@ -104,7 +104,6 @@ watchr.watch({
     paths: [__dirname],
     listeners: {
         log: function(logLevel) {
-            console.log('change');
 
             //console.log('a log message occured:', arguments);
         },
