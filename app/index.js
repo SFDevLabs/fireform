@@ -100,11 +100,12 @@ console.log("Static file server running at\n  => http://localhost:" + port + "/\
 var watchr = require('watchr');
 
 // Watch a directory or file
-console.log('Watch our paths');
 watchr.watch({
     paths: [__dirname],
     listeners: {
         log: function(logLevel) {
+            console.log('change');
+
             //console.log('a log message occured:', arguments);
         },
         error: function(err) {
