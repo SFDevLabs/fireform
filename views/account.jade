@@ -1,0 +1,28 @@
+extends app-layout
+
+block content
+	div.container
+		h1 Account
+		form#left
+			h2 Contact Info
+			ul
+				li
+					input(type="text", name="first-name", id="first-name", placeholder="First Name")
+				li
+					input(type="text", name="last-name", id="last-name", placeholder="Last Name")
+				li
+					input(type="text", name="email", id="email", placeholder="Name@email.com")
+
+			p
+				input(type="submit", name="submit", id="submit", value="Save")
+		form#right
+			h2 Change Password
+			ul
+				li
+					input(type="password", name="password", id="password", placeholder="Old Password")
+				li
+					input(type="password", name="password", id="password", placeholder="New Password")
+				li
+					input(type="password", name="password", id="password", placeholder="Confirm New Password")
+			p
+				input(type="submit", name="submit", id="submit", value="Change Password")

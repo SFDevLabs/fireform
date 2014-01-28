@@ -1,0 +1,311 @@
+@import "_variables"
+@import "_mixins"
+@import "_functions"
+
+
+base-font-size = 16px
+base-line-height = 30px
+
+darkest-gray = #333
+dark-gray = #666
+mid-gray = #bbb
+light-gray = #ddd
+
+two-gray = rgba(0,0,0,0.02)
+five-gray = rgba(0,0,0,0.05)
+ten-gray = rgba(0,0,0,0.1)
+twenty-gray = rgba(0,0,0,0.2)
+
+red = #8e2409
+orange = #be4c00
+dark-blue = #2d6199
+light-blue = #3265be
+
+establish-baseline()
+
+body
+input
+textarea
+	font-family: 'Lato', sans-serif
+
+a
+	text-decoration: none
+	color: dark-blue
+	transition: color 0.75s
+
+a:hover
+	color: orange
+	transition: color 0.75s
+
+h1
+h2
+h3
+h4
+	font-weight: 300
+
+h1
+	adjust-font-size-to(60px)
+	rhythm(1, 0, 0.5, 2, 60px)
+	trailing-border(1px, .25, 60px, solid)
+	border-color: twenty-gray
+	color: orange
+
+.app #content h1
+	rhythm(1, 0, 0.5, 1, 60px)
+
+#list #content h1
+	rhythm(1, 0, 0.5, 0, 60px)	
+
+h2
+	adjust-font-size-to(40px)
+	rhythm(0, 0, 0, 1, 40px)
+
+.app h2
+	rhythm(0, 0, 0, 0.5, 40px)
+
+.app ul li h2
+	adjust-font-size-to(30px)
+	rhythm(0, 0, 0, 0, 30px)
+
+h3
+	adjust-font-size-to(30px)
+	rhythm(2, 0, 0, 1, 30px)
+
+h4
+	adjust-font-size-to(25px)
+	rhythm(2, 0, 0, 1, 30px)
+
+ol li
+ul li
+p
+	color: dark-gray
+	adjust-font-size-to(18px)
+	rhythm(1, 0, 0, 1, 30px)
+
+#app-home #content ul
+#list #content ul
+	box-sizing: border-box
+	border-left: 1px solid twenty-gray
+	border-right: 1px solid twenty-gray
+	overflow: hidden
+
+#app-home #content ul
+	leading-border(1px, 0, 16px, solid)
+	border-color: twenty-gray	
+
+#app-home #content ul
+	white-space: nowrap
+	rhythm(0, 0, 0, 2, 30px)
+
+#app-home #content ul li
+#list #content ul li
+	trailing-border(1px, 1)
+	rhythm(0, 0, 0, 0, 30px)
+	border-color: twenty-gray
+
+#app-home #content ul li:nth-child(odd)
+#list #content ul li:nth-child(odd)
+	background: two-gray
+
+#app-home #content ul li:nth-child(even)
+#list #content ul li:nth-child(even)
+	background: five-gray
+
+#app-home #content ul li a
+#list #content ul li a
+	display: block
+	rhythm(0, 1, 1, 0, 30px)
+
+#list #content ul li p
+	adjust-font-size-to(25px)
+	rhythm(0, 0, 0, 1, 30px)
+	font-weight: 300
+
+header
+	background: darkest-gray
+
+header nav ul
+	float: right
+
+header nav ul li
+	display: block
+	float: left
+	rhythm(0, 1.5, 0, 0, 30px)
+
+#home nav ul li a
+	display: block
+	text-transform: uppercase
+
+header nav ul li a
+	color: mid-gray
+	margin: 0 0 0 1.5em
+
+#add ul li.nav-add a
+#list ul li.nav-list a
+#form ul li.nav-list a
+#account ul li.nav-account a
+header nav ul li a:hover
+	color: white
+
+.app header nav h1
+header nav h1
+	float: left
+	rhythm(0, 0.25, 0, 0, 30px)
+	border: none
+
+header nav h1 a
+	display: block
+	background: transparent url('/images/fireform-logo-white.png') center center no-repeat
+	background-size: contain
+	width: 2.5em
+	height: 1.5em
+	opacity: 0.7
+	transition: opacity 1s
+	text-indent: -9999px
+
+header nav h1 a:hover
+	opacity: 1
+	transition: opacity 1s
+
+footer
+	rhythm(2, 0, 4, 0)
+
+footer .container
+	leading-border(1px, 0, 16px, solid)
+	border-color: twenty-gray
+
+footer a
+	display: block
+	width: 3.75em
+	margin: 0 auto
+
+footer img
+	display: block
+	width: 3.75em
+	height: 3.75em
+	opacity: 0.7
+	transition: opacity 0.75s
+
+footer img:hover
+	opacity: 1
+
+article
+	rhythm(0, 0, 0, 2, 18px)
+
+#home
+	text-align: center
+
+#home p#tagline
+	adjust-font-size-to(40px)
+	font-weight: 300
+	text-align: center
+	color: black
+
+#home h1 + p
+	adjust-font-size-to(30px)
+	rhythm(0, 0, 0, 1, 30px)
+
+#home h1
+	border: 0
+	text-indent: -9999px
+	background: transparent url('/images/fireform-logo.png') center bottom no-repeat
+	background-size: contain
+	width: 100%
+	height: 5em
+	rhythm(0, 0, 0, 0, 60px)
+	opacity: 0.6
+	transition: opacity 1s
+
+#home h1:hover
+	opacity: 0.8
+
+#home nav ul
+	rhythm(9, 9, 0, 0, 60px)
+	leading-border(1px, 0, 16px, solid)
+	border-color: twenty-gray
+
+#home nav ul li
+	display: inline-block
+	width: 15em
+
+#home nav ul li:first-child
+	margin-right: 3.75em
+
+.app input
+#center input
+#left ul
+#left ul li
+	width: 100%
+
+nav#left ul
+	leading-border(1px, 0, 16px, solid)
+	border-color: twenty-gray
+
+nav#left ul li
+	trailing-border(1px, 1, 18px, solid)
+	border-color: twenty-gray
+	rhythm(0, 0.5, 0.5, 0, 30px)
+
+#home nav ul li a
+header nav ul li a
+.button
+input[type=text]
+input[type=password]
+input[type=submit]
+textarea {
+	padding: 1.1111111em;
+	box-sizing: border-box;
+	border-radius: 0.3125em;
+	cursor: pointer;
+}
+
+input[type=text]
+input[type=password]
+	border: 2px solid mid-gray;
+	border-top-color: twenty-gray;
+
+header nav ul li a
+	border: 2px solid transparent
+
+#home nav ul li a
+	border: 2px solid twenty-gray
+
+input[type=submit]
+header nav ul li a
+.button.action
+	display: inline-block
+	width: auto
+	text-align: center
+	font-weight: 300
+	text-transform: uppercase
+
+input[type=submit]
+	padding: 1.1111111em
+	min-width: 15em
+
+#home nav ul li a
+header nav ul li a
+.button.action
+	padding: 0.5em 1.5em
+
+input[type=submit]
+.button.action
+	background: red
+	border: 2px solid red
+	color: white
+	width: auto
+	transition: all 0.5s
+
+input[type=submit]:hover
+.button.action:hover
+	background-color: orange
+	border-color: orange
+	transition: all 0.5s
+
+
+.app
+	background: light-gray
+
+.app footer .container
+.app h1
+	border-color: twenty-gray
