@@ -1,5 +1,14 @@
 .root
  hr
- h2 One
-   p Filler
-    
+ h4 Public-Header
+ ul
+  
+  li
+   a(href="#/home") Home
+  li.hide(show-on-auth)
+    a(href="#/list") Logged In - go to app
+  li(hide-on-auth)
+    a(href="#/login") Login
+  li(hide-on-auth)
+    a(href="#/signup") signup
+ hr

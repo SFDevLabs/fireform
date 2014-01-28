@@ -11,6 +11,14 @@ angular.module('myApp.routes', ['ngRoute'])
             controller: 'HomeCtrl'
         });
 
+
+        $routeProvider.when('/docs', {
+            templateUrl: 'partials/docs.html',
+            controller: 'HomeCtrl'
+        });
+
+
+
         $routeProvider.when('/chat', {
             templateUrl: 'partials/chat.html',
             controller: 'ChatCtrl'
@@ -38,6 +46,11 @@ angular.module('myApp.routes', ['ngRoute'])
         $routeProvider.when('/login', {
             templateUrl: 'partials/login.html',
             controller: 'LoginCtrl'
+        });
+
+        $routeProvider.when('/signup', {
+            templateUrl: 'partials/signup.html',
+            controller: 'SignupCtrl'
         });
 
         $routeProvider.otherwise({

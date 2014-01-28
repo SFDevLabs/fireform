@@ -15,10 +15,10 @@
         <input type="password" ng-model="confirm" />
     </label>
     <button ng-click="login()" ng-hide="createMode">Log In</button>
-    <button ng-click="createMode = true" ng-hide="createMode">Register</button>
-    <button ng-cloak ng-show="createMode" ng-click="createAccount()">Create Account</button>
-    <button ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
-
+<!--     <button ng-click="createMode = true" ng-hide="createMode">Register</button>
+ -->    <button ng-cloak ng-show="createMode" ng-click="createAccount()">Create Account</button>
+ <button ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
+    <a href="#signup">Signup</a>
     <p ng-show="err" class="error">{{err}}</p>
 </form>
 

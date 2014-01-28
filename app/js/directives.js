@@ -42,4 +42,73 @@ angular.module("myApp.directives", [])
             templateUrl: 'partials/sub-header-two.html',
             replace: true
         };
+    })
+    .directive("injectBodyClass", function() {
+        return {
+            restrict: 'E',
+            link: function(scope, element, attrs) {
+
+
+
+                scope.$root.removeClass = scope.$root.addClass;
+                scope.$root.addClass = attrs.injectClasses;
+                scope.$emit('someEvent');
+
+
+
+            }
+        }
+    }).directive("styleInject", function() {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs) {
+
+
+
+                scope.$root.$on('someEvent', function() {
+
+                    element.removeClass(scope.$root.removeClass);
+                    element.addClass(scope.$root.addClass);
+
+                });
+
+
+            }
+        }
+    })
+    .directive("showOnAuth", function() {
+        return {
+            restrict: 'A',
+            replace: true,
+            link: function(scope, element, attrs) {
+
+
+                scope.$root.$on("$firebaseSimpleLogin:login", function() {
+                    element.removeClass('hide');
+                });
+
+
+
+
+            }
+        }
+    })
+    .directive("hideOnAuth", function() {
+        return {
+            restrict: 'A',
+            replace: true,
+            link: function(scope, element, attrs) {
+
+                scope.$root.$on("$firebaseSimpleLogin:login", function() {
+                    element.addClass('hide');
+                });
+
+            }
+        }
     });
+
+// {
+//     restrict: 'E',
+//     templateUrl: 'partials/sub-header-two.html',
+//     replace: true
+// };

@@ -5,7 +5,12 @@ html {
   font-size: 16px;
   line-height: 1.875em;
 }
-body,
+body.list {
+  border: 4px solid #be4c00;
+}
+body.home {
+  border: 4px solid #2d6199;
+}
 input,
 textarea {
   font-family: 'Lato', sans-serif;
@@ -98,6 +103,9 @@ p {
   padding-top: 0em;
   padding-bottom: 0em;
   margin-bottom: 1em;
+}
+.hide {
+  display: none;
 }
 #app-home #content ul,
 #list #content ul {
