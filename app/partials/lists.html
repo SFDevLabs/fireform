@@ -1,19 +1,25 @@
-<inject-body-class inject-classes="list other christine">
+<inject-body-class inject-classes="app list">
 
+    <app-header></app-header>
 
-<app-header></app-header>
+    <div class="container">
+      <h1>Form List</h1>
+      <ul id="messages" class="wrapped" ng-show="Lists">
+        <li ng-repeat="list in Lists | orderByPriority | reverse">
+            <a href="#/list/{{list.id}}">
+            <h2>{{list.id}}</h2>
+            <p>Name, email, message</p></a>
+        </li>
+      </ul>
+    </div>
 
-
-<h2>Account</h2>
-
-
-
-    <p>{{auth.user.id}}</p>
+    <!--<p>{{auth.user.id}}</p>
 
     <form>
       <input placeholder="Message..." ng-model="newList">
       <button type="submit" ng-click="addList()">send</button>
     </form>
+
     <ul id="messages" ng-show="Lists">
         <li ng-repeat="list in Lists | orderByPriority | reverse">
 
@@ -21,5 +27,4 @@
         </li>
     </ul>
 
-
-<button ng-click="logout()">Log Out</button>
+    <button ng-click="logout()">Log Out</button>-->
