@@ -8,10 +8,12 @@
 #center{float:none;margin:0 auto}
 @media screen and (min-width: 0em) and (max-width: 43.75em){.container{padding:2em 10%}
 .container.shell{padding:0}
+.wrapped li{padding:0 5%}
 .col{float:none;width:100%}
 }@media screen and (min-width: 43.75em) and (max-width: 71.1875em){.container{padding:2em 10%}
-.container.shell{padding:0}
-.col{margin-right:4%;padding:0 2%}
+.container.shell{padding:0 10%}
+.col{margin-right:4%}
+.col,.wrapped li{padding:0 2%}
 .row .col:last-child{margin-right:0}
 .span_1{width:13.3333333333%}
 .span_2{width:30.6666666667%}

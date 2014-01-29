@@ -4,7 +4,7 @@ body,input,textarea{font-family:'Lato',sans-serif}
 a{text-decoration:none;color:#2d6199;-webkit-transition:color 0.75s;-moz-transition:color 0.75s;-o-transition:color 0.75s;-ms-transition:color 0.75s;transition:color 0.75s}
 a:hover{color:#be4c00;-webkit-transition:color 0.75s;-moz-transition:color 0.75s;-o-transition:color 0.75s;-ms-transition:color 0.75s;transition:color 0.75s}
 h1,h2,h3,h4{font-weight:300}
-h1{font-size:3.75em;line-height:1.5em;margin-top:.5em;padding-top:0;padding-bottom:.25em;margin-bottom:1em;border-bottom-style:solid;border-bottom-width:.016666666666666666em;padding-bottom:.10833333333333334em;border-color:rgba(0,0,0,0.2);color:#be4c00}
+h1{font-size:3.75em;line-height:1.5em;margin-top:.5em;padding-top:0;padding-bottom:.25em;margin-bottom:.5em;border-bottom-style:solid;border-bottom-width:.016666666666666666em;padding-bottom:.10833333333333334em;border-color:rgba(0,0,0,0.2);color:#be4c00}
 .app #content h1{margin-top:.5em;padding-top:0;padding-bottom:.25em;margin-bottom:.5em}
 .app.home #content h1,.list #content h1{margin-top:.5em;padding-top:0;padding-bottom:.25em;margin-bottom:0}
 h2{font-size:2.5em;line-height:1.5em;margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:.75em}
@@ -27,7 +27,7 @@ header nav ul li{display:block;float:left;margin-top:0;padding-top:1.5em;padding
 .public.home nav ul li a{display:block;text-transform:uppercase}
 header nav ul li a{color:#bbb;margin:0 0 0 1.5em}
 .add ul li.nav-add a,.list ul li.nav-list a,.form ul li.nav-list a,.account ul li.nav-account a,header nav ul li a:hover{color:#fff}
-.app header nav h1,header nav h1{float:left;margin-top:0;padding-top:.25em;padding-bottom:0;margin-bottom:0;border:none}
+header nav h1{float:left;margin-top:0;padding-top:.25em;padding-bottom:0;margin-bottom:0;border:none}
 header nav h1 a{display:block;background:transparent url("../img/fireform-logo-white.png") center center no-repeat;-webkit-background-size:contain;-moz-background-size:contain;background-size:contain;width:2.5em;height:1.5em;opacity:.7;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";filter:alpha(opacity=70);-webkit-transition:opacity 1s;-moz-transition:opacity 1s;-o-transition:opacity 1s;-ms-transition:opacity 1s;transition:opacity 1s;text-indent:-9999px}
 header nav h1 a:hover{opacity:1;-ms-filter:none;filter:none;-webkit-transition:opacity 1s;-moz-transition:opacity 1s;-o-transition:opacity 1s;-ms-transition:opacity 1s;transition:opacity 1s}
 footer{margin-top:3.75em;padding-top:0;padding-bottom:5.625em;margin-bottom:0}
@@ -60,3 +60,28 @@ input[type=submit],.button.action{background:#8e2409;border:2px solid #8e2409;co
 input[type=submit]:hover,.button.action:hover{background-color:#be4c00;border-color:#be4c00;-webkit-transition:all 0.5s;-moz-transition:all 0.5s;-o-transition:all 0.5s;-ms-transition:all 0.5s;transition:all 0.5s}
 .app.home,.add,.list,.form,.account{background:#ddd}
 .app footer .container,.app h1{border-color:rgba(0,0,0,0.2)}
+@media screen and (min-width: 0em) and (max-width: 71.1875em){nav#left ul{border:0;padding:0}
+nav#left ul li{margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:1.6666666666666667em;display:block;float:left;border:2px solid #ddd;width:auto;padding:.5em 1.25em;margin-right:1.25em;-webkit-border-radius:.3125em;border-radius:.3125em}
+#left,#right{float:none}
+input,input[type=submit]{min-width:100%;max-width:100%}
+.public.home p#tagline{font-size:1.5625em;line-height:1.2em}
+h1{font-size:1.875em;line-height:2em;border-bottom-style:solid;border-bottom-width:.03333333333333333em;padding-bottom:.21666666666666667em}
+h2{font-size:1.5625em;line-height:1.2em}
+.app h2{margin-top:1.2em;padding-top:0;padding-bottom:0;margin-bottom:0}
+h3{font-size:1.25em;line-height:1.5em;font-weight:600}
+header nav h1{float:none;width:100%;height:2.5em;margin-top:1em;padding-top:0;padding-bottom:0;margin-bottom:0}
+header nav ul{float:none;margin-top:.8333333333333334em;padding-top:0;padding-bottom:0;margin-bottom:1.6666666666666667em;text-align:center}
+.public.home h1{height:3.75em}
+header nav h1 a{float:none;width:100%;height:2.5em}
+.public.home nav ul li a,header nav ul li a,.button.action{padding:.25em .5em;margin:0 .25em}
+header nav ul li{font-size:1.125em;line-height:1.6666666666666667em;margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:0;display:inline-block;float:none}
+.public.home nav ul li:first-child{margin-right:0}
+.public.home nav ul li{width:100%}
+.public.home nav ul{margin-top:2.5em;padding-top:1.25em;padding-bottom:0;margin-bottom:0}
+.public.home h1 + p{font-size:1.5625em;line-height:1.2em;margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:0}
+.list #content ul li h2{font-size:1.125em;line-height:1.6666666666666667em}
+.list #content ul li p{font-size:.9375em;line-height:2em}
+footer{margin-top:1.875em;padding-top:0;padding-bottom:3.75em;margin-bottom:0;background:#ddd}
+.app.home footer,.add footer,.list footer,.form footer,.account footer{background:#bbb}
+footer .container{border:0}
+}
