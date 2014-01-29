@@ -6,15 +6,22 @@ angular.module('myApp.routes', ['ngRoute'])
 // which should only be available while logged in
 .config(['$routeProvider',
     function($routeProvider) {
+
+        $routeProvider.when('/', {
+            templateUrl: 'partials/public-home.html',
+            controller: 'PublicHomeCtrl'
+        });
+
         $routeProvider.when('/home', {
+            authRequired: true, // must authenticate before viewing this page
             templateUrl: 'partials/home.html',
-            controller: 'HomeCtrl'
+            controller: 'AppHomeCtrl'
         });
 
 
         $routeProvider.when('/docs', {
             templateUrl: 'partials/docs.html',
-            controller: 'HomeCtrl'
+            controller: 'PublicHomeCtrl'
         });
 
 
@@ -60,7 +67,7 @@ angular.module('myApp.routes', ['ngRoute'])
         });
 
         $routeProvider.otherwise({
-            redirectTo: '/home'
+            redirectTo: '/'
         });
     }
 ]);

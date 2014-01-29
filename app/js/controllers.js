@@ -3,9 +3,20 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-    .controller('HomeCtrl', ['$scope', 'syncData',
+
+    .controller('PublicHomeCtrl', ['$scope', 'syncData',
         function($scope, syncData) {
             //alert($scope.username);
+            syncData('syncedValue').$bind($scope, 'syncedValue');
+        }
+    ])
+
+    .controller('AppHomeCtrl', ['$scope', 'syncData',
+        function($scope, syncData) {
+            //alert($scope.username);
+            // constrain number of messages by limit into syncData
+            // add the array into $scope.messages
+            $scope.Lists = syncData('users/' + $scope.auth.user.uid + '/lists', 10);
             syncData('syncedValue').$bind($scope, 'syncedValue');
         }
     ])

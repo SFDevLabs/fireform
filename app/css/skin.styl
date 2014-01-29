@@ -58,6 +58,7 @@ h1
 .app #content h1
 	rhythm(1, 0, 0.5, 1, 60px)
 
+.app.home #content h1
 .list #content h1
 	rhythm(1, 0, 0.5, 0, 60px)	
 
@@ -98,10 +99,6 @@ p
 	overflow: hidden
 
 .app.home #content ul
-	leading-border(1px, 0, 16px, solid)
-	border-color: twenty-gray	
-
-.app.home #content ul
 	white-space: nowrap
 	rhythm(0, 0, 0, 2, 30px)
 
@@ -140,7 +137,7 @@ header nav ul li
 	float: left
 	rhythm(0, 1.5, 0, 0, 30px)
 
-.home nav ul li a
+.public.home nav ul li a
 	display: block
 	text-transform: uppercase
 
@@ -205,26 +202,26 @@ footer a.logo {
 }
 
 
-footer img:hover
+footer a.logo:hover
 	opacity: 1
 
 article
 	rhythm(0, 0, 0, 2, 18px)
 
-.home
+.public.home
 	text-align: center
 
-.home p#tagline
+.public.home p#tagline
 	adjust-font-size-to(40px)
 	font-weight: 300
 	text-align: center
 	color: black
 
-.home h1 + p
+.public.home h1 + p
 	adjust-font-size-to(30px)
 	rhythm(0, 0, 0, 1, 30px)
 
-.home h1
+.public.home h1
 	border: 0
 	text-indent: -9999px
 	background: transparent url('/img/fireform-logo.png') center bottom no-repeat
@@ -235,19 +232,19 @@ article
 	opacity: 0.6
 	transition: opacity 1s
 
-.home h1:hover
+.public.home h1:hover
 	opacity: 0.8
 
-.home nav ul
+.public.home nav ul
 	rhythm(9, 9, 0, 0, 60px)
 	leading-border(1px, 0, 16px, solid)
 	border-color: twenty-gray
 
-.home nav ul li
+.public.home nav ul li
 	display: inline-block
 	width: 15em
 
-.home nav ul li:first-child
+.public.home nav ul li:first-child
 	margin-right: 3.75em
 
 .app input
@@ -265,7 +262,7 @@ nav#left ul li
 	border-color: twenty-gray
 	rhythm(0, 0.5, 0.5, 0, 30px)
 
-.home nav ul li a
+.public.home nav ul li a
 header nav ul li a
 .button
 input[type=text]
@@ -286,7 +283,7 @@ input[type=password]
 header nav ul li a
 	border: 2px solid transparent
 
-.home nav ul li a
+.public.home nav ul li a
 	border: 2px solid twenty-gray
 
 input[type=submit]
@@ -302,7 +299,7 @@ input[type=submit]
 	padding: 1.1111111em
 	min-width: 15em
 
-.home nav ul li a
+.public.home nav ul li a
 header nav ul li a
 .button.action
 	padding: 0.5em 1.5em
@@ -322,7 +319,7 @@ input[type=submit]:hover
 	transition: all 0.5s
 
 
-.home
+.app.home
 .add
 .list
 .form

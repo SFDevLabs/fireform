@@ -1,25 +1,16 @@
-<inject-body-class inject-classes="home">
+<inject-body-class inject-classes="app home">
 
+	<app-header></app-header>
 
-
-	<div class="container" hide-on-auth="hide-on-auth">
-		<div id="center">
-		  <p id="tagline">Hook your forms into a built-in, hosted backend.</p>
-		  <h1>Fireform</h1>
-		  <p><a href="#signup" class="action button">Sign Up</a></p>
+	<div id="content">
+		<div class="container">
+			<h1>Latest Activity</h1>
+			<ul id="messages" class="wrapped" ng-show="Lists">
+	            <li ng-repeat="list in Lists | orderByPriority | reverse">
+	            	<a href="#/list/{{list.id}}">{{list.id}} - Added {{list.text}}</a>
+	            </li>
+	        </ul>
 		</div>
-		<nav id="home-nav">
-		  <ul>
-		    <li><a href="#docs">Documentation</a></li>
-		    <li><a href="#login">Login</a></li>
-		  </ul>
-		</nav>
-	</div>
-
-	<app-header ng-show-on-auth="show-on-auth"></app-header>
-
-	<div class="container" ng-show-on-auth="show-on-auth">
-		<h1>Latest Activity</h1>
 	</div>
 
 	
