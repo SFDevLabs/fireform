@@ -1,11 +1,10 @@
-public-header
+app-header
 div#content
 	div.container
-		h2 Form {{}}
+		h1 Form {{ListView.id}}
 		p.action.button Get Code
 		div#code
 			code
 				$('#myFormDiv').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');
 		ul#messages(ng-show='ListView.formPosts')
 			li(ng-repeat='list in ListView.formPosts | orderByPriority | reverse') {{list}}
-		button(ng-click='logout()') Log Out
