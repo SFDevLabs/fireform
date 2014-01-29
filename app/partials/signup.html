@@ -1,7 +1,31 @@
 
-<h2>Signup Page</h2>
+<div id="content">
+    <div class="container">
+        <form id="center">
 
-<form>
+            <h1>Sign Up</h1>
+            <p ng-show="err" class="error">{{err}}</p>
+            <ul>
+                <li>
+                    <input type="text" name="email" ng-model="email" id="email" placeholder="Name@email.com"/>
+                </li>
+                <li>
+                    <input type="password" name="password" id="password" ng-model="pass" placeholder="Password"/>
+                </li>
+                <li ng-cloak>
+                    <input type="password" placeholder="Confirm password" ng-model="confirm" />
+                </li>
+                <li>
+                    <input type="text" name="form-name" id="form-name" placeholder="Name your first form"/>
+                </li>
+            </ul>
+            
+            <p><input ng-click="createAccount()" type="submit" name="submit" id="submit" value="Create Account"/></p>
+
+        </form>
+    </div>
+</div>
+<!--<form>
     <label>
         <span>email</span>
         <input type="text" ng-model="email" />
@@ -10,15 +34,15 @@
         <span>password</span>
         <input type="password" ng-model="pass" />
     </label>
-    <label ng-cloak >
+    <label ng-cloak>
         <span>confirm pass</span>
         <input type="password" ng-model="confirm" />
     </label>
-<!--     <button ng-click="login()" ng-hide="createMode">Log In</button>
- --><!--     <button ng-click="createMode = true" >Register</button>
- -->    <button ng-click="createAccount()">Create Account</button>
-<!--     <button ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
- -->
-    <p ng-show="err" class="error">{{err}}</p>
-</form>
+    <button ng-click="login()" ng-hide="createMode">Log In</button>
+<button ng-click="createMode = true" >Register</button>
+    <button ng-click="createAccount()">Create Account</button>
+<button ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
+ 
+    
+</form>-->
 
