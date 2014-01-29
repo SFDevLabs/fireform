@@ -84,7 +84,7 @@ angular.module("myApp.directives", [])
 
 
                 scope.$root.$on("$firebaseSimpleLogin:login", function() {
-                    element.removeClass('hide');
+                    element.removeClass('hide').addClass('show');
                 });
 
 
@@ -100,7 +100,7 @@ angular.module("myApp.directives", [])
             link: function(scope, element, attrs) {
 
                 scope.$root.$on("$firebaseSimpleLogin:login", function() {
-                    element.addClass('hide');
+                    element.addClass('hide').removeClass('show');
                 });
 
             }

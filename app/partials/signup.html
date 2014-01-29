@@ -1,32 +1,35 @@
 <inject-body-class inject-classes="signup">
 
+    <public-header></public-header>
 
-<div id="content">
-    <div class="container">
-        <form id="center">
+    <div id="content">
+        <div class="container">
+            <form id="center">
 
-            <h1>Sign Up</h1>
-            <p ng-show="err" class="error">{{err}}</p>
-            <ul>
-                <li>
-                    <input type="text" name="email" ng-model="email" id="email" placeholder="Name@email.com"/>
-                </li>
-                <li>
-                    <input type="password" name="password" id="password" ng-model="pass" placeholder="Password"/>
-                </li>
-                <li ng-cloak>
-                    <input type="password" placeholder="Confirm password" ng-model="confirm" />
-                </li>
-                <li>
-                    <input type="text" name="form-name" id="form-name" placeholder="Name your first form"/>
-                </li>
-            </ul>
-            
-            <p><input ng-click="createAccount()" type="submit" name="submit" id="submit" value="Create Account"/></p>
+                <h1>Sign Up</h1>
+                <p ng-show="err" class="error">{{err}}</p>
+                <ul>
+                    <li>
+                        <input type="text" name="email" ng-model="email" id="email" placeholder="Name@email.com"/>
+                    </li>
+                    <li>
+                        <input type="password" name="password" id="password" ng-model="pass" placeholder="Password"/>
+                    </li>
+                    <li ng-cloak>
+                        <input type="password" placeholder="Confirm password" ng-model="confirm" />
+                    </li>
+                    <li>
+                        <input type="text" name="form-name" id="form-name" placeholder="Name your first form"/>
+                    </li>
+                </ul>
+                
+                <p><input ng-click="createAccount()" type="submit" name="submit" id="submit" value="Create Account"/></p>
 
-        </form>
+            </form>
+        </div>
     </div>
-</div>
+
+    
 <!--<form>
     <label>
         <span>email</span>

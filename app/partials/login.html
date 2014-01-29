@@ -1,21 +1,29 @@
+<inject-body-class inject-classes="login">
 
+    <public-header></public-header>
 
-    <form id="center">
-        <h1>Log into Fireform</h1>
-        <p ng-show="err" class="error">{{err}}</p>
-        <ul>
-            <li>
-                <input type="text" id="email" name="email" placeholder="Name@email.com" ng-model="email" />
-            </li>
-            <li>
-                <input type="password" id="password" name="password" placeholder="Password" ng-model="pass" />
-            </li>
-            <li ng-cloak ng-show="createMode">
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password" ng-model="confirm" />
-            </li>
-        </ul>
-        <p><input ng-click="login()" ng-hide="createMode" type="submit" value="Login" /></p>
-    </form>
+    <div id="content">
+        <div class="container">
+
+            <form id="center">
+                <h1>Log into Fireform</h1>
+                <p ng-show="err" class="error">{{err}}</p>
+                <ul>
+                    <li>
+                        <input type="text" id="email" name="email" placeholder="Name@email.com" ng-model="email" />
+                    </li>
+                    <li>
+                        <input type="password" id="password" name="password" placeholder="Password" ng-model="pass" />
+                    </li>
+                    <li ng-cloak ng-show="createMode">
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password" ng-model="confirm" />
+                    </li>
+                </ul>
+                <p><input ng-click="login()" ng-hide="createMode" type="submit" value="Login" /></p>
+            </form>
+
+        </div>
+    </div>
 
 
         <!--

@@ -1,13 +1,12 @@
 <inject-body-class inject-classes="home">
 
 
-	<public-header ng-hide-auth></public-header>
 
-	<div class="container" ng-hide-auth="logout">
+	<div class="container" hide-on-auth="hide-on-auth">
 		<div id="center">
 		  <p id="tagline">Hook your forms into a built-in, hosted backend.</p>
 		  <h1>Fireform</h1>
-		  <p><a href="/signup" class="action button">Sign Up</a></p>
+		  <p><a href="#signup" class="action button">Sign Up</a></p>
 		</div>
 		<nav id="home-nav">
 		  <ul>
@@ -17,7 +16,9 @@
 		</nav>
 	</div>
 
-	<div class="container" ng-show-auth="login">
+	<app-header ng-show-on-auth="show-on-auth"></app-header>
+
+	<div class="container" ng-show-on-auth="show-on-auth">
 		<h1>Latest Activity</h1>
 	</div>
 
