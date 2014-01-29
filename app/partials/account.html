@@ -2,47 +2,65 @@
 <app-header></app-header>
 <div id="content">
     <div class="container">
-        <h2>Account</h2>
-        <form>
-            <fieldset id="left">
-                <legend>Profile</legend>
+        <h1>Account</h1>
+        <form id="left">
 
-                <label>
-                    <span>Name:</span>
-                    <input type="text" name="name" ng-model="user.name"/>
+            <h2>Contact Info</h2>
 
-                </label>
-                <label>
-                    <span>Email:</span>
-                    <input type="text" name="name" ng-model="user.email"/>
-                </label>
-            </fieldset>
+            <ul>
 
-            <fieldset id="right">
-                <legend>Change Password</legend>
+                <li>
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" name="name" ng-model="user.name"/>
+                </li>
 
-                <label>
-                    <span>Old Password:</span>
-                    <input type="password" ng-keypress="reset()" ng-model="oldpass"/>
-                </label>
+                <li>
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="text" name="name" ng-model="user.email"/>
+                </li>
 
-                <label>
-                    <span>New Password:</span>
-                    <input type="password" ng-keypress="reset()" ng-model="newpass"/>
-                </label>
+            </ul>
+            <p><input type="submit" ng-click="updateProfile()" value="Update Contact Info" />
 
-                <label>
-                    <span>Confirm Password:</span>
-                    <input type="password" ng-keypress="reset()" ng-model="confirm"/>
-                </label>
+            <p class="error" ng-show="err">{{err}}</p>
+            <p class="good" ng-show="msg">{{msg}}</p>
+        </form>
 
-                <button ng-click="updatePassword()">update password</button>
+        <form id="right">
 
-                <p class="error" ng-show="err">{{err}}</p>
-                <p class="good" ng-show="msg">{{msg}}</p>
-            </fieldset>
+            <h2>Change Password</h2>
 
-            <p>{{auth.user.id}}</p>
+            <ul>
+
+                <li>
+                    <label for="old-password">Old Password</label>
+                    <input id="old-password" name="old-password" type="password" ng-keypress="reset()" ng-model="oldpass"/>
+                </li>
+
+                <li>
+                    <label for="new-password">New Password</span>
+                    <input name="new-password" id="confirm-password" type="password" ng-keypress="reset()" ng-model="newpass"/>
+                </li>
+
+                <li>
+                    <label for="confirm-password">Confirm New Password</label>
+                    <input name="confirm-password" id="confirm-password" type="password" ng-keypress="reset()" ng-model="confirm"/>
+                </li>
+
+            </ul>
+
+            <p><input type="submit" ng-click="updatePassword()" value="Update Password" />
+
+            <p class="error" ng-show="err">{{err}}</p>
+            <p class="good" ng-show="msg">{{msg}}</p>
+
+        </form>
+
+    </div>
+</div>
+
+<!--
+    <p>{{auth.user.id}}</p>
 
             <form>
               <input placeholder="Message..." ng-model="newList">
@@ -51,7 +69,4 @@
             <ul id="messages" ng-show="Lists">
                 <li ng-repeat="list in Lists | orderByPriority | reverse">{{list.text}}</li>
             </ul>
-        </form>
-
-    </div>
-</div>
+            -->

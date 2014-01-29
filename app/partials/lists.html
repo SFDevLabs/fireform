@@ -2,15 +2,18 @@
 
     <app-header></app-header>
 
-    <div class="container">
-      <h1>Form List</h1>
-      <ul id="messages" class="wrapped" ng-show="Lists">
-        <li ng-repeat="list in Lists | orderByPriority | reverse">
-            <a href="#/list/{{list.id}}">
-            <h2>{{list.id}}</h2>
-            <p>Name, email, message</p></a>
-        </li>
-      </ul>
+    <div id="content">
+      <div class="container">
+        <h1>Form List</h1>
+        <ul id="messages" class="wrapped" ng-show="Lists">
+          <li ng-repeat="list in Lists | orderByPriority | reverse">
+              <a href="#/list/{{list.id}}">
+                <h2>{{list.id}}</h2>
+                <p>Name, email, message</p>
+              </a>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <!--<p>{{auth.user.id}}</p>

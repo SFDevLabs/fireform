@@ -106,7 +106,7 @@ p
 	rhythm(0, 0, 0, 2, 30px)
 
 .app.home #content ul li
-#list #content ul li
+.list #content ul li
 	trailing-border(1px, 1)
 	rhythm(0, 0, 0, 0, 30px)
 	border-color: twenty-gray
@@ -176,23 +176,34 @@ header nav h1 a:hover
 	transition: opacity 1s
 
 footer
-	rhythm(2, 0, 4, 0)
+	rhythm(2, 0, 3, 0)
 
 footer .container
 	leading-border(1px, 0, 16px, solid)
 	border-color: twenty-gray
+	text-align: center
 
-footer a
+footer span
+footer a.logo
 	display: block
-	width: 3.75em
+
+footer span
+	rhythm(0, 0, 0, 0.5)
+
+footer a.logo
+	rhythm(0, 0, 0, 1)
+
+footer a.logo {
+	text-indent: -9000em;
 	margin: 0 auto
-
-footer img
-	display: block
 	width: 3.75em
 	height: 3.75em
 	opacity: 0.7
 	transition: opacity 0.75s
+	background: transparent url('/img/sf-dev-labs.png') center center no-repeat
+	background-size: cover;	
+}
+
 
 footer img:hover
 	opacity: 1
@@ -311,7 +322,11 @@ input[type=submit]:hover
 	transition: all 0.5s
 
 
-.app
+.home
+.add
+.list
+.form
+.account
 	background: light-gray
 
 .app footer .container

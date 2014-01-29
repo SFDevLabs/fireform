@@ -17,7 +17,7 @@ ol li,ul li,p{color:#666;font-size:1.125em;line-height:1.6666666666666667em;marg
 .app.home #content ul,.list #content ul{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;border-left:1px solid rgba(0,0,0,0.2);border-right:1px solid rgba(0,0,0,0.2);overflow:hidden}
 .app.home #content ul{border-top-style:solid;border-top-width:.0625em;padding-top:-.0625em;border-color:rgba(0,0,0,0.2)}
 .app.home #content ul{white-space:nowrap;margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:2em}
-.app.home #content ul li,#list #content ul li{border-bottom-style:solid;border-bottom-width:.0625em;padding-bottom:1.8125em;margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:0;border-color:rgba(0,0,0,0.2)}
+.app.home #content ul li,.list #content ul li{border-bottom-style:solid;border-bottom-width:.0625em;padding-bottom:1.8125em;margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:0;border-color:rgba(0,0,0,0.2)}
 .app.home #content ul li:nth-child(odd),.list #content ul li:nth-child(odd){background:rgba(0,0,0,0.02)}
 .app.home #content ul li:nth-child(even),.list #content ul li:nth-child(even){background:rgba(0,0,0,0.05)}
 .app.home #content ul li a,.list #content ul li a{display:block;margin-top:0;padding-top:1em;padding-bottom:1em;margin-bottom:0}
@@ -31,10 +31,12 @@ header nav ul li a{color:#bbb;margin:0 0 0 1.5em}
 .app header nav h1,header nav h1{float:left;margin-top:0;padding-top:.25em;padding-bottom:0;margin-bottom:0;border:none}
 header nav h1 a{display:block;background:transparent url("/img/fireform-logo-white.png") center center no-repeat;-webkit-background-size:contain;-moz-background-size:contain;background-size:contain;width:2.5em;height:1.5em;opacity:.7;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";filter:alpha(opacity=70);-webkit-transition:opacity 1s;-moz-transition:opacity 1s;-o-transition:opacity 1s;-ms-transition:opacity 1s;transition:opacity 1s;text-indent:-9999px}
 header nav h1 a:hover{opacity:1;-ms-filter:none;filter:none;-webkit-transition:opacity 1s;-moz-transition:opacity 1s;-o-transition:opacity 1s;-ms-transition:opacity 1s;transition:opacity 1s}
-footer{margin-top:3.75em;padding-top:0;padding-bottom:7.5em;margin-bottom:0}
-footer .container{border-top-style:solid;border-top-width:.0625em;padding-top:-.0625em;border-color:rgba(0,0,0,0.2)}
-footer a{display:block;width:3.75em;margin:0 auto}
-footer img{display:block;width:3.75em;height:3.75em;opacity:.7;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";filter:alpha(opacity=70);-webkit-transition:opacity 0.75s;-moz-transition:opacity 0.75s;-o-transition:opacity 0.75s;-ms-transition:opacity 0.75s;transition:opacity 0.75s}
+footer{margin-top:3.75em;padding-top:0;padding-bottom:5.625em;margin-bottom:0}
+footer .container{border-top-style:solid;border-top-width:.0625em;padding-top:-.0625em;border-color:rgba(0,0,0,0.2);text-align:center}
+footer span,footer a.logo{display:block}
+footer span{margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:.9375em}
+footer a.logo{margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:1.875em}
+footer a.logo{text-indent:-9000em;margin:0 auto;width:3.75em;height:3.75em;opacity:.7;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";filter:alpha(opacity=70);-webkit-transition:opacity 0.75s;-moz-transition:opacity 0.75s;-o-transition:opacity 0.75s;-ms-transition:opacity 0.75s;transition:opacity 0.75s;background:transparent url("/img/sf-dev-labs.png") center center no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover}
 footer img:hover{opacity:1;-ms-filter:none;filter:none}
 article{margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:3.3333333333333335em}
 .home{text-align:center}
@@ -57,5 +59,5 @@ input[type=submit]{padding:1.1111111em;min-width:15em}
 .home nav ul li a,header nav ul li a,.button.action{padding:.5em 1.5em}
 input[type=submit],.button.action{background:#8e2409;border:2px solid #8e2409;color:#fff;width:auto;-webkit-transition:all 0.5s;-moz-transition:all 0.5s;-o-transition:all 0.5s;-ms-transition:all 0.5s;transition:all 0.5s}
 input[type=submit]:hover,.button.action:hover{background-color:#be4c00;border-color:#be4c00;-webkit-transition:all 0.5s;-moz-transition:all 0.5s;-o-transition:all 0.5s;-ms-transition:all 0.5s;transition:all 0.5s}
-.app{background:#ddd}
+.home,.add,.list,.form,.account{background:#ddd}
 .app footer .container,.app h1{border-color:rgba(0,0,0,0.2)}
