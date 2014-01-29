@@ -170,6 +170,9 @@ var fileParse = function(filePath) {
 
             stylus(str)
                 .set('filename', filePath)
+                .set('compress', true)
+                .use(nib())
+                .import('nib')
                 .include(__dirname + '/css')
                 .render(function(err, css) {
 
