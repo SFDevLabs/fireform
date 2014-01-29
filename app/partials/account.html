@@ -1,54 +1,57 @@
+<inject-body-class inject-classes="account app">
+<public-header></public-header>
+<div id="content">
+    <div class="container">
+        <h2>Account</h2>
+        <form>
+            <fieldset id="left">
+                <legend>Profile</legend>
 
-<h2>Account</h2>
+                <label>
+                    <span>Name:</span>
+                    <input type="text" name="name" ng-model="user.name"/>
 
-<form>
-    <fieldset>
-        <legend>Profile</legend>
+                </label>
+                <label>
+                    <span>Email:</span>
+                    <input type="text" name="name" ng-model="user.email"/>
+                </label>
+            </fieldset>
 
-        <label>
-            <span>Name:</span>
-            <input type="text" name="name" ng-model="user.name"/>
+            <fieldset id="right">
+                <legend>Change Password</legend>
 
-        </label>
-        <label>
-            <span>Email:</span>
-            <input type="text" name="name" ng-model="user.email"/>
-        </label>
-    </fieldset>
+                <label>
+                    <span>Old Password:</span>
+                    <input type="password" ng-keypress="reset()" ng-model="oldpass"/>
+                </label>
 
-    <fieldset>
-        <legend>Change Password</legend>
+                <label>
+                    <span>New Password:</span>
+                    <input type="password" ng-keypress="reset()" ng-model="newpass"/>
+                </label>
 
-        <label>
-            <span>Old Password:</span>
-            <input type="password" ng-keypress="reset()" ng-model="oldpass"/>
-        </label>
+                <label>
+                    <span>Confirm Password:</span>
+                    <input type="password" ng-keypress="reset()" ng-model="confirm"/>
+                </label>
 
-        <label>
-            <span>New Password:</span>
-            <input type="password" ng-keypress="reset()" ng-model="newpass"/>
-        </label>
+                <button ng-click="updatePassword()">update password</button>
 
-        <label>
-            <span>Confirm Password:</span>
-            <input type="password" ng-keypress="reset()" ng-model="confirm"/>
-        </label>
+                <p class="error" ng-show="err">{{err}}</p>
+                <p class="good" ng-show="msg">{{msg}}</p>
+            </fieldset>
 
-        <button ng-click="updatePassword()">update password</button>
+            <p>{{auth.user.id}}</p>
 
-        <p class="error" ng-show="err">{{err}}</p>
-        <p class="good" ng-show="msg">{{msg}}</p>
-    </fieldset>
+            <form>
+              <input placeholder="Message..." ng-model="newList">
+              <button type="submit" ng-click="addList()">send</button>
+            </form>
+            <ul id="messages" ng-show="Lists">
+                <li ng-repeat="list in Lists | orderByPriority | reverse">{{list.text}}</li>
+            </ul>
+        </form>
 
-    <p>{{auth.user.id}}</p>
-
-    <form>
-      <input placeholder="Message..." ng-model="newList">
-      <button type="submit" ng-click="addList()">send</button>
-    </form>
-    <ul id="messages" ng-show="Lists">
-        <li ng-repeat="list in Lists | orderByPriority | reverse">{{list.text}}</li>
-    </ul>
-</form>
-
-<button ng-click="logout()">Log Out</button>
+    </div>
+</div>
