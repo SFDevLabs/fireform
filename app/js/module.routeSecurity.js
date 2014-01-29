@@ -47,7 +47,7 @@
          }
          else if( this._location.path() === this._loginPath ) {
             this._location.replace();
-            this._location.path('/');
+            this._location.path('/home');
          }
       },
 
