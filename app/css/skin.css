@@ -5,12 +5,11 @@ html {
   font-size: 16px;
   line-height: 1.875em;
 }
-body.list {
-  border: 4px solid #be4c00;
-}
-body.home {
-  border: 4px solid #2d6199;
-}
+/*body.list
+		border: 4px solid orange;
+body.home
+		border: 4px solid dark-blue;*/
+body,
 input,
 textarea {
   font-family: 'Lato', sans-serif;
@@ -49,7 +48,7 @@ h1 {
   padding-bottom: 0.25em;
   margin-bottom: 0.5em;
 }
-#list #content h1 {
+.list #content h1 {
   margin-top: 0.5em;
   padding-top: 0em;
   padding-bottom: 0.25em;
@@ -107,27 +106,27 @@ p {
 .hide {
   display: none;
 }
-#app-home #content ul,
-#list #content ul {
+.app.home #content ul,
+.list #content ul {
   box-sizing: border-box;
   border-left: 1px solid rgba(0,0,0,0.2);
   border-right: 1px solid rgba(0,0,0,0.2);
   overflow: hidden;
 }
-#app-home #content ul {
+.app.home #content ul {
   border-top-style: solid;
   border-top-width: 0.0625em;
   padding-top: -0.0625em;
   border-color: rgba(0,0,0,0.2);
 }
-#app-home #content ul {
+.app.home #content ul {
   white-space: nowrap;
   margin-top: 0em;
   padding-top: 0em;
   padding-bottom: 0em;
   margin-bottom: 2em;
 }
-#app-home #content ul li,
+.app.home #content ul li,
 #list #content ul li {
   border-bottom-style: solid;
   border-bottom-width: 0.0625em;
@@ -138,23 +137,23 @@ p {
   margin-bottom: 0em;
   border-color: rgba(0,0,0,0.2);
 }
-#app-home #content ul li:nth-child(odd),
-#list #content ul li:nth-child(odd) {
+.app.home #content ul li:nth-child(odd),
+.list #content ul li:nth-child(odd) {
   background: rgba(0,0,0,0.02);
 }
-#app-home #content ul li:nth-child(even),
-#list #content ul li:nth-child(even) {
+.app.home #content ul li:nth-child(even),
+.list #content ul li:nth-child(even) {
   background: rgba(0,0,0,0.05);
 }
-#app-home #content ul li a,
-#list #content ul li a {
+.app.home #content ul li a,
+.list #content ul li a {
   display: block;
   margin-top: 0em;
   padding-top: 1em;
   padding-bottom: 1em;
   margin-bottom: 0em;
 }
-#list #content ul li p {
+.list #content ul li p {
   font-size: 1.5625em;
   line-height: 1.2em;
   margin-top: 0em;
@@ -177,7 +176,7 @@ header nav ul li {
   padding-bottom: 0em;
   margin-bottom: 0em;
 }
-#home nav ul li a {
+.home nav ul li a {
   display: block;
   text-transform: uppercase;
 }
@@ -185,10 +184,10 @@ header nav ul li a {
   color: #bbb;
   margin: 0 0 0 1.5em;
 }
-#add ul li.nav-add a,
-#list ul li.nav-list a,
-#form ul li.nav-list a,
-#account ul li.nav-account a,
+.add ul li.nav-add a,
+.list ul li.nav-list a,
+.form ul li.nav-list a,
+.account ul li.nav-account a,
 header nav ul li a:hover {
   color: #fff;
 }
@@ -248,17 +247,17 @@ article {
   padding-bottom: 0em;
   margin-bottom: 3.3333333333333335em;
 }
-#home {
+.home {
   text-align: center;
 }
-#home p#tagline {
+.home p#tagline {
   font-size: 2.5em;
   line-height: 1.5em;
   font-weight: 300;
   text-align: center;
   color: #000;
 }
-#home h1 + p {
+.home h1 + p {
   font-size: 1.875em;
   line-height: 2em;
   margin-top: 0em;
@@ -266,7 +265,7 @@ article {
   padding-bottom: 0em;
   margin-bottom: 1em;
 }
-#home h1 {
+.home h1 {
   border: 0;
   text-indent: -9999px;
   background: transparent url("/images/fireform-logo.png") center bottom no-repeat;
@@ -280,10 +279,10 @@ article {
   opacity: 0.6;
   transition: opacity 1s;
 }
-#home h1:hover {
+.home h1:hover {
   opacity: 0.8;
 }
-#home nav ul {
+.home nav ul {
   margin-top: 4.5em;
   padding-top: 4.5em;
   padding-bottom: 0em;
@@ -293,11 +292,11 @@ article {
   padding-top: -0.0625em;
   border-color: rgba(0,0,0,0.2);
 }
-#home nav ul li {
+.home nav ul li {
   display: inline-block;
   width: 15em;
 }
-#home nav ul li:first-child {
+.home nav ul li:first-child {
   margin-right: 3.75em;
 }
 .app input,
@@ -322,7 +321,7 @@ nav#left ul li {
   padding-bottom: 0.5em;
   margin-bottom: 0em;
 }
-#home nav ul li a,
+.home nav ul li a,
 header nav ul li a,
 .button,
 input[type=text],
@@ -342,7 +341,7 @@ input[type=password] {
 header nav ul li a {
   border: 2px solid transparent;
 }
-#home nav ul li a {
+.home nav ul li a {
   border: 2px solid rgba(0,0,0,0.2);
 }
 input[type=submit],
@@ -358,7 +357,7 @@ input[type=submit] {
   padding: 1.1111111em;
   min-width: 15em;
 }
-#home nav ul li a,
+.home nav ul li a,
 header nav ul li a,
 .button.action {
   padding: 0.5em 1.5em;

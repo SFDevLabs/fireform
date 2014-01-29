@@ -23,12 +23,12 @@ light-blue = #3265be
 
 establish-baseline()
 
-body.list
+/*body.list
 		border: 4px solid orange;
 body.home
-		border: 4px solid dark-blue;
+		border: 4px solid dark-blue;*/
 
-
+body
 input
 textarea
 	font-family: 'Lato', sans-serif
@@ -58,7 +58,7 @@ h1
 .app #content h1
 	rhythm(1, 0, 0.5, 1, 60px)
 
-#list #content h1
+.list #content h1
 	rhythm(1, 0, 0.5, 0, 60px)	
 
 h2
@@ -90,41 +90,41 @@ p
 .hide
 	display:none
 
-#app-home #content ul
-#list #content ul
+.app.home #content ul
+.list #content ul
 	box-sizing: border-box
 	border-left: 1px solid twenty-gray
 	border-right: 1px solid twenty-gray
 	overflow: hidden
 
-#app-home #content ul
+.app.home #content ul
 	leading-border(1px, 0, 16px, solid)
 	border-color: twenty-gray	
 
-#app-home #content ul
+.app.home #content ul
 	white-space: nowrap
 	rhythm(0, 0, 0, 2, 30px)
 
-#app-home #content ul li
+.app.home #content ul li
 #list #content ul li
 	trailing-border(1px, 1)
 	rhythm(0, 0, 0, 0, 30px)
 	border-color: twenty-gray
 
-#app-home #content ul li:nth-child(odd)
-#list #content ul li:nth-child(odd)
+.app.home #content ul li:nth-child(odd)
+.list #content ul li:nth-child(odd)
 	background: two-gray
 
-#app-home #content ul li:nth-child(even)
-#list #content ul li:nth-child(even)
+.app.home #content ul li:nth-child(even)
+.list #content ul li:nth-child(even)
 	background: five-gray
 
-#app-home #content ul li a
-#list #content ul li a
+.app.home #content ul li a
+.list #content ul li a
 	display: block
 	rhythm(0, 1, 1, 0, 30px)
 
-#list #content ul li p
+.list #content ul li p
 	adjust-font-size-to(25px)
 	rhythm(0, 0, 0, 1, 30px)
 	font-weight: 300
@@ -140,7 +140,7 @@ header nav ul li
 	float: left
 	rhythm(0, 1.5, 0, 0, 30px)
 
-#home nav ul li a
+.home nav ul li a
 	display: block
 	text-transform: uppercase
 
@@ -148,10 +148,10 @@ header nav ul li a
 	color: mid-gray
 	margin: 0 0 0 1.5em
 
-#add ul li.nav-add a
-#list ul li.nav-list a
-#form ul li.nav-list a
-#account ul li.nav-account a
+.add ul li.nav-add a
+.list ul li.nav-list a
+.form ul li.nav-list a
+.account ul li.nav-account a
 header nav ul li a:hover
 	color: white
 
@@ -200,20 +200,20 @@ footer img:hover
 article
 	rhythm(0, 0, 0, 2, 18px)
 
-#home
+.home
 	text-align: center
 
-#home p#tagline
+.home p#tagline
 	adjust-font-size-to(40px)
 	font-weight: 300
 	text-align: center
 	color: black
 
-#home h1 + p
+.home h1 + p
 	adjust-font-size-to(30px)
 	rhythm(0, 0, 0, 1, 30px)
 
-#home h1
+.home h1
 	border: 0
 	text-indent: -9999px
 	background: transparent url('/images/fireform-logo.png') center bottom no-repeat
@@ -224,19 +224,19 @@ article
 	opacity: 0.6
 	transition: opacity 1s
 
-#home h1:hover
+.home h1:hover
 	opacity: 0.8
 
-#home nav ul
+.home nav ul
 	rhythm(9, 9, 0, 0, 60px)
 	leading-border(1px, 0, 16px, solid)
 	border-color: twenty-gray
 
-#home nav ul li
+.home nav ul li
 	display: inline-block
 	width: 15em
 
-#home nav ul li:first-child
+.home nav ul li:first-child
 	margin-right: 3.75em
 
 .app input
@@ -254,7 +254,7 @@ nav#left ul li
 	border-color: twenty-gray
 	rhythm(0, 0.5, 0.5, 0, 30px)
 
-#home nav ul li a
+.home nav ul li a
 header nav ul li a
 .button
 input[type=text]
@@ -275,7 +275,7 @@ input[type=password]
 header nav ul li a
 	border: 2px solid transparent
 
-#home nav ul li a
+.home nav ul li a
 	border: 2px solid twenty-gray
 
 input[type=submit]
@@ -291,7 +291,7 @@ input[type=submit]
 	padding: 1.1111111em
 	min-width: 15em
 
-#home nav ul li a
+.home nav ul li a
 header nav ul li a
 .button.action
 	padding: 0.5em 1.5em
