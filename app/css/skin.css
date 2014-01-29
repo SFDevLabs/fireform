@@ -28,20 +28,20 @@ header nav ul li{display:block;float:left;margin-top:0;padding-top:1.5em;padding
 header nav ul li a{color:#bbb;margin:0 0 0 1.5em}
 .add ul li.nav-add a,.list ul li.nav-list a,.form ul li.nav-list a,.account ul li.nav-account a,header nav ul li a:hover{color:#fff}
 .app header nav h1,header nav h1{float:left;margin-top:0;padding-top:.25em;padding-bottom:0;margin-bottom:0;border:none}
-header nav h1 a{display:block;background:transparent url("/img/fireform-logo-white.png") center center no-repeat;-webkit-background-size:contain;-moz-background-size:contain;background-size:contain;width:2.5em;height:1.5em;opacity:.7;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";filter:alpha(opacity=70);-webkit-transition:opacity 1s;-moz-transition:opacity 1s;-o-transition:opacity 1s;-ms-transition:opacity 1s;transition:opacity 1s;text-indent:-9999px}
+header nav h1 a{display:block;background:transparent url("../img/fireform-logo-white.png") center center no-repeat;-webkit-background-size:contain;-moz-background-size:contain;background-size:contain;width:2.5em;height:1.5em;opacity:.7;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";filter:alpha(opacity=70);-webkit-transition:opacity 1s;-moz-transition:opacity 1s;-o-transition:opacity 1s;-ms-transition:opacity 1s;transition:opacity 1s;text-indent:-9999px}
 header nav h1 a:hover{opacity:1;-ms-filter:none;filter:none;-webkit-transition:opacity 1s;-moz-transition:opacity 1s;-o-transition:opacity 1s;-ms-transition:opacity 1s;transition:opacity 1s}
 footer{margin-top:3.75em;padding-top:0;padding-bottom:5.625em;margin-bottom:0}
 footer .container{border-top-style:solid;border-top-width:.0625em;padding-top:-.0625em;border-color:rgba(0,0,0,0.2);text-align:center}
 footer span,footer a.logo{display:block}
 footer span{margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:.9375em}
 footer a.logo{margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:1.875em}
-footer a.logo{text-indent:-9000em;margin:0 auto;width:3.75em;height:3.75em;opacity:.7;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";filter:alpha(opacity=70);-webkit-transition:opacity 0.75s;-moz-transition:opacity 0.75s;-o-transition:opacity 0.75s;-ms-transition:opacity 0.75s;transition:opacity 0.75s;background:transparent url("/img/sf-dev-labs.png") center center no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover}
+footer a.logo{text-indent:-9000em;margin:0 auto;width:3.75em;height:3.75em;opacity:.7;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";filter:alpha(opacity=70);-webkit-transition:opacity 0.75s;-moz-transition:opacity 0.75s;-o-transition:opacity 0.75s;-ms-transition:opacity 0.75s;transition:opacity 0.75s;background:transparent url("../img/sf-dev-labs.png") center center no-repeat;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover}
 footer a.logo:hover{opacity:1;-ms-filter:none;filter:none}
 article{margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:3.3333333333333335em}
 .public.home{text-align:center}
 .public.home p#tagline{font-size:2.5em;line-height:1.5em;font-weight:300;text-align:center;color:#000}
 .public.home h1 + p{font-size:1.875em;line-height:2em;margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:1em}
-.public.home h1{border:0;text-indent:-9999px;background:transparent url("/img/fireform-logo.png") center bottom no-repeat;-webkit-background-size:contain;-moz-background-size:contain;background-size:contain;width:100%;height:5em;margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:0;opacity:.6;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";filter:alpha(opacity=60);-webkit-transition:opacity 1s;-moz-transition:opacity 1s;-o-transition:opacity 1s;-ms-transition:opacity 1s;transition:opacity 1s}
+.public.home h1{border:0;text-indent:-9999px;background:transparent url("../img/fireform-logo.png") center bottom no-repeat;-webkit-background-size:contain;-moz-background-size:contain;background-size:contain;width:100%;height:5em;margin-top:0;padding-top:0;padding-bottom:0;margin-bottom:0;opacity:.6;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";filter:alpha(opacity=60);-webkit-transition:opacity 1s;-moz-transition:opacity 1s;-o-transition:opacity 1s;-ms-transition:opacity 1s;transition:opacity 1s}
 .public.home h1:hover{opacity:.8;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";filter:alpha(opacity=80)}
 .public.home nav ul{margin-top:4.5em;padding-top:4.5em;padding-bottom:0;margin-bottom:0;border-top-style:solid;border-top-width:.0625em;padding-top:-.0625em;border-color:rgba(0,0,0,0.2)}
 .public.home nav ul li{display:inline-block;width:15em}
