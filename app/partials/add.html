@@ -1,0 +1,34 @@
+<inject-body-class inject-classes="app add">
+
+    <app-header></app-header>
+
+    <div id="content">
+        <div class="container">
+            <form id="center">
+                <h1>Add New Form</h1>
+                <ul>
+                    <li>
+                        <input type="text" placeholder="Form name" ng-model="newList">
+                    </li>
+                </ul>
+                <p><input type="submit" ng-click="addList()" value="Add New Form" /></p>
+            </form>
+          </ul>
+        </div>
+    </div>
+
+    <!--<p>{{auth.user.id}}</p>
+
+    <form>
+      <input placeholder="Message..." ng-model="newList">
+      <button type="submit" ng-click="addList()">send</button>
+    </form>
+
+    <ul id="messages" ng-show="Lists">
+        <li ng-repeat="list in Lists | orderByPriority | reverse">
+
+        	<a href="#/list/{{list.id}}">{{list.id}}</a>
+        </li>
+    </ul>
+
+    <button ng-click="logout()">Log Out</button>-->

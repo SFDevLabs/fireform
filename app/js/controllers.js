@@ -200,6 +200,43 @@ angular.module('myApp.controllers', [])
     }
 ])
 
+.controller('AddCtrl', ['$scope', 'loginService', 'syncData', '$location',
+    function($scope, loginService, syncData, $location) {
+        syncData(['users', $scope.auth.user.uid]).$bind($scope, 'user');
+
+        $scope.newList = null;
+
+
+        $scope.addList = function() {
+            if ($scope.newList) {
+
+                var newList = syncData('users/' + $scope.auth.user.uid + '/lists/' + $scope.newList);
+
+                if (newList.$getIndex().length) {
+                    alert('Already Exists')
+                    return false;
+                }
+                newList.$set({
+                    id: $scope.newList,
+                    text: String(new Date())
+                });
+                // $scope.Lists.$set({
+                //     text: $scope.newList
+                // });
+                $scope.newList = null;
+            }
+        };
+
+
+        $scope.logout = function() {
+            loginService.logout();
+        };
+
+
+    }
+])
+
+
 .controller('ListCtrl', ['$scope', 'loginService', 'syncData', '$location',
     function($scope, loginService, syncData, $location) {
         syncData(['users', $scope.auth.user.uid]).$bind($scope, 'user');

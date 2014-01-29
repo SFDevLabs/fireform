@@ -42,6 +42,12 @@ angular.module('myApp.routes', ['ngRoute'])
             controller: 'ListCtrl'
         });
 
+        $routeProvider.when('/add', {
+            authRequired: true, // must authenticate before viewing this page
+            templateUrl: 'partials/add.html',
+            controller: 'AddCtrl'
+        });
+
 
         $routeProvider.when('/login', {
             templateUrl: 'partials/login.html',
