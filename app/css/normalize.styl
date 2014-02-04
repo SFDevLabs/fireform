@@ -1,264 +1,223 @@
-@import "_variables"
-@import "_mixins"
-@import "_functions"
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary
+  display block
 
-base-font-size = 16px
-base-line-height = 20px
-
-article
-aside
-details
-figcaption
-figure
-footer
-header
-hgroup
-main
-nav
-section
-summary
-  display: block
+audio,canvas,video
+  display inline-block
+  *display inline
+  *zoom 1
 
 audio
-canvas
-video
-  display: inline-block
-  if support-for-ie
-    *display: inline
-    *zoom: 1
+  &:not([controls])
+    display none
+    height 0
 
-audio:not([controls])
-  display: none
-  height: 0
 [hidden]
-  display: none
+  display none
 
 html
-  font-family: base-font-family
-  -webkit-text-size-adjust: 100%
-  -ms-text-size-adjust: 100%
-  font-size: 100% * (base-font-size / 16px)
-  adjust-leading-to: 1
+  font-family base-font-family
+  -webkit-text-size-adjust 100%
+  -ms-text-size-adjust 100%
+  font-size 100%
+  line-height 1.25em
 
-if support-for-ie
-  button
-  input
-  select
-  textarea
-    font-family: base-font-family
+button,input,select,textarea
+  font-family base-font-family
+  font-family inherit
+  font-size 100%
+  margin 0
+  vertical-align baseline
+  *vertical-align middle
 
 body
-    margin: 0
+  margin 0
+  line-height 1
+  color #000
+  background #fff
 
-a:focus
-  outline: thin dotted
+a
+  &:focus
+    outline thin dotted
+  img
+    border none
 
-a:active
-a:hover
-  outline: 0
+a:active,a:hover
+  outline 0
 
-p
-pre
-  margin: -rhythm(1) 0
+p,pre
+  margin 1.25em 0
 
 blockquote
-  margin: -rhythm(1) indent-amount
-
-/*h1
-  adjust-font-size-to: h1-font-size
-  leader: 1, h1-font-size
-  trailer: 1, h1-font-size
-
-h2
-  adjust-font-size-to: h2-font-size
-  leader: 1, h2-font-size
-  trailer: 1, h2-font-size
-
-h3
-  adjust-font-size-to: h3-font-size
-  leader: 1, h3-font-size
-  trailer: 1, h3-font-size
-
-h4
-  adjust-font-size-to: h4-font-size
-  leader: 1, h4-font-size
-  trailer: 1, h4-font-size
-
-h5
-  adjust-font-size-to: h5-font-size
-  leader: 1, h5-font-size
-  trailer: 1, h5-font-size
-
-h6
-  adjust-font-size-to: h6-font-size
-  leader: 1, h6-font-size
-  trailer: 1, h6-font-size
-  */
+  margin 1.25em indent-amount
 
 abbr[title]
-  border-bottom: 1px dotted
+  border-bottom 1px dotted
 
-b
-strong
-  font-weight: bold
+b,strong
+  font-weight bold
 
 dfn
-  font-style: italic
+  font-style italic
 
 hr
-  -moz-box-sizing: content-box
-  box-sizing: content-box
-  height: 0
+  -moz-box-sizing content-box
+  -webkit-box-sizing content-box
+  -moz-box-sizing content-box
+  box-sizing content-box
+  height 0
 
 mark
-  background: #ff0
-  color: #000
+  background #ff0
+  color #000
 
-code
-kbd
-pre
-samp
-  font-family: monospace, serif
-  if support-for-ie
-    _font-family: 'courier new', monospace
-    adjust-font-size-to: 1 * base-font-size
+code,kbd,pre,samp
+  font-family monospace,serif
+  _font-family 'courier new',monospace
+  font-size 1em
+  line-height 1.25em
 
 pre
-  white-space: pre-wrap
+  white-space pre-wrap
 
 q
-  quotes: "\201C" "\201D" "\2018" "\2019"
+  quotes "\201C" "\201D" "\2018" "\2019"
 
 small
-  font-size: 80%
+  font-size 80%
+
+sub,sup
+  font-size 75%
+  line-height 0
+  position relative
+  vertical-align baseline
+
+sup
+  top -.5em
 
 sub
-sup
-  font-size: 75%
-  line-height: 0
-  position: relative
-  vertical-align: baseline
+  bottom -.25em
 
-sup
-  top: -0.5em
-
-sub
-  bottom: -0.25em
+dl,menu,ol,ul
+  margin 1.25em 0
+  padding 0 0 0 indent-amount
 
 dl
-menu
-ol
-ul
-  margin: -rhythm(1) 0
-  padding: 0 0 0 indent-amount
-
-dl
-  padding: 0
+  padding 0
 
 dd
-  margin: 0 0 0 indent-amount
+  margin 0 0 0 indent-amount
 
-if support-for-ie
-  nav
-    ul
-    ol
-      list-style: none
-      list-style-image: none
+nav ul,nav ol
+  list-style none
+  list-style-image none
 
 img
-  border: 0
-  if support-for-ie
-    -ms-interpolation-mode: bicubic
+  border 0
+  -ms-interpolation-mode bicubic
 
-svg:not(:root)
-  overflow: hidden
+svg
+  &:not(:root)
+    overflow hidden
 
 figure
-  margin: 0
+  margin 0
 
-if support-for-ie
-  form
-    margin: 0
+form
+  margin 0
 
 fieldset
-  border-color: #c0c0c0
-  margin: 0 2px
-  apply-side-rhythm-border: top, width = 1px, lines = 0.35
-  apply-side-rhythm-border: bottom, width = 1px, lines = 0.65
-  apply-side-rhythm-border: left,  width = 1px, lines = 0.625
-  apply-side-rhythm-border: right, width = 1px, lines = 0.625
+  border-color #c0c0c0
+  margin 0 2px
+  border-top-style solid
+  border-top-width .0625em
+  padding-top 1.1875em
+  border-bottom-style solid
+  border-bottom-width .0625em
+  padding-bottom 1.1875em
+  border-left-style solid
+  border-left-width .0625em
+  padding-left 1.1875em
+  border-right-style solid
+  border-right-width .0625em
+  padding-right 1.1875em
 
 legend
-  border: 0
-  padding: 0
-  if support-for-ie
-    *margin-left: -7px
+  border 0
+  padding 0
+  *margin-left -7px
 
-button
-input
-select
-textarea
-  font-family: inherit
-  font-size: 100%
-  margin: 0
-  if support-for-ie
-    vertical-align: baseline
-    *vertical-align: middle
+button,input
+  line-height normal
 
-button
-input
-  line-height: normal
+button,select
+  text-transform none
 
-button
-select
-  text-transform: none
+button,html input[type="button"],input[type="reset"],input[type="submit"]
+  -webkit-appearance button
+  cursor pointer
+  *overflow visible
 
-button, html input[type="button"], input[type="reset"], input[type="submit"]
-  -webkit-appearance: button
-  cursor: pointer
-  if support-for-ie
-    *overflow: visible
+button[disabled],html input[disabled]
+  cursor default
 
-button[disabled], html input[disabled]
-  cursor: default
-
-input[type="checkbox"], input[type="radio"]
-  box-sizing: border-box
-  padding: 0
-  if support-for-ie
-    *height: 13px
-    *width: 13px
+input[type="checkbox"],input[type="radio"]
+  -webkit-box-sizing border-box
+  -moz-box-sizing border-box
+  box-sizing border-box
+  padding 0
+  *height 13px
+  *width 13px
 
 input[type="search"]
-  -webkit-appearance: textfield
-  box-sizing: content-box
+  -webkit-appearance textfield
+  -webkit-box-sizing content-box
+  -moz-box-sizing content-box
+  box-sizing content-box
 
-input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration
-  -webkit-appearance: none
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration
+  -webkit-appearance none
 
-button::-moz-focus-inner
-input::-moz-focus-inner
-  border: 0
-  padding: 0
+button::-moz-focus-inner,input::-moz-focus-inner
+  border 0
+  padding 0
 
 textarea
-  overflow: auto
-  vertical-align: top
+  overflow auto
+  vertical-align top
 
 table
-  border-collapse: collapse
-  border-spacing: 0
+  border-collapse collapse
+  border-spacing 0
+  border-collapse separate
+  border-spacing 0
+  vertical-align middle
 
-nav
-article
-section
-ul
-div
-p {
-  clearfix();  
-}
+nav,article,section,ul,div,p
+  zoom 1
 
+nav:before,article:before,section:before,ul:before,div:before,p:before,nav:after,article:after,section:after,ul:after,div:after,p:after
+  content ""
+  display table
 
-global-reset()
+nav:after,article:after,section:after,ul:after,div:after,p:after
+  clear both
 
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td
+  margin 0
+  padding 0
+  border 0
+  outline 0
+  font-weight inherit
+  font-style inherit
+  font-family inherit
+  font-size 100%
+  vertical-align baseline
+
+ol,ul
+  list-style none
+
+caption,th,td
+  text-align left
+  font-weight normal
+  vertical-align middle
 
