@@ -75,12 +75,9 @@ angular.module("myApp.directives", [])
             replace: true,
             link: function(scope, element, attrs) {
 
-
                 scope.$root.$on("$firebaseSimpleLogin:login", function() {
                     element.removeClass('hide').addClass('show');
                 });
-
-
 
 
             }
