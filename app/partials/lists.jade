@@ -1,0 +1,9 @@
+app-header(body-class="app list")
+#content
+    .container
+        h1 Form List
+        ul#messages.wrapped(ng-show='Lists')
+          li(ng-repeat='list in Lists | orderByPriority | reverse')
+            a(href='#/list/{{list.id}}')
+              h2 {{list.id}}
+              p Name, email, message

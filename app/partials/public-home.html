@@ -1,19 +1,14 @@
-<inject-body-class inject-classes="public home">
 
-
-
-	<div class="container">
-		<div id="center">
-		  <p id="tagline">Hook your forms into a built-in, hosted backend.</p>
-		  <h1>Fireform</h1>
-		  <p><a href="#signup" class="action button">Sign Up</a></p>
-		</div>
-		<nav id="home-nav">
-		  <ul>
-		    <li><a href="#docs">Documentation</a></li>
-		    <li><a href="#login">Login</a></li>
-		  </ul>
-		</nav>
-	</div>
-
-
+<div body-class="home public" class="container">
+  <div id="center"><span ng-bind="bodyClass"></span>
+    <p id="tagline">Hook your forms into a built-in, hosted backend.</p>
+    <h1>Fireform</h1>
+    <p><a href="#signup" class="action button">Sign Up</a></p>
+  </div>
+  <nav id="home-nav">
+    <ul>
+      <li><a href="#docs">Documentation</a></li>
+      <li><a href="#login">Login</a></li>
+    </ul>
+  </nav>
+</div>

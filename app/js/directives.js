@@ -22,13 +22,23 @@ angular.module("myApp.directives", [])
             replace: true
         };
     })
-    .directive("appHeader", function() {
+    .directive("bodyClass", function() {
         return {
-            restrict: 'E',
-            templateUrl: 'partials/app-header.html',
+            restrict: 'A',
+            link: function(scope, element, attrs) {
+                scope.$root.classBody = attrs.bodyClass;
+            },
             replace: true
         };
     })
+
+.directive("appHeader", function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'partials/app-header.html',
+        replace: true
+    };
+})
     .directive("subOneHeader", function() {
         return {
             restrict: 'E',
@@ -54,23 +64,6 @@ angular.module("myApp.directives", [])
                 scope.$root.addClass = attrs.injectClasses;
                 scope.$emit('someEvent');
 
-
-
-            }
-        }
-    }).directive("styleInject", function() {
-        return {
-            restrict: 'A',
-            link: function(scope, element, attrs) {
-
-
-
-                scope.$root.$on('someEvent', function() {
-
-                    element.removeClass(scope.$root.removeClass);
-                    element.addClass(scope.$root.addClass);
-
-                });
 
 
             }
@@ -106,9 +99,3 @@ angular.module("myApp.directives", [])
             }
         }
     });
-
-// {
-//     restrict: 'E',
-//     templateUrl: 'partials/sub-header-two.html',
-//     replace: true
-// };

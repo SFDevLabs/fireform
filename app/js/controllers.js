@@ -2,28 +2,39 @@
 
 /* Controllers */
 
+function updateClass($scope) {
+    debugger;
+    // $scope.timerData = Timer.data;
+};
+
 angular.module('myApp.controllers', [])
 
-    .controller('PublicHomeCtrl', ['$scope', 'syncData',
-        function($scope, syncData) {
-            //alert($scope.username);
-            syncData('syncedValue').$bind($scope, 'syncedValue');
-        }
-    ])
+.controller('PublicHomeCtrl', ['$rootScope', '$scope', 'syncData',
+    function($rootScope, $scope, syncData) {
+        var current = $scope;
+        $scope.$watch("assignments", function(value) {
 
-    .controller('AppHomeCtrl', ['$scope', 'loginService', 'syncData',
-        function($scope, loginService, syncData) {
-            //alert($scope.username);
-            // constrain number of messages by limit into syncData
-            // add the array into $scope.messages
-            $scope.Lists = syncData('users/' + $scope.auth.user.uid + '/lists', 10);
-            syncData('syncedValue').$bind($scope, 'syncedValue');
+        });
+        $rootScope.classBody = $scope.classBody;
 
-            $scope.logout = function() {
-                loginService.logout();
-            };
-        }
-    ])
+        //alert($scope.username);
+        syncData('syncedValue').$bind($scope, 'syncedValue');
+    }
+])
+
+.controller('AppHomeCtrl', ['$scope', 'loginService', 'syncData',
+    function($scope, loginService, syncData) {
+        //alert($scope.username);
+        // constrain number of messages by limit into syncData
+        // add the array into $scope.messages
+        $scope.Lists = syncData('users/' + $scope.auth.user.uid + '/lists', 10);
+        syncData('syncedValue').$bind($scope, 'syncedValue');
+
+        $scope.logout = function() {
+            loginService.logout();
+        };
+    }
+])
 
 .controller('ChatCtrl', ['$scope', 'syncData',
     function($scope, syncData) {

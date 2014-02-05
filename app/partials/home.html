@@ -1,37 +1,14 @@
-<inject-body-class inject-classes="app home">
 
-	<app-header></app-header>
-
-	<div id="content">
-		<div class="container">
-			<h1>Latest Activity</h1>
-			<ul id="messages" class="wrapped" ng-show="Lists">
-	            <li ng-repeat="list in Lists | orderByPriority | reverse">
-	            	<a href="#/list/{{list.id}}">{{list.id}} - Added {{list.text}}</a>
-	            </li>
-	        </ul>
-		</div>
-	</div>
-
-	
-		<!--<h2>Home</h2>
-
-
-		<ul>
-			<li>
-				<a href="#list">list</a>
-			</li>
-
-			<li>
-				<a href="#docs">docs</a>
-			</li>
-
-		</ul>-->
-
-
-
-<!-- 
-<a class="status good" ng-show-auth="login">Hello! You are logged in.</a>
-<a class="status" ng-show-auth="logout">Not logged in</a>
-<a class="status error" ng-show-auth="error">{{auth.error}}</a>
- -->
+<div body-class="home public" class="container">
+  <div id="center"><span ng-bind="bodyClass"></span>
+    <p id="tagline">Hook your forms into a built-in, hosted backend.</p>
+    <h1>Fireform</h1>
+    <p><a href="#add" class="action button">Create New Form</a></p>
+  </div>
+  <nav id="home-nav">
+    <ul>
+      <li><a href="#login">Your Forms</a></li>
+      <li><a href="#docs">Documentation</a></li>
+    </ul>
+  </nav>
+</div>

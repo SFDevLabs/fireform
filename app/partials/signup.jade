@@ -1,0 +1,15 @@
+public-header
+#content(body-class='signup')
+  .container
+    form#center
+      h1 Sign Up
+      p.error(ng-show='err') {{err}}
+      ul
+        li
+          input#email(type='text', name='email', ng-model='email', placeholder='Name@email.com')
+        li
+          input#password(type='password', name='password', ng-model='pass', placeholder='Password')
+        li
+         input#form-name(type='text', name='form-name', placeholder='Name your first form')
+      p
+        input#submit(ng-click='createAccount()', type='submit', name='submit', value='Create Account')

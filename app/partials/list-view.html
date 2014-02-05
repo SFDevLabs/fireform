@@ -1,1 +1,15 @@
-<inject-body-class inject-classes="form"></inject-body-class><app-header></app-header><div id="content"><div class="container"><h1>{{ListView.id}}</h1><p class="action button">Get Code</p><div id="code"><code>$('#myFormDiv').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');</code></div><ul id="messages" ng-show="ListView.formPosts"><li ng-repeat="list in ListView.formPosts | orderByPriority | reverse">{{list}}</li></ul><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><script src="http://cdn.jsdelivr.net/simplemodal/1.4.4/jquery.simplemodal.min.js"></script><script>$("body").on("click", "#content .action.button", function (e) { console.log("launch modal"); $("#code").modal(); return false; });</script></div></div>
+
+<app-header body-class="form"></app-header>
+<div id="content">
+  <div class="container">
+    <h1>{{ListView.id}}</h1>
+    <p class="action button">Get Code</p>
+    <div id="code"><code>$('#myFormDiv').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');</code></div>
+    <ul id="messages" ng-show="ListView.formPosts">
+      <li ng-repeat="list in ListView.formPosts | orderByPriority | reverse">{{list}}</li>
+    </ul>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/simplemodal/1.4.4/jquery.simplemodal.min.js"></script>
+    <script>$("body").on("click", "#content .action.button", function (e) { console.log("launch modal"); $("#code").modal(); return false; });</script>
+  </div>
+</div>
