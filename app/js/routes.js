@@ -8,23 +8,21 @@ angular.module('myApp.routes', ['ngRoute'])
     function($routeProvider) {
 
         $routeProvider.when('/', {
-            templateUrl: 'partials/public-home.html',
+            authTMPL: true, // must authenticate before viewing this page
+            templateUrlDefault: 'partials/public-home.html',
+            templateUrlAuth: 'partials/home.html',
+            templateUrl: null,
             controller: 'PublicHomeCtrl'
         });
-
-        $routeProvider.when('/home', {
-            authRequired: true, // must authenticate before viewing this page
-            templateUrl: 'partials/home.html',
-            controller: 'AppHomeCtrl'
-        });
-
 
         $routeProvider.when('/docs', {
-            templateUrl: 'partials/docs.html',
+
+            authTMPL: true, // must authenticate before viewing this page
+            templateUrlDefault: 'partials/docs.html',
+            templateUrlAuth: 'partials/docs_authed.html',
+            templateUrl: null,
             controller: 'PublicHomeCtrl'
         });
-
-
 
         $routeProvider.when('/chat', {
             templateUrl: 'partials/chat.html',

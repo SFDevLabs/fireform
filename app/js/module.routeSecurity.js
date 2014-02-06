@@ -78,8 +78,15 @@
                this._redirectTo = route.pathTo === path ? "/" : route.pathTo;
             }
             this._redirect(path);
-         }
-         else if( this._authenticated && this._location.path() === this._loginPath ) {
+         }else if (route.authTMPL && !this._authenticated){
+
+            route.templateUrl = route.templateUrlDefault;
+
+         }else if (route.authTMPL && this._authenticated){
+
+            route.templateUrl = route.templateUrlAuth;
+
+         } else if( this._authenticated && this._location.path() === this._loginPath ) {
             this._redirect('/home');
          }
       }

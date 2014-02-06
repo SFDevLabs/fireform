@@ -2,11 +2,6 @@
 
 /* Controllers */
 
-function updateClass($scope) {
-    debugger;
-    // $scope.timerData = Timer.data;
-};
-
 angular.module('myApp.controllers', [])
 
 .controller('PublicHomeCtrl', ['$rootScope', '$scope', 'syncData',
