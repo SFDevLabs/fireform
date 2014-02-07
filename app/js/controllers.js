@@ -6,16 +6,19 @@ angular.module('myApp.controllers', [])
 
 .controller('PublicHomeCtrl', ['$rootScope', '$scope', 'syncData',
     function($rootScope, $scope, syncData) {
-        var current = $scope;
-        $scope.$watch("assignments", function(value) {
-
-        });
-        $rootScope.classBody = $scope.classBody;
-
-        //alert($scope.username);
         syncData('syncedValue').$bind($scope, 'syncedValue');
     }
 ])
+
+
+.controller('docController', ['$rootScope', '$scope', 'syncData',
+    function($rootScope, $scope, syncData) {
+        syncData('syncedValue').$bind($scope, 'syncedValue');
+    }
+])
+
+
+
 
 .controller('AppHomeCtrl', ['$scope', 'loginService', 'syncData',
     function($scope, loginService, syncData) {
