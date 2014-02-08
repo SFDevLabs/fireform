@@ -6,22 +6,14 @@ angular.module('myApp.routes', ['ngRoute'])
 // which should only be available while logged in
 .config(['$routeProvider',
     function($routeProvider) {
-
         $routeProvider.when('/', {
-            authTMPL: true, // must authenticate before viewing this page
-            templateUrlDefault: 'partials/public-home.html',
-            templateUrlAuth: 'partials/home.html',
-            templateUrl: null,
+            templateUrl: 'partials/home.html',
             controller: 'PublicHomeCtrl'
         });
 
         $routeProvider.when('/docs', {
-
-            authTMPL: true, // must authenticate before viewing this page
-            templateUrlDefault: 'partials/docs.html',
-            templateUrlAuth: 'partials/docs_authed.html',
-            templateUrl: null,
-            controller: 'PublicHomeCtrl'
+            templateUrl: 'partials/docs.html',
+            controller: 'docController'
         });
 
         $routeProvider.when('/chat', {
