@@ -19,4 +19,12 @@ angular.module('myApp',
          $rootScope.auth = loginService.init('/login');
          $rootScope.FBURL = FBURL;
       }
+
+      //set root scopefunctions
+       $rootScope.logout = function() {
+            loginService.logout();
+        };
+
+
+
    }]);
