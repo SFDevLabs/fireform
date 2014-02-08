@@ -314,12 +314,6 @@ article {
 #left ul li {
   width: 100%;
 }
-nav#left ul {
-  border-top-style: solid;
-  border-top-width: 0.0625em;
-  padding-top: -0.0625em;
-  border-color: rgba(0,0,0,0.2);
-}
 nav#left ul li {
   border-bottom-style: solid;
   border-bottom-width: 0.05555555555555555em;
