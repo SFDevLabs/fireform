@@ -1,6 +1,9 @@
-<public-header></public-header>
+<tmpl-auth-include
+  loggedin-src="partials/app-header.html" 
+  loggedout-src="partials/public-header.html" >
+</tmpl-auth-include>
 
-<div id="content" body-class='signup'> 
+<div body-class-inject=""  id="content" body-class='signup'> 
 	<div class="container">
 		<h1>Docs</h1>
 		<nav id="left">

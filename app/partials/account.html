@@ -1,6 +1,11 @@
-<inject-body-class inject-classes="account app">
+<tmpl-auth-include
+  loggedin-src="partials/app-header.html" 
+  loggedout-src="partials/public-header.html" >
+</tmpl-auth-include>
+
+
 <app-header></app-header>
-<div id="content">
+<div id="content" body-class-inject="login" >
     <div class="container">
         <h1>Account</h1>
         <form id="left">

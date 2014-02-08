@@ -1,7 +1,8 @@
-
-    <app-header></app-header>
-
-    <div id="content" body-class="app add">
+<tmpl-auth-include
+  loggedin-src="partials/app-header.html" 
+  loggedout-src="partials/public-header.html" >
+</tmpl-auth-include>
+    <div id="content" body-class-inject="login" >
         <div class="container">
             <form id="center">
                 <h1>Add New Form</h1>
@@ -15,19 +16,3 @@
           </ul>
         </div>
     </div>
-
-    <!--<p>{{auth.user.id}}</p>
-
-    <form>
-      <input placeholder="Message..." ng-model="newList">
-      <button type="submit" ng-click="addList()">send</button>
-    </form>
-
-    <ul id="messages" ng-show="Lists">
-        <li ng-repeat="list in Lists | orderByPriority | reverse">
-
-        	<a href="#/list/{{list.id}}">{{list.id}}</a>
-        </li>
-    </ul>
-
-    <button ng-click="logout()">Log Out</button>-->

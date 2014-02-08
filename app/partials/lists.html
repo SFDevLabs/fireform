@@ -1,4 +1,10 @@
-<app-header body-class="app list"></app-header>
+<tmpl-auth-include
+  loggedin-src="partials/app-header.html" 
+  loggedout-src="partials/public-header.html" >
+</tmpl-auth-include>
+
+
+<app-header body-class-inject="app list"></app-header>
 <div id="content">
   <div class="container">
     <h1>Form List</h1>

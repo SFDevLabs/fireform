@@ -1,7 +1,12 @@
 
-    <public-header></public-header>
+<tmpl-auth-include
+  loggedin-src="partials/app-header.html" 
+  loggedout-src="partials/public-header.html" >
+</tmpl-auth-include>
 
-    <div id="content" body-class="login">
+
+
+    <div id="content" body-class-inject="login">
         <div class="container">
 
             <form id="center">
