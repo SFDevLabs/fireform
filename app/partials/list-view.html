@@ -5,26 +5,6 @@
 
 
 
-
-<!-- Kill me -->
-<div class="modal" ng-class="modal1" ng-init="modal1='hide'">
-  <button ng-click="modal1='hide'; bodyClassClick('');">close1</button> 
-  <span>Model 1 Open Scrolling Disabled see body class .overflow</span>
-</div>
-<br>
-<button ng-click="modal1=''; bodyClassClick('overflow');">click me1</button>
-
-<hr>
-
-<div class="modal" ng-class="modal2" ng-init="modal2='hide'">
-  <button ng-click="modal2='hide'; bodyClassClick('');">close2</button> 
-  <span>Model 2 Open Scrolling Disabled see body class .overflow</span>
-</div>
-<br>
-<button ng-click="modal2=''; bodyClassClick('overflow');">click me2</button>
-<!-- Kill me -->
-
-
 <!-- Kill me -->
 <style>
   .overflow{
@@ -36,10 +16,16 @@
     left:0px;
     padding:200px;
     color: white;
-    background: rgba(0, 0, 200, 0.6);
+    background: rgba(0, 0, 200, 0.6); 
     width:100%;
     height:100%;
   }
+
+  table, th, td
+    {
+    border: 1px solid black;
+    padding: 4px;
+    }
 </style>
 <!-- Kill me -->
 
@@ -52,12 +38,40 @@
     <h1>{{ListView.id}}</h1>
     <p ng-click="codeModal=''; bodyClassClick('overflow');"  class="action button">Get Code</p>
     <div id="code"><code>$('#myFormDiv').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');</code></div>
-    <ul id="messages" ng-show="ListView.formPosts">
+    <!-- <ul id="messages" ng-show="ListView.formPosts">
       <li ng-repeat="list in ListView.formPosts | orderByPriority | reverse">{{list}}</li>
-    </ul>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="http://cdn.jsdelivr.net/simplemodal/1.4.4/jquery.simplemodal.min.js"></script>
-    <script>$("body").on("click", "#content .action.button", function (e) { console.log("launch modal"); $("#code").modal(); return false; });</script>
+    </ul> -->
+
+
+    <table class="friend">
+        <tr>
+          <th><a href="" ng-click="predicate = '_time'; reverse=false">Name</a>
+              (<a href="" ng-click="predicate = '-_time'; reverse=false">^</a>)</th>
+          <th><a href="" ng-click="predicate = 'phone'; reverse=!reverse">Phone Number</a></th>
+          <th><a href="" ng-click="predicate = 'age'; reverse=!reverse">Age</a></th>
+        </tr>
+        <!-- <tr ng-model="ListView.formPosts" ng-change="change()">
+          <th>{{key}}</th>
+        </tr> -->
+
+                
+
+        <tr><th ng-repeat="(key, value) in test" >{{key}}</th><tr>
+
+
+        <tr  tabletop ng-repeat="(keyF, valueF) in ListView.formPosts">
+                
+        </tr>
+
+
+        <tr ng-repeat="list in testTwo | orderBy:predicate">
+          <td>{{list._time}}</td>
+          <td>{{list.stuff}}</td>
+          <td>{{list.unnamed1}}</td>
+
+        </tr>
+      </table>
+
   </div>
 </div>
 

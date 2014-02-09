@@ -27,3 +27,29 @@ angular.module("myApp.directives", [])
             }
         };
     })
+    .directive("tabletop", function($rootScope) {
+        return {
+            restrict: 'A',
+            link: function(scope, el, attr){
+            
+                if (!scope.$root.test) scope.$root.test={};
+
+                if (!scope.$root.testTwo) scope.$root.testTwo=[];
+
+
+                scope.$root.test = _.extend(scope.$root.test, scope.valueF);
+
+
+                scope.$root.testTwo.push(scope.valueF)
+
+
+                el.remove();
+
+             
+
+            }
+          //  tempalate: "<div></div>"
+        };
+    })
+
+
