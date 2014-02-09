@@ -39,7 +39,7 @@
     <p ng-click="codeModal=''; bodyClassClick('overflow');"  class="action button">Get Code</p>
     <div id="code"><code>$('#myFormDiv').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');</code></div>
 
-    <table ng-class="sorted" class="friend">
+    <table ng-class="sorted" class="friend" >
         <tr>
           <th class="{{key}}" ng-repeat="(key, value) in test" >
             <a class="asc" href="" root-scope ng-click="rootScope('predicate',key);">{{key}}</a>

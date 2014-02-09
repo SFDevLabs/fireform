@@ -303,12 +303,18 @@ angular.module('myApp.controllers', [])
     }
 ])
 
-.controller('listViewCtrl', ['$scope', 'loginService', 'syncData', '$location',
-    function($scope, loginService, syncData, $location) {
+.controller('listViewCtrl', ['$rootScope','$scope', 'loginService', 'syncData', '$location',
+    function($rootScope, $scope, loginService, syncData, $location) {
         syncData(['users', $scope.auth.user.uid]).$bind($scope, 'user');
-        var loc = $location.$$path.replace('/list/', '')
-        $scope.ListView = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc);
 
+        var uid= $scope.auth.user.uid.replace("simplelogin:","")
+
+        ,loc = $location.$$path.replace('/list/'+uid+'/', '')
+
+        $rootScope.test={}
+        $rootScope.testTwo=[]
+
+        $scope.ListView = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc);
         $scope.logout = function() {
             loginService.logout();
         };

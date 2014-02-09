@@ -4,8 +4,10 @@ angular.module('myApp.routes', ['ngRoute'])
 
 // configure views; the authRequired parameter is used for specifying pages
 // which should only be available while logged in
-.config(['$routeProvider',
-    function($routeProvider) {
+.config(['$routeProvider', '$locationProvider',
+    function($routeProvider, $locationProvider) {
+        $locationProvider.html5Mode(true);
+
         $routeProvider.when('/', {
             templateUrl: 'partials/home.html',
             controller: 'PublicHomeCtrl'
@@ -27,9 +29,9 @@ angular.module('myApp.routes', ['ngRoute'])
             controller: 'AccountCtrl'
         });
 
-        $routeProvider.when('/list/:id', {
+        $routeProvider.when('/list/:uid/:id', {
             authRequired: true, // must authenticate before viewing this page
-            templateUrl: 'partials/list-view.html',
+            templateUrl: '/partials/list-view.html',
             controller: 'listViewCtrl'
         });
 
