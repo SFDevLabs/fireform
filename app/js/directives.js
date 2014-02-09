@@ -37,6 +37,8 @@ angular.module("myApp.directives", [])
                 if (!scope.$root.testTwo) scope.$root.testTwo=[];
 
 
+                
+
                 scope.$root.test = _.extend(scope.$root.test, scope.valueF);
 
 
@@ -56,6 +58,7 @@ angular.module("myApp.directives", [])
         return {
             restrict: 'A',
             link: function(scope, el, attr){
+                scope.$root.predicate='_time';//set the default;  Why here must it be in the directive.. who knows;
                 scope.rootScope=function(key, val){
                     scope.$root[key]=val;
                 };
