@@ -38,32 +38,16 @@
     <h1>{{ListView.id}}</h1>
     <p ng-click="codeModal=''; bodyClassClick('overflow');"  class="action button">Get Code</p>
     <div id="code"><code>$('#myFormDiv').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');</code></div>
-    <!-- <ul id="messages" ng-show="ListView.formPosts">
-      <li ng-repeat="list in ListView.formPosts | orderByPriority | reverse">{{list}}</li>
-    </ul> -->
 
-
-    <table class="friend">
+    <table ng-class="sorted" class="friend">
         <tr>
-          <th><a href="" ng-click="predicate = '_time'; reverse=false">Name</a>
-              (<a href="" ng-click="predicate = '-_time'; reverse=false">^</a>)</th>
-          <th><a href="" ng-click="predicate = 'phone'; reverse=!reverse">Phone Number</a></th>
-          <th><a href="" ng-click="predicate = 'age'; reverse=!reverse">Age</a></th>
+          <th class="{{key}}" ng-repeat="(key, value) in test" >
+            <a class="asc" href="" root-scope ng-click="rootScope('predicate',key);">{{key}}</a>
+              (<a class="dec" href="" root-scope ng-click="rootScope('predicate','-'+key);">^</a>)
+          </th>
+        <tr>
+        <tr  tabletop ng-repeat="(keyF, valueF) in ListView.formPosts">     
         </tr>
-        <!-- <tr ng-model="ListView.formPosts" ng-change="change()">
-          <th>{{key}}</th>
-        </tr> -->
-
-                
-
-        <tr><th ng-repeat="(key, value) in test" >{{key}}</th><tr>
-
-
-        <tr  tabletop ng-repeat="(keyF, valueF) in ListView.formPosts">
-                
-        </tr>
-
-
         <tr ng-repeat="list in testTwo | orderBy:predicate">
           <td>{{list._time}}</td>
           <td>{{list.stuff}}</td>

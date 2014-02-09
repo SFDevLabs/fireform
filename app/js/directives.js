@@ -52,4 +52,14 @@ angular.module("myApp.directives", [])
         };
     })
 
+.directive("rootScope", function($rootScope) {
+        return {
+            restrict: 'A',
+            link: function(scope, el, attr){
+                scope.rootScope=function(key, val){
+                    scope.$root[key]=val;
+                };
+            }
+        };
+    })
 
