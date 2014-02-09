@@ -5,12 +5,21 @@
 
 
 
-<div style="z-index:1; position:fixed;" ng-class="modalOne" ng-init="modalOne='hide'">
-  <a ng-click="modalOne='hide'" >close</a>
+<div ng-class="modalOne" ng-init="modalOne='hide'">
+  <a ng-click="modalOne='hide'" body-class-inject-click="" >close</a>
   <p>This is a modal</p>
-
-  <div style="width:100%; height:100%; background-color: grey; position:fixed; top:0px; left: 0px; z-index:-1;"></div>
 </div>
+
+
+--
+
+<modal-box  modal-name="modal1">
+  <modal-close modal-name="modal1" body-class-remove-click="">close</modal-close> 
+  <p>mystuff2</p>
+</modal-box>
+
+<modal-open modal-name="modal1" body-class-add-click="" >click me2</modal-click>
+
 
 
 
@@ -18,7 +27,7 @@
 <div body-class-inject="" id="content">
   <div class="container">
     <h1>{{ListView.id}}</h1>
-    <p ng-click="modalOne=''"  class="action button">Get Code</p>
+    <p ng-click="modalOne=''" body-class-inject-click="lockClass"  class="action button">Get Code</p>
     <div id="code"><code>$('#myFormDiv').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');</code></div>
     <ul id="messages" ng-show="ListView.formPosts">
       <li ng-repeat="list in ListView.formPosts | orderByPriority | reverse">{{list}}</li>
