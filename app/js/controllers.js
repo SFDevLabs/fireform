@@ -28,9 +28,7 @@ angular.module('myApp.controllers', [])
         $scope.Lists = syncData('users/' + $scope.auth.user.uid + '/lists', 10);
         syncData('syncedValue').$bind($scope, 'syncedValue');
 
-        $scope.logout = function() {
-            loginService.logout();
-        };
+       
     }
 ])
 
