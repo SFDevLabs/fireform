@@ -5,20 +5,43 @@
 
 
 
-<div ng-class="modalOne" ng-init="modalOne='hide'">
-  <a ng-click="modalOne='hide'" body-class-inject-click="" >close</a>
-  <p>This is a modal</p>
+
+<!-- Kill me -->
+<div class="modal" ng-class="modal1" ng-init="modal1='hide'">
+  <button ng-click="modal1='hide'; bodyClassClick('');">close1</button> 
+  <span>Model 1 Open Scrolling Disabled see body class .overflow</span>
 </div>
+<br>
+<button ng-click="modal1=''; bodyClassClick('overflow');">click me1</button>
+
+<hr>
+
+<div class="modal" ng-class="modal2" ng-init="modal2='hide'">
+  <button ng-click="modal2='hide'; bodyClassClick('');">close2</button> 
+  <span>Model 2 Open Scrolling Disabled see body class .overflow</span>
+</div>
+<br>
+<button ng-click="modal2=''; bodyClassClick('overflow');">click me2</button>
+<!-- Kill me -->
 
 
---
-
-<modal-box  modal-name="modal1">
-  <modal-close modal-name="modal1" body-class-remove-click="">close</modal-close> 
-  <p>mystuff2</p>
-</modal-box>
-
-<modal-open modal-name="modal1" body-class-add-click="" >click me2</modal-click>
+<!-- Kill me -->
+<style>
+  .overflow{
+    overflow: hidden;
+  }
+  .modal{
+    position:fixed;
+    top: 0px;
+    left:0px;
+    padding:200px;
+    color: white;
+    background: rgba(0, 0, 200, 0.6);
+    width:100%;
+    height:100%;
+  }
+</style>
+<!-- Kill me -->
 
 
 
@@ -27,7 +50,7 @@
 <div body-class-inject="" id="content">
   <div class="container">
     <h1>{{ListView.id}}</h1>
-    <p ng-click="modalOne=''" body-class-inject-click="lockClass"  class="action button">Get Code</p>
+    <p ng-click="codeModal=''; bodyClassClick('overflow');"  class="action button">Get Code</p>
     <div id="code"><code>$('#myFormDiv').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');</code></div>
     <ul id="messages" ng-show="ListView.formPosts">
       <li ng-repeat="list in ListView.formPosts | orderByPriority | reverse">{{list}}</li>
@@ -39,3 +62,7 @@
 </div>
 
 
+<div  class="modal" ng-class="codeModal" ng-init="codeModal='hide'">
+  <button ng-click="codeModal='hide'; bodyClassClick('');">close2</button> 
+  <span>Model Code Open Scrolling Disabled see body class .overflow</span>
+</div>

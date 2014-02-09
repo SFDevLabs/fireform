@@ -25,6 +25,13 @@ angular.module('myApp',
             loginService.logout();
         };
 
+        $rootScope.bodyClassClick = function(bodyClass) {
+            $rootScope.bodyClass=bodyClass;
+        };
+
+
+        
+
 
 
    }]);
