@@ -5,49 +5,25 @@
 </tmpl-auth-include>
 
 
+<div id="content" body-class-inject="login">
+    <div class="container">
 
-    <div id="content" body-class-inject="login">
-        <div class="container">
+        <form id="center">
+            <h1>Log into Fireform</h1>
+            <p ng-show="err" class="error">{{err}}</p>
+            <ul>
+                <li>
+                    <input type="text" id="email" name="email" placeholder="Name@email.com" ng-model="email" />
+                </li>
+                <li>
+                    <input type="password" id="password" name="password" placeholder="Password" ng-model="pass" />
+                </li>
+                <li ng-cloak ng-show="createMode">
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password" ng-model="confirm" />
+                </li>
+            </ul>
+            <p><input ng-click="login()" ng-hide="createMode" type="submit" value="Login" /></p>
+        </form>
 
-            <form id="center">
-                <h1>Log into Fireform</h1>
-                <p ng-show="err" class="error">{{err}}</p>
-                <ul>
-                    <li>
-                        <input type="text" id="email" name="email" placeholder="Name@email.com" ng-model="email" />
-                    </li>
-                    <li>
-                        <input type="password" id="password" name="password" placeholder="Password" ng-model="pass" />
-                    </li>
-                    <li ng-cloak ng-show="createMode">
-                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password" ng-model="confirm" />
-                    </li>
-                </ul>
-                <p><input ng-click="login()" ng-hide="createMode" type="submit" value="Login" /></p>
-            </form>
-
-        </div>
     </div>
-
-
-        <!--
-        <label>
-            <span>email</span>
-            <input type="text" ng-model="email" />
-        </label>
-        <label>
-            <span>password</span>
-            <input type="password" ng-model="pass" />
-        </label>
-        <label ng-cloak ng-show="createMode">
-            <span>confirm pass</span>
-            <input type="password" ng-model="confirm" />
-        </label>
-        <button ng-click="login()" ng-hide="createMode">Log In</button>-->
-
-    <!--     <button ng-click="createMode = true" ng-hide="createMode">Register</button>
-     -->    
-     <!--<button ng-cloak ng-show="createMode" ng-click="createAccount()">Create Account</button>
-     <button ng-cloak ng-show="createMode" ng-click="createMode = false">Cancel</button>
-        <a href="#signup">Signup</a>
-        <p ng-show="err" class="error">{{err}}</p>-->
+</div>
