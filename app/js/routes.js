@@ -6,8 +6,7 @@ angular.module('myApp.routes', ['ngRoute'])
 // which should only be available while logged in
 .config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
-        $locationProvider.html5Mode(true);
-
+        //$locationProvider.html5Mode(true);
         $routeProvider.when('/', {
             templateUrl: 'partials/home.html',
             controller: 'PublicHomeCtrl'
