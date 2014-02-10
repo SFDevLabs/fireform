@@ -3,14 +3,17 @@
 /* Directives */
 
 angular.module("myApp.directives", [])
-    .directive("tmplAuthInclude", function($rootScope) {
-        return {
-            restrict: 'E',
-            templateUrl: function(el, attr){
-            	return $rootScope.auth.user? attr.loggedinSrc : attr.loggedoutSrc;
-            }
-        };
-    })
+
+    // .directive("tmplAuthInclude", function(waitForAuth, $rootScope) {
+    //     return {
+    //         restrict: 'E',
+    //         templateUrl: function(el, attr){
+    //             waitForAuth.then(function() {
+    //                 return $rootScope.auth.user? attr.loggedinSrc : attr.loggedoutSrc;
+    //             })
+    //         }
+    //     };
+    // })
      .directive("bodyClassInject", function($rootScope) {
         return {
             restrict: 'A',
@@ -31,26 +34,12 @@ angular.module("myApp.directives", [])
         return {
             restrict: 'A',
             link: function(scope, el, attr){
-            
                 if (!scope.$root.test) scope.$root.test={};
-
                 if (!scope.$root.testTwo) scope.$root.testTwo=[];
-
-
-                
-
                 scope.$root.test = _.extend(scope.$root.test, scope.valueF);
-
-
                 scope.$root.testTwo.push(scope.valueF)
-
-
                 el.remove();
-
-             
-
             }
-          //  tempalate: "<div></div>"
         };
     })
 
