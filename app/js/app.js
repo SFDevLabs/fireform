@@ -29,9 +29,9 @@ angular.module('myApp',
             $rootScope.bodyClass=bodyClass;
         };
 
-
+   //set root scopefunctions
+      $rootScope.getTmplUrlforAuth= function(loggedin, loggedout){
+            return $rootScope.auth.user ?  loggedin : loggedout;
+        }
         
-
-
-
    }]);

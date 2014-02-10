@@ -10,14 +10,11 @@ angular.module('myApp.controllers', [])
     }
 ])
 
-
 .controller('docController', ['$rootScope', '$scope', 'syncData',
     function($rootScope, $scope, syncData) {
         syncData('syncedValue').$bind($scope, 'syncedValue');
     }
 ])
-
-
 
 
 .controller('AppHomeCtrl', ['$scope', 'loginService', 'syncData',
@@ -27,8 +24,6 @@ angular.module('myApp.controllers', [])
         // add the array into $scope.messages
         $scope.Lists = syncData('users/' + $scope.auth.user.uid + '/lists', 10);
         syncData('syncedValue').$bind($scope, 'syncedValue');
-
-       
     }
 ])
 
