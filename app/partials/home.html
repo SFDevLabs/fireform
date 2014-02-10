@@ -1,4 +1,1 @@
-<tmpl-auth-include
-  loggedin-src="partials/loggedin-home.html" 
-  loggedout-src="partials/public-home.html" >
-</tmpl-auth-include>
+<div ng-include="getTmplUrlforAuth('partials/loggedin-home.html','partials/public-home.html')"></div>

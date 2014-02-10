@@ -1,8 +1,4 @@
-<tmpl-auth-include
-  loggedin-src="partials/app-header.html" 
-  loggedout-src="partials/public-header.html" >
-</tmpl-auth-include>
-
+<div ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></div>
 <div body-class-inject=""  id="content" body-class='signup'> 
 	<div class="container">
 		<h1>Docs</h1>
