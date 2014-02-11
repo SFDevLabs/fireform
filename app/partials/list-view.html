@@ -59,6 +59,12 @@
 
 
 <div  class="modal" ng-class="codeModal" ng-init="codeModal='hide'">
+  <div>Here is the Jqeary code.</div>  
+  <br>
+  <div><b>$('#myFormSelector').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');<b></div>
+  <br>
+      <div><a style="color:white;" href="/js/fireform.js">Download Fireform.js</a></div>
+  <br>
   <button ng-click="codeModal='hide'; bodyClassClick('');">close2</button> 
-  <span>Model Code Open Scrolling Disabled see body class .overflow</span>
+
 </div>
