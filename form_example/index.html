@@ -12,9 +12,7 @@
         <meta name="viewport" content="width=device-width">
         <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
 
-        <script type='text/javascript'
-        src='https://cdn.firebase.com/v0/firebase-simple-login.js'>
-        </script>
+      
 
         </head>
 
@@ -38,7 +36,7 @@
 
         <form id="love">
             <p class="status" >Sumbitted</p>
-            <input name="stuff" value="jeff">
+            <div>            <input name="stuff" value="jeff"></div>
             <input value="jeff2">
             <input type="submit">        
         </form>
@@ -55,13 +53,16 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
         </script>
-        <script src="fireform.js"></script>
+        <script src="fireform-jQ.js"></script>
 
         <script>
+
+        //How to use the Jqeary version
         $('#love').fireform('https://fireform.firebaseio.com/users/simplelogin:1/lists/r/formPosts');
 
+        //new Fireform("#love","https://fireform.firebaseio.com/users/simplelogin:1/lists/123/formPosts.json");
 
-        Fireform("#love","http://fireformjs.com/1/r")
+
         </script>
 
 
