@@ -36,27 +36,21 @@
     <h1>{{ListView.id}}</h1>
     <p ng-click="codeModal=''; bodyClassClick('overflow');"  class="action button">Get Code</p>
     <div id="code"><code>$('#myFormDiv').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');</code></div>
-
-    <table ng-class="sorted" class="friend" >
+    <div  tabletop ng-repeat="(keyF, valueF) in ListView.formPosts"></div><!-- Do this in controller scope some how-->    
+     <table ng-class="sorted" class="friend" >
         <tr>
-          <th class="{{key}}" ng-repeat="(key, value) in test" >
+          <th class="{{key}}" ng-repeat="key in rowsHeader" >
             <a class="asc" href="" root-scope ng-click="rootScope('predicate',key);">{{key}}</a>
               (<a class="dec" href="" root-scope ng-click="rootScope('predicate','-'+key);">^</a>)
           </th>
         <tr>
-        <tr  tabletop ng-repeat="(keyF, valueF) in ListView.formPosts">     
-        </tr>
-        <tr ng-repeat="list in testTwo | orderBy:predicate">
-          <td>{{list._time}}</td>
-          <td>{{list.stuff}}</td>
-          <td>{{list.unnamed1}}</td>
-
+        <tr ng-repeat="item in rows | orderBy:predicate">
+          <td ng-repeat="key in rowsHeader">{{item[key]| date:'EEEE h:mma, MM/dd/yy'}}</td>
         </tr>
       </table>
 
   </div>
 </div>
-
 
 <div  class="modal" ng-class="codeModal" ng-init="codeModal='hide'">
   <div>Here is the Jqeary code.</div>  
@@ -66,5 +60,4 @@
       <div><a style="color:white;" href="./js/fireform.js">Download Fireform.js</a></div>
   <br>
   <button ng-click="codeModal='hide'; bodyClassClick('');">close2</button> 
-
 </div>

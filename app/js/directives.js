@@ -34,10 +34,18 @@ angular.module("myApp.directives", [])
         return {
             restrict: 'A',
             link: function(scope, el, attr){
-                if (!scope.$root.test) scope.$root.test={};
-                if (!scope.$root.testTwo) scope.$root.testTwo=[];
-                scope.$root.test = _.extend(scope.$root.test, scope.valueF);
-                scope.$root.testTwo.push(scope.valueF)
+                //define the scopped vars where we will build our row header array and rows array.
+                if (!scope.$root.rowsHeader) scope.$root.rowsHeader=[];
+                if (!scope.$root.rows) scope.$root.rows=[];
+                //Row Header
+                scope.$root.rowsHeader = _.union(//union (join with no duplicates) the new keys with the building list
+                    scope.$root.rowsHeader,
+                    _.keys(scope.valueF)
+                );                
+                //Rows
+                scope.valueF._time=new Date(scope.valueF._time); //Make our a date a time object
+                scope.$root.rows.push(scope.valueF) //Make our a date a time object
+                //Kill the element.  Crude but effective.
                 el.remove();
             }
         };
