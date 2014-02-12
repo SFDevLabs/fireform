@@ -47,7 +47,7 @@
          }
          else if( this._location.path() === this._loginPath ) {
             this._location.replace();
-            this._location.path('/home');
+            this._location.path('/list');
          }
       },
 
@@ -80,7 +80,7 @@
             this._redirect(path);
          }
          else if( this._authenticated && this._location.path() === this._loginPath ) {
-            this._redirect('/home');
+            this._redirect('/');
          }
       }
 

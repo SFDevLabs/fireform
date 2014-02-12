@@ -99,6 +99,7 @@
 
 
 function Fireform (selector, fireBaseRepo){
+            that=this;
             this.error=function(text){console.error(text)};
             var formDOMObject,
                 inputs, 
@@ -140,6 +141,7 @@ function Fireform (selector, fireBaseRepo){
             submit.onclick=function(event){
                 event.preventDefault();
                 var payLoad={};
+                payLoad._time = new Date().toString();// add the time
                 for (var i = that.inputs.length - 1; i >= 0; i--) {
                     var name, type;
                     name = that.inputs[i].name ? inputs[i].name : 'input_'+String(i);
@@ -150,11 +152,15 @@ function Fireform (selector, fireBaseRepo){
             }
 
             this.getRepo=function(url){
+                if (url.match("fireform/#/example")||url.match("fireform/example")) {return "https://fireform.firebaseio.com/example/formPosts.json" }//check for example url
+                   
                 source_tuple=url.split("://")[1].split('/list/')
-                source=source_tuple[0].split('.com')[0]//split the .com
+                source=source_tuple[0].split('.org')[0]//split the .com
                 user_repo_tuple=source_tuple[1].split('/')
                 user=user_repo_tuple[0]
                 repo=user_repo_tuple[1]
+
+                
                 return "https://"+source+".firebaseio.com/users/simplelogin:"+user+"/lists/"+repo+"/formPosts.json"
             }
 

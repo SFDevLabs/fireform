@@ -306,9 +306,6 @@ angular.module('myApp.controllers', [])
 
         ,loc = $location.$$path.replace('/list/'+uid+'/', '')
 
-        $rootScope.test={}
-        $rootScope.testTwo=[]
-
         $scope.ListView = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc);
         $scope.logout = function() {
             loginService.logout();
@@ -316,4 +313,16 @@ angular.module('myApp.controllers', [])
 
 
     }
+])
+.controller('listViewExampleCtrl', ['$rootScope','$scope', 'loginService', 'syncData', '$location',
+    function($rootScope, $scope, loginService, syncData, $location) {
+        $scope.ListView = syncData('example');
+        $scope.logout = function() {
+            loginService.logout();
+        };
+
+    }
 ]);
+
+
+

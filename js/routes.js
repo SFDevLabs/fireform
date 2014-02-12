@@ -34,6 +34,11 @@ angular.module('myApp.routes', ['ngRoute'])
             controller: 'listViewCtrl'
         });
 
+        $routeProvider.when('/example', {
+            templateUrl: './partials/list-view.html',
+            controller: 'listViewExampleCtrl'
+        });
+
         $routeProvider.when('/list', {
             authRequired: true, // must authenticate before viewing this page
             templateUrl: './partials/lists.html',

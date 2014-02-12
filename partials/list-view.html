@@ -41,7 +41,12 @@
           </th>
         <tr>
         <tr ng-repeat="item in rows | orderBy:predicate">
-          <td ng-repeat="key in rowsHeader">{{item[key]| date:'EEEE h:mma, MM/dd/yy'}}</td>
+          <td ng-switch ng-repeat="key in rowsHeader">
+
+
+            <span ng-switch-when="key==='_time'">{{item[key] | date:'EEEE h:mma, MM/dd/yy'}}</span>
+            <span ng-switch-default>{{item[key]}}</span>
+          </td>
         </tr>
       </table>
 
