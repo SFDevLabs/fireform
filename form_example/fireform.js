@@ -99,13 +99,8 @@
 
 
 function Fireform (selector, fireBaseRepo, options){
-            that=this;
             this.error=function(text){console.error(text)};
-            var formDOMObject,
-                inputs, 
-                submit,
-                successClass= options && options.submitClass? options.submitSuccessClass:"submit-success",
-                failedClass=options && options.submitClass? options.submitFailedClass:"submit-failed";
+            var formDOMObject, inputs, submit, that=this;
             if (typeof selector!=="string"){
                 formDOMObject = selector;
             }else if ( selector.search(/^\./)===0 ) {
@@ -134,57 +129,34 @@ function Fireform (selector, fireBaseRepo, options){
                 type = inputs[i].getAttribute('type');
                 if (type==="submit"){ submit=inputs[i]; break;}
             };
-            if (!submit){this.error('Please add a submit button with a <input type="submit"> attr"'); return;} 
-            
-            this.submit=submit;
+            if (!submit) this.error('Please add a submit button with a <input type="submit"> attr"')
 
             submit.onclick=function(event){
                 event.preventDefault();
                 var payLoad={};
-                payLoad._time = new Date().toString();// add the time
                 for (var i = that.inputs.length - 1; i >= 0; i--) {
                     var name, type;
                     name = that.inputs[i].name ? inputs[i].name : 'input_'+String(i);
                     type = inputs[i].getAttribute('type');
                     if (type!=="submit") payLoad[name]=inputs[i].value;
                 }
-                that.submitForm(fireBaseRepo, payLoad);
+                that.submit(fireBaseRepo, payLoad);
             }
 
             this.getRepo=function(url){
-                if (url.match("fireform/#/example")||url.match("fireform/example")) {return "https://fireform.firebaseio.com/example/formPosts.json" }//check for example url
-                   
                 source_tuple=url.split("://")[1].split('/list/')
-                source=source_tuple[0].split('.org')[0]//split the .com
+                source=source_tuple[0].split('.com')[0]//split the .com
                 user_repo_tuple=source_tuple[1].split('/')
                 user=user_repo_tuple[0]
                 repo=user_repo_tuple[1]
-
-                
                 return "https://"+source+".firebaseio.com/users/simplelogin:"+user+"/lists/"+repo+"/formPosts.json"
             }
 
-            this.submitForm=function(fireBaseRepo, payLoad){
+            this.submit=function(fireBaseRepo, payLoad){
                 var xmlhttp = new XMLHttpRequest;
                 xmlhttp.open("POST",this.getRepo(fireBaseRepo),true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send( JSON.stringify(payLoad) );
-
-                xmlhttp.onreadystatechange=function(){
-                    if (xmlhttp.readyState == 4) {
-                        formDOMObject.className += " "+successClass
-                        if (!options || !options.disable) that.disable(that.submit);
-                        if (options && options.callback) options.callback(null,{url:url});
-                    }
-                }
-
-                
-            }
-
-            this.disable=function(submit){
-                var att=document.createAttribute("disabled");
-                        att.value="true";
-                        submit.setAttributeNode(att);
             }
 
 
