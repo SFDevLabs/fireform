@@ -41,10 +41,10 @@
           </th>
         <tr>
         <tr ng-repeat="item in rows | orderBy:predicate">
-          <td ng-switch ng-repeat="key in rowsHeader">
-
-
-            <span ng-switch-when="key==='_time'">{{item[key] | date:'EEEE h:mma, MM/dd/yy'}}</span>
+<!-- nested repeats-->            
+          <td ng-switch on="key" ng-repeat="key in rowsHeader">
+<!-- Switch th dom element on the key var "on="key"" for the _time value of "key"-->            
+            <span ng-switch-when="_time">{{item[key] | date:'EEEE h:mma, MM/dd/yy'}}</span>
             <span ng-switch-default>{{item[key]}}</span>
           </td>
         </tr>
