@@ -127,7 +127,7 @@ function Fireform (selector, fireBaseRepo){
             for (var i = this.inputs.length - 1; i >= 0; i--) {
                 var type;
                 type = inputs[i].getAttribute('type');
-                if (type==="submit") submit=inputs[i];
+                if (type==="submit"){ submit=inputs[i]; break;}
             };
             if (!submit) this.error('Please add a submit button with a <input type="submit"> attr"')
 
@@ -138,15 +138,37 @@ function Fireform (selector, fireBaseRepo){
                     var name, type;
                     name = that.inputs[i].name ? inputs[i].name : 'input_'+String(i);
                     type = inputs[i].getAttribute('type');
-                    if (type!=="submit") payLoad[name]=inputs[i].value
-                    else inputs[i].attr.disabled="";          
+                    if (type!=="submit") payLoad[name]=inputs[i].value;
                 }
                 that.submit(fireBaseRepo, payLoad);
             }
 
+            this.getRepo=function(url){
+
+                source_tuple=url.split("://")[1].split('/list/')
+
+                source=source_tuple[0]
+
+                user_repo_tuple=source_tuple[1].split('/')
+
+                user=user_repo_tuple[0]
+
+                repo=user_repo_tuple[1]
+
+                return "https://"+source+".firebaseio.com/users/simplelogin:"+user+"/lists/"+repo+"/formPosts.json"
+
+
+
+                //"http://fireform/list/1/r".split('/list/').split("://")[1].split('/list/')
+
+                //"https://fireform.firebaseio.com/users/simplelogin:1/lists/123/formPosts.json"
+
+
+            }
+
             this.submit=function(fireBaseRepo, payLoad){
                 var xmlhttp = new XMLHttpRequest;
-                xmlhttp.open("POST",fireBaseRepo,true);
+                xmlhttp.open("POST",this.getRepo(fireBaseRepo),true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send( JSON.stringify(payLoad) );
             }
