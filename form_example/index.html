@@ -64,7 +64,13 @@
        var r="http://fireform.org/#/list/1/r",
        example= "http://repo/fireform/#/example";
 
-        new Fireform("#love",r);
+        options ={
+            disableInput:false,
+            successClass:"successC",
+            failedClass:"failedC",
+            callback:function(err, link){ console.log(err, link) }}
+
+        new Fireform("#love",example, options);
 
 
 

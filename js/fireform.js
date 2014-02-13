@@ -165,23 +165,21 @@ function Fireform (selector, fireBaseRepo, options){
             }
 
             this.submitForm=function(fireBaseRepo, payLoad){
-                var xmlhttp = new XMLHttpRequest;
-                xmlhttp.open("POST",this.getRepo(fireBaseRepo),true);
+                var xmlhttp = new XMLHttpRequest, url=this.getRepo(fireBaseRepo);
+                xmlhttp.open("POST",url,true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send( JSON.stringify(payLoad) );
 
                 xmlhttp.onreadystatechange=function(){
                     if (xmlhttp.readyState == 4) {
                         formDOMObject.className += " "+successClass
-                        if (!options || !options.disable) that.disable(that.submit);
+                        if (!options || !options.disableInput) that.disableInput(that.submit);
                         if (options && options.callback) options.callback(null,{url:url});
                     }
-                }
-
-                
+                }                
             }
 
-            this.disable=function(submit){
+            this.disableInput=function(submit){
                 var att=document.createAttribute("disabled");
                         att.value="true";
                         submit.setAttributeNode(att);
