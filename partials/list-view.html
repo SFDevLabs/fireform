@@ -1,8 +1,6 @@
 <div ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></div>
 
 
-
-
 <!-- Kill me -->
 <style>
   .overflow{
@@ -37,8 +35,16 @@
 
     <a ng-class="hideExample" href="/list"><- back to list</a>
 
+
     <h1>{{ListView.id}}</h1>
+
+
+
+    <a ng-class="hideList" target="_blank" href='http://fireform/example/'>Post to this example</a>
+
     <a ng-click="deleteModal=''"; style="float:right;" ng-class="hideExample">Delete</a>
+    <br>
+    <span style="float:right;">---</span>
     <br>
     <div style="float:right; text-align:right;">
       <a ng-click="JSON2CSV(rows, labels, quotes)";>Download CSV</a>
@@ -46,8 +52,6 @@
       <input type="checkbox" ng-model="labels" ng-init="labels=true" ng-checked="labels"> CSV labels
       <input type="checkbox" ng-model="quotes" ng-init="quotes=false"> CSV Quotes
     </div>
-
-    <p>{{labels}}{{quotes}}</p>
     <p ng-click="codeModal=''; bodyClassClick('overflow');"  class="action button">Get Code</p>
     <div id="code"><code>$('#myFormDiv').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');</code></div>
     
@@ -55,8 +59,8 @@
      <table ng-class="sorted" class="friend" >
         <tr>
           <th class="{{key}}" ng-repeat="key in rowsHeader" >
-            <a class="asc" href="#" root-scope ng-click="rootScope('predicate',key);">{{key}}</a>
-              (<a class="dec" href="#" root-scope ng-click="rootScope('predicate','-'+key);">^</a>)
+            <a class="asc" href="javascript:null" root-scope ng-click="rootScope('predicate',key);">{{key}}</a>
+              (<a class="dec" href="javascript:null" root-scope ng-click="rootScope('predicate','-'+key);">^</a>)
           </th>
         <tr>
         <tr ng-repeat="item in rows | orderBy:predicate">
@@ -74,12 +78,15 @@
 
 <div  class="modal" ng-class="codeModal" ng-init="codeModal='hide'">
   <div class="modal-inner">
-    <div>Here is the Jqeary code.</div>  
+    <div>Copy This into your HTML</div>  
     <br>
-    <div><b>$('#myFormSelector').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');</b></div>
-    <br>
-        <div><a style="color:white;" href="./js/fireform.js">Download Fireform.js</a></div>
-    <br>
+    <pre highlight="$location.absUrl()" ><code> 
+      &lt;script type="application/javascript" src="http://fireform.org/js/fireform.js"&gt;&lt;/script&gt;
+      &lt;script type="application/javascript"&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new Fireform('#MySelector', '{{location}}');
+      &lt;/script&gt;
+     </code></pre>
+     <br>
     <button ng-click="codeModal='hide'; bodyClassClick('');">close</button> 
   </div>
 </div>
@@ -88,7 +95,9 @@
 <div  class="modal" ng-class="deleteModal" ng-init="deleteModal='hide'">
   <div class="modal-inner">
       <div>Are you sure you want to delete "{{ListView.id}}"? </div>  
-          <a ng-click="deleteList()">Delete</a>
+      <br>
+      <a ng-click="deleteList()">Delete</a>
+      <br>
       <br>
       <button ng-click="deleteModal='hide'; bodyClassClick('');">close</button> 
   </div>
