@@ -6,7 +6,7 @@ angular.module('myApp',
          'waitForAuth', 'routeSecurity']
    )
 
-   .run(['loginService', '$rootScope', 'FBURL', function(loginService, $rootScope, FBURL) {
+   .run(['loginService', '$rootScope','$timeout', 'FBURL', function(loginService, $rootScope, $timeout, FBURL) {
       if( FBURL === 'https://INSTANCE.firebaseio.com' ) {
          // double-check that the app has been configured
          angular.element(document.body).html('<h1>Please configure app/js/config.js before running!</h1>');
@@ -31,6 +31,15 @@ angular.module('myApp',
         $rootScope.getTmplUrlforAuth= function(loggedin, loggedout){
             return $rootScope.auth.user ?  loggedin : loggedout;
         }
+
+        $rootScope.timeoutSet= function(variable, value, duration){
+            var that=this;
+            $timeout(function(){
+                that[variable]=value;
+            }, duration);
+            //return $rootScope.auth.user ?  loggedin : loggedout;
+        }
+
         $rootScope.JSON2CSV=JSON2CSV;
   
    }]);

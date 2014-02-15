@@ -19,6 +19,20 @@
     background-color: #eee;
     width: 70%;
     padding: 50px;
+    font-size: 1.2em;
+  }
+
+  .faded{
+    opacity: 0;
+    -webkit-transition: opacity .1s ease-in;
+       -moz-transition: opacity .1s ease-in;
+        -ms-transition: opacity .1s ease-in;
+         -o-transition: opacity .1s ease-in;
+            transition: opacity .1s ease-in;
+  }
+
+  .fadeIn{
+    opacity: 1;
   }
 
   table, th, td
@@ -35,14 +49,13 @@
 
     <a ng-class="hideExample" href="/list"><- back to list</a>
 
-
     <h1>{{ListView.id}}</h1>
 
 
 
     <a ng-class="hideList" target="_blank" href='http://fireform/example/'>Post to this example</a>
 
-    <a ng-click="deleteModal=''"; style="float:right;" ng-class="hideExample">Delete</a>
+    <a ng-click="timeoutSet('deleteModal','fadeIn faded','10'); deleteModal='faded'"; style="float:right;" ng-class="hideExample">Delete</a>
     <br>
     <span style="float:right;">---</span>
     <br>
@@ -52,8 +65,8 @@
       <input type="checkbox" ng-model="labels" ng-init="labels=true" ng-checked="labels"> CSV labels
       <input type="checkbox" ng-model="quotes" ng-init="quotes=false"> CSV Quotes
     </div>
-    <p ng-click="codeModal=''; bodyClassClick('overflow');"  class="action button">Get Code</p>
-    <div id="code"><code>$('#myFormDiv').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');</code></div>
+    <p ng-click="timeoutSet('codeModal','fadeIn faded','10'); codeModal='faded'; bodyClassClick('overflow');"  class="action button">Get Code</p>
+
     
     <div tabletop ng-repeat="(keyF, valueF) in ListView.formPosts"></div><!-- Do this in controller scope some how-->    
      <table ng-class="sorted" class="friend" >
@@ -80,12 +93,12 @@
   </div>
 </div>
 
-<div  class="modal" ng-class="codeModal" ng-init="codeModal='hide'">
+<div  class="modal faded" ng-class="codeModal" ng-init="codeModal='hide'">
   <div class="modal-inner">
     <div>Copy This into your HTML</div>  
     <br>
     <pre highlight="$location.absUrl()" ><code> 
-      &lt;script type="application/javascript" src="http://fireform.org/js/fireform.js"&gt;&lt;/script&gt;
+      &lt;script type="application/javascript" src="http://fireform.org/fireform.js"&gt;&lt;/script&gt;
       &lt;script type="application/javascript"&gt;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new Fireform('#MySelector', '{{location}}');
       &lt;/script&gt;
