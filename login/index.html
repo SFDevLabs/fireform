@@ -16,7 +16,15 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic,700italic"/>
     <link rel="stylesheet" type="text/css" href="css/bones.css"/>
     <link rel="stylesheet" type="text/css" href="css/skin.css"/>
-
+    <script> 
+    /* Check to see if base is set to the correct orgin*/
+    (function(window, document){
+        debugger
+    var href=document.getElementsByTagName("base")[0].href;
+    if  (href!==window.location.origin && href!==window.location.origin+'/')
+        document.getElementsByTagName("base")[0].setAttribute("href",window.location.origin);
+    })(window, document);
+    </script>
   </head>
 
   <body ng-cloak-auth ng-class="bodyClass" class="hide">
