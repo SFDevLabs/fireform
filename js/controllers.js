@@ -206,6 +206,11 @@ angular.module('myApp.controllers', [])
                     $scope.err = 'A form repositry with this name already exists!';
                     return false;
                 }
+                //Check for spaces
+                if ($scope.newList.search(" ")!==-1) {
+                    $scope.err = 'List names can not contain spaces.';
+                    return false;
+                }
                 //Create the form by setting the object in firebase
                 newList.$set({
                     id: $scope.newList,
@@ -225,7 +230,7 @@ angular.module('myApp.controllers', [])
 .controller('ListCtrl', ['$scope', 'loginService', 'syncData', '$location',
     function($scope, loginService, syncData, $location) {
         syncData(['users', $scope.auth.user.uid]).$bind($scope, 'user');
-
+        $scope.$location = $location;
         $scope.Lists = syncData('users/' + $scope.auth.user.uid + '/lists', 10);
 
     }
@@ -237,6 +242,8 @@ angular.module('myApp.controllers', [])
         var uid= $scope.auth.user.uid.replace("simplelogin:","")
         ,loc = $location.$$path.replace('/list/'+uid+'/', '')
         $scope.ListView = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc);
+        $scope.hideList="hide"
+        $scope.$location = $location;
 
         //delete this form. by calling remove on the firebase object
         $scope.deleteList = function() {
@@ -249,5 +256,7 @@ angular.module('myApp.controllers', [])
     function($rootScope, $scope, loginService, syncData, $location) {
         $scope.hideExample="hide"
         $scope.ListView = syncData('example');
+        $scope.$location = $location;
+
     }
 ]);
