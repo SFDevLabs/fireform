@@ -152,7 +152,7 @@ function Fireform (selector, fireBaseRepo, options){
             }
 
             this.getRepo=function(url){
-                if ( url.match("fireform/publicexample") ) {return "https://fireform.firebaseio.com/example/formPosts.json" }//check for example url
+                if ( url.match("fireform.org/publicexample") || url.match("fireform/publicexample") ) {return "https://fireform.firebaseio.com/example/formPosts.json" }//check for example url
                 source_tuple=url.split("://")[1].split('/list/')
                 source=source_tuple[0].split('.org')[0]//split the .com
                 user_repo_tuple=source_tuple[1].split('/')
