@@ -6,7 +6,7 @@
     <h1>Form List</h1>
     <ul id="messages" ng-show="Lists" class="wrapped">
       <span></span>
-      <li ng-repeat="list in Lists | orderByPriority | reverse"><a href="#/list/{{auth.user.uid.replace('simplelogin:','')}}/{{list.id}}">
+      <li ng-repeat="list in Lists | orderByPriority | reverse"><a href="/list/{{auth.user.uid.replace('simplelogin:','')}}/{{list.id}}">
           <h2>{{list.id}}</h2>
           <p>Name, email, message</p></a></li>
     </ul>
