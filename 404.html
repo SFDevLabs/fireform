@@ -33,7 +33,6 @@
     <script> 
     /* Check to see if base is set to the correct orgin*/
     (function(window, document){
-        debugger
     var href=document.getElementsByTagName("base")[0].href;
     if  (href!==window.location.origin && href!==window.location.origin+'/')
         document.getElementsByTagName("base")[0].setAttribute("href",window.location.origin);
