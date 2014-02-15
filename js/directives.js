@@ -35,8 +35,8 @@ angular.module("myApp.directives", [])
             restrict: 'A',
             link: function(scope, el, attr){
                 //define the scopped vars where we will build our row header array and rows array.
-                if (!scope.$root.rowsHeader) scope.$root.rowsHeader=[];
-                if (!scope.$root.rows) scope.$root.rows=[];
+                if (scope.$root.rowsHeader) scope.$root.rowsHeader=[];
+                if (scope.$root.rows) scope.$root.rows=[];
                 //Row Header
                 scope.$root.rowsHeader = _.union(//union (join with no duplicates) the new keys with the building list
                     scope.$root.rowsHeader,
