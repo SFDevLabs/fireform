@@ -28,10 +28,55 @@ angular.module('myApp',
         $rootScope.bodyClassClick = function(bodyClass) {
             $rootScope.bodyClass=bodyClass;
         };
-
-   //set root scopefunctions
-      $rootScope.getTmplUrlforAuth= function(loggedin, loggedout){
+        $rootScope.getTmplUrlforAuth= function(loggedin, loggedout){
             return $rootScope.auth.user ?  loggedin : loggedout;
         }
-        
+        $rootScope.JSON2CSV=JSON2CSV;
+  
    }]);
+
+
+function JSON2CSV(objArray, label, quotes) {
+    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+    debugger
+    var str = '',
+        line = '';
+        // quotes = quotes==="true"?true:false,
+        // label = label==="true"?true:false;
+    if (label) {
+        var head = array[0];
+        if (quotes) {
+            for (var index in array[0]) {
+                var value = index + "";
+                line += '"' + value.replace(/"/g, '""') + '",';
+            }
+         } else {
+            for (var index in array[0]) {
+                line += index + ',';
+            }
+         }
+
+        line = line.slice(0, -1);
+        str += line + '\r\n';
+    }
+
+    for (var i = 0; i < array.length; i++) {
+        var line = '';
+
+        if (quotes) {
+            for (var index in array[i]) {
+                var value = array[i][index] + "";
+                line += '"' + value.replace(/"/g, '""') + '",';
+            }
+         } else {
+            for (var index in array[i]) {
+                line += array[i][index] + ',';
+            }
+         }
+
+        line = line.slice(0, -1);
+        str += line + '\r\n';
+    }
+    window.open("data:text/csv;charset=utf-8," + escape(str))
+}
+        

@@ -27,29 +27,6 @@ angular.module('myApp.controllers', [])
     }
 ])
 
-.controller('ChatCtrl', ['$scope', 'syncData',
-    function($scope, syncData) {
-        $scope.newMessage = null;
-
-        // constrain number of messages by limit into syncData
-        // add the array into $scope.messages
-        $scope.messages = syncData('messages', 10);
-
-        //$scope.user = syncData('user');
-        //syncData(['users', $scope.auth.user.uid]).$bind($scope, 'user');
-
-        // add new messages to the list
-        $scope.addMessage = function() {
-            if ($scope.newMessage) {
-                $scope.messages.$add({
-                    text: $scope.newMessage
-                });
-                $scope.newMessage = null;
-            }
-        };
-    }
-])
-
 .controller('LoginCtrl', ['$scope', 'loginService', '$location',
     function($scope, loginService, $location) {
         $scope.email = null;
@@ -176,11 +153,6 @@ angular.module('myApp.controllers', [])
             }
         };
 
-
-        $scope.logout = function() {
-            loginService.logout();
-        };
-
         $scope.oldpass = null;
         $scope.newpass = null;
         $scope.confirm = null;
@@ -226,27 +198,23 @@ angular.module('myApp.controllers', [])
 
         $scope.addList = function() {
             if ($scope.newList) {
-
+                $scope.err = null;
                 var newList = syncData('users/' + $scope.auth.user.uid + '/lists/' + $scope.newList);
-
+                var uid= $scope.auth.user.uid.replace("simplelogin:","");
+                //set new list. It will autosync with FB
                 if (newList.$getIndex().length) {
-                    alert('Already Exists')
+                    $scope.err = 'A form repositry with this name already exists!';
                     return false;
                 }
+                //Create the form by setting the object in firebase
                 newList.$set({
                     id: $scope.newList,
                     text: String(new Date())
                 });
-                // $scope.Lists.$set({
-                //     text: $scope.newList
-                // });
+                //redirect to the new form
+                $location.path( "/list/"+uid+"/"+$scope.newList );
                 $scope.newList = null;
             }
-        };
-
-
-        $scope.logout = function() {
-            loginService.logout();
         };
 
 
@@ -258,42 +226,7 @@ angular.module('myApp.controllers', [])
     function($scope, loginService, syncData, $location) {
         syncData(['users', $scope.auth.user.uid]).$bind($scope, 'user');
 
-        $scope.newList = null;
-
-
-        // constrain number of messages by limit into syncData
-        // add the array into $scope.messages
         $scope.Lists = syncData('users/' + $scope.auth.user.uid + '/lists', 10);
-
-        // add new messages to the list
-        $scope.getData = function(list) {
-            return 22;
-        }
-        $scope.addList = function() {
-            if ($scope.newList) {
-
-                var newList = syncData('users/' + $scope.auth.user.uid + '/lists/' + $scope.newList);
-
-                if (newList.$getIndex().length) {
-                    alert('Already Exists')
-                    return false;
-                }
-                newList.$set({
-                    id: $scope.newList,
-                    text: String(new Date())
-                });
-                // $scope.Lists.$set({
-                //     text: $scope.newList
-                // });
-                $scope.newList = null;
-            }
-        };
-
-
-        $scope.logout = function() {
-            loginService.logout();
-        };
-
 
     }
 ])
@@ -301,28 +234,20 @@ angular.module('myApp.controllers', [])
 .controller('listViewCtrl', ['$rootScope','$scope', 'loginService', 'syncData', '$location',
     function($rootScope, $scope, loginService, syncData, $location) {
         syncData(['users', $scope.auth.user.uid]).$bind($scope, 'user');
-
         var uid= $scope.auth.user.uid.replace("simplelogin:","")
-
         ,loc = $location.$$path.replace('/list/'+uid+'/', '')
-
         $scope.ListView = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc);
-        $scope.logout = function() {
-            loginService.logout();
-        };
 
-
+        //delete this form. by calling remove on the firebase object
+        $scope.deleteList = function() {
+            $scope.ListView.$remove();
+            $location.path( "/list");
+        }
     }
 ])
 .controller('listViewExampleCtrl', ['$rootScope','$scope', 'loginService', 'syncData', '$location',
     function($rootScope, $scope, loginService, syncData, $location) {
+        $scope.hideExample="hide"
         $scope.ListView = syncData('example');
-        $scope.logout = function() {
-            loginService.logout();
-        };
-
     }
 ]);
-
-
-

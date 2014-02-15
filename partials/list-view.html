@@ -12,11 +12,15 @@
     position:fixed;
     top: 0px;
     left:0px;
-    padding:200px;
-    color: white;
-    background: rgba(0, 0, 200, 0.6); 
+    background: rgba(0, 0, 0, 0.5); 
     width:100%;
     height:100%;
+  }
+  .modal .modal-inner{
+    margin: 200px auto;
+    background-color: #eee;
+    width: 70%;
+    padding: 50px;
   }
 
   table, th, td
@@ -27,17 +31,32 @@
 </style>
 <!-- Kill me -->
 
-<div body-class-inject="" id="content">
+<div body-class-inject="" id="content" ng-init="rowsHeader=[];rows=[];">
+
   <div class="container">
+
+    <a ng-class="hideExample" href="/list"><- back to list</a>
+
     <h1>{{ListView.id}}</h1>
+    <a ng-click="deleteModal=''"; style="float:right;" ng-class="hideExample">Delete</a>
+    <br>
+    <div style="float:right; text-align:right;">
+      <a ng-click="JSON2CSV(rows, labels, quotes)";>Download CSV</a>
+      <br>
+      <input type="checkbox" ng-model="labels" ng-init="labels=true" ng-checked="labels"> CSV labels
+      <input type="checkbox" ng-model="quotes" ng-init="quotes=false"> CSV Quotes
+    </div>
+
+    <p>{{labels}}{{quotes}}</p>
     <p ng-click="codeModal=''; bodyClassClick('overflow');"  class="action button">Get Code</p>
     <div id="code"><code>$('#myFormDiv').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');</code></div>
-    <div  tabletop ng-repeat="(keyF, valueF) in ListView.formPosts"></div><!-- Do this in controller scope some how-->    
+    
+    <div tabletop ng-repeat="(keyF, valueF) in ListView.formPosts"></div><!-- Do this in controller scope some how-->    
      <table ng-class="sorted" class="friend" >
         <tr>
           <th class="{{key}}" ng-repeat="key in rowsHeader" >
-            <a class="asc" href="" root-scope ng-click="rootScope('predicate',key);">{{key}}</a>
-              (<a class="dec" href="" root-scope ng-click="rootScope('predicate','-'+key);">^</a>)
+            <a class="asc" href="#" root-scope ng-click="rootScope('predicate',key);">{{key}}</a>
+              (<a class="dec" href="#" root-scope ng-click="rootScope('predicate','-'+key);">^</a>)
           </th>
         <tr>
         <tr ng-repeat="item in rows | orderBy:predicate">
@@ -54,11 +73,23 @@
 </div>
 
 <div  class="modal" ng-class="codeModal" ng-init="codeModal='hide'">
-  <div>Here is the Jqeary code.</div>  
-  <br>
-  <div><b>$('#myFormSelector').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');<b></div>
-  <br>
-      <div><a style="color:white;" href="./js/fireform.js">Download Fireform.js</a></div>
-  <br>
-  <button ng-click="codeModal='hide'; bodyClassClick('');">close2</button> 
+  <div class="modal-inner">
+    <div>Here is the Jqeary code.</div>  
+    <br>
+    <div><b>$('#myFormSelector').fireform('https://fireform.firebaseio.com/users/{{auth.user.uid}}/lists/{{ListView.id}}/formPosts');</b></div>
+    <br>
+        <div><a style="color:white;" href="./js/fireform.js">Download Fireform.js</a></div>
+    <br>
+    <button ng-click="codeModal='hide'; bodyClassClick('');">close</button> 
+  </div>
+</div>
+
+
+<div  class="modal" ng-class="deleteModal" ng-init="deleteModal='hide'">
+  <div class="modal-inner">
+      <div>Are you sure you want to delete "{{ListView.id}}"? </div>  
+          <a ng-click="deleteList()">Delete</a>
+      <br>
+      <button ng-click="deleteModal='hide'; bodyClassClick('');">close</button> 
+  </div>
 </div>
