@@ -104,8 +104,8 @@ function Fireform (selector, fireBaseRepo, options){
             var formDOMObject,
                 inputs, 
                 submit,
-                successClass= options && options.submitClass? options.submitSuccessClass:"submit-success",
-                failedClass=options && options.submitClass? options.submitFailedClass:"submit-failed";
+                successClass= options && options.successClass? options.submitSuccessClass:"submit-success",
+                failedClass=options && options.failedClass? options.submitFailedClass:"submit-failed";
             if (typeof selector!=="string"){
                 formDOMObject = selector;
             }else if ( selector.search(/^\./)===0 ) {
