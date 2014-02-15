@@ -3,6 +3,7 @@
         <div class="container">
             <form id="center">
                 <h1>Add New Form</h1>
+                <p ng-show="err" class="error">{{err}}</p>
                 <ul>
                     <li>
                         <input type="text" placeholder="Form name" ng-model="newList">
