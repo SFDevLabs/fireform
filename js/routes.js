@@ -34,7 +34,7 @@ angular.module('myApp.routes', ['ngRoute'])
             controller: 'listViewCtrl'
         });
 
-        $routeProvider.when('/example', {
+        $routeProvider.when('/publicexample', {
             templateUrl: '/partials/list-view.html',
             controller: 'listViewExampleCtrl'
         });
