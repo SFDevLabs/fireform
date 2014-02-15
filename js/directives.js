@@ -70,8 +70,6 @@ angular.module("myApp.directives", [])
         return {
             restrict: 'A',
             link: function(scope, el, attr){
-                debugger
-
                 var m=el.html().replace("{{location}}",scope.$location.absUrl())
                 el.html(m)
                 hljs.highlightBlock(el[0])
