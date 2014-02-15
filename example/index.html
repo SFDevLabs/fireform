@@ -18,19 +18,17 @@
 
         <p>Firform Example.</p>
 
-        <p id="success-message" style="display:none;">Success your form was submitted to <a href="http://fireform.org/publicexample">http://fireform.org/publicexample</a></p>
 
         <form id="MySelector">
             <div><input name="name" value="jeff"></div>
             <input name="positon" value="Coder">
             <input type="submit">        
         </form>
-        <style type="text/css">
 
-        .success{
-            color:#eee;
-        }
-        </style>
+
+        <p id="success-message" style="display:none;">Success your form was submitted to <a href="http://fireform.org/publicexample">http://fireform.org/publicexample</a></p>
+
+
 
       <script type="application/javascript" src="http://fireform.org/js/fireform.js"></script>
       <script type="application/javascript">
@@ -46,6 +44,11 @@
                 new Fireform('#MySelector', 'http://fireform.org/publicexample', options);
       </script>
 
+    <style type="text/css">
+        .success{
+            background-color: green;
+        }
+    </style>
 
     </body>
 </html>
