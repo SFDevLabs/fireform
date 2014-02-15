@@ -8,12 +8,12 @@ angular.module('myApp.routes', ['ngRoute'])
     function($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
         $routeProvider.when('/', {
-            templateUrl: 'partials/home.html',
+            templateUrl: '/partials/home.html',
             controller: 'PublicHomeCtrl'
         });
 
         $routeProvider.when('/docs', {
-            templateUrl: 'partials/docs.html',
+            templateUrl: '/partials/docs.html',
             controller: 'docController'
         });
 
@@ -24,18 +24,18 @@ angular.module('myApp.routes', ['ngRoute'])
 
         $routeProvider.when('/account', {
             authRequired: true, // must authenticate before viewing this page
-            templateUrl: 'partials/account.html',
+            templateUrl: '/partials/account.html',
             controller: 'AccountCtrl'
         });
 
         $routeProvider.when('/list/:uid/:id', {
             authRequired: true, // must authenticate before viewing this page
-            templateUrl: 'partials/list-view.html',
+            templateUrl: '/partials/list-view.html',
             controller: 'listViewCtrl'
         });
 
         $routeProvider.when('/example', {
-            templateUrl: 'partials/list-view.html',
+            templateUrl: '/partials/list-view.html',
             controller: 'listViewExampleCtrl'
         });
 
@@ -53,12 +53,12 @@ angular.module('myApp.routes', ['ngRoute'])
 
 
         $routeProvider.when('/login', {
-            templateUrl: 'partials/login.html',
+            templateUrl: '/partials/login.html',
             controller: 'LoginCtrl'
         });
 
         $routeProvider.when('/signup', {
-            templateUrl: 'partials/signup.html',
+            templateUrl: '/partials/signup.html',
             controller: 'SignupCtrl'
         });
 
