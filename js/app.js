@@ -37,10 +37,16 @@ angular.module('myApp',
 
 
 function JSON2CSV(objArray, label, quotes) {
-    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
-    debugger
-    var str = '',
+        var objArray=_.map(objArray, function(val){
+          return _.omit(val, '$$hashKey');
+        }),
+        array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray,
+        str = '',
         line = '';
+        
+
+        
+
         // quotes = quotes==="true"?true:false,
         // label = label==="true"?true:false;
     if (label) {
