@@ -65,10 +65,14 @@
         <tr>
         <tr ng-repeat="item in rows | orderBy:predicate">
 <!-- nested repeats-->            
-          <td ng-switch on="key" ng-repeat="key in rowsHeader">
+          <td ng-switch on="item[key].type" ng-repeat="key in rowsHeader">
 <!-- Switch th dom element on the key var "on="key"" for the _time value of "key"-->            
-            <span ng-switch-when="_time">{{item[key] | date:'EEEE h:mma, MM/dd/yy'}}</span>
-            <span ng-switch-default>{{item[key]}}</span>
+            <span ng-switch-when="_time">{{item[key].value | date:'EEEE h:mma, MM/dd/yy'}}</span>
+            <span ng-switch-when="checkbox"> <span>{{item[key].checked}}</span> <input disabled type="checkbox" ng-checked="item[key].checked"></span>
+            <span ng-switch-when="select-one">{{item[key].value}} <select disabled><options></option><select></span>
+            <span ng-switch-when="radio">{{item[key].value}} <input disabled type="radio"></span>
+            <span ng-switch-when="text">{{item[key].value}}</span>
+            <span ng-switch-default>{{item[key].value}}</span>
           </td>
         </tr>
       </table>

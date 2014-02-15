@@ -40,7 +40,7 @@ angular.module("myApp.directives", [])
                     rows=scope.$parent.rows,
                     valueF=scope.valueF;
                     scope.$parent.predicate="-_time", //This sets the default sort to most recent
-                    valueF._time=new Date(scope.valueF._time); //Make our a date a time object
+                    valueF._time.value=new Date(scope.valueF._time.value); //Make our a date a time object
 
                 scope.$parent.rowsHeader = _.union(//union (join with no duplicates) the new keys with the building list
                     rowsHeader,
@@ -58,7 +58,6 @@ angular.module("myApp.directives", [])
         return {
             restrict: 'A',
             link: function(scope, el, attr){
-                scope.$root.predicate='_time';//set the default;  Why here must it be in the directive.. who knows;
                 scope.rootScope=function(key, val){
                     scope.$root[key]=val;
                 };
