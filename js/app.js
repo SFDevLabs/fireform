@@ -40,6 +40,16 @@ angular.module('myApp',
             //return $rootScope.auth.user ?  loggedin : loggedout;
         }
 
+        $rootScope.setVarInScope=function(key, val){ 
+            var scope=this;
+            var scopefind=scope;
+            for (var i = arguments.length - 1; i >= 2; i--) {
+                if (scopefind[arguments[i]])
+                    scopefind=scopefind[arguments[i]];
+            };
+            scopefind[key]=val;
+        }
+
         $rootScope.JSON2CSV=JSON2CSV;
   
    }]);

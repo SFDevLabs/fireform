@@ -7,9 +7,30 @@
 
             <li class="nav-list"><a href="/list">Form List</a></li>
 
-            <li class="nav-account"><a href="/account">Account</a></li>
-
-            <li><a ng-click="logout()">Logout</a></li>
+            <li class="nav-account"><a href="/docs">Docs</a></li>
+            <li>
+				<a ng-click="logout()">Logout</a><a ng-click="acctDrp=acctDrp=='open'?'':'open'">&#9660;</a>
+				<ul class="dropdown" ng-class="acctDrp">
+           	 		<li class="nav-account"><a href="/account">Account</a></li>
+            	</ul>
         </ul>
     </nav>
 </header>
+
+
+<style>
+.dropdown li{
+	display: block;
+}
+
+.dropdown{
+	position: absolute;
+	background: #eee;
+	border: 1px solid;
+	display: none;
+}
+
+.dropdown.open{
+	display: block;
+}
+</style>

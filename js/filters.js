@@ -27,4 +27,17 @@ angular.module('myApp.filters', [])
       return function(items) {
          return toArray(items).slice().reverse();
       };
-   });
+   })
+   .filter('orderObjectBy', function() {
+     return function(items, col, feild, reverse) {
+       var filtered = [];
+       angular.forEach(items, function(item) {
+         filtered.push(item);
+       });
+       filtered.sort(function (a, b) {
+         return (a[col][feild] > b[col][feild]);
+       });
+       if(reverse) filtered.reverse();
+         return filtered;
+  };
+});

@@ -39,14 +39,25 @@ angular.module("myApp.directives", [])
                 var rowsHeader = scope.$parent.rowsHeader,
                     rows=scope.$parent.rows,
                     valueF=scope.valueF;
-                    scope.$parent.predicate="-_time", //This sets the default sort to most recent
+                    scope.$parent.predicate={col:"_time",value:'value', reverse: true} , //This sets the default sort to most recent
                     valueF._time.value=new Date(scope.valueF._time.value); //Make our a date a time object
 
-                scope.$parent.rowsHeader = _.union(//union (join with no duplicates) the new keys with the building list
-                    rowsHeader,
+                var keys = _.union(//union (join with no duplicates) the new keys with the building list
+                    _.pluck(rowsHeader,'fireformName'),
                     _.keys(valueF)
-                );                
+                );  
+
+                scope.$parent.rowsHeader= _.map(keys, function(key){
+                    var map
+                    if (valueF[key])
+                        map=valueF[key];
+                    else
+                        map= rowsHeader[key];
+                    map.fireformName=key
+                    return map;
+                });
                 //Rows
+                
                 scope.$parent.rows.push(valueF) //Make our a date a time object
                 //Kill the element.  Crude but effective.
                 el.remove();
@@ -54,16 +65,6 @@ angular.module("myApp.directives", [])
         };
     })
 
-.directive("rootScope", function($rootScope) {
-        return {
-            restrict: 'A',
-            link: function(scope, el, attr){
-                scope.rootScope=function(key, val){
-                    scope.$root[key]=val;
-                };
-            }
-        };
-    })
 
 .directive("highlight", function($rootScope) {
         return {

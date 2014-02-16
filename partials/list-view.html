@@ -68,24 +68,65 @@
     <p ng-click="timeoutSet('codeModal','fadeIn faded','10'); codeModal='faded'; bodyClassClick('overflow');"  class="action button">Get Code</p>
 
     
-    <div tabletop ng-repeat="(keyF, valueF) in ListView.formPosts"></div><!-- Do this in controller scope some how-->    
+    <div tabletop ng-repeat="(keyF, valueF) in ListView.formPosts" ></div><!-- Do this in controller scope some how-->    
      <table ng-class="sorted" class="friend" >
         <tr>
-          <th class="{{key}}" ng-repeat="key in rowsHeader" >
-            <a class="asc" href="javascript:null" root-scope ng-click="rootScope('predicate',key);">{{key}}</a>
-              (<a class="dec" href="javascript:null" root-scope ng-click="rootScope('predicate','-'+key);">^</a>)
+          <th class="{{key.fireformName}}" ng-repeat="key in rowsHeader" ng-switch on="key.type" ng-init="sortVal='value'">
+
+              <span ng-switch-when="_time">
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:false}, '$parent', '$parent');">{{key.fireformName}}</a>
+                <a  class="dec" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:true}, '$parent', '$parent');">&#9660;</a>
+                <span>|</span>
+                <input  type="checkbox" disabled checked>
+              </span>
+
+              <span ng-switch-when="checkbox">
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'checked',reverse:false}, '$parent', '$parent');">{{key.fireformName}}</a>
+                <a  class="dec" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'checked',reverse:true}, '$parent', '$parent');">&#9660;</a>
+                <span>|</span>
+                <input  type="checkbox" disabled checked>
+              </span>
+
+              <span ng-switch-when="radio">
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:false}, '$parent', '$parent');">{{key.fireformName}}</a>
+                <a  class="dec" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:true}, '$parent', '$parent');">&#9660;</a>
+                <span>|</span>
+                <input disabled type="radio">
+              </span>
+
+              <span ng-switch-when="text">
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:false}, '$parent', '$parent');">{{key.fireformName}}</a>
+                <a  class="dec" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:true}, '$parent', '$parent');">&#9660;</a>
+                <span>|</span>
+                <i>txt</i>
+              </span>
+              
+              <span ng-switch-when="select-one">
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:false}, '$parent', '$parent');">{{key.fireformName}}</a>
+                <a  class="dec" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:true}, '$parent', '$parent');">&#9660;</a>
+                <span>|</span>
+                <select size="0"  disabled  type="select"><option>-</option></select>
+              </span>
+
           </th>
-        <tr>
-        <tr ng-repeat="item in rows | orderBy:predicate">
-<!-- nested repeats-->            
-          <td ng-switch on="item[key].type" ng-repeat="key in rowsHeader">
-<!-- Switch th dom element on the key var "on="key"" for the _time value of "key"-->            
-            <span ng-switch-when="_time">{{item[key].value | date:'EEEE h:mma, MM/dd/yy'}}</span>
-            <span ng-switch-when="checkbox"> <span>{{item[key].checked}}</span> <input disabled type="checkbox" ng-checked="item[key].checked"></span>
-            <span ng-switch-when="select-one">{{item[key].value}} <select disabled><options></option><select></span>
-            <span ng-switch-when="radio">{{item[key].value}} <input disabled type="radio"></span>
-            <span ng-switch-when="text">{{item[key].value}}</span>
-            <span ng-switch-default>{{item[key].value}}</span>
+        </tr>
+
+        <tr ng-repeat="item in rows | orderObjectBy:predicate.col:predicate.value:predicate.reverse" >
+          <td ng-switch on="item[ffkey].type" ng-repeat="key in rowsHeader" ng-init="ffkey=key.fireformName">
+
+            <span ng-switch-when="_time">{{item[ffkey].value | date:'EEEE h:mma, MM/dd/yy'}}</span>
+            <span ng-switch-when="checkbox">{{item[ffkey].checked}}</span>
+
+            <span ng-switch-default>{{item[ffkey].value}}</span>
+
+
+
+<!-- nested repeats-->           
+<!--           <td ng-switch on="item[ffkey].type" ng-repeat="key in rowsHeader" ng-init="ffkey=key.fireformName">
+ --><!-- Switch th dom element on the key var "on="key"" for the _time value of "key"-->            
+<!--             <span ng-switch-when="_time">{{item[ffkey].value | date:'EEEE h:mma, MM/dd/yy'}}</span>
+            <span ng-switch-when="checkbox">{{item[ffkey].checked}}</span>
+            <span ng-switch-default>{{item[ffkey].value}}</span> -->
           </td>
         </tr>
       </table>
