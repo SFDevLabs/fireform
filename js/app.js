@@ -50,12 +50,21 @@ angular.module('myApp',
             scopefind[key]=val;
         }
 
+        $rootScope.scrollTop=function(x, y){ 
+            x=x?x:0,
+            y=y?y:0,
+            document.documentElement.scrollLeft=x,
+            document.documentElement.scrollTop=y;
+        }
+
+
         $rootScope.JSON2CSV=JSON2CSV;
   
    }]);
 
 
 function JSON2CSV(objArray, label, quotes) {
+    debugger
         var objArray=_.map(objArray, function(val){
           return _.omit(val, '$$hashKey');
         }),
@@ -72,7 +81,7 @@ function JSON2CSV(objArray, label, quotes) {
         var head = array[0];
         if (quotes) {
             for (var index in array[0]) {
-                var value = index + "";
+                var value = index.value + "";
                 line += '"' + value.replace(/"/g, '""') + '",';
             }
          } else {
@@ -86,18 +95,21 @@ function JSON2CSV(objArray, label, quotes) {
     }
 
     for (var i = 0; i < array.length; i++) {
-        var line = '';
+        var line = '', val;
 
-        if (quotes) {
-            for (var index in array[i]) {
-                var value = array[i][index] + "";
-                line += '"' + value.replace(/"/g, '""') + '",';
-            }
-         } else {
-            for (var index in array[i]) {
-                line += array[i][index] + ',';
-            }
-         }
+        for (var index in array[i]) {
+            if (array[i][index].type==="checkbox")
+                val = array[i][index].checked;
+            else
+                val = array[i][index].value;
+
+            if (quotes) {
+                    var value = val + "";
+                    line += '"' + value.replace(/"/g, '""') + '",'; 
+             } else {
+                    line += val + ',';
+             }
+        }
 
         line = line.slice(0, -1);
         str += line + '\r\n';
