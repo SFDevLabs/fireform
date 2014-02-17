@@ -144,19 +144,9 @@
 
   </div>
 </div>
-<script type="text/javascript">
 
- var options = {
-                  simpleValidation:false,
-                  simpleValidation:false,
-                  successClass: "custom-submit-success",
-                  callback:function(err, val){
-                    if (err) console.log(err);
-                      console.log('Form Submitted!')
-                  }
-                }
+<div ng-include="'partials/footer.html'" include-replace></div>
 
-</script>
 
 <div  class="modal faded" ng-class="codeModal" ng-init="codeModal='hide';snippet=true;">
   <div class="modal-inner">
@@ -211,4 +201,5 @@
       <button ng-click="deleteModal='hide'; bodyClassClick('');">close</button> 
 
   </div>
+
 </div>

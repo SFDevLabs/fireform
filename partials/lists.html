@@ -1,4 +1,4 @@
-<div ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></div>
+<div ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')" include-replace></div>
 
 <app-header body-class-inject="list" ng-init="scrollTop();"></app-header>
 <div id="content">
@@ -17,4 +17,5 @@
           </a></li>
     </ul>
   </div>
+  <div ng-include="'partials/footer.html'" include-replace></div>
 </div>
