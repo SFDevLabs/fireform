@@ -1,4 +1,4 @@
-<div ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></div>
+<div ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')" include-replace></div>
 
 
 <!-- Kill me -->
@@ -44,6 +44,7 @@
 </style>
 <!-- Kill me -->
 
+
 <div body-class-inject="" id="content" ng-init="rowsHeader=[];rows=[];scrollTop();">
 
   <div class="container">
@@ -53,8 +54,6 @@
     <h1>{{ListView.id}}{{$location.url}}</h1>
 
 
-
-    <p ng-hide="$location.$$url!=='/publicexample'">Use this <a target="_blank" href='http://fireform.org/example/'>example form</a> to make a post!</p>
     
     <a ng-click="timeoutSet('deleteModal','fadeIn faded','10'); deleteModal='faded'"; style="float:right;" ng-hide="$location.$$url==='/publicexample'">Delete</a>
     <br>
@@ -67,17 +66,20 @@
     </div>
     <p ng-click="timeoutSet('codeModal','fadeIn faded','10'); codeModal='faded'; bodyClassClick('overflow');"  class="action button">Get Code</p>
 
-    
-    <div tabletop ng-repeat="(keyF, valueF) in ListView.formPosts" ></div><!-- Do this in controller scope some how-->   
+ 
 
     <div ng-hide="rows.length>0">
       No data submitted yet.
     </div>
+
+
+    <!-- Table starts here-->
     <div style="overflow:scroll">
      <table ng-hide="rows.length===0" ng-class="sorted" class="friend" >
         <tr>
+          <!-- Header Loop Created from rowsHeader-->
           <th class="{{key.fireformName}}" ng-repeat="key in rowsHeader" ng-switch on="key.type" ng-init="sortVal='value'">
-
+             <!-- switch logic for different types of forms-->
               <span ng-switch-when="_time">
                 <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:false}, '$parent', '$parent');">{{key.fireformName}}</a>
                 <a  class="dec" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:true}, '$parent', '$parent');">&#9660;</a>
@@ -122,17 +124,12 @@
 
           </th>
         </tr>
-
+        <!-- Content Loop Created from rows-->
         <tr ng-repeat="item in rows | orderObjectBy:predicate.col:predicate.value:predicate.reverse" >
           <td ng-switch on="item[ffkey].type" ng-repeat="key in rowsHeader" ng-init="ffkey=key.fireformName">
-
             <span ng-switch-when="_time">{{item[ffkey].value | date:'EEEE h:mma, MM/dd/yy'}}</span>
             <span ng-switch-when="checkbox">{{item[ffkey].checked}}</span>
-
             <span ng-switch-default>{{item[ffkey].value}}</span>
-
-
-
           </td>
         </tr>
       </table>
@@ -201,5 +198,8 @@
       <button ng-click="deleteModal='hide'; bodyClassClick('');">close</button> 
 
   </div>
+
+    <!-- This pulls data into a directive where we formate it for the root scope-->
+    <div style="display:none;" tabletop ng-repeat="(keyF, valueF) in ListView.formPosts" ></div>  
 
 </div>
