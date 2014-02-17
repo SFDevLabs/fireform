@@ -80,44 +80,56 @@
           <!-- Header Loop Created from rowsHeader-->
           <th class="{{key.fireformName}}" ng-repeat="key in rowsHeader" ng-switch on="key.type" ng-init="sortVal='value'">
              <!-- switch logic for different types of forms-->
-              <span ng-switch-when="_time">
-                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:false}, '$parent', '$parent');">{{key.fireformName}}</a>
-                <a  class="dec" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:true}, '$parent', '$parent');">&#9660;</a>
+              <span ng-switch-when="_time" ng-init="reverse=false">
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse= reverse?false:true">{{key.fireformName}}
+                  <span ng-hide="reverse">&#9660;</span>
+                  <span ng-hide="!reverse">&#9650;</span>
+                </a>
                 <span>|</span>
                 <input  type="checkbox" disabled checked>
               </span>
 
-              <span ng-switch-when="checkbox">
-                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'checked',reverse:false}, '$parent', '$parent');">{{key.fireformName}}</a>
-                <a  class="dec" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'checked',reverse:true}, '$parent', '$parent');">&#9660;</a>
+              <span ng-switch-when="checkbox" ng-init="reverse=false">
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'checked',reverse:reverse}, '$parent', '$parent'); reverse= reverse?false:true">{{key.fireformName}}
+                  <span ng-hide="reverse">&#9660;</span>
+                  <span ng-hide="!reverse">&#9650;</span>
+                </a>
                 <span>|</span>
                 <input  type="checkbox" disabled checked>
               </span>
 
-              <span ng-switch-when="radio">
-                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:false}, '$parent', '$parent');">{{key.fireformName}}</a>
-                <a  class="dec" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:true}, '$parent', '$parent');">&#9660;</a>
+              <span ng-switch-when="radio" ng-init="reverse=false">
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse= reverse?false:true;">{{key.fireformName}}
+                  <span ng-hide="reverse">&#9660;</span>
+                  <span ng-hide="!reverse">&#9650;</span>
+                </a>
                 <span>|</span>
                 <input disabled type="radio">
               </span>
 
-              <span ng-switch-when="text">
-                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:false}, '$parent', '$parent');">{{key.fireformName}}</a>
-                <a  class="dec" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:true}, '$parent', '$parent');">&#9660;</a>
-                <span>|</span>
-                <i>txt</i>
+              <span ng-switch-when="text" ng-init="reverse=false">
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse=reverse?false:true;">{{key.fireformName}}
+                  <span ng-hide="reverse">&#9660;</span>
+                  <span ng-hide="!reverse">&#9650;</span>
+                </a>
+                  <span>|</span>
+                  <i>txt</i>
               </span>
               
-              <span ng-switch-when="number">
-                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:false}, '$parent', '$parent');">{{key.fireformName}}</a>
-                <a  class="dec" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:true}, '$parent', '$parent');">&#9660;</a>
+              <span ng-switch-when="number" ng-init="reverse=false">
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse= reverse?false:true;">{{key.fireformName}}
+                  <span ng-hide="reverse">&#9660;</span>
+                  <span ng-hide="!reverse">&#9650;</span>
+                </a>
                 <span>|</span>
                 <i>#</i>
               </span>
 
-              <span ng-switch-when="select-one">
-                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:false}, '$parent', '$parent');">{{key.fireformName}}</a>
-                <a  class="dec" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:true}, '$parent', '$parent');">&#9660;</a>
+              <span ng-switch-when="select-one" ng-init="reverse=false">
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse=reverse?false:true;">{{key.fireformName}}
+                  <span ng-hide="!reverse">&#9660;</span>
+                  <span ng-hide="reverse">&#9650;</span>
+                </a>
                 <span>|</span>
                 <select size="0"  disabled  type="select"><option>-</option></select>
               </span>
