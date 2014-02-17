@@ -108,7 +108,9 @@ angular.module('myApp.controllers', [])
                 $scope.err = 'Please enter a password';
             } else if (!$scope.formName) {
                 $scope.err = 'Please enter a name for your first form';
-            }
+            }else if ($scope.formName.search(" ")!==-1) {
+                $scope.err = 'Form names can not contain spaces.';
+             }
             return !$scope.err;
         }
     }
@@ -189,7 +191,7 @@ angular.module('myApp.controllers', [])
                 }
                 //Check for spaces
                 if ($scope.newList.search(" ")!==-1) {
-                    $scope.err = 'List names can not contain spaces.';
+                    $scope.err = 'Form names can not contain spaces.';
                     return false;
                 }
                 //Create the form by setting the object in firebase
@@ -213,7 +215,6 @@ angular.module('myApp.controllers', [])
         syncData(['users', $scope.auth.user.uid]).$bind($scope, 'user');
         $scope.$location = $location;
         $scope.Lists = syncData('users/' + $scope.auth.user.uid + '/lists', 10);
-
     }
 ])
 
