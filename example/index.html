@@ -17,8 +17,10 @@
     <body>
 
         <p>Firform Example.</p>
-
-
+        <p>
+        This form submits to <a target="_blank" href="http://fireform.org/publicexample">fireform.org/publicexample</a>.
+        </p>
+<!-- 
         <form id="MySelector">
             <div><input name="name"></div>
             <input name="positon">
@@ -44,77 +46,37 @@
                     <a target="_blank" href="http://fireform.org/publicexample">http://fireform.org/publicexample</a>
                 </p>     
             </div>
-        </form>
+        </form> -->
 
 
-        
+       <form id="MySelector">
+            <input type="text" name="givenname" placeholder="Name">
+            <input type="number" name="age" placeholder="Age">--
+            Southpaw:<input type="checkbox" name="southpaw">--
+            Bantamweight:<input type="radio" name="weightclass" value="bantamweight">
+            Welterweight:<input type="radio" name="weightclass" value="welterweight">
+            HeavyWeight:<input type="radio"  name="weightclass" value="heavyweight">
+            <input type="submit">
+            <p id="success-message">
+                Success your form was submitted check it out <a target="_blank" href="http://fireform.org/publicexample">here</a>!
+                
+            </p>  
+          </form>
 
-        <!-- 
-        <script type="text/javascript" src="http://rickharrison.github.io/validate.js/validate.min.js"></script>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-
-        <script type="text/javascript" src="http://jquery.bassistance.de/validate/jquery.validate.js"></script>
--->
-
-
-
-        <script type="application/javascript" src="http://fireform.org/fireform.js"></script>
-        <script type="application/javascript">
-
-//         m=$("#MySelector").validate({
-//    success: function(label) {
-//      label.addClass("valid").text("Ok!")
-//    },
-//    submitHandler: function() { 
-//     alert("Submitted!") 
-//         submitFireform();
-    
-//     }
-// })
-
-//                 var validator = new FormValidator('MySelector',[
-//                     {
-//                         name: 'name',
-//                         display: 'required',    
-//                         rules: 'required'
-//                     }
-//                     ],function(errors, event){
-//                         if (errors.length>0){
-//                             return;
-//                         };
-//                          //submitFireform();
-//                     });
-
-                      // options ={
-                      //       disableInput:false,
-                      //       successClass:"success",
-                      //       failedClass:"failed",
-                      //       callback:function(err, link){ 
-                      //           document.getElementById('success-message').style.display="inline"
-                      //       }
-                      //   };
-                        new Fireform('#MySelector', 'http://fireform.org/publicexample')
-
-
-                    // function submitFireform(){
-                    //     options ={
-                    //         disableInput:false,
-                    //         successClass:"success",
-                    //         failedClass:"failed",
-                    //         callback:function(err, link){ 
-                    //             document.getElementById('success-message').style.display="inline"
-                    //         }
-                    //     };
-                    //     new Fireform('#MySelector', 'http://fireform.org/publicexample', options)
-                    // };
-     
-           
-        </script>
+          <script type="application/javascript" src="http://fireform.org/fireform.js"></script>
+          <script type="application/javascript">
+              /* See how to customize at http://fireform.org/docs */
+               var options = {
+                  simpleValidation:false,
+                  callback:function(err, val){console.log(err,'callback')}
+                }
+              new Fireform('#MySelector', 'http://fireform/list/1/another', options)
+          </script>
 
         <style type="text/css">
 
             .submit-success #success-message{
-                display: inline;
+                display: block;
             }
             .form-validation-failed{
                 border: 1px solid;
