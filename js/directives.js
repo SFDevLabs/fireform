@@ -65,7 +65,6 @@ angular.module("myApp.directives", [])
         };
     })
 
-
 .directive("highlight", function($rootScope) {
         return {
             restrict: 'A',
@@ -77,4 +76,47 @@ angular.module("myApp.directives", [])
         };
     })
 
-
+.directive("count", function($rootScope) {
+        return {
+            restrict: 'A',
+            link: function(scope, el, attr){
+                var varfind=scope, args;
+                args = attr.count.split('.')
+                for (var i = 0; i < args.length; i++) {
+                    if (varfind[args[i]])
+                        varfind=varfind[args[i]]
+                    else{
+                        varfind=null;
+                        break
+                    };
+                };
+                if (varfind)
+                    scope.count=_.keys(varfind).length;
+                else
+                    scope.count=0;
+            }
+        };
+    })
+.directive("mostRecent", function($rootScope) {
+        return {
+            restrict: 'A',
+            link: function(scope, el, attr){
+                var varfind=scope, args, keys, lastK;
+                args = attr.mostRecent.split('.')
+                for (var i = 0; i < args.length; i++) {
+                    if (varfind[args[i]])
+                        varfind=varfind[args[i]];
+                    else{
+                        varfind=null;
+                        break
+                    }       
+                }
+                if (varfind)
+                    keys=_.keys(varfind),
+                    lastK=keys[keys.length-1],
+                    scope.mostRecent=new Date(varfind[lastK]._time.value);
+                else
+                    scope.mostRecent=""
+            }
+        };
+    });
