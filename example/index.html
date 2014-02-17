@@ -4,95 +4,61 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> 
     <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" type="text/css" href="/css/monokai_sublime.min.css">
-
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+            <title></title>
+            <meta name="description" content="">
+            <meta name="viewport" content="width=device-width">
+            <link rel="stylesheet" type="text/css" href="/css/monokai_sublime.min.css">
         </head>
 
-    <body>
+        <body>
+            <p>Firform Example.</p>
+            <p>
+            This form submits to <a target="_blank" href="http://fireform.org/publicexample">fireform.org/publicexample</a>.
+            </p>
 
-        <p>Firform Example.</p>
-        <p>
-        This form submits to <a target="_blank" href="http://fireform.org/publicexample">fireform.org/publicexample</a>.
-        </p>
-<!-- 
-        <form id="MySelector">
-            <div><input name="name"></div>
-            <input name="positon">
-            <br>
-            <input name="bool" type="checkbox">
-            
-            <br>
-            <select>
-                <option value="1">stuff</option>
-                <option value="2">stuff2</option>
-
-            </select>
-            <br>
-            <input value="jeff" name="radio" type="radio">
-            <br>
-            <input value="mike" name="radio" type="radio">
-            <br>
-
-            <input type="submit">
-            <div>  
+            <form id="MySelector">
+                <input type="text" name="givenname" placeholder="Name">
+                <input type="number" name="age" placeholder="Age">--
+                Southpaw:<input type="checkbox" name="southpaw">--
+                Bantamweight:<input type="radio" name="weightclass" value="bantamweight">
+                Welterweight:<input type="radio" name="weightclass" value="welterweight">
+                HeavyWeight:<input type="radio"  name="weightclass" value="heavyweight">
+                <input type="submit">
                 <p id="success-message">
-                    Success your form was submitted to 
-                    <a target="_blank" href="http://fireform.org/publicexample">http://fireform.org/publicexample</a>
-                </p>     
-            </div>
-        </form> -->
+                    Success, your form was submitted. Check it out <a target="_blank" href="http://fireform.org/publicexample">here</a>!
+                </p>  
+            </form>
+            <script type="application/javascript" src="http://fireform.org/fireform.js"></script>
+            <script type="application/javascript">
+                  /* See how to customize at http://fireform.org/docs */
+                   var options = {
+                      simpleValidation:false,
+                      callback:function(err, val){console.log(err,'callback')}
+                    }
+                  new Fireform('#MySelector', 'http://fireform.org/publicexample', options)
+            </script>
+            <style type="text/css">
 
-
-       <form id="MySelector">
-            <input type="text" name="givenname" placeholder="Name">
-            <input type="number" name="age" placeholder="Age">--
-            Southpaw:<input type="checkbox" name="southpaw">--
-            Bantamweight:<input type="radio" name="weightclass" value="bantamweight">
-            Welterweight:<input type="radio" name="weightclass" value="welterweight">
-            HeavyWeight:<input type="radio"  name="weightclass" value="heavyweight">
-            <input type="submit">
-            <p id="success-message">
-                Success your form was submitted check it out <a target="_blank" href="http://fireform.org/publicexample">here</a>!
-                
-            </p>  
-          </form>
-
-          <script type="application/javascript" src="http://fireform.org/fireform.js"></script>
-          <script type="application/javascript">
-              /* See how to customize at http://fireform.org/docs */
-               var options = {
-                  simpleValidation:false,
-                  callback:function(err, val){console.log(err,'callback')}
+                .submit-success #success-message{
+                    display: block;
                 }
-              new Fireform('#MySelector', 'http://fireform.org/publicexample', options)
-          </script>
-
-        <style type="text/css">
-
-            .submit-success #success-message{
-                display: block;
-            }
-            .form-validation-failed{
-                border: 1px solid;
-            }
-            .input-validation-failed{
-                background-color: #CC6666;
-            }
-            .input-validation-failed[type="radio"]:after{
-                content:"-";
-                color:red;
-                padding: 0px 20px;
-            }
-            #success-message{
-                display: none;
-            }
-        </style>
-
-    </body>
+                .form-validation-failed{
+                    border: 1px solid;
+                }
+                .input-validation-failed{
+                    background-color: #CC6666;
+                }
+                .input-validation-failed[type="radio"]:after{
+                    content:"-";
+                    color:red;
+                    padding: 0px 20px;
+                }
+                #success-message{
+                    display: none;
+                }
+            </style>
+        </body>
 </html>

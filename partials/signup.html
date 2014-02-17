@@ -5,12 +5,14 @@
       <h1>Sign Up</h1>
       <p ng-show="err" class="error">{{err}}</p>
       <ul>
+        <label>Account:</label>
         <li>
           <input id="email" type="text" name="email" ng-model="email" placeholder="Name@email.com"/>
         </li>
         <li>
           <input id="password" type="password" name="password" ng-model="pass" placeholder="Password"/>
         </li>
+        <label>Create Form:</label>
         <li>
           <input id="form-name" type="text" name="form-name" ng-model="formName" placeholder="Name your first form"/>
         </li>
