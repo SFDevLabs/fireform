@@ -43,21 +43,20 @@
 </style>
 <!-- Kill me -->
 
-<div body-class-inject="" id="content" ng-init="rowsHeader=[];rows=[];">
+<div body-class-inject="" id="content" ng-init="rowsHeader=[];rows=[];scrollTop();">
 
   <div class="container">
 
-    <a ng-class="hideExample" href="/list"><- back to list</a>
+    <a ng-hide="$location.$$url==='/publicexample'" href="/list"><- back to list</a>
 
-    <h1>{{ListView.id}}</h1>
+    <h1>{{ListView.id}}{{$location.url}}</h1>
 
 
 
-    <a ng-class="hideList" target="_blank" href='http://fireform/example/'>Post to this example</a>
-
-    <a ng-click="timeoutSet('deleteModal','fadeIn faded','10'); deleteModal='faded'"; style="float:right;" ng-class="hideExample">Delete</a>
+    <p ng-hide="$location.$$url!=='/publicexample'">Use this <a target="_blank" href='http://fireform/example/'>example form</a> to make a post!</p>
+    
+    <a ng-click="timeoutSet('deleteModal','fadeIn faded','10'); deleteModal='faded'"; style="float:right;" ng-hide="$location.$$url==='/publicexample'">Delete</a>
     <br>
-    <span style="float:right;">---</span>
     <br>
     <div style="float:right; text-align:right;">
       <a ng-click="JSON2CSV(rows, labels, quotes)";>Download CSV</a>
@@ -68,8 +67,12 @@
     <p ng-click="timeoutSet('codeModal','fadeIn faded','10'); codeModal='faded'; bodyClassClick('overflow');"  class="action button">Get Code</p>
 
     
-    <div tabletop ng-repeat="(keyF, valueF) in ListView.formPosts" ></div><!-- Do this in controller scope some how-->    
-     <table ng-class="sorted" class="friend" >
+    <div tabletop ng-repeat="(keyF, valueF) in ListView.formPosts" ></div><!-- Do this in controller scope some how-->   
+
+    <div ng-hide="rows.length>0">
+      No data submitted yet.
+    </div>
+     <table ng-hide="rows.length===0" ng-class="sorted" class="friend" >
         <tr>
           <th class="{{key.fireformName}}" ng-repeat="key in rowsHeader" ng-switch on="key.type" ng-init="sortVal='value'">
 
@@ -121,15 +124,13 @@
 
 
 
-<!-- nested repeats-->           
-<!--           <td ng-switch on="item[ffkey].type" ng-repeat="key in rowsHeader" ng-init="ffkey=key.fireformName">
- --><!-- Switch th dom element on the key var "on="key"" for the _time value of "key"-->            
-<!--             <span ng-switch-when="_time">{{item[ffkey].value | date:'EEEE h:mma, MM/dd/yy'}}</span>
-            <span ng-switch-when="checkbox">{{item[ffkey].checked}}</span>
-            <span ng-switch-default>{{item[ffkey].value}}</span> -->
           </td>
         </tr>
       </table>
+
+      <br>
+      <a ng-hide="$location.$$url==='/publicexample' || rows.length===0" href="/list"><- back to list</a>
+
 
   </div>
 </div>
@@ -154,9 +155,8 @@
   <div class="modal-inner">
       <div>Are you sure you want to delete "{{ListView.id}}"? </div>  
       <br>
-      <a ng-click="deleteList()">Delete</a>
-      <br>
-      <br>
+      <button ng-click="deleteList()">Confirm</button> 
       <button ng-click="deleteModal='hide'; bodyClassClick('');">close</button> 
+
   </div>
 </div>
