@@ -1,16 +1,17 @@
 (function(angular) {
    angular.module('routeSecurity', [])
-      .run(['$injector', '$location', '$rootScope', 'loginRedirectPath', function($injector, $location, $rootScope, loginRedirectPath) {
+      .run(['$injector', '$location', '$rootScope', 'loginRedirectPath', 'signupRedirectPath', function($injector, $location, $rootScope, loginRedirectPath, signupRedirectPath) {
          if( $injector.has('$route') ) {
-            new RouteSecurityManager($location, $rootScope, $injector.get('$route'), loginRedirectPath);
+            new RouteSecurityManager($location, $rootScope, $injector.get('$route'), loginRedirectPath, signupRedirectPath);
          }
       }]);
 
-   function RouteSecurityManager($location, $rootScope, $route, path) {
+   function RouteSecurityManager($location, $rootScope, $route, loginPath, signupPath) {
       this._route = $route;
       this._location = $location;
       this._rootScope = $rootScope;
-      this._loginPath = path;
+      this._loginPath = loginPath;
+      this._signupPath = signupPath;
       this._redirectTo = null;
       this._authenticated = !!($rootScope.auth && $rootScope.auth.user);
       this._init();
@@ -24,7 +25,7 @@
          // Set up a handler for all future route changes, so we can check
          // if authentication is required.
          self._rootScope.$on("$routeChangeStart", function(e, next) {
-            self._authRequiredRedirect(next, self._loginPath);
+            self._authRequiredRedirect(next, self._loginPath, self._signupPath);
          });
 
          self._rootScope.$on('$firebaseSimpleLogin:login', angular.bind(this, this._login));
@@ -71,6 +72,7 @@
       // A function to check whether the current path requires authentication,
       // and if so, whether a redirect to a login page is needed.
       _authRequiredRedirect: function(route, path) {
+         debugger
          if (route.authRequired && !this._authenticated){
             if (route.pathTo === undefined) {
                this._redirectTo = this._location.path();
@@ -79,8 +81,8 @@
             }
             this._redirect(path);
          }
-         else if( this._authenticated && this._location.path() === this._loginPath ) {
-            this._redirect('/');
+         else if( this._authenticated && (this._location.path() === this._loginPath || this._location.path() === this._signupPath) ) {
+            this._redirect('/list');
          }
       }
 
