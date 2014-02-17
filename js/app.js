@@ -6,7 +6,7 @@ angular.module('myApp',
          'waitForAuth', 'routeSecurity']
    )
 
-   .run(['loginService', '$rootScope','$timeout', 'FBURL', function(loginService, $rootScope, $timeout, FBURL) {
+   .run(['loginService', '$rootScope','$timeout', 'FBURL', '$location', function(loginService, $rootScope, $timeout, FBURL, $location) {
       if( FBURL === 'https://INSTANCE.firebaseio.com' ) {
          // double-check that the app has been configured
          angular.element(document.body).html('<h1>Please configure app/js/config.js before running!</h1>');
@@ -23,6 +23,7 @@ angular.module('myApp',
       //set root scopefunctions
        $rootScope.logout = function() {
             loginService.logout();
+            $location.path('/');
         };
 
         $rootScope.bodyClassClick = function(bodyClass) {
