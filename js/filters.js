@@ -35,7 +35,9 @@ angular.module('myApp.filters', [])
          filtered.push(item);
        });
        filtered.sort(function (a, b) {
-         return (a[col][feild] > b[col][feild]);
+          var aVal = a[col] && a[col][feild]? a[col][feild]:"";
+          var bVal = b[col] && b[col][feild]? b[col][feild]:"";
+         return (aVal > bVal);
        });
        if(reverse) filtered.reverse();
          return filtered;
