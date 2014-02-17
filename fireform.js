@@ -161,17 +161,18 @@ Fireform = function (selector, fireBaseRepo, options){
                     var name, type;
                     name = that.inputs[i].name ? inputs[i].name : 'input_'+String(i);
                     type = inputs[i].type
+                    value=inputs[i].value;
 
                     
-                    if (type==="radio"){
+                    if (type==="radio" && inputs[i].checked===true){
                         payLoad[name]={};
-                        payLoad[name].value = inputs[i].checked? inputs[i].value:"";
+                        payLoad[name].value = inputs[i].checked? value:"";
                         payLoad[name].type=inputs[i].type;
                         payLoad[name].name=inputs[i].name;
                         validationRadio= (inputs[i].checked || validationRadio)? true:false;//flip it to true if checked or keep it true
-                    } else if (type!=="submit"){
+                    } else if (type!=="submit" && type!=="radio"){
                         payLoad[name]={};
-                        payLoad[name].value=inputs[i].value
+                        payLoad[name].value=value
                         payLoad[name].type=inputs[i].type
                         payLoad[name].name=inputs[i].name
                         payLoad[name].checked=inputs[i].checked
@@ -181,11 +182,12 @@ Fireform = function (selector, fireBaseRepo, options){
                     // else if (type==="checkbox") payLoad[name]={value:inputs[i].value,type:inputs[i].type} 
                     // else if (type==="radio") payLoad[name]=inputs[i].value+":"+inputs[i].type;
                     // else if (type==="select-one") payLoad[name]=inputs[i].value+":"+inputs[i].type;
-                    if (type==="radio" && !validationRadio)
+                    
+                    if (type==="radio" && !validationRadio && simpleValidation)
                         inputs[i].className += " "+inputValidationClass;
-                    else if (type!=="submit" && payLoad[name].value==="") 
+                    else if (type!=="submit" && value==="" && simpleValidation) 
                         inputs[i].className += " "+inputValidationClass, validation=false;
-                    else 
+                    else if(simpleValidation)
                         inputs[i].className=inputs[i].className.replace(new RegExp(inputValidationClass, 'g'),"");
                 }
                 if ( (validation && validationRadio)|| !simpleValidation)
