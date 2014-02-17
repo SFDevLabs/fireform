@@ -52,7 +52,9 @@ angular.module("myApp.directives", [])
                     if (valueF[key])
                         map=valueF[key];
                     else
-                        map= rowsHeader[key];
+                        map= _.findWhere(rowsHeader, {fireformName:key});
+
+                    if (map===undefined) return {};///saftey for malformed data;
                     map.fireformName=key
                     return map;
                 });
