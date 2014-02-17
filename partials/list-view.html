@@ -73,6 +73,7 @@
     <div ng-hide="rows.length>0">
       No data submitted yet.
     </div>
+    <div style="overflow:scroll">
      <table ng-hide="rows.length===0" ng-class="sorted" class="friend" >
         <tr>
           <th class="{{key.fireformName}}" ng-repeat="key in rowsHeader" ng-switch on="key.type" ng-init="sortVal='value'">
@@ -136,6 +137,7 @@
         </tr>
       </table>
 
+    </div>
       <br>
       <a ng-hide="$location.$$url==='/publicexample' || rows.length===0" href="/list"><- back to list</a>
 
