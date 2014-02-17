@@ -141,35 +141,56 @@
 
   </div>
 </div>
+<script type="text/javascript">
 
-<div  class="modal faded" ng-class="codeModal" ng-init="codeModal='hide'">
+ var options = {
+                  simpleValidation:false,
+                  simpleValidation:false,
+                  successClass: "custom-submit-success",
+                  callback:function(err, val){
+                    if (err) console.log(err);
+                      console.log('Form Submitted!')
+                  }
+                }
+
+</script>
+
+<div  class="modal faded" ng-class="codeModal" ng-init="codeModal='hide';snippet=true;">
   <div class="modal-inner">
+    <button ng-hide="!snippet" ng-click="snippet=snippet?false:true" style="float:right;">Boilerplate</button>
+    <button ng-hide="snippet" ng-click="snippet=snippet?false:true" style="float:right;">snippet</button>
+
     <div>Copy This into your HTML</div>  
     <br>
-    <pre style="overflow:hidden;" highlight="$location.absUrl()"><code> 
+    <pre ng-hide="!snippet" style="overflow:hidden;" highlight="$location.absUrl()"><code> 
       &lt;script type="application/javascript" src="http://fireform.org/fireform.js"&gt;&lt;/script&gt;
       &lt;script type="application/javascript"&gt;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new Fireform('#MySelector', '{{location}}');
       &lt;/script&gt;
      </code></pre>
      <br>
-      <pre style="overflow:hidden;" highlight="$location.absUrl()"><code>
+      <pre ng-hide="snippet" style="overflow:hidden;" highlight="$location.absUrl()"><code>
       &lt;!doctype html&gt;
         &lt;body&gt;
           &lt;form id="MySelector"&gt;
             &lt;input type="text" name="givenname" placeholder="Name"&gt;
-            &lt;input type="number" name="age" placeholder="Age"&gt;
-            Southpaw:&lt;input type="checkbox" name="southpaw"&gt;
+            &lt;input type="number" name="age" placeholder="Age"&gt;--
+            Southpaw:&lt;input type="checkbox" name="southpaw"&gt;--
             Bantamweight:&lt;input type="radio" name="weightclass" value="bantamweight"&gt;
-            Welterweight:&lt;input type="radio" name="weightclass" value="Welterweight"&gt;
-            HeavyWeight:&lt;input type="radio"  name="weightclass" value="HeavyWeight"&gt;
+            Welterweight:&lt;input type="radio" name="weightclass" value="welterweight"&gt;
+            HeavyWeight:&lt;input type="radio"  name="weightclass" value="heavyweight"&gt;
             &lt;input type="submit"&gt;
           &lt;/form&gt;
 
           &lt;script type="application/javascript" src="http://fireform.org/fireform.js"&gt;&lt;/script&gt;
           &lt;script type="application/javascript"&gt;
               /* See how to customize at http://fireform.org/docs */
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new Fireform('#MySelector', '{{location}}', {simpleValidation:false});
+               var options = {
+                  simpleValidation:false,
+                  successClass: "custom-submit-success",
+                  callback:function(err, val){console.log(err,'callback')}
+                }
+              new Fireform('#MySelector', '{{location}}', options)
           &lt;/script&gt;
       &lt;/body&gt;
      </code></pre>
