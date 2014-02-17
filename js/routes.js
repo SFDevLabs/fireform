@@ -8,7 +8,7 @@ angular.module('myApp.routes', ['ngRoute'])
     function($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
         $routeProvider.when('/', {
-            templateUrl: '/partials/home.html',
+            templateUrl: '/partials/public-home.html',
             controller: 'PublicHomeCtrl'
         });
 
