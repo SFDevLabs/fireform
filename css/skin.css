@@ -243,8 +243,13 @@ footer a.logo {
   margin: 0 auto;
   width: 3.75em;
   height: 3.75em;
-  background: url("../img/sf-dev-labs.png") center center no-repeat;
+  opacity: 0.7;
+  transition: opacity 0.75s;
+  background: transparent url("../img/sf-dev-labs.png") center center no-repeat;
   background-size: cover;
+}
+footer a.logo:hover {
+  opacity: 1;
 }
 article {
   margin-top: 0em;
