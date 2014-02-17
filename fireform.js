@@ -110,7 +110,7 @@ Fireform = function (selector, fireBaseRepo, options){
                 failedClass=options && options.failedClass? options.failedClass:"submit-failed",
                 formValidationClass=options && options.formValidationClass? options.formValidationClass:"form-validation-failed",
                 inputValidationClass=options && options.inputValidationClass? options.inputValidationClass:"input-validation-failed",
-                simpleValidation=options && options.simpleValidation? options.simpleValidation:true;
+                simpleValidation=options && options.simpleValidation? options.simpleValidation:false;
 
 
             if (typeof selector!=="string"){
@@ -188,7 +188,7 @@ Fireform = function (selector, fireBaseRepo, options){
                     else 
                         inputs[i].className=inputs[i].className.replace(new RegExp(inputValidationClass, 'g'),"");
                 }
-                if (validation &&validationRadio && simpleValidation)
+                if ( (validation && validationRadio)|| !simpleValidation)
                     that.submitForm(fireBaseRepo, payLoad),
                     formDOMObject.className=formDOMObject.className.replace(new RegExp(formValidationClass, 'g'),"");
                 else
