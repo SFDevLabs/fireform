@@ -126,7 +126,7 @@ angular.module("myApp.directives", [])
     return {
         require: 'ngInclude',
         restrict: 'A', /* optional */
-        compile: function (scope, el, attrs) {
+        link: function (scope, el, attrs) {
             el.replaceWith(el.children());
         }
     };
