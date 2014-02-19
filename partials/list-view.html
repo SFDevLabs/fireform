@@ -36,11 +36,6 @@
     opacity: 1;
   }
 
-  table, th, td
-    {
-    border: 1px solid black;
-    padding: 4px;
-    }
 </style>
 <!-- Kill me -->
 
@@ -49,22 +44,24 @@
 
   <div class="container">
 
-    <a ng-hide="$location.$$url==='/publicexample'" href="/list"><- back to list</a>
-
     <h1>{{ListView.id}}{{$location.url}}</h1>
-
-
-    
-    <a ng-click="timeoutSet('deleteModal','fadeIn faded','10'); deleteModal='faded'"; style="float:right;" ng-hide="$location.$$url==='/publicexample'">Delete</a>
-    <br>
-    <br>
-    <div style="float:right; text-align:right;">
-      <a ng-click="JSON2CSV(rows, labels, quotes)";>Download CSV</a>
-      <br>
-      <input type="checkbox" ng-model="labels" ng-init="labels=true" ng-checked="labels"> CSV labels
-      <input type="checkbox" ng-model="quotes" ng-init="quotes=false"> CSV Quotes
+      
+    <div class="controls">
+      <a ng-hide="$location.$$url==='/publicexample'" href="/list" class="breadcrumb">&lsaquo; Back to forms</a>
+      <ul class="inline">
+        <li>
+          <input type="checkbox" name="labels" id="labels" ng-model="labels" ng-init="labels=true" ng-checked="labels">
+          <label for="labels">CSV labels</label>
+        </li>
+        <li>
+          <input type="checkbox" name="quotes" id="quotes" ng-model="quotes" ng-init="quotes=false">
+          <label for="quotes">CSV Quotes</label>
+        </li>
+      </ul>
+      <p id="download" class="button" ng-click="JSON2CSV(rows, labels, quotes)";>Download CSV</p>
+      <p id="delete" class="button" ng-click="timeoutSet('deleteModal','fadeIn faded','10'); deleteModal='faded'"; ng-hide="$location.$$url==='/publicexample'">Delete</p>
+      <p ng-click="timeoutSet('codeModal','fadeIn faded','10'); codeModal='faded'; bodyClassClick('overflow');"  class="action button">Get Code</p>
     </div>
-    <p ng-click="timeoutSet('codeModal','fadeIn faded','10'); codeModal='faded'; bodyClassClick('overflow');"  class="action button">Get Code</p>
 
  
 
@@ -75,7 +72,7 @@
 
     <!-- Table starts here-->
     <div style="overflow:scroll">
-     <table ng-hide="rows.length===0" ng-class="sorted" class="friend" >
+     <table ng-hide="rows.length===0" ng-class="sorted">
         <tr>
           <!-- Header Loop Created from rowsHeader-->
           <th class="{{key.fireformName}}" ng-repeat="key in rowsHeader" ng-switch on="key.type" ng-init="sortVal='value'">
@@ -86,7 +83,7 @@
                   <span ng-hide="!reverse">&#9650;</span>
                 </a>
                 <span>|</span>
-                <input  type="checkbox" disabled checked>
+                <input type="checkbox" disabled checked>
               </span>
 
               <span ng-switch-when="checkbox" ng-init="reverse=false">
@@ -147,8 +144,8 @@
       </table>
 
     </div>
-      <br>
-      <a ng-hide="$location.$$url==='/publicexample' || rows.length===0" href="/list"><- back to list</a>
+      
+    <p><a ng-hide="$location.$$url==='/publicexample' || rows.length===0" href="/list">&lsaquo; Back to list</a></p>
 
 
   </div>
@@ -157,7 +154,7 @@
 <div ng-include="'partials/footer.html'" include-replace></div>
 
 
-<div  class="modal faded" ng-class="codeModal" ng-init="codeModal='hide';snippet=true;">
+<div class="modal faded" ng-class="codeModal" ng-init="codeModal='hide';snippet=true;">
   <div class="modal-inner">
     <button ng-hide="!snippet" ng-click="snippet=snippet?false:true" style="float:right;">Boilerplate</button>
     <button ng-hide="snippet" ng-click="snippet=snippet?false:true" style="float:right;">snippet</button>
