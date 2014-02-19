@@ -103,30 +103,30 @@
               </span>
 
               <span ng-switch-when="text" ng-init="reverse=false">
-                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse=reverse?false:true;">{{key.fireformName}}
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse=reverse?false:true;">
+                  <i class="fa fa-font"></i>
+                  {{key.fireformName}}
                   <span ng-hide="reverse"><i class="fa fa-sort-desc"></i></span>
                   <span ng-hide="!reverse"><i class="fa fa-sort-asc"></i></span>
                 </a>
-                  <span>|</span>
-                  <i>txt</i>
               </span>
               
               <span ng-switch-when="number" ng-init="reverse=false">
-                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse= reverse?false:true;">{{key.fireformName}}
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse= reverse?false:true;">
+                  <i>#</i>
+                  {{key.fireformName}}
                   <span ng-hide="reverse"><i class="fa fa-sort-desc"></i></span>
                   <span ng-hide="!reverse"><i class="fa fa-sort-asc"></i></span>
                 </a>
-                <span>|</span>
-                <i>#</i>
               </span>
 
               <span ng-switch-when="select-one" ng-init="reverse=false">
-                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse=reverse?false:true;">{{key.fireformName}}
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse=reverse?false:true;">
+                  <i class="fa fa-list-ul"></i>
+                  {{key.fireformName}}
                   <span ng-hide="!reverse"><i class="fa fa-sort-desc"></i></span>
                   <span ng-hide="reverse"><i class="fa fa-sort-asc"></i></span>
                 </a>
-                <span>|</span>
-                <select size="0"  disabled  type="select"><option>-</option></select>
               </span>
 
           </th>
