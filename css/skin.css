@@ -46,7 +46,6 @@ h1 {
   border-bottom-width: 0.016666666666666666em;
   padding-bottom: 0.10833333333333334em;
   border-color: rgba(0,0,0,0.2);
-  color: #be4c00;
 }
 .app #content h1 {
   margin-top: 0.5em;
@@ -60,6 +59,12 @@ h1 {
   padding-top: 0em;
   padding-bottom: 0.25em;
   margin-bottom: 0em;
+}
+.form #content h1 {
+  border: 0;
+  float: left;
+  margin: 0;
+  padding: 0;
 }
 h2 {
   font-size: 2.5em;
@@ -85,6 +90,8 @@ h2 {
   margin-bottom: 0em;
   font-weight: 300;
 }
+.modal h2,
+.account h2,
 h3 {
   font-size: 1.875em;
   line-height: 2em;
@@ -92,6 +99,13 @@ h3 {
   padding-top: 0em;
   padding-bottom: 0em;
   margin-bottom: 1em;
+}
+.modal h2,
+.account h2 {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0em;
 }
 h4 {
   font-size: 1.5625em;
@@ -162,10 +176,10 @@ p {
   padding-bottom: 0em;
   margin-bottom: 0em;
 }
-.public header {
+.public #page-header {
   background: #bbb;
 }
-.app header {
+.app #page-header {
   background: #333;
 }
 header nav ul {
@@ -187,6 +201,9 @@ header nav ul li a,
 header nav ul li a {
   color: #666;
   margin: 0 0 0 1em;
+}
+#content header .button {
+  margin-left: 2em;
 }
 .app header nav ul li a {
   color: #bbb;
@@ -232,6 +249,12 @@ header nav h1 a:hover {
 }
 footer {
   margin-top: 3.75em;
+  padding-top: 0em;
+  padding-bottom: 5.625em;
+  margin-bottom: 0em;
+}
+.public.home footer {
+  margin-top: 0em;
   padding-top: 0em;
   padding-bottom: 5.625em;
   margin-bottom: 0em;
@@ -303,12 +326,8 @@ article {
 }
 .public.home p#login {
   position: absolute;
-  top: 0;
+  top: 1em;
   right: 2.5em;
-  margin-top: 3.3333333333333335em;
-  padding-top: 0em;
-  padding-bottom: 0em;
-  margin-bottom: 3.3333333333333335em;
 }
 .public.home p#tagline {
   font-size: 2.5em;
@@ -317,7 +336,7 @@ article {
   text-align: center;
   color: #000;
 }
-.public.home h1 + p {
+.public.home p#sign-up {
   font-size: 1.875em;
   line-height: 2em;
   margin-top: 0em;
@@ -347,6 +366,17 @@ article {
 #left ul,
 #left ul li {
   width: 100%;
+}
+.app.account input[type=text],
+.app.account input[type=password] {
+  width: 50%;
+  clear: both;
+}
+.account form {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 3.75em;
 }
 nav#left ul li {
   border-bottom-style: solid;
@@ -395,6 +425,11 @@ input[type=submit],
   background: rgba(0,0,0,0.5);
   color: #fff;
   border-color: transparent;
+  transition: all 0.5s;
+}
+.button.solid:hover {
+  transition: all 0.5s;
+  background: rgba(0,0,0,0.7);
 }
 input[type=submit] {
   padding: 1.1111111em;
@@ -409,12 +444,16 @@ input[type=submit] {
 .inline li {
   display: inline-block;
 }
+.controls .left,
 .button,
 .public.home p#login a,
 .inline li,
 header nav ul li a,
 .button.action {
   padding: 0.5em 1.5em;
+}
+.controls .left {
+  padding-left: 0;
 }
 input[type=submit],
 .button.action {
@@ -442,6 +481,8 @@ input[type=submit]:hover,
 .app h1 {
   border-color: rgba(0,0,0,0.2);
 }
+#content header:before,
+#content header:after,
 .app #content ul li a:before,
 .app #content ul li a:after,
 .app ul li:before,
@@ -449,6 +490,7 @@ input[type=submit]:hover,
   content: " ";
   display: table;
 }
+#content header:after,
 .app #content ul li a:after,
 .app ul li:after {
   clear: both;
@@ -464,7 +506,7 @@ input[type=submit]:hover,
   clear: both;
   float: none;
 }
-.controls {
+#content header {
   border-bottom-style: solid;
   border-bottom-width: 0.0625em;
   padding-bottom: 1.8125em;
@@ -483,11 +525,11 @@ input[type=submit]:hover,
   box-sizing: border-box;
   background: #fff;
   position: absolute;
-  height: 20em;
+  height: 40em;
   width: 50em;
   top: 50%;
   left: 50%;
-  margin: -10em 0 0 -25em;
+  margin: -20em 0 0 -25em;
   padding: 1.25em;
   z-index: 9000;
 }
@@ -503,20 +545,63 @@ input[type=submit]:hover,
   height: 2.5em;
   border-radius: 2.5em;
   display: block;
-  text-indent: -9000em;
   position: absolute;
-  top: -1.25em;
-  right: -1.25em;
+  top: -2.5em;
+  right: -1.5em;
   cursor: pointer;
+  text-align: center;
+  transition: all 0.5s;
+}
+.close-button:hover {
+  background: #fff;
+  transition: all 0.5s;
+}
+.close-button i {
+  font-size: 1.875em;
+  margin-top: 0.15em;
+}
+.close-button:before,
+.close-button:after {
+  content: none;
+}
+.controls {
+  border-bottom-style: solid;
+  border-bottom-width: 0.0625em;
+  padding-bottom: 1.8125em;
+  border-color: rgba(0,0,0,0.2);
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 3.75em;
+}
+.controls ul li {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0em;
+}
+.controls input,
+.controls label,
+.controls ul,
+.controls ul li,
+.controls p {
+  display: inline-block;
+  width: auto;
 }
 th,
 td {
   border-bottom: 1px solid rgba(0,0,0,0.2);
   border-right: 1px solid rgba(0,0,0,0.2);
 }
+.table-container {
+  clear: both;
+  overflow: scroll;
+}
 table {
+  clear: both;
   min-width: 100%;
   border-left: 1px solid rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(0,0,0,0.2);
 }
 table th i.field-type,
 table th span {

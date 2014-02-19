@@ -1,4 +1,4 @@
-<header ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></header>
+<header id="page-header" ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></header>
 <!-- Kill me -->
 <style>
   .overflow{
@@ -42,23 +42,32 @@
 
   <div class="container">
 
-    <h1>{{ListView.id}}{{$location.url}}</h1>
+    <header>
+
+      <h1>{{ListView.id}}{{$location.url}}</h1>
+
+      <div class="right">
+        <p id="delete" class="button" ng-click="timeoutSet('deleteModal','fadeIn faded','10'); deleteModal='faded'"; ng-hide="$location.$$url==='/publicexample'"><i class="fa fa-trash-o"></i> Delete</p>
+        <p ng-click="timeoutSet('codeModal','fadeIn faded','10'); codeModal='faded'; bodyClassClick('overflow');"  class="action button"><i class="fa fa-code"></i> Get Code</p>
+      </div>
+
+    </header>
       
     <div class="controls">
-      <p class="inline"><a ng-hide="$location.$$url==='/publicexample'" href="/list" class="breadcrumb">&lsaquo; Back to forms</a></p>
-      <ul class="inline">
-        <li>
-          <input type="checkbox" name="labels" id="labels" ng-model="labels" ng-init="labels=true" ng-checked="labels">
-          <label for="labels">CSV labels</label>
-        </li>
-        <li>
-          <input type="checkbox" name="quotes" id="quotes" ng-model="quotes" ng-init="quotes=false">
-          <label for="quotes">CSV Quotes</label>
-        </li>
-      </ul>
-      <p id="download" class="button" ng-click="JSON2CSV(rows, labels, quotes)";>Download CSV</p>
-      <p id="delete" class="button" ng-click="timeoutSet('deleteModal','fadeIn faded','10'); deleteModal='faded'"; ng-hide="$location.$$url==='/publicexample'">Delete</p>
-      <p ng-click="timeoutSet('codeModal','fadeIn faded','10'); codeModal='faded'; bodyClassClick('overflow');"  class="action button">Get Code</p>
+      <p class="left"><a ng-hide="$location.$$url==='/publicexample'" href="/list" class="breadcrumb">&lsaquo; Back to all forms</a></p>
+      <div class="right">
+        <ul class="inline">
+          <li>
+            <input type="checkbox" name="labels" id="labels" ng-model="labels" ng-init="labels=true" ng-checked="labels">
+            <label for="labels">CSV labels</label>
+          </li>
+          <li>
+            <input type="checkbox" name="quotes" id="quotes" ng-model="quotes" ng-init="quotes=false">
+            <label for="quotes">CSV Quotes</label>
+          </li>
+        </ul>
+        <p id="download" class="button solid" ng-click="JSON2CSV(rows, labels, quotes)";><i class="fa fa-download"></i> Download CSV</p>
+      </div>
     </div>
 
  
@@ -69,7 +78,7 @@
 
 
     <!-- Table starts here-->
-    <div style="overflow:scroll">
+    <div class="table-container">
      <table ng-hide="rows.length===0" ng-class="sorted">
         <tr>
           <!-- Header Loop Created from rowsHeader-->
@@ -142,7 +151,7 @@
 
     </div>
       
-    <p><a ng-hide="$location.$$url==='/publicexample' || rows.length===0" href="/list">&lsaquo; Back to list</a></p>
+    <p><a ng-hide="$location.$$url==='/publicexample' || rows.length===0" href="/list">&lsaquo; Back to all forms</a></p>
 
 
   </div>
@@ -152,29 +161,28 @@
 
 
 <div class="modal faded" ng-class="codeModal" ng-init="codeModal='hide';snippet=true;">
-  <div class="modal-inner">
-    <button ng-hide="!snippet" ng-click="snippet=snippet?false:true" style="float:right;">Boilerplate</button>
-    <button ng-hide="snippet" ng-click="snippet=snippet?false:true" style="float:right;">snippet</button>
+  <div class="modal-content">
+    <button ng-hide="!snippet" ng-click="snippet=snippet?false:true" style="float:right;">Boilerplate Form</button>
+    <button ng-hide="snippet" ng-click="snippet=snippet?false:true" style="float:right;">JavaScript Snippet</button>
 
-    <div>Copy This into your HTML</div>  
-    <br>
-    <pre ng-hide="!snippet" style="overflow:hidden;" highlight="$location.absUrl()"><code> 
-      &lt;script type="application/javascript" src="http://fireform.org/fireform.js"&gt;&lt;/script&gt;
-      &lt;script type="application/javascript"&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new Fireform('#MySelector', '{{location}}');
-      &lt;/script&gt;
-     </code></pre>
-     <br>
-      <pre ng-hide="snippet" style="overflow:hidden;" highlight="$location.absUrl()"><code>
+    <div ng-hide="!snippet">
+      <h2>JavaScript Snippet</h2> 
+      <p>Copy this snippet and paste it into your HTML underneath your &lt;form&gt;.</p>
+      <pre style="overflow:hidden;" highlight="$location.absUrl()"><code> 
+        &lt;script type="application/javascript" src="http://fireform.org/fireform.js"&gt;&lt;/script&gt;
+        &lt;script type="application/javascript"&gt;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new Fireform('#MySelector', '{{location}}');
+        &lt;/script&gt;
+       </code></pre>
+    </div>
+    <div ng-hide="snippet">
+      <h2>Boilerplate Form</h2>
+      <pre style="overflow:hidden;" highlight="$location.absUrl()"><code>
       &lt;!doctype html&gt;
         &lt;body&gt;
           &lt;form id="MySelector"&gt;
             &lt;input type="text" name="givenname" placeholder="Name"&gt;
-            &lt;input type="number" name="age" placeholder="Age"&gt;--
-            Southpaw:&lt;input type="checkbox" name="southpaw"&gt;--
-            Bantamweight:&lt;input type="radio" name="weightclass" value="bantamweight"&gt;
-            Welterweight:&lt;input type="radio" name="weightclass" value="welterweight"&gt;
-            HeavyWeight:&lt;input type="radio"  name="weightclass" value="heavyweight"&gt;
+            &lt;input type="text" name="message" placeholder="Message"&gt;
             &lt;input type="submit"&gt;
           &lt;/form&gt;
 
@@ -190,8 +198,8 @@
           &lt;/script&gt;
       &lt;/body&gt;
      </code></pre>
-     <br>
-    <button ng-click="codeModal='hide'; bodyClassClick('');">close</button> 
+     </div>
+    <p class="close-button" ng-click="codeModal='hide'; bodyClassClick('');"><i class="fa fa-times"></i></p> 
   </div>
 </div>
 
@@ -201,7 +209,7 @@
       <div>Are you sure you want to delete "{{ListView.id}}"? </div>  
       <br>
       <button ng-click="deleteList()">Confirm</button> 
-      <button ng-click="deleteModal='hide'; bodyClassClick('');">close</button> 
+      <p class="close-button" ng-click="deleteModal='hide'; bodyClassClick('');"><i class="fa fa-times"></i></p> 
 
   </div>
 

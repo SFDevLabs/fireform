@@ -1,8 +1,9 @@
-<header ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></header>
+<header id="page-header" ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></header>
 <div id="content" body-class-inject="app account" >
     <div class="container">
         <h1>Account</h1>
         <form>
+            <h2>Change Email</h2>
 
                 <!--<li>
                     <label for="name">First Name</label>
@@ -15,11 +16,10 @@
                 </li>-->
 
             <p>
-                <label for="email">Change Email</label>
+                <!--<label for="email">Change Email</label>-->
                 <input id="email" name="email" type="text" name="name" ng-model="user.email"/>
-                <input type="submit" ng-click="updateProfile()" value="Update" />
             </p>
-
+            <p><input type="submit" ng-click="updateProfile()" value="Update" /></p>
             <p class="error" ng-show="err">{{err}}</p>
             <p class="good" ng-show="msg">{{msg}}</p>
         </form>
@@ -36,7 +36,7 @@
                 </li>
 
                 <li>
-                    <label for="new-password">New Password</span>
+                    <label for="new-password">New Password</label>
                     <input name="new-password" id="confirm-password" type="password" ng-keypress="reset()" ng-model="newpass"/>
                 </li>
 

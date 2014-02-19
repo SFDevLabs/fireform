@@ -16,6 +16,7 @@ five-gray = rgba(0,0,0,0.05)
 ten-gray = rgba(0,0,0,0.1)
 twenty-gray = rgba(0,0,0,0.2)
 fifty-gray = rgba(0,0,0,0.5)
+seventy-gray = rgba(0,0,0,0.7)
 
 
 red = #8e2409
@@ -64,7 +65,6 @@ h1
 	rhythm(1, 0, 0.5, 1, 60px)
 	trailing-border(1px, .25, 60px, solid)
 	border-color: twenty-gray
-	color: orange
 
 .app #content h1
 	rhythm(1, 0, 0.5, 1, 60px)
@@ -72,6 +72,12 @@ h1
 .app.home #content h1
 .list #content h1
 	rhythm(1, 0, 0.5, 0, 60px)	
+
+.form #content h1
+	border: 0
+	float: left
+	margin: 0
+	padding: 0
 
 h2
 	adjust-font-size-to(40px)
@@ -86,9 +92,15 @@ h2
 	rhythm(0, 0, 0, 0, 30px)
 	font-weight: 300
 
+.modal h2
+.account h2
 h3
 	adjust-font-size-to(30px)
 	rhythm(2, 0, 0, 1, 30px)
+
+.modal h2
+.account h2
+	rhythm(0, 0, 0, 0)
 
 h4
 	adjust-font-size-to(25px)
@@ -137,10 +149,10 @@ p
 .list #content ul li p
 	rhythm(0, 0, 0, 0, 30px)
 
-.public header
+.public #page-header
 	background: mid-gray
 
-.app header
+.app #page-header
 	background: darkest-gray
 
 header nav ul
@@ -159,6 +171,9 @@ header nav ul li a
 header nav ul li a
 	color: dark-gray
 	margin: 0 0 0 1em
+
+#content header .button
+	margin-left: 2em
 
 .app header nav ul li a
 	color: mid-gray
@@ -201,6 +216,9 @@ header nav h1 a:hover
 
 footer
 	rhythm(2, 0, 3, 0)
+
+.public.home footer
+	rhythm(0, 0, 3, 0)
 
 footer .container
 	leading-border(1px, 0, 16px, solid)
@@ -250,9 +268,8 @@ article
 
 .public.home p#login
 	position: absolute
-	top: 0
+	top: 1em
 	right: 2.5em
-	rhythm(2, 0, 0, 2, 18px)
 
 .public.home p#tagline
 	adjust-font-size-to(40px)
@@ -260,7 +277,7 @@ article
 	text-align: center
 	color: black
 
-.public.home h1 + p
+.public.home p#sign-up
 	adjust-font-size-to(30px)
 	rhythm(0, 0, 0, 1, 30px)
 
@@ -283,6 +300,15 @@ article
 #left ul
 #left ul li
 	width: 100%
+
+.app.account input[type=text]
+.app.account input[type=password]
+	width: 50%
+	clear: both
+
+.account form
+	rhythm(0, 0, 0, 2)
+	
 
 
 nav#left ul li
@@ -327,6 +353,11 @@ input[type=submit]
 	background: fifty-gray
 	color: white
 	border-color: transparent
+	transition: all 0.5s
+
+.button.solid:hover
+	transition: all 0.5s
+	background: seventy-gray
 
 input[type=submit]
 	padding: 1.1111111em
@@ -338,12 +369,16 @@ input[type=submit]
 .inline li
 	display: inline-block
 
+.controls .left
 .button
 .public.home p#login a
 .inline li
 header nav ul li a
 .button.action
 	padding: 0.5em 1.5em
+
+.controls .left
+	padding-left: 0
 
 input[type=submit]
 .button.action
@@ -371,6 +406,8 @@ input[type=submit]:hover
 .app h1
 	border-color: twenty-gray
 
+#content header:before
+#content header:after
 .app #content ul li a:before
 .app #content ul li a:after
 .app ul li:before
@@ -378,6 +415,7 @@ input[type=submit]:hover
 	content: " "
 	display: table
 
+#content header:after
 .app #content ul li a:after
 .app ul li:after
 	clear: both
@@ -393,7 +431,7 @@ input[type=submit]:hover
 	clear: both
 	float: none
 
-.controls
+#content header
 	trailing-border(1px, 1, 16px, solid)
 	border-color: twenty-gray
 
@@ -410,11 +448,11 @@ input[type=submit]:hover
 	box-sizing: border-box
 	background: white
 	position: absolute
-	height: 20em
+	height: 40em
 	width: 50em
 	top: 50%
 	left: 50%
-	margin: -10em 0 0 -25em
+	margin: -20em 0 0 -25em
 	padding: 1.25em
 	z-index: 9000
 
@@ -430,20 +468,56 @@ input[type=submit]:hover
 	height: 2.5em
 	border-radius: 2.5em
 	display: block
-	text-indent: -9000em
 	position: absolute
-	top: -1.25em
-	right: -1.25em
+	top: -2.5em
+	right: -1.5em
 	cursor: pointer
+	text-align: center
+	transition: all 0.5s
+
+.close-button:hover
+	background: white
+	transition: all 0.5s
+
+.close-button i
+	font-size: 1.875em
+	margin-top: 0.15em
+
+.close-button:before,
+.close-button:after {
+	content: none;
+}
+
+.controls
+	trailing-border(1px, 1, 16px, solid)
+	border-color: twenty-gray
+	rhythm(0, 0, 0, 2, 16px)
+
+.controls ul li
+	rhythm(0, 0, 0, 0)
+
+.controls input
+.controls label
+.controls ul
+.controls ul li
+.controls p
+	display: inline-block
+	width: auto
 
 th, 
 td
 	border-bottom: 1px solid twenty-gray
 	border-right: 1px solid twenty-gray
 
+.table-container
+	clear: both
+	overflow: scroll
+
 table
+	clear: both
 	min-width: 100%
 	border-left: 1px solid twenty-gray
+	border-top: 1px solid twenty-gray
 
 table th i.field-type
 table th span
