@@ -14,12 +14,16 @@ input,
 textarea {
   font-family: 'Lato', sans-serif;
 }
+.app #content ul li a h2,
+.app #content ul li a p,
 .block p,
 a {
   text-decoration: none;
   color: #2d6199;
   transition: color 0.75s;
 }
+.app #content ul li a:hover h2,
+.app #content ul li a:hover p,
 .block:hover p,
 a:hover {
   color: #be4c00;
@@ -71,6 +75,7 @@ h2 {
   padding-bottom: 0em;
   margin-bottom: 0.375em;
 }
+.post-number,
 .app ul li h2 {
   font-size: 1.875em;
   line-height: 2em;
@@ -78,6 +83,7 @@ h2 {
   padding-top: 0em;
   padding-bottom: 0em;
   margin-bottom: 0em;
+  font-weight: 300;
 }
 h3 {
   font-size: 1.875em;
@@ -147,17 +153,14 @@ p {
   display: block;
   margin-top: 0em;
   padding-top: 1em;
-  padding-bottom: 1em;
+  padding-bottom: 2em;
   margin-bottom: 0em;
 }
 .list #content ul li p {
-  font-size: 1.5625em;
-  line-height: 1.2em;
   margin-top: 0em;
   padding-top: 0em;
   padding-bottom: 0em;
-  margin-bottom: 1em;
-  font-weight: 300;
+  margin-bottom: 0em;
 }
 .public header {
   background: #bbb;
@@ -238,7 +241,7 @@ footer .container {
   border-top-width: 0.0625em;
   padding-top: -0.0625em;
   border-color: rgba(0,0,0,0.2);
-  text-align: center;
+  text-align: left;
 }
 footer span,
 footer a.logo {
@@ -254,13 +257,12 @@ footer a.logo {
   margin-top: 0em;
   padding-top: 0em;
   padding-bottom: 0em;
-  margin-bottom: 1.875em;
+  margin-bottom: 0.46875em;
 }
 footer a.logo {
   text-indent: -9000em;
-  margin: 0 auto;
-  width: 3.75em;
-  height: 3.75em;
+  width: 2.5em;
+  height: 2.5em;
   opacity: 0.7;
   transition: opacity 0.75s;
   background: transparent url("../img/sf-dev-labs.png") center center no-repeat;
@@ -389,6 +391,11 @@ input[type=submit],
   text-align: center;
   text-transform: uppercase;
 }
+.button.solid {
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border-color: transparent;
+}
 input[type=submit] {
   padding: 1.1111111em;
   min-width: 15em;
@@ -435,10 +442,33 @@ input[type=submit]:hover,
 .app h1 {
   border-color: rgba(0,0,0,0.2);
 }
-.breadcrumb {
-  display: block;
-  font-size: 0.5em;
-  line-height: 1em;
+.app #content ul li a:before,
+.app #content ul li a:after,
+.app ul li:before,
+.app ul li:after {
+  content: " ";
+  display: table;
+}
+.app #content ul li a:after,
+.app ul li:after {
+  clear: both;
+}
+.app ul li h2 {
+  float: left;
+  max-width: 75%;
+}
+.post-number {
+  float: right;
+}
+.post-timestamp {
+  clear: both;
+  float: none;
+}
+.controls {
+  border-bottom-style: solid;
+  border-bottom-width: 0.0625em;
+  padding-bottom: 1.8125em;
+  border-color: rgba(0,0,0,0.2);
 }
 .modal {
   position: fixed;
@@ -479,17 +509,62 @@ input[type=submit]:hover,
   right: -1.25em;
   cursor: pointer;
 }
-table,
 th,
 td {
-  border: 1px solid #bbb;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-right: 1px solid rgba(0,0,0,0.2);
 }
 table {
   min-width: 100%;
+  border-left: 1px solid rgba(0,0,0,0.2);
 }
-table th,
+table th i.field-type,
+table th span {
+  display: inline-block;
+}
+table th i.field-type,
+table th span,
 table td {
   padding: 0.625em;
+}
+table th span.ng-scope {
+  padding: 0;
+}
+table th i.field-type,
+table th {
+  background: rgba(50,101,190,0.1);
+}
+table th span.ng-scope,
+table a {
+  display: block;
+}
+table th i.field-type {
+  border-right: 1px solid rgba(0,0,0,0.2);
+  margin-right: 0.3125em;
+}
+table th i {
+  position: relative;
+}
+.fa-sort-down,
+.fa-sort-asc:before,
+.fa-sort-up:before,
+.fa-sort-desc:before {
+  position: absolute;
+}
+.fa-sort-down,
+.fa-sort-asc:before {
+  top: -1em;
+}
+.fa-sort-up:before,
+.fa-sort-desc:before {
+  top: -0.5em;
+}
+table th a:hover {
+  color: #3265be;
+  background: rgba(50,101,190,0.2);
+}
+table tr:nth-child(odd) td {
+  background: rgba(0,0,0,0.05);
 }
 .account label {
   display: block;

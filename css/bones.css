@@ -3,8 +3,8 @@
 .container:before,.row:before,.container:after,.row:after{content:"";display:table}
 .container:after,.row:after{clear:both}
 .container{margin:0 auto}
-#left{float:left}
-#right{float:right}
+.left,#left{float:left}
+.right,#right{float:right}
 #center{float:none;margin:0 auto}
 @media screen and (min-width: 0em) and (max-width: 43.75em){.container{padding:2em 10%}
 .container.shell{padding:0}

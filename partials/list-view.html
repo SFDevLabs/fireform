@@ -45,7 +45,7 @@
     <h1>{{ListView.id}}{{$location.url}}</h1>
       
     <div class="controls">
-      <a ng-hide="$location.$$url==='/publicexample'" href="/list" class="breadcrumb">&lsaquo; Back to forms</a>
+      <p class="inline"><a ng-hide="$location.$$url==='/publicexample'" href="/list" class="breadcrumb">&lsaquo; Back to forms</a></p>
       <ul class="inline">
         <li>
           <input type="checkbox" name="labels" id="labels" ng-model="labels" ng-init="labels=true" ng-checked="labels">
@@ -77,8 +77,8 @@
              <!-- switch logic for different types of forms-->
               <span ng-switch-when="_time" ng-init="reverse=false">
                 <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse= reverse?false:true">
-                  <i class="fa fa-clock-o"></i>
-                  {{key.fireformName}}
+                  <i class="fa fa-clock-o field-type"></i>
+                  Timestamp
                   <span ng-hide="reverse"><i class="fa fa-sort-desc"></i></span>
                   <span ng-hide="!reverse"><i class="fa fa-sort-asc"></i></span>
                 </a>
@@ -86,7 +86,7 @@
 
               <span ng-switch-when="checkbox" ng-init="reverse=false">
                 <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'checked',reverse:reverse}, '$parent', '$parent'); reverse= reverse?false:true">
-                  <i class="fa fa-check-square-o"></i>
+                  <i class="fa fa-check-square-o field-type"></i>
                   {{key.fireformName}}
                   <span ng-hide="reverse"><i class="fa fa-sort-desc"></i></span>
                   <span ng-hide="!reverse"><i class="fa fa-sort-asc"></i></span>
@@ -95,7 +95,7 @@
 
               <span ng-switch-when="radio" ng-init="reverse=false">
                 <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse= reverse?false:true;">
-                  <i class="fa fa-dot-circle-o"></i>
+                  <i class="fa fa-dot-circle-o field-type"></i>
                   {{key.fireformName}}
                   <span ng-hide="reverse"><i class="fa fa-sort-desc"></i></span>
                   <span ng-hide="!reverse"><i class="fa fa-sort-asc"></i></span>
@@ -104,7 +104,7 @@
 
               <span ng-switch-when="text" ng-init="reverse=false">
                 <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse=reverse?false:true;">
-                  <i class="fa fa-font"></i>
+                  <i class="fa fa-font field-type"></i>
                   {{key.fireformName}}
                   <span ng-hide="reverse"><i class="fa fa-sort-desc"></i></span>
                   <span ng-hide="!reverse"><i class="fa fa-sort-asc"></i></span>
@@ -113,8 +113,8 @@
               
               <span ng-switch-when="number" ng-init="reverse=false">
                 <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse= reverse?false:true;">
-                  <i>#</i>
-                  {{key.fireformName}}
+                  <i class="field-type">#</i>
+                  <span>{{key.fireformName}}</span>
                   <span ng-hide="reverse"><i class="fa fa-sort-desc"></i></span>
                   <span ng-hide="!reverse"><i class="fa fa-sort-asc"></i></span>
                 </a>
@@ -122,8 +122,8 @@
 
               <span ng-switch-when="select-one" ng-init="reverse=false">
                 <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse=reverse?false:true;">
-                  <i class="fa fa-list-ul"></i>
-                  {{key.fireformName}}
+                  <i class="fa fa-list-ul field-type"></i>
+                  <span>{{key.fireformName}}</span>
                   <span ng-hide="!reverse"><i class="fa fa-sort-desc"></i></span>
                   <span ng-hide="reverse"><i class="fa fa-sort-asc"></i></span>
                 </a>
@@ -131,7 +131,6 @@
 
           </th>
         </tr>
-        <!-- Content Loop Created from rows-->
         <tr ng-repeat="item in rows | orderObjectBy:predicate.col:predicate.value:predicate.reverse" >
           <td ng-switch on="item[ffkey].type" ng-repeat="key in rowsHeader" ng-init="ffkey=key.fireformName">
             <span ng-switch-when="_time">{{item[ffkey].value | date:'EEEE h:mma, MM/dd/yy'}}</span>

@@ -15,11 +15,16 @@ two-gray = rgba(0,0,0,0.02)
 five-gray = rgba(0,0,0,0.05)
 ten-gray = rgba(0,0,0,0.1)
 twenty-gray = rgba(0,0,0,0.2)
+fifty-gray = rgba(0,0,0,0.5)
+
 
 red = #8e2409
 orange = #be4c00
 dark-blue = #2d6199
 light-blue = #3265be
+
+one-blue = rgba(50, 101, 190, 0.1)
+two-blue = rgba(50, 101, 190, 0.2)
 
 establish-baseline()
 
@@ -33,12 +38,16 @@ input
 textarea
 	font-family: 'Lato', sans-serif
 
+.app #content ul li a h2
+.app #content ul li a p
 .block p
 a
 	text-decoration: none
 	color: dark-blue
 	transition: color 0.75s
 
+.app #content ul li a:hover h2
+.app #content ul li a:hover p
 .block:hover p
 a:hover
 	color: orange
@@ -71,9 +80,11 @@ h2
 .app h2
 	rhythm(0, 0, 0, 0.5, 40px)
 
+.post-number
 .app ul li h2
 	adjust-font-size-to(30px)
 	rhythm(0, 0, 0, 0, 30px)
+	font-weight: 300
 
 h3
 	adjust-font-size-to(30px)
@@ -121,12 +132,10 @@ p
 .app.home #content ul li a
 .list #content ul li a
 	display: block
-	rhythm(0, 1, 1, 0, 30px)
+	rhythm(0, 1, 2, 0, 30px)
 
 .list #content ul li p
-	adjust-font-size-to(25px)
-	rhythm(0, 0, 0, 1, 30px)
-	font-weight: 300
+	rhythm(0, 0, 0, 0, 30px)
 
 .public header
 	background: mid-gray
@@ -196,7 +205,7 @@ footer
 footer .container
 	leading-border(1px, 0, 16px, solid)
 	border-color: twenty-gray
-	text-align: center
+	text-align: left
 
 footer span
 footer a.logo
@@ -206,13 +215,12 @@ footer span
 	rhythm(0, 0, 0, 0.5)
 
 footer a.logo
-	rhythm(0, 0, 0, 1)
+	rhythm(0, 0, 0, 0.25)
 
 footer a.logo
 	text-indent: -9000em;
-	margin: 0 auto
-	width: 3.75em
-	height: 3.75em
+	width: 2.5em
+	height: 2.5em
 	opacity: 0.7
 	transition: opacity 0.75s
 	background: transparent url('../img/sf-dev-labs.png') center center no-repeat
@@ -315,6 +323,11 @@ input[type=submit]
 	text-align: center
 	text-transform: uppercase
 
+.button.solid
+	background: fifty-gray
+	color: white
+	border-color: transparent
+
 input[type=submit]
 	padding: 1.1111111em
 	min-width: 15em
@@ -347,7 +360,6 @@ input[type=submit]:hover
 	border-color: orange
 	transition: all 0.5s
 
-
 .app.home
 .add
 .list
@@ -359,10 +371,31 @@ input[type=submit]:hover
 .app h1
 	border-color: twenty-gray
 
-.breadcrumb
-	display: block
-	font-size: 0.5em
-	line-height: 1em
+.app #content ul li a:before
+.app #content ul li a:after
+.app ul li:before
+.app ul li:after
+	content: " "
+	display: table
+
+.app #content ul li a:after
+.app ul li:after
+	clear: both
+
+.app ul li h2
+	float: left
+	max-width: 75%
+
+.post-number
+	float: right
+
+.post-timestamp
+	clear: both
+	float: none
+
+.controls
+	trailing-border(1px, 1, 16px, solid)
+	border-color: twenty-gray
 
 .modal
 	position: fixed
@@ -403,18 +436,62 @@ input[type=submit]:hover
 	right: -1.25em
 	cursor: pointer
 
-table, 
 th, 
 td
-	border: 1px solid mid-gray
+	border-bottom: 1px solid twenty-gray
+	border-right: 1px solid twenty-gray
 
 table
 	min-width: 100%
+	border-left: 1px solid twenty-gray
 
-table th
+table th i.field-type
+table th span
+	display: inline-block
+
+table th i.field-type
+table th span
 table td
 	padding: 0.625em
 
+table th span.ng-scope
+	padding: 0
+
+table th i.field-type
+table th
+	background: one-blue
+
+table th span.ng-scope
+table a
+	display: block
+
+table th i.field-type
+	border-right: 1px solid twenty-gray
+	margin-right: 0.3125em
+
+table th i
+	position: relative
+
+.fa-sort-down
+.fa-sort-asc:before
+.fa-sort-up:before
+.fa-sort-desc:before
+	position: absolute
+
+.fa-sort-down
+.fa-sort-asc:before
+	top: -1em	
+
+.fa-sort-up:before
+.fa-sort-desc:before
+	top: -0.5em
+
+table th a:hover
+	color: light-blue
+	background: two-blue
+
+table tr:nth-child(odd) td
+	background: five-gray
 
 .account label
 	display: block

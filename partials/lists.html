@@ -4,16 +4,18 @@
   <div class="container">
     <h1>Form List</h1>
     <ul id="messages" ng-show="Lists" class="wrapped">
-      <span></span>
-      <li ng-hide="!list.id" ng-repeat="list in Lists"><a href="/list/{{auth.user.uid.replace('simplelogin:','')}}/{{list.id}}">
+      <li ng-hide="!list.id" ng-repeat="list in Lists">
+        <a href="/list/{{auth.user.uid.replace('simplelogin:','')}}/{{list.id}}">
           <h2>{{list.id}}</h2>
 
-          <p><span count="list.formPosts">{{count}} posts<span> </p>
-          <p ng-hide="!mostRecent">
-          <span most-recent="list.formPosts">Last post on {{mostRecent|date:'EEEE h:mma, MM/dd/yy' }}<span>
+          <p class="post-number"><span count="list.formPosts">{{count}} posts</span></p>
 
-		  </p>
-          </a></li>
+          <p class="post-timestamp" ng-hide="!mostRecent">
+            <span most-recent="list.formPosts">Last post on {{mostRecent|date:'EEEE h:mma, MM/dd/yy' }}</span>
+		      </p>
+
+        </a>
+      </li>
     </ul>
   </div>
   <footer ng-include="'partials/footer.html'"></footer>
