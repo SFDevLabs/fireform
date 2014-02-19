@@ -3,23 +3,34 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> 
-    <html class="no-js"> <!--<![endif]-->
-        <head>
-            <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-            <title></title>
-            <meta name="description" content="">
-            <meta name="viewport" content="width=device-width">
-            <link rel="stylesheet" type="text/css" href="/css/monokai_sublime.min.css">
-        </head>
+<html class="no-js"> <!--<![endif]-->
+    <head>
 
-        <body>
-            <p>Firform Example.</p>
-            <p>
-            This form submits to <a target="_blank" href="http://fireform.org/publicexample">fireform.org/publicexample</a>.
-            </p>
+        <title>Fireform Example</title>
+        
+        <!-- Metadata -->
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width"/>
 
-            <form id="MySelector" style=" width: 400px; border: 3px solid #999; padding :10px;">
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="../css/normalize.css"/>
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic,700italic"/>
+        <link rel="stylesheet" type="text/css" href="../css/bones.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/skin.css"/>
+
+    </head>
+
+    <body class="public example-form">
+
+        <div class="container">
+
+            <h1>Fireform Example: Contact Form</h1>
+            
+            <p>This form submits to <a target="_blank" href="http://fireform.org/publicexample">fireform.org/publicexample</a>.</p>
+
+            <form id="MySelector">
                 <input type="text" name="givenname" placeholder="Name">
                 <input type="number" name="age" placeholder="Age">
                 <br>
@@ -34,34 +45,36 @@
                     Success, your form was submitted. Check it out <a target="_blank" href="http://fireform.org/publicexample">here</a>!
                 </p>  
             </form>
-            <script type="application/javascript" src="http://fireform.org/fireform.js"></script>
-            <script type="application/javascript">
-                  /* See how to customize at http://fireform.org/docs */
-                   var options = {
-                      simpleValidation:false,
-                      callback:function(err, val){console.log(err,'callback')}
-                    }
-                  new Fireform('#MySelector', 'http://fireform.org/publicexample', options)
-            </script>
-            <style type="text/css">
 
-                .submit-success #success-message{
-                    display: block;
+        </div>
+        <script type="application/javascript" src="http://fireform.org/fireform.js"></script>
+        <script type="application/javascript">
+              /* See how to customize at http://fireform.org/docs */
+               var options = {
+                  simpleValidation:false,
+                  callback:function(err, val){console.log(err,'callback')}
                 }
-                .form-validation-failed{
-                    border: 1px solid;
-                }
-                .input-validation-failed{
-                    background-color: #CC6666;
-                }
-                .input-validation-failed[type="radio"]:after{
-                    content:"-";
-                    color:red;
-                    padding: 0px 20px;
-                }
-                #success-message{
-                    display: none;
-                }
-            </style>
-        </body>
+              new Fireform('#MySelector', 'http://fireform.org/publicexample', options)
+        </script>
+        <style type="text/css">
+
+            .submit-success #success-message{
+                display: block;
+            }
+            .form-validation-failed{
+                border: 1px solid;
+            }
+            .input-validation-failed{
+                background-color: #CC6666;
+            }
+            .input-validation-failed[type="radio"]:after{
+                content:"-";
+                color:red;
+                padding: 0px 20px;
+            }
+            #success-message{
+                display: none;
+            }
+        </style>
+    </body>
 </html>

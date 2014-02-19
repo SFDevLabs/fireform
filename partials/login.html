@@ -1,6 +1,6 @@
-<div ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></div>
+<!--<div ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></div>-->
 
-<div id="content" body-class-inject="login">
+<div id="content" body-class-inject="public login">
     <div class="container">
 
         <form id="center">
@@ -22,3 +22,5 @@
 
     </div>
 </div>
+<div ng-include="'partials/footer.html'" include-replace></div>
+

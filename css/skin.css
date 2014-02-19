@@ -14,11 +14,13 @@ input,
 textarea {
   font-family: 'Lato', sans-serif;
 }
+.block p,
 a {
   text-decoration: none;
   color: #2d6199;
   transition: color 0.75s;
 }
+.block:hover p,
 a:hover {
   color: #be4c00;
   transition: color 0.75s;
@@ -157,7 +159,10 @@ p {
   margin-bottom: 1em;
   font-weight: 300;
 }
-header {
+.public header {
+  background: #bbb;
+}
+.app header {
   background: #333;
 }
 header nav ul {
@@ -171,21 +176,30 @@ header nav ul li {
   padding-bottom: 0em;
   margin-bottom: 0em;
 }
-.public.home nav ul li a {
-  display: block;
+header nav ul li a,
+.public.home #login a {
+  display: inline-block;
   text-transform: uppercase;
 }
 header nav ul li a {
+  color: #666;
+  margin: 0 0 0 1em;
+}
+.app header nav ul li a {
   color: #bbb;
-  margin: 0 0 0 1.5em;
 }
 .add ul li.nav-add a,
 .list ul li.nav-list a,
 .form ul li.nav-list a,
-.docs ul li.nav-docs a,
+.app.docs ul li.nav-docs a,
 .account ul li.nav-account a,
-header nav ul li a:hover {
+.app header nav ul li a:hover {
   color: #fff;
+}
+.login ul li.nav-login a,
+.public.docs ul li.nav-docs a,
+header nav ul li a:hover {
+  color: #000;
 }
 header nav h1 {
   float: left;
@@ -197,13 +211,17 @@ header nav h1 {
 }
 header nav h1 a {
   display: block;
-  background: transparent url("../img/fireform-logo-white.png") center center no-repeat;
+  background: transparent url("../img/fireform-logo.png") center center no-repeat;
   background-size: contain;
   width: 2.5em;
   height: 1.5em;
   opacity: 0.7;
   transition: opacity 1s;
   text-indent: -9999px;
+}
+.app header nav h1 a {
+  background: transparent url("../img/fireform-logo-white.png") center center no-repeat;
+  background-size: contain;
 }
 header nav h1 a:hover {
   opacity: 1;
@@ -257,8 +275,38 @@ article {
   padding-bottom: 0em;
   margin-bottom: 3.3333333333333335em;
 }
+.block,
+.two-up li img,
+.three-up li img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+.public.home section {
+  border-top-style: solid;
+  border-top-width: 0.0625em;
+  padding-top: 0.40625em;
+  margin-top: 0em;
+  padding-top: 3.75em;
+  padding-bottom: 3.75em;
+  margin-bottom: 0em;
+  border-color: rgba(0,0,0,0.2);
+}
 .public.home {
   text-align: center;
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 3.3333333333333335em;
+}
+.public.home p#login {
+  position: absolute;
+  top: 0;
+  right: 2.5em;
+  margin-top: 3.3333333333333335em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 3.3333333333333335em;
 }
 .public.home p#tagline {
   font-size: 2.5em;
@@ -292,23 +340,6 @@ article {
 .public.home h1:hover {
   opacity: 0.8;
 }
-.public.home nav ul {
-  margin-top: 4.5em;
-  padding-top: 4.5em;
-  padding-bottom: 0em;
-  margin-bottom: 0em;
-  border-top-style: solid;
-  border-top-width: 0.0625em;
-  padding-top: -0.0625em;
-  border-color: rgba(0,0,0,0.2);
-}
-.public.home nav ul li {
-  display: inline-block;
-  width: 15em;
-}
-.public.home nav ul li:first-child {
-  margin-right: 3.75em;
-}
 .app input,
 #center input,
 #left ul,
@@ -325,7 +356,7 @@ nav#left ul li {
   padding-bottom: 0.5em;
   margin-bottom: 0em;
 }
-.public.home nav ul li a,
+.public.home #login a,
 header nav ul li a,
 .button,
 input[type=text],
@@ -342,31 +373,42 @@ type=text] {
   border: 2px solid #bbb;
   border-top-color: rgba(0,0,0,0.2);
 }
+.public.home #login a {
+  border: 2px solid rgba(0,0,0,0.2);
+}
 header nav ul li a {
   border: 2px solid transparent;
 }
-.public.home nav ul li a {
-  border: 2px solid rgba(0,0,0,0.2);
-}
-header nav ul li a input[type=submit],
+header nav ul li a,
+input[type=submit],
 .button.action {
   display: inline-block;
   width: auto;
   text-align: center;
-  font-weight: 300;
   text-transform: uppercase;
 }
 input[type=submit] {
   padding: 1.1111111em;
   min-width: 15em;
 }
-.public.home nav ul li a,
+.inline {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0em;
+}
+.inline li {
+  display: inline-block;
+}
+.public.home p#login a,
+.inline li,
 header nav ul li a,
 .button.action {
   padding: 0.5em 1.5em;
 }
 input[type=submit],
 .button.action {
+  font-weight: 300;
   background: #8e2409;
   border: 2px solid #8e2409;
   color: #fff;
