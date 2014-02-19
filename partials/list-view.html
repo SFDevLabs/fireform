@@ -1,6 +1,4 @@
-<div ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')" include-replace></div>
-
-
+<header ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></header>
 <!-- Kill me -->
 <style>
   .overflow{
@@ -154,7 +152,7 @@
   </div>
 </div>
 
-<div ng-include="'partials/footer.html'" include-replace></div>
+<footer ng-include="'partials/footer.html'"></footer>
 
 
 <div  class="modal faded" ng-class="codeModal" ng-init="codeModal='hide';snippet=true;">
