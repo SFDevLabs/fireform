@@ -1,5 +1,6 @@
-<div ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></div>
-    <div id="content" body-class-inject="add" >
+<header id="page-header" ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></header>
+<div id="content" body-class-inject="app add" >
+
         <div class="container">
             <form id="center">
                 <h1>Add New Form</h1>
@@ -13,4 +14,6 @@
             </form>
           </ul>
         </div>
-    </div>
+
+</div>
+<footer ng-include="'partials/footer.html'"></footer>

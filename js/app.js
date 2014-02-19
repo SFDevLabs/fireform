@@ -65,7 +65,6 @@ angular.module('myApp',
 
 
 function JSON2CSV(objArray, label, quotes) {
-    debugger
         var objArray=_.map(objArray, function(val){
           return _.omit(val, '$$hashKey');
         }),

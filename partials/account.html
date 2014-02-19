@@ -1,40 +1,30 @@
-<div ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></div>
-
-
-<app-header></app-header>
-<div id="content" body-class-inject="account" >
+<header id="page-header" ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></header>
+<div id="content" body-class-inject="app account" >
     <div class="container">
         <h1>Account</h1>
-        <form id="left">
+        <form>
+            <h2>Change Email</h2>
 
-            <h2>Contact Info</h2>
-
-            <ul>
-
-                <li>
+                <!--<li>
                     <label for="name">First Name</label>
                     <input id="name" name="name" type="text" name="name" ng-model="user.name"/>
                 </li>
 
-                <!-- Jeff can we please break it into first and last name? Better practice imo -->
                 <li>
                     <label for="name">Last Name</label>
                     <input id="name" name="name" type="text" name="name" ng-model="user.name"/>
-                </li>
+                </li>-->
 
-                <li>
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="text" name="name" ng-model="user.email"/>
-                </li>
-
-            </ul>
-            <p><input type="submit" ng-click="updateProfile()" value="Update Contact Info" />
-
+            <p>
+                <!--<label for="email">Change Email</label>-->
+                <input id="email" name="email" type="text" name="name" ng-model="user.email"/>
+            </p>
+            <p><input type="submit" ng-click="updateProfile()" value="Update" /></p>
             <p class="error" ng-show="err">{{err}}</p>
             <p class="good" ng-show="msg">{{msg}}</p>
         </form>
 
-        <form id="right">
+        <form>
 
             <h2>Change Password</h2>
 
@@ -46,7 +36,7 @@
                 </li>
 
                 <li>
-                    <label for="new-password">New Password</span>
+                    <label for="new-password">New Password</label>
                     <input name="new-password" id="confirm-password" type="password" ng-keypress="reset()" ng-model="newpass"/>
                 </li>
 
@@ -66,6 +56,8 @@
 
     </div>
 </div>
+<footer ng-include="'partials/footer.html'"></footer>
+
 
 <!--
     <p>{{auth.user.id}}</p>

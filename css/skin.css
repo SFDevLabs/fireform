@@ -14,11 +14,17 @@ input,
 textarea {
   font-family: 'Lato', sans-serif;
 }
+.app #content ul li a h2,
+.app #content ul li a p,
+.block p,
 a {
   text-decoration: none;
   color: #2d6199;
   transition: color 0.75s;
 }
+.app #content ul li a:hover h2,
+.app #content ul li a:hover p,
+.block:hover p,
 a:hover {
   color: #be4c00;
   transition: color 0.75s;
@@ -40,7 +46,6 @@ h1 {
   border-bottom-width: 0.016666666666666666em;
   padding-bottom: 0.10833333333333334em;
   border-color: rgba(0,0,0,0.2);
-  color: #be4c00;
 }
 .app #content h1 {
   margin-top: 0.5em;
@@ -54,6 +59,12 @@ h1 {
   padding-top: 0em;
   padding-bottom: 0.25em;
   margin-bottom: 0em;
+}
+.form #content h1 {
+  border: 0;
+  float: left;
+  margin: 0;
+  padding: 0;
 }
 h2 {
   font-size: 2.5em;
@@ -69,6 +80,7 @@ h2 {
   padding-bottom: 0em;
   margin-bottom: 0.375em;
 }
+.post-number,
 .app ul li h2 {
   font-size: 1.875em;
   line-height: 2em;
@@ -76,7 +88,10 @@ h2 {
   padding-top: 0em;
   padding-bottom: 0em;
   margin-bottom: 0em;
+  font-weight: 300;
 }
+.modal h2,
+.account h2,
 h3 {
   font-size: 1.875em;
   line-height: 2em;
@@ -84,6 +99,13 @@ h3 {
   padding-top: 0em;
   padding-bottom: 0em;
   margin-bottom: 1em;
+}
+.modal h2,
+.account h2 {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0em;
 }
 h4 {
   font-size: 1.5625em;
@@ -145,19 +167,19 @@ p {
   display: block;
   margin-top: 0em;
   padding-top: 1em;
-  padding-bottom: 1em;
+  padding-bottom: 2em;
   margin-bottom: 0em;
 }
 .list #content ul li p {
-  font-size: 1.5625em;
-  line-height: 1.2em;
   margin-top: 0em;
   padding-top: 0em;
   padding-bottom: 0em;
-  margin-bottom: 1em;
-  font-weight: 300;
+  margin-bottom: 0em;
 }
-header {
+.public #page-header {
+  background: #bbb;
+}
+.app #page-header {
   background: #333;
 }
 header nav ul {
@@ -171,21 +193,33 @@ header nav ul li {
   padding-bottom: 0em;
   margin-bottom: 0em;
 }
-.public.home nav ul li a {
-  display: block;
+header nav ul li a,
+.public.home #login a {
+  display: inline-block;
   text-transform: uppercase;
 }
 header nav ul li a {
+  color: #666;
+  margin: 0 0 0 1em;
+}
+#content header .button {
+  margin-left: 2em;
+}
+.app header nav ul li a {
   color: #bbb;
-  margin: 0 0 0 1.5em;
 }
 .add ul li.nav-add a,
 .list ul li.nav-list a,
 .form ul li.nav-list a,
-.docs ul li.nav-docs a,
+.app.docs ul li.nav-docs a,
 .account ul li.nav-account a,
-header nav ul li a:hover {
+.app header nav ul li a:hover {
   color: #fff;
+}
+.login ul li.nav-login a,
+.public.docs ul li.nav-docs a,
+header nav ul li a:hover {
+  color: #000;
 }
 header nav h1 {
   float: left;
@@ -197,13 +231,17 @@ header nav h1 {
 }
 header nav h1 a {
   display: block;
-  background: transparent url("../img/fireform-logo-white.png") center center no-repeat;
+  background: transparent url("../img/fireform-logo.png") center center no-repeat;
   background-size: contain;
   width: 2.5em;
   height: 1.5em;
   opacity: 0.7;
   transition: opacity 1s;
   text-indent: -9999px;
+}
+.app header nav h1 a {
+  background: transparent url("../img/fireform-logo-white.png") center center no-repeat;
+  background-size: contain;
 }
 header nav h1 a:hover {
   opacity: 1;
@@ -215,12 +253,18 @@ footer {
   padding-bottom: 5.625em;
   margin-bottom: 0em;
 }
+.public.home footer {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 5.625em;
+  margin-bottom: 0em;
+}
 footer .container {
   border-top-style: solid;
   border-top-width: 0.0625em;
   padding-top: -0.0625em;
   border-color: rgba(0,0,0,0.2);
-  text-align: center;
+  text-align: left;
 }
 footer span,
 footer a.logo {
@@ -236,13 +280,12 @@ footer a.logo {
   margin-top: 0em;
   padding-top: 0em;
   padding-bottom: 0em;
-  margin-bottom: 1.875em;
+  margin-bottom: 0.46875em;
 }
 footer a.logo {
   text-indent: -9000em;
-  margin: 0 auto;
-  width: 3.75em;
-  height: 3.75em;
+  width: 2.5em;
+  height: 2.5em;
   opacity: 0.7;
   transition: opacity 0.75s;
   background: transparent url("../img/sf-dev-labs.png") center center no-repeat;
@@ -257,8 +300,34 @@ article {
   padding-bottom: 0em;
   margin-bottom: 3.3333333333333335em;
 }
+.block,
+.two-up li img,
+.three-up li img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+.public.home section {
+  border-top-style: solid;
+  border-top-width: 0.0625em;
+  padding-top: 0.40625em;
+  margin-top: 0em;
+  padding-top: 3.75em;
+  padding-bottom: 3.75em;
+  margin-bottom: 0em;
+  border-color: rgba(0,0,0,0.2);
+}
 .public.home {
   text-align: center;
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 3.3333333333333335em;
+}
+.public.home p#login {
+  position: absolute;
+  top: 1em;
+  right: 2.5em;
 }
 .public.home p#tagline {
   font-size: 2.5em;
@@ -267,7 +336,7 @@ article {
   text-align: center;
   color: #000;
 }
-.public.home h1 + p {
+.public.home p#sign-up {
   font-size: 1.875em;
   line-height: 2em;
   margin-top: 0em;
@@ -292,28 +361,22 @@ article {
 .public.home h1:hover {
   opacity: 0.8;
 }
-.public.home nav ul {
-  margin-top: 4.5em;
-  padding-top: 4.5em;
-  padding-bottom: 0em;
-  margin-bottom: 0em;
-  border-top-style: solid;
-  border-top-width: 0.0625em;
-  padding-top: -0.0625em;
-  border-color: rgba(0,0,0,0.2);
-}
-.public.home nav ul li {
-  display: inline-block;
-  width: 15em;
-}
-.public.home nav ul li:first-child {
-  margin-right: 3.75em;
-}
 .app input,
 #center input,
 #left ul,
 #left ul li {
   width: 100%;
+}
+.app.account input[type=text],
+.app.account input[type=password] {
+  width: 50%;
+  clear: both;
+}
+.account form {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 3.75em;
 }
 nav#left ul li {
   border-bottom-style: solid;
@@ -325,7 +388,7 @@ nav#left ul li {
   padding-bottom: 0.5em;
   margin-bottom: 0em;
 }
-.public.home nav ul li a,
+.public.home #login a,
 header nav ul li a,
 .button,
 input[type=text],
@@ -342,31 +405,59 @@ type=text] {
   border: 2px solid #bbb;
   border-top-color: rgba(0,0,0,0.2);
 }
+.button,
+.public.home #login a {
+  border: 2px solid rgba(0,0,0,0.2);
+}
 header nav ul li a {
   border: 2px solid transparent;
 }
-.public.home nav ul li a {
-  border: 2px solid rgba(0,0,0,0.2);
-}
-header nav ul li a input[type=submit],
+header nav ul li a,
+input[type=submit],
+.button,
 .button.action {
   display: inline-block;
   width: auto;
   text-align: center;
-  font-weight: 300;
   text-transform: uppercase;
+}
+.button.solid {
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border-color: transparent;
+  transition: all 0.5s;
+}
+.button.solid:hover {
+  transition: all 0.5s;
+  background: rgba(0,0,0,0.7);
 }
 input[type=submit] {
   padding: 1.1111111em;
   min-width: 15em;
 }
-.public.home nav ul li a,
+.inline {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0em;
+}
+.inline li {
+  display: inline-block;
+}
+.controls .left,
+.button,
+.public.home p#login a,
+.inline li,
 header nav ul li a,
 .button.action {
   padding: 0.5em 1.5em;
 }
+.controls .left {
+  padding-left: 0;
+}
 input[type=submit],
 .button.action {
+  font-weight: 300;
   background: #8e2409;
   border: 2px solid #8e2409;
   color: #fff;
@@ -389,6 +480,191 @@ input[type=submit]:hover,
 .app footer .container,
 .app h1 {
   border-color: rgba(0,0,0,0.2);
+}
+#content header:before,
+#content header:after,
+.app #content ul li a:before,
+.app #content ul li a:after,
+.app ul li:before,
+.app ul li:after {
+  content: " ";
+  display: table;
+}
+#content header:after,
+.app #content ul li a:after,
+.app ul li:after {
+  clear: both;
+}
+.app ul li h2 {
+  float: left;
+  max-width: 75%;
+}
+.post-number {
+  float: right;
+}
+.post-timestamp {
+  clear: both;
+  float: none;
+}
+#content header {
+  border-bottom-style: solid;
+  border-bottom-width: 0.0625em;
+  padding-bottom: 1.8125em;
+  border-color: rgba(0,0,0,0.2);
+}
+.modal {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background: rgba(0,0,0,0.8);
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.5s;
+}
+.modal-content {
+  box-sizing: border-box;
+  background: #fff;
+  position: absolute;
+  height: 40em;
+  width: 50em;
+  top: 50%;
+  left: 50%;
+  margin: -20em 0 0 -25em;
+  padding: 1.25em;
+  z-index: 9000;
+}
+.code-wrapper {
+  box-sizing: border-box;
+  border: 1px solid rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.1);
+  padding: 1.25em;
+}
+.close-button {
+  background: #ddd;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 2.5em;
+  display: block;
+  position: absolute;
+  top: -2.5em;
+  right: -1.5em;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.5s;
+}
+.close-button:hover {
+  background: #fff;
+  transition: all 0.5s;
+}
+.close-button i {
+  font-size: 1.875em;
+  margin-top: 0.15em;
+}
+.close-button:before,
+.close-button:after {
+  content: none;
+}
+.controls {
+  border-bottom-style: solid;
+  border-bottom-width: 0.0625em;
+  padding-bottom: 1.8125em;
+  border-color: rgba(0,0,0,0.2);
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 3.75em;
+}
+.controls ul li {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0em;
+}
+.controls input,
+.controls label,
+.controls ul,
+.controls ul li,
+.controls p {
+  display: inline-block;
+  width: auto;
+}
+th,
+td {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-right: 1px solid rgba(0,0,0,0.2);
+}
+.table-container {
+  clear: both;
+  overflow: scroll;
+}
+table {
+  clear: both;
+  min-width: 100%;
+  border-left: 1px solid rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(0,0,0,0.2);
+}
+table th i.field-type,
+table th span {
+  display: inline-block;
+}
+table th i.field-type,
+table th span,
+table td {
+  padding: 0.625em;
+}
+table th span.ng-scope {
+  padding: 0;
+}
+table th i.field-type,
+table th {
+  background: rgba(50,101,190,0.1);
+}
+table th span.ng-scope,
+table a {
+  display: block;
+}
+table th i.field-type {
+  border-right: 1px solid rgba(0,0,0,0.2);
+  margin-right: 0.3125em;
+}
+table th i {
+  position: relative;
+}
+.fa-sort-down,
+.fa-sort-asc:before,
+.fa-sort-up:before,
+.fa-sort-desc:before {
+  position: absolute;
+}
+.fa-sort-down,
+.fa-sort-asc:before {
+  top: -1em;
+}
+.fa-sort-up:before,
+.fa-sort-desc:before {
+  top: -0.5em;
+}
+table th a:hover {
+  color: #3265be;
+  background: rgba(50,101,190,0.2);
+}
+table tr:nth-child(odd) td {
+  background: rgba(0,0,0,0.05);
+}
+.account label {
+  display: block;
+  float: none;
+}
+.account p.field,
+.account ul.field li {
+  display: block;
+  float: left;
+}
+ul.field,
+.error,
+.msg {
+  float: none;
+  clear: both;
 }
 #code {
   display: none;

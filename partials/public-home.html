@@ -1,29 +1,55 @@
-<div body-class-inject="home public" id="center">
-    <p id="tagline">Hook your website &#60;<span style="color:#8e2409;">form</span>&#62; into a hosted private backend.</p>
+<p id="login"><a href="/login">Login</a></p>
+<div class="container">
+  <div body-class-inject="home public">
     <h1>Fireform</h1>
-    <p><a href="#signup" class="action button">Sign Up</a></p>
+    <section>
+      <p id="tagline">Hook your website &#60;<span style="color:#8e2409;">form</span>&#62; into a hosted private backend.</p>
+      <ul class="three-up">
+        <li>
+          <!--<img src="/img/generate-fireform-code.png" alt="Generate a Fireform code" />-->
+          <p>Generate a Fireform code</p>
+        </li>
+        <li>
+          <!--<img src="/img/paste-fireform-code-into-html.png" alt="Paste the Fireform code into your HTML" />-->
+          <p>Paste the code into your HTML</p>
+        </li>
+        <li>
+          <!--<img src="/img/collect-data-with-fireform.png" alt="Collect data with Fireform's backend" />-->
+          <p>Collect your data</p>
+        </li>
+      </ul>
+      <p id="sign-up"><a href="#signup" class="action button">Sign Up</a></p>
+    </section>
   </div>
-  <p>
-    <a class="button" target="_blank" href="/example">Example Form</a>
-    <span>|</span>
-    <a class="button" href="/publicexample">Example List</a>
-  </p>
-  <nav id="home-nav">
-    <ul>
-      <li><a href="/docs">Documentation</a></li>
-      <li><a href="/login">Login</a></li>
+
+  <section>
+    <h2>See an example.</h2>
+    <ul class="two-up">
+      <li>
+        <a target="_blank" href="/example" class="block">
+          <!--<img src="/img/fireform-example-form.png" alt="Demo Fireform Form" />-->
+          <p>Demo Form</p>
+        </a>
+      </li>
+      <li>
+        <a href="/publicexample" class="block">
+          <!--<img src="/img/fireform-example-backend.png" alt="Demo Fireform Backend" />-->
+          <p>Demo Backend</p>
+        </a>
+      </li>
     </ul>
-  </nav>
-  <div ng-include="'partials/footer.html'" include-replace></div>
+    <h2>Or read our <a href="/docs">documentation</a>.</h2>
+  </section>
+  <section>
+    <h2>Powered by</h2>
+    <ul class="inline">
+      <li>
+        <a href=""><img width="150px" src="http://szimek.github.io/presentation-firebase-intro/images/firebase_logo.png"></a>
+      </li>
+      <li>
+        <a href=""><img width="150px" src="http://pascalprecht.github.io/slides/angularjs-insights/img/angularjs-logo.png"></a>
+      </li>
+    </ul>
+  </section>
+  <footer ng-include="'partials/footer.html'"></footer>
 </div>
-
-
-<!--         <p><a href="https://github.com/sfdevlabs/fireform"><img width="50" src="http://www.iconsdb.com/icons/preview/black/github-10-xxl.png"><br>GitHub Project</a></p>
-         Make these inline please
-        <span>Powered by:</span>
-        <img width="150px" src="http://szimek.github.io/presentation-firebase-intro/images/firebase_logo.png">
-        <br>
-        <span>Built With:</span>
-
-        <img width="150px" src="http://pascalprecht.github.io/slides/angularjs-insights/img/angularjs-logo.png">
- -->

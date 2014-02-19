@@ -207,8 +207,18 @@ Fireform = function (selector, fireBaseRepo, options){
                 source=source_tuple[0].split('.org')[0]//split the .com
                 user_repo_tuple=source_tuple[1].split('/')
                 user=user_repo_tuple[0]
-                repo=user_repo_tuple[1]
+                repo=that.repo=user_repo_tuple[1]
                 return "https://"+source+".firebaseio.com/users/simplelogin:"+user+"/lists/"+repo+"/formPosts.json"
+            }
+
+            this.getEmailRepo=function(url){
+                if ( url.match("fireform.org/publicexample") ) {return null }//check for example url
+                source_tuple=url.split("://")[1].split('/list/')
+                source=source_tuple[0].split('.org')[0]//split the .com
+                user_repo_tuple=source_tuple[1].split('/')
+                user=user_repo_tuple[0]
+                repo=user_repo_tuple[1]
+                return "https://"+source+".firebaseio.com/users/simplelogin:"+user+"/"
             }
 
             this.submitForm=function(fireBaseRepo, payLoad){
@@ -216,6 +226,63 @@ Fireform = function (selector, fireBaseRepo, options){
                 xmlhttp.open("POST",url,true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send( JSON.stringify(payLoad) );
+
+
+
+                
+                var emailPayload=payLoad,
+                payloadText='';
+                for (var key in emailPayload) {
+                    payloadText+=' \r\n '+key+" : "+emailPayload[key].value
+                };
+                payloadText=+' \r\n '
+
+                emailPayload.fireBaseRepo=fireBaseRepo;
+                emailPayload.payloadText=payloadText;
+                emailPayload.fireFormRepo=that.repo;
+
+                var urlEmail = this.getEmailRepo(fireBaseRepo)
+                var xmlhttpEmail = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
+                xmlhttpEmail.open("PUT",urlEmail+'emailNotificationContent.json',true);
+                xmlhttpEmail.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttpEmail.send( JSON.stringify(emailPayload) );
+
+
+                var xmlhttpEmailConfirmation = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
+                xmlhttpEmailConfirmation.open("PUT",urlEmail+'emailConfirmationContent.json',true);
+                xmlhttpEmailConfirmation.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                emailPayload.email = emailPayload.email? emailPayload.email:{value:null};
+                xmlhttpEmailConfirmation.send( JSON.stringify(emailPayload) );
+
+
+                xmlhttpEmailConfirmation.onreadystatechange=function(){
+                    if (xmlhttpEmailConfirmation.readyState == 4) {
+                        //email updated
+                        xmlhttpEmailConfirmationDel.send();//defined below
+                    }
+                }  
+                var xmlhttpEmailConfirmationDel = new XMLHttpRequest
+                xmlhttpEmailConfirmationDel.open("DELETE",urlEmail+'emailConfirmationContent.json',true);
+                xmlhttpEmailConfirmationDel.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+
+                xmlhttpEmail.onreadystatechange=function(){
+                    if (xmlhttpEmail.readyState == 4) {
+                        //email updated
+                        xmlhttpEmailDel.send();//defined below
+
+                    }
+                }    
+                var xmlhttpEmailDel = new XMLHttpRequest
+                xmlhttpEmailDel.open("DELETE",urlEmail+'emailNotificationContent.json',true);
+                xmlhttpEmailDel.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+
+                // xmlhttpEmailDel.onreadystatechange=function(){
+                //     if (xmlhttpEmail.readyState == 4) {
+                //         //email updated
+                //     }
+                // }    
 
                 xmlhttp.onreadystatechange=function(){
                     if (xmlhttp.readyState == 4) {
