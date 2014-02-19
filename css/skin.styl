@@ -15,11 +15,17 @@ two-gray = rgba(0,0,0,0.02)
 five-gray = rgba(0,0,0,0.05)
 ten-gray = rgba(0,0,0,0.1)
 twenty-gray = rgba(0,0,0,0.2)
+fifty-gray = rgba(0,0,0,0.5)
+seventy-gray = rgba(0,0,0,0.7)
+
 
 red = #8e2409
 orange = #be4c00
 dark-blue = #2d6199
 light-blue = #3265be
+
+one-blue = rgba(50, 101, 190, 0.1)
+two-blue = rgba(50, 101, 190, 0.2)
 
 establish-baseline()
 
@@ -33,12 +39,16 @@ input
 textarea
 	font-family: 'Lato', sans-serif
 
+.app #content ul li a h2
+.app #content ul li a p
 .block p
 a
 	text-decoration: none
 	color: dark-blue
 	transition: color 0.75s
 
+.app #content ul li a:hover h2
+.app #content ul li a:hover p
 .block:hover p
 a:hover
 	color: orange
@@ -55,7 +65,6 @@ h1
 	rhythm(1, 0, 0.5, 1, 60px)
 	trailing-border(1px, .25, 60px, solid)
 	border-color: twenty-gray
-	color: orange
 
 .app #content h1
 	rhythm(1, 0, 0.5, 1, 60px)
@@ -64,6 +73,12 @@ h1
 .list #content h1
 	rhythm(1, 0, 0.5, 0, 60px)	
 
+.form #content h1
+	border: 0
+	float: left
+	margin: 0
+	padding: 0
+
 h2
 	adjust-font-size-to(40px)
 	rhythm(0, 0, 0, 1, 40px)
@@ -71,13 +86,21 @@ h2
 .app h2
 	rhythm(0, 0, 0, 0.5, 40px)
 
+.post-number
 .app ul li h2
 	adjust-font-size-to(30px)
 	rhythm(0, 0, 0, 0, 30px)
+	font-weight: 300
 
+.modal h2
+.account h2
 h3
 	adjust-font-size-to(30px)
 	rhythm(2, 0, 0, 1, 30px)
+
+.modal h2
+.account h2
+	rhythm(0, 0, 0, 0)
 
 h4
 	adjust-font-size-to(25px)
@@ -121,17 +144,15 @@ p
 .app.home #content ul li a
 .list #content ul li a
 	display: block
-	rhythm(0, 1, 1, 0, 30px)
+	rhythm(0, 1, 2, 0, 30px)
 
 .list #content ul li p
-	adjust-font-size-to(25px)
-	rhythm(0, 0, 0, 1, 30px)
-	font-weight: 300
+	rhythm(0, 0, 0, 0, 30px)
 
-.public header
+.public #page-header
 	background: mid-gray
 
-.app header
+.app #page-header
 	background: darkest-gray
 
 header nav ul
@@ -150,6 +171,9 @@ header nav ul li a
 header nav ul li a
 	color: dark-gray
 	margin: 0 0 0 1em
+
+#content header .button
+	margin-left: 2em
 
 .app header nav ul li a
 	color: mid-gray
@@ -193,10 +217,13 @@ header nav h1 a:hover
 footer
 	rhythm(2, 0, 3, 0)
 
+.public.home footer
+	rhythm(0, 0, 3, 0)
+
 footer .container
 	leading-border(1px, 0, 16px, solid)
 	border-color: twenty-gray
-	text-align: center
+	text-align: left
 
 footer span
 footer a.logo
@@ -206,13 +233,12 @@ footer span
 	rhythm(0, 0, 0, 0.5)
 
 footer a.logo
-	rhythm(0, 0, 0, 1)
+	rhythm(0, 0, 0, 0.25)
 
 footer a.logo
 	text-indent: -9000em;
-	margin: 0 auto
-	width: 3.75em
-	height: 3.75em
+	width: 2.5em
+	height: 2.5em
 	opacity: 0.7
 	transition: opacity 0.75s
 	background: transparent url('../img/sf-dev-labs.png') center center no-repeat
@@ -242,9 +268,8 @@ article
 
 .public.home p#login
 	position: absolute
-	top: 0
+	top: 1em
 	right: 2.5em
-	rhythm(2, 0, 0, 2, 18px)
 
 .public.home p#tagline
 	adjust-font-size-to(40px)
@@ -252,7 +277,7 @@ article
 	text-align: center
 	color: black
 
-.public.home h1 + p
+.public.home p#sign-up
 	adjust-font-size-to(30px)
 	rhythm(0, 0, 0, 1, 30px)
 
@@ -275,6 +300,15 @@ article
 #left ul
 #left ul li
 	width: 100%
+
+.app.account input[type=text]
+.app.account input[type=password]
+	width: 50%
+	clear: both
+
+.account form
+	rhythm(0, 0, 0, 2)
+	
 
 
 nav#left ul li
@@ -315,6 +349,16 @@ input[type=submit]
 	text-align: center
 	text-transform: uppercase
 
+.button.solid
+	background: fifty-gray
+	color: white
+	border-color: transparent
+	transition: all 0.5s
+
+.button.solid:hover
+	transition: all 0.5s
+	background: seventy-gray
+
 input[type=submit]
 	padding: 1.1111111em
 	min-width: 15em
@@ -325,12 +369,16 @@ input[type=submit]
 .inline li
 	display: inline-block
 
+.controls .left
 .button
 .public.home p#login a
 .inline li
 header nav ul li a
 .button.action
 	padding: 0.5em 1.5em
+
+.controls .left
+	padding-left: 0
 
 input[type=submit]
 .button.action
@@ -347,7 +395,6 @@ input[type=submit]:hover
 	border-color: orange
 	transition: all 0.5s
 
-
 .app.home
 .add
 .list
@@ -359,10 +406,34 @@ input[type=submit]:hover
 .app h1
 	border-color: twenty-gray
 
-.breadcrumb
-	display: block
-	font-size: 0.5em
-	line-height: 1em
+#content header:before
+#content header:after
+.app #content ul li a:before
+.app #content ul li a:after
+.app ul li:before
+.app ul li:after
+	content: " "
+	display: table
+
+#content header:after
+.app #content ul li a:after
+.app ul li:after
+	clear: both
+
+.app ul li h2
+	float: left
+	max-width: 75%
+
+.post-number
+	float: right
+
+.post-timestamp
+	clear: both
+	float: none
+
+#content header
+	trailing-border(1px, 1, 16px, solid)
+	border-color: twenty-gray
 
 .modal
 	position: fixed
@@ -377,11 +448,11 @@ input[type=submit]:hover
 	box-sizing: border-box
 	background: white
 	position: absolute
-	height: 20em
+	height: 40em
 	width: 50em
 	top: 50%
 	left: 50%
-	margin: -10em 0 0 -25em
+	margin: -20em 0 0 -25em
 	padding: 1.25em
 	z-index: 9000
 
@@ -397,24 +468,104 @@ input[type=submit]:hover
 	height: 2.5em
 	border-radius: 2.5em
 	display: block
-	text-indent: -9000em
 	position: absolute
-	top: -1.25em
-	right: -1.25em
+	top: -2.5em
+	right: -1.5em
 	cursor: pointer
+	text-align: center
+	transition: all 0.5s
 
-table, 
+.close-button:hover
+	background: white
+	transition: all 0.5s
+
+.close-button i
+	font-size: 1.875em
+	margin-top: 0.15em
+
+.close-button:before,
+.close-button:after {
+	content: none;
+}
+
+.controls
+	trailing-border(1px, 1, 16px, solid)
+	border-color: twenty-gray
+	rhythm(0, 0, 0, 2, 16px)
+
+.controls ul li
+	rhythm(0, 0, 0, 0)
+
+.controls input
+.controls label
+.controls ul
+.controls ul li
+.controls p
+	display: inline-block
+	width: auto
+
 th, 
 td
-	border: 1px solid mid-gray
+	border-bottom: 1px solid twenty-gray
+	border-right: 1px solid twenty-gray
+
+.table-container
+	clear: both
+	overflow: scroll
 
 table
+	clear: both
 	min-width: 100%
+	border-left: 1px solid twenty-gray
+	border-top: 1px solid twenty-gray
 
-table th
+table th i.field-type
+table th span
+	display: inline-block
+
+table th i.field-type
+table th span
 table td
 	padding: 0.625em
 
+table th span.ng-scope
+	padding: 0
+
+table th i.field-type
+table th
+	background: one-blue
+
+table th span.ng-scope
+table a
+	display: block
+
+table th i.field-type
+	border-right: 1px solid twenty-gray
+	margin-right: 0.3125em
+
+table th i
+	position: relative
+
+.fa-sort-down
+.fa-sort-asc:before
+.fa-sort-up:before
+.fa-sort-desc:before
+	position: absolute
+
+.fa-sort-down
+.fa-sort-asc:before
+	top: -1em	
+
+.fa-sort-up:before
+.fa-sort-desc:before
+	top: -0.5em
+
+table th a:hover
+	color: light-blue
+	background: two-blue
+
+table tr:nth-child(odd) td
+	background: five-gray
 
 .account label
 	display: block
