@@ -247,7 +247,6 @@ Fireform = function (selector, fireBaseRepo, options){
                 var xmlhttpEmail = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
                 xmlhttpEmail.open("PUT",urlEmail+'emailNotificationContent.json',true);
                 xmlhttpEmail.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xmlhttpEmail.send( JSON.stringify(emailPayload) );
 
 
                 var xmlhttpEmailConfirmation = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
@@ -267,6 +266,13 @@ Fireform = function (selector, fireBaseRepo, options){
                 xmlhttpEmailConfirmationDel.open("PUT",urlEmail+'emailConfirmationContent.json',true);
                 xmlhttpEmailConfirmationDel.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
+                xmlhttpEmailConfirmationDel.onreadystatechange=function(){
+                    if (xmlhttpEmailConfirmationDel.readyState == 4) {
+                        //email updated
+                        xmlhttpEmail.send( JSON.stringify(emailPayload) );
+
+                    }
+                }   
 
                 xmlhttpEmail.onreadystatechange=function(){
                     if (xmlhttpEmail.readyState == 4) {
