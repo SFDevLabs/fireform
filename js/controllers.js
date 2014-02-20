@@ -224,6 +224,11 @@ angular.module('myApp.controllers', [])
         var uid= $scope.auth.user.uid.replace("simplelogin:","")
         ,loc = $location.$$path.replace('/list/'+uid+'/', '')
         $scope.ListView = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc);
+
+        $scope.emailConfirmation = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc+'/emailConfirmation');
+        $scope.emailNotification = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc+'/emailNotification');
+
+        $scope.emailNotification.$set(false)
         $scope.$location = $location;
 
         //delete this form. by calling remove on the firebase object
