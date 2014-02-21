@@ -269,15 +269,15 @@ Fireform = function (selector, fireBaseRepo, options){
                 xmlhttpEmailConfirmationDel.onreadystatechange=function(){
                     if (xmlhttpEmailConfirmationDel.readyState == 4) {
                         //email updated
-                        xmlhttpEmail.send( JSON.stringify(emailPayload) );
 
                     }
                 }   
-
+                
+                xmlhttpEmail.send( JSON.stringify(emailPayload) );
                 xmlhttpEmail.onreadystatechange=function(){
                     if (xmlhttpEmail.readyState == 4) {
                         //email updated
-                        xmlhttpEmailDel.send( JSON.stringify({uid:"simplelogin:"+user, fireFormRepo:that.repo}) );//defined below
+                     xmlhttpEmailDel.send( JSON.stringify({uid:"simplelogin:"+user, fireFormRepo:that.repo}) );//defined below
 
                     }
                 }    

@@ -53,8 +53,16 @@
 
     </header>
 
-<!--     <a ng-click="emailNotification.$set(emailConfirmation? false:true); ">emailConfirmation: {{emailConfirmation}}</a> |
-    <a ng-click="emailNotification.$set(emailNotification? false:true)">emailNotification: {{emailNotification}}</a> -->
+<!--     <a ng-click="emailNotification.$set(emailConfirmation? false:true); ">emailConfirmation: {{ListView.emailConfirmation}}</a> |
+    <a ng-click="emailNotification.$set(emailNotification? false:true)">emailNotification: {{ListView.emailNotification}}</a> -->
+
+
+    <div ng-hide="!user.emailAuth">
+      <label>emailNotification</label>
+      <input ng-disabled="!user.emailAuth" class="toggle ng-valid ng-dirty" type="checkbox" ng-model="ListView.emailNotification" ng-change="ListView.$save('emailNotification')">
+      <label>emailConfirmation</label>
+      <input ng-disabled="!user.emailAuth" class="toggle ng-valid ng-dirty" type="checkbox" ng-model="ListView.emailConfirmation" ng-change="ListView.$save('emailConfirmation')">
+    </div>
 
     <div class="controls">
       <p class="left"><a ng-hide="$location.$$url==='/publicexample'" href="/list" class="breadcrumb">&lsaquo; Back to all forms</a></p>

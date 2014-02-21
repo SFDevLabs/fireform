@@ -225,10 +225,20 @@ angular.module('myApp.controllers', [])
         ,loc = $location.$$path.replace('/list/'+uid+'/', '')
         $scope.ListView = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc);
 
+
+        //$scope.emailAuth = syncData('users/' + $scope.auth.user.uid
+
         $scope.emailConfirmation = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc+'/emailConfirmation');
         $scope.emailNotification = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc+'/emailNotification');
 
-        $scope.emailNotification.$set(false)
+        $scope.setEmailNotification = function() {
+
+        }
+
+         $scope.setEmailConfirmation = function() {
+
+        }
+
         $scope.$location = $location;
 
         //delete this form. by calling remove on the firebase object
