@@ -260,16 +260,19 @@ Fireform = function (selector, fireBaseRepo, options){
                 var emailPayload={};
                 emailPayload.form=payLoad;
                 payloadText='';
+                payloadHTML="<table>"
                 for (var key in emailPayload.form) {
                     payloadText+=' \r\n '+key+" : "+emailPayload.form[key].value
+                    payloadHTML+=' <tr><td> '+key+" </td> <td>"+emailPayload.form[key].value+'</td> </tr>'
                 };
-                payloadText+=' \r\n '
+                payloadText+='</table>'
 
 
                // emailPayload.confirmation = emailPayload.form[key]
 
                 emailPayload.fireBaseRepo=fireBaseRepo;
                 emailPayload.payloadText=payloadText;
+                emailPayload.payloadHTML=payloadHTML;
                 emailPayload.uid = "simplelogin:"+user
                 emailPayload.fireFormRepo=that.repo;
                 emailPayload.emailConfirmation= that.emailConfirmation? that.emailConfirmation:undefined;

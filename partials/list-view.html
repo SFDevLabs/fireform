@@ -34,6 +34,20 @@
     opacity: 1;
   }
 
+  .email-options .button{
+    background-color: #2d6199;
+    color:#fff;
+
+  }
+  .email-options .off .check{
+    display:none;
+  }
+
+  .email-options .off{
+    background-color: rgba(255, 255, 255, 0);
+    color: #666;
+  }
+
 </style>
 <!-- Kill me -->
 
@@ -46,23 +60,18 @@
 
       <h1>{{ListView.id}}{{$location.url}}</h1>
 
+
+
+
       <div class="right">
         <p id="delete" class="button" ng-click="timeoutSet('deleteModal','fadeIn faded','10'); deleteModal='faded'"; ng-hide="$location.$$url==='/publicexample'"><i class="fa fa-trash-o"></i> Delete</p>
         <p ng-click="timeoutSet('codeModal','fadeIn faded','10'); codeModal='faded'; bodyClassClick('app form overflow');"  class="action button"><i class="fa fa-code"></i> Get Code</p>
       </div>
-
     </header>
 
-<!--     <a ng-click="emailNotification.$set(emailConfirmation? false:true); ">emailConfirmation: {{ListView.emailConfirmation}}</a> |
-    <a ng-click="emailNotification.$set(emailNotification? false:true)">emailNotification: {{ListView.emailNotification}}</a> -->
 
 
-    <div ng-hide="!user.emailAuth">
-      <label>emailNotification</label>
-      <input ng-disabled="!user.emailAuth" class="toggle ng-valid ng-dirty" type="checkbox" ng-model="ListView.emailNotification" ng-change="ListView.$save('emailNotification')">
-      <label>emailConfirmation</label>
-      <input ng-disabled="!user.emailAuth" class="toggle ng-valid ng-dirty" type="checkbox" ng-model="ListView.emailConfirmation" ng-change="ListView.$save('emailConfirmation')">
-    </div>
+
 
     <div class="controls">
       <p class="left"><a ng-hide="$location.$$url==='/publicexample'" href="/list" class="breadcrumb">&lsaquo; Back to all forms</a></p>
@@ -172,7 +181,12 @@
     </div>
       
     <p><a ng-hide="$location.$$url==='/publicexample' || rows.length===0" href="/list">&lsaquo; Back to all forms</a></p>
-
+      <div class="right" ng-hide="!user.emailAuth">
+        <div class="right email-options">
+          <p class="button"  ng-class="ListView.emailConfirmation?'on':'off'" ng-click="ListView.emailConfirmation=ListView.emailConfirmation?false:true" ></i> Send Email Confirmation<i class="check fa fa-check"></i></p>
+          <p class="button"  ng-class="ListView.emailNotification?'on':'off'" ng-click="ListView.emailNotification=ListView.emailNotification?false:true" ></i> Get Email Notification<i class="check fa fa-check"></i></p>
+        </div>
+      </div>
 
   </div>
 </div>
