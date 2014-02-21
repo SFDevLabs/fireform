@@ -111,6 +111,7 @@ Fireform = function (selector, fireBaseRepo, options){
                 formValidationClass=options && options.formValidationClass? options.formValidationClass:"form-validation-failed",
                 inputValidationClass=options && options.inputValidationClass? options.inputValidationClass:"input-validation-failed",
                 simpleValidation=options && options.simpleValidation? options.simpleValidation:false;
+                that.emailNotification=options && options.emailNotification? options.emailNotification:undefined;
 
 
             if (typeof selector!=="string"){
@@ -164,6 +165,31 @@ Fireform = function (selector, fireBaseRepo, options){
                     value=inputs[i].value;
 
                     
+                    if (inputs[i].getAttribute("email-confirmation")==='true')
+                        that.emailConfirmation = value;
+
+                    if (inputs[i].getAttribute("email-confirmation-from")==='true')
+                        that.emailConfirmationFrom = value;
+
+
+                    if (inputs[i].getAttribute("email-confirmation-from")==='true')
+                        that.emailConfirmationFrom = value;
+
+
+                    if (inputs[i].getAttribute("email-confirmation-subject")==='true')
+                        that.emailConfirmationSubject = value;
+
+                    if (inputs[i].getAttribute("email-confirmation-body-html")==='true')
+                        that.emailConfirmationBodyHTML = value;
+
+
+                    if (inputs[i].getAttribute("email-confirmation-body-text")==='true')
+                        that.emailConfirmationBodyText = value;
+
+                    if (inputs[i].getAttribute("email-notification")==='true' && !that.emailNotification)
+                        that.emailNotification = value;
+
+
                     if (type==="radio" && inputs[i].checked===true){
                         payLoad[name]={};
                         payLoad[name].value = inputs[i].checked? value:"";
@@ -231,59 +257,80 @@ Fireform = function (selector, fireBaseRepo, options){
 
 
                 
-                var emailPayload=payLoad,
+                var emailPayload={};
+                emailPayload.form=payLoad;
                 payloadText='';
-                for (var key in emailPayload) {
-                    payloadText+=' \r\n '+key+" : "+emailPayload[key].value
+                for (var key in emailPayload.form) {
+                    payloadText+=' \r\n '+key+" : "+emailPayload.form[key].value
                 };
                 payloadText+=' \r\n '
+
+
+               // emailPayload.confirmation = emailPayload.form[key]
 
                 emailPayload.fireBaseRepo=fireBaseRepo;
                 emailPayload.payloadText=payloadText;
                 emailPayload.uid = "simplelogin:"+user
                 emailPayload.fireFormRepo=that.repo;
-
-                var urlEmail = this.getEmailRepo(fireBaseRepo)
-                var xmlhttpEmail = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
-                xmlhttpEmail.open("PUT",urlEmail+'emailNotificationContent.json',true);
-                xmlhttpEmail.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-
-                var xmlhttpEmailConfirmation = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
-                xmlhttpEmailConfirmation.open("PUT",urlEmail+'emailConfirmationContent.json',true);
-                xmlhttpEmailConfirmation.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                emailPayload.email = emailPayload.email? emailPayload.email:{value:null};
-                xmlhttpEmailConfirmation.send( JSON.stringify(emailPayload) );
+                emailPayload.emailConfirmation= that.emailConfirmation? that.emailConfirmation:undefined;
+                emailPayload.emailConfirmationFrom=that.emailConfirmationFrom? that.emailConfirmationFrom:'no-reply@'+window.location.host;
+                emailPayload.emailConfirmationSubject=that.emailConfirmationSubject? that.emailConfirmationSubject:'Confirming your submition to'+window.location.host;
+                emailPayload.emailConfirmationBodyText=that.emailConfirmationBodyText? that.emailConfirmationBodyText:'Thanks for you submition!';
+                emailPayload.emailConfirmationBodyHTML=that.emailConfirmationBodyHTML? that.emailConfirmationBodyHTML:'<p>Thanks for your submition!<p>';
 
 
-                xmlhttpEmailConfirmation.onreadystatechange=function(){
-                    if (xmlhttpEmailConfirmation.readyState == 4) {
-                        //email updated
-                        xmlhttpEmailConfirmationDel.send( JSON.stringify({uid:"simplelogin:"+user, fireFormRepo:that.repo}) );//defined below
-                    }
-                }  
-                var xmlhttpEmailConfirmationDel = new XMLHttpRequest
-                xmlhttpEmailConfirmationDel.open("PUT",urlEmail+'emailConfirmationContent.json',true);
-                xmlhttpEmailConfirmationDel.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                emailPayload.emailNotification= that.emailNotification? that.emailNotification:undefined;
 
-                xmlhttpEmailConfirmationDel.onreadystatechange=function(){
-                    if (xmlhttpEmailConfirmationDel.readyState == 4) {
-                        //email updated
 
-                    }
-                }   
+
+                var urlEmailC = 'https://fireform.firebaseio.com/emailQConfirmation.json'//this.getEmailRepo(fireBaseRepo)
+                var xmlhttpEmailC = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
+                xmlhttpEmailC.open("POST",urlEmailC,true);
+                xmlhttpEmailC.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+
+                var urlEmailN = 'https://fireform.firebaseio.com/emailQNotification.json'//this.getEmailRepo(fireBaseRepo)
+                var xmlhttpEmailN = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
+                xmlhttpEmailN.open("POST",urlEmailN,true);
+                xmlhttpEmailN.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+
+                // var xmlhttpEmailConfirmation = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
+                // xmlhttpEmailConfirmation.open("PUT",urlEmail+'emailConfirmationContent.json',true);
+                // xmlhttpEmailConfirmation.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                // emailPayload.email = emailPayload.email? emailPayload.email:{value:null};
+                // xmlhttpEmailConfirmation.send( JSON.stringify(emailPayload) );
+
+
+                // xmlhttpEmailConfirmation.onreadystatechange=function(){
+                //     if (xmlhttpEmailConfirmation.readyState == 4) {
+                //         //email updated
+                //         xmlhttpEmailConfirmationDel.send( JSON.stringify({uid:"simplelogin:"+user, fireFormRepo:that.repo}) );//defined below
+                //     }
+                // }  
+                // var xmlhttpEmailConfirmationDel = new XMLHttpRequest
+                // xmlhttpEmailConfirmationDel.open("PUT",urlEmail+'emailConfirmationContent.json',true);
+                // xmlhttpEmailConfirmationDel.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+                // xmlhttpEmailConfirmationDel.onreadystatechange=function(){
+                //     if (xmlhttpEmailConfirmationDel.readyState == 4) {
+                //         //email updated
+
+                //     }
+                // }   
                 
-                xmlhttpEmail.send( JSON.stringify(emailPayload) );
-                xmlhttpEmail.onreadystatechange=function(){
-                    if (xmlhttpEmail.readyState == 4) {
-                        //email updated
-                     xmlhttpEmailDel.send( JSON.stringify({uid:"simplelogin:"+user, fireFormRepo:that.repo}) );//defined below
+                 xmlhttpEmailC.send( JSON.stringify(emailPayload) );
+                 xmlhttpEmailN.send( JSON.stringify(emailPayload) );
+                // xmlhttpEmail.onreadystatechange=function(){
+                //     if (xmlhttpEmail.readyState == 4) {
+                //         //email updated
+                //      xmlhttpEmailDel.send( JSON.stringify({uid:"simplelogin:"+user, fireFormRepo:that.repo}) );//defined below
 
-                    }
-                }    
-                var xmlhttpEmailDel = new XMLHttpRequest
-                xmlhttpEmailDel.open("PUT",urlEmail+'emailNotificationContent.json',true);
-                xmlhttpEmailDel.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                //     }
+                // }    
+                // var xmlhttpEmailDel = new XMLHttpRequest
+                // xmlhttpEmailDel.open("PUT",urlEmail+'emailNotificationContent.json',true);
+                // xmlhttpEmailDel.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
 
                 // xmlhttpEmailDel.onreadystatechange=function(){
