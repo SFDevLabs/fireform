@@ -232,6 +232,8 @@ angular.module('myApp.controllers', [])
         $scope.emailNotification = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc+'/emailNotification');
 
         $scope.setEmailNotification = function() {
+            var val = $scope.emailNotification?false:true
+            $scope.emailNotification.$set(val); 
 
         }
 

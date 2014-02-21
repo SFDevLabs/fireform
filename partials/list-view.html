@@ -184,7 +184,7 @@
       <div class="right" ng-hide="!user.emailAuth">
         <div class="right email-options">
           <p class="button"  ng-class="ListView.emailConfirmation?'on':'off'" ng-click="ListView.emailConfirmation=ListView.emailConfirmation?false:true" ></i> Send Email Confirmation<i class="check fa fa-check"></i></p>
-          <p class="button"  ng-class="ListView.emailNotification?'on':'off'" ng-click="ListView.emailNotification=ListView.emailNotification?false:true" ></i> Get Email Notification<i class="check fa fa-check"></i></p>
+          <p class="button"  ng-class="ListView.emailNotification?'on':'off'" ng-click="setEmailNotification()" ></i> Get Email Notification<i class="check fa fa-check"></i></p>
         </div>
       </div>
 
