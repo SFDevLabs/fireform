@@ -1,117 +1,20 @@
-// // form.on("value", function(data) {
-// //   var name = data.val() ? data.val().name : "";
-// //   console.log("My name is " + name);
-// // });
-// (function($) {
-//     $.fireform = function(element, options) {
-
-//         var fb = new Firebase(options),
-//             target = $(element);
-
-//         target.children(':submit').on('click', function() {
-//             event.preventDefault()
-//             var obj = {};
-//             target.find('input').each(function(key, input) {
-//                 var name = $(input).attr('name'),
-//                     val = $(input).val();
-//                 if (name)
-//                     obj[name] = val;
-//                 else if ($(input).attr('type') !== 'submit')
-//                     obj['unnamed' + key] = val;
-//             });
-//             var form = fb;
-//             obj['_time'] = new Date().toString();
-//             form.push(obj, function(err) {
-//                 if (!err)
-//                     target.addClass("submited");
-//                 else
-//                     target.addClass("error");
-//             });
-//         });
-//     }
-
-//     // add the plugin to the jQuery.fn object
-//     $.fn.fireform = function(options) {
-
-//         // iterate through the DOM elements we are attaching the plugin to
-//         return this.each(function() {
-
-//             // if plugin has not already been attached to the element
-//             if (undefined == $(this).data('fireform')) {
-
-//                 // create a new instance of the plugin
-//                 // pass the DOM element and the user-provided options as arguments
-//                 var plugin = new $.fireform(this, options);
-
-//                 // in the jQuery version of the element
-//                 // store a reference to the plugin object
-//                 // you can later access the plugin and its methods and properties like
-//                 // element.data('pluginName').publicMethod(arg1, arg2, ... argn) or
-//                 // element.data('pluginName').settings.propertyName
-//                 $(this).data('fireform', plugin);
-
-//             }
-
-//         });
-
-//     }
-// })($);
-
-
-// // form.on("value", function(data) {
-// //   var name = data.val() ? data.val().name : "";
-// //   console.log("My name is " + name);
-// // });
-// (function($) {
-//     $.fireform2 = function(element, selector, options) {
-
-//         if ( !options.fireBaseRepo )
-//             console.error("Please pass fireBaseRepo as a option in the 2nd parameter.")
-
-//         Fireform(element, options.fireBaseRepo)
-//     };
-//     // add the plugin to the jQuery.fn object
-//     $.fn.fireform2 = function(options) {
-
-//         // iterate through the DOM elements we are attaching the plugin to
-//         return this.each(function() {
-
-//             // if plugin has not already been attached to the element
-//             if (undefined == $(this).data('fireform2')) {
-
-//                 // create a new instance of the plugin
-//                 // pass the DOM element and the user-provided options as arguments
-//                 var plugin = new $.fireform2(this, options);
-
-//                 // in the jQuery version of the element
-//                 // store a reference to the plugin object
-//                 // you can later access the plugin and its methods and properties like
-//                 // element.data('pluginName').publicMethod(arg1, arg2, ... argn) or
-//                 // element.data('pluginName').settings.propertyName
-//                 $(this).data('fireform2', plugin);
-
-//             }
-
-//         });
-
-//     }
-// })($);
-
-
 Fireform = function (selector, fireBaseRepo, options){
             that=this;
-
 
             this.error=function(text){console.error(text)};
             var formDOMObject,
                 inputs, 
                 submitElement,
-                successClass= options && options.successClass? options.successClass:"submit-success",
-                failedClass=options && options.failedClass? options.failedClass:"submit-failed",
-                formValidationClass=options && options.formValidationClass? options.formValidationClass:"form-validation-failed",
-                inputValidationClass=options && options.inputValidationClass? options.inputValidationClass:"input-validation-failed",
-                simpleValidation=options && options.simpleValidation? options.simpleValidation:false;
-                that.emailNotification=options && options.emailNotification? options.emailNotification:undefined;
+                successClass = options && options.successClass? options.successClass:"submit-success",
+                failedClass = options && options.failedClass? options.failedClass:"submit-failed",
+                formValidationClass = options && options.formValidationClass? options.formValidationClass:"form-validation-failed",
+                inputValidationClass = options && options.inputValidationClass? options.inputValidationClass:"input-validation-failed",
+                simpleValidation = options && options.simpleValidation? options.simpleValidation:false;
+                that.emailNotification = options && options.emailNotification? options.emailNotification:undefined;
+                that.emailConfirmationName = options.emailConfirmationName? options.emailConfirmationName:undefined;
+                that.emailConfirmationSubject = options.emailConfirmationSubject? options.emailConfirmationSubject:undefined;
+                that.emailConfirmationBodyHTML = options.emailConfirmationBodyHTML? options.emailConfirmationBodyHTML:undefined;
+                that.emailConfirmationBodyText = options.emailConfirmationBodyText? options.emailConfirmationBodyText:undefined;
 
 
             if (typeof selector!=="string"){
@@ -146,7 +49,6 @@ Fireform = function (selector, fireBaseRepo, options){
             
             this.submitElement=submitElement;
 
-
             this.submit = function(e){
                 var validation=true;
                 var validationRadio;
@@ -165,7 +67,7 @@ Fireform = function (selector, fireBaseRepo, options){
                     value=inputs[i].value;
 
                     
-                    if (inputs[i].getAttribute("email-confirmation")==='true')
+                    if (inputs[i].getAttribute("email-confirmation")==='true' || that.emailConfirmationName===name)
                         that.emailConfirmation = value;
 
                     if (inputs[i].getAttribute("email-confirmation-from")==='true')
@@ -203,11 +105,6 @@ Fireform = function (selector, fireBaseRepo, options){
                         payLoad[name].name=inputs[i].name
                         payLoad[name].checked=inputs[i].checked
                     }
-
-                    // if (type==="text" || type==="" ) payLoad[name]= {value:inputs[i].value,type:inputs[i].type};
-                    // else if (type==="checkbox") payLoad[name]={value:inputs[i].value,type:inputs[i].type} 
-                    // else if (type==="radio") payLoad[name]=inputs[i].value+":"+inputs[i].type;
-                    // else if (type==="select-one") payLoad[name]=inputs[i].value+":"+inputs[i].type;
                     
                     if (type==="radio" && !validationRadio && simpleValidation)
                         inputs[i].className += " "+inputValidationClass;
@@ -223,8 +120,6 @@ Fireform = function (selector, fireBaseRepo, options){
                     formDOMObject.className += " "+formValidationClass,
                     that.error('Validation Failed. Classname '+formValidationClass+' Added to inputs');
                     
-
-
             }
 
             this.getRepo=function(url){
@@ -253,9 +148,6 @@ Fireform = function (selector, fireBaseRepo, options){
                 xmlhttp.open("POST",url,true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send( JSON.stringify(payLoad) );
-
-
-
                 
                 var emailPayload={};
                 emailPayload.form=payLoad;
@@ -267,80 +159,41 @@ Fireform = function (selector, fireBaseRepo, options){
                 };
                 payloadText+='</table>'
 
-
-               // emailPayload.confirmation = emailPayload.form[key]
-
                 emailPayload.fireBaseRepo=fireBaseRepo;
                 emailPayload.payloadText=payloadText;
                 emailPayload.payloadHTML=payloadHTML;
                 emailPayload.uid = "simplelogin:"+user
                 emailPayload.fireFormRepo=that.repo;
-                emailPayload.emailConfirmation= that.emailConfirmation? that.emailConfirmation:undefined;
-                emailPayload.emailConfirmationFrom=that.emailConfirmationFrom? that.emailConfirmationFrom:'no-reply@'+window.location.host;
-                emailPayload.emailConfirmationSubject=that.emailConfirmationSubject? that.emailConfirmationSubject:'Confirming your submition to'+window.location.host;
-                emailPayload.emailConfirmationBodyText=that.emailConfirmationBodyText? that.emailConfirmationBodyText:'Thanks for you submition!';
-                emailPayload.emailConfirmationBodyHTML=that.emailConfirmationBodyHTML? that.emailConfirmationBodyHTML:'<p>Thanks for your submition!<p>';
 
 
-                emailPayload.emailNotification= that.emailNotification? that.emailNotification:undefined;
+                if (that.emailConfirmation){
+                    emailPayload.emailConfirmation= that.emailConfirmation? that.emailConfirmation:undefined;
+                    emailPayload.emailConfirmationFrom=that.emailConfirmationFrom? that.emailConfirmationFrom:'no-reply@'+window.location.host;
+                    emailPayload.emailConfirmationSubject=that.emailConfirmationSubject? that.emailConfirmationSubject:'Confirming your submition to'+window.location.host;
+                    emailPayload.emailConfirmationBodyText=that.emailConfirmationBodyText? that.emailConfirmationBodyText:'Thanks for you submition!';
+                    emailPayload.emailConfirmationBodyHTML=that.emailConfirmationBodyHTML? that.emailConfirmationBodyHTML:'<p>Thanks for your submition!<p>';
+                    var urlEmailC = 'https://fireform.firebaseio.com/emailQConfirmation.json'//this.getEmailRepo(fireBaseRepo)
+                    var xmlhttpEmailC = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
+                    xmlhttpEmailC.open("POST",urlEmailC,true);
+                    xmlhttpEmailC.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xmlhttpEmailC.send( JSON.stringify(emailPayload) );
+                }
 
-
-
-                var urlEmailC = 'https://fireform.firebaseio.com/emailQConfirmation.json'//this.getEmailRepo(fireBaseRepo)
-                var xmlhttpEmailC = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
-                xmlhttpEmailC.open("POST",urlEmailC,true);
-                xmlhttpEmailC.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-
-                var urlEmailN = 'https://fireform.firebaseio.com/emailQNotification.json'//this.getEmailRepo(fireBaseRepo)
-                var xmlhttpEmailN = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
-                xmlhttpEmailN.open("POST",urlEmailN,true);
-                xmlhttpEmailN.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-
-                // var xmlhttpEmailConfirmation = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
-                // xmlhttpEmailConfirmation.open("PUT",urlEmail+'emailConfirmationContent.json',true);
-                // xmlhttpEmailConfirmation.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                // emailPayload.email = emailPayload.email? emailPayload.email:{value:null};
-                // xmlhttpEmailConfirmation.send( JSON.stringify(emailPayload) );
-
-
-                // xmlhttpEmailConfirmation.onreadystatechange=function(){
-                //     if (xmlhttpEmailConfirmation.readyState == 4) {
-                //         //email updated
-                //         xmlhttpEmailConfirmationDel.send( JSON.stringify({uid:"simplelogin:"+user, fireFormRepo:that.repo}) );//defined below
-                //     }
-                // }  
-                // var xmlhttpEmailConfirmationDel = new XMLHttpRequest
-                // xmlhttpEmailConfirmationDel.open("PUT",urlEmail+'emailConfirmationContent.json',true);
-                // xmlhttpEmailConfirmationDel.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-                // xmlhttpEmailConfirmationDel.onreadystatechange=function(){
-                //     if (xmlhttpEmailConfirmationDel.readyState == 4) {
-                //         //email updated
-
-                //     }
-                // }   
                 
-                 xmlhttpEmailC.send( JSON.stringify(emailPayload) );
-                 xmlhttpEmailN.send( JSON.stringify(emailPayload) );
-                // xmlhttpEmail.onreadystatechange=function(){
-                //     if (xmlhttpEmail.readyState == 4) {
-                //         //email updated
-                //      xmlhttpEmailDel.send( JSON.stringify({uid:"simplelogin:"+user, fireFormRepo:that.repo}) );//defined below
-
-                //     }
-                // }    
-                // var xmlhttpEmailDel = new XMLHttpRequest
-                // xmlhttpEmailDel.open("PUT",urlEmail+'emailNotificationContent.json',true);
-                // xmlhttpEmailDel.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
 
-                // xmlhttpEmailDel.onreadystatechange=function(){
-                //     if (xmlhttpEmail.readyState == 4) {
-                //         //email updated
-                //     }
-                // }    
+
+
+                if (that.emailNotification){
+                    emailPayload.emailNotification= that.emailNotification? that.emailNotification:undefined;
+                    var urlEmailN = 'https://fireform.firebaseio.com/emailQNotification.json'//this.getEmailRepo(fireBaseRepo)
+                    var xmlhttpEmailN = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
+                    xmlhttpEmailN.open("POST",urlEmailN,true);
+                    xmlhttpEmailN.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xmlhttpEmailN.send( JSON.stringify(emailPayload) );
+                };
+
+
 
                 xmlhttp.onreadystatechange=function(){
                     if (xmlhttp.readyState == 4) {
@@ -359,6 +212,4 @@ Fireform = function (selector, fireBaseRepo, options){
 
             submitElement.onclick=this.submit;
             return this;
-
-
     };

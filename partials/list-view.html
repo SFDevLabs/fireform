@@ -55,14 +55,8 @@
 <div body-class-inject="app form" id="content" ng-init="rowsHeader=[];rows=[];scrollTop();">
 
   <div class="container">
-
     <header>
-
       <h1>{{ListView.id}}{{$location.url}}</h1>
-
-
-
-
       <div class="right">
         <p id="delete" class="button" ng-click="timeoutSet('deleteModal','fadeIn faded','10'); deleteModal='faded'"; ng-hide="$location.$$url==='/publicexample'"><i class="fa fa-trash-o"></i> Delete</p>
         <p ng-click="timeoutSet('codeModal','fadeIn faded','10'); codeModal='faded'; bodyClassClick('app form overflow');"  class="action button"><i class="fa fa-code"></i> Get Code</p>
@@ -183,7 +177,7 @@
     <p><a ng-hide="$location.$$url==='/publicexample' || rows.length===0" href="/list">&lsaquo; Back to all forms</a></p>
       <div class="right" ng-hide="!user.emailAuth">
         <div class="right email-options">
-          <p class="button"  ng-class="ListView.emailConfirmation?'on':'off'" ng-click="ListView.emailConfirmation=ListView.emailConfirmation?false:true" ></i> Send Email Confirmation<i class="check fa fa-check"></i></p>
+          <p class="button"  ng-class="ListView.emailConfirmation?'on':'off'" ng-click="setEmailConfirmation()" ></i> Send Email Confirmation<i class="check fa fa-check"></i></p>
           <p class="button"  ng-class="ListView.emailNotification?'on':'off'" ng-click="setEmailNotification()" ></i> Get Email Notification<i class="check fa fa-check"></i></p>
         </div>
       </div>
@@ -199,13 +193,15 @@
     <button ng-hide="!snippet" ng-click="snippet=snippet?false:true" style="float:right;">Boilerplate Form</button>
     <button ng-hide="snippet" ng-click="snippet=snippet?false:true" style="float:right;">JavaScript Snippet</button>
 
+
     <div ng-hide="!snippet">
       <h2>JavaScript Snippet</h2> 
       <p>Copy this snippet and paste it into your HTML underneath your &lt;form&gt;.</p>
       <pre style="overflow:hidden;" highlight="$location.absUrl()"><code> 
         &lt;script type="application/javascript" src="http://fireform.org/fireform.js"&gt;&lt;/script&gt;
         &lt;script type="application/javascript"&gt;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new Fireform('#MySelector', '{{location}}');
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new Fireform('#MySelector', '{{location}}'{{options}}}
+          );
         &lt;/script&gt;
        </code></pre>
     </div>
@@ -219,6 +215,7 @@
             &lt;input type="text" name="message" placeholder="Message"&gt;
             &lt;input type="submit"&gt;
           &lt;/form&gt;
+          
 
           &lt;script type="application/javascript" src="http://fireform.org/fireform.js"&gt;&lt;/script&gt;
           &lt;script type="application/javascript"&gt;

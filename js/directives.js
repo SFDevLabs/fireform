@@ -71,7 +71,12 @@ angular.module("myApp.directives", [])
         return {
             restrict: 'A',
             link: function(scope, el, attr){
-                var m=el.html().replace("{{location}}",scope.$location.absUrl())
+                var option = " ,{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emailNotification:'"+scope.auth.user.email+"'},",
+                m=el.html()
+                    .replace("{{location}}",scope.$location.absUrl())
+                    .replace("{{options}}",option);
+
+
                 el.html(m)
                 hljs.highlightBlock(el[0])
             }
