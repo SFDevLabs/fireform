@@ -188,48 +188,26 @@
 <footer ng-include="'partials/footer.html'"></footer>
 
 
-<div class="modal faded" ng-class="codeModal" ng-init="codeModal='hide';snippet=true;">
+
+<!-- hide faded
+ -->
+ <div class="modal" ng-class="codeModal" ng-init="codeModal='';snippet=true;">
   <div class="modal-content">
     <button ng-hide="!snippet" ng-click="snippet=snippet?false:true" style="float:right;">Boilerplate Form</button>
     <button ng-hide="snippet" ng-click="snippet=snippet?false:true" style="float:right;">JavaScript Snippet</button>
 
+{{$location.absUrl()}}
+    {{ListView.emailConfirmation}}
 
-    <div ng-hide="!snippet">
-      <h2>JavaScript Snippet</h2> 
-      <p>Copy this snippet and paste it into your HTML underneath your &lt;form&gt;.</p>
-      <pre style="overflow:hidden;" highlight="$location.absUrl()"><code> 
-        &lt;script type="application/javascript" src="http://fireform.org/fireform.js"&gt;&lt;/script&gt;
-        &lt;script type="application/javascript"&gt;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new Fireform('#MySelector', '{{location}}'{{options}}}
-          );
-        &lt;/script&gt;
-       </code></pre>
-    </div>
-    <div ng-hide="snippet">
-      <h2>Boilerplate Form</h2>
-      <pre style="overflow:hidden;" highlight="$location.absUrl()"><code>
-      &lt;!doctype html&gt;
-        &lt;body&gt;
-          &lt;form id="MySelector"&gt;
-            &lt;input type="text" name="givenname" placeholder="Name"&gt;
-            &lt;input type="text" name="message" placeholder="Message"&gt;
-            &lt;input type="submit"&gt;
-          &lt;/form&gt;
-          
+    {{ListView.emailConfirmation}}
 
-          &lt;script type="application/javascript" src="http://fireform.org/fireform.js"&gt;&lt;/script&gt;
-          &lt;script type="application/javascript"&gt;
-              /* See more options at http://fireform.org/docs */
-               var options = {
-                  simpleValidation:false,
-                  successClass: "custom-submit-success",
-                  callback:function(err, val){console.log(err,'callback')}
-                }
-              new Fireform('#MySelector', '{{location}}', options)
-          &lt;/script&gt;
-      &lt;/body&gt;
-     </code></pre>
-     </div>
+
+<span ng-hide="!ListView.emailConfirmation">ddd</span>
+
+    <div ng-include="'partials/snippet/default.html'" onload="initHighlighting()" ng-hide="!snippet"></div>
+    <div ng-include="'partials/snippet/boiler.html'"  onload="initHighlighting()" ng-hide="snippet"></div>
+
+
     <p class="close-button" ng-click="codeModal='hide'; bodyClassClick('app form');"><i class="fa fa-times"></i></p> 
   </div>
 </div>

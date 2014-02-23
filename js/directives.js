@@ -71,11 +71,11 @@ angular.module("myApp.directives", [])
         return {
             restrict: 'A',
             link: function(scope, el, attr){
-                var option = " ,{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emailNotification:'"+scope.auth.user.email+"'},",
-                m=el.html()
+                //debugger
+                var m=el.html()
                     .replace("{{location}}",scope.$location.absUrl())
-                    .replace("{{options}}",option);
-
+                    .replace("{{email}}",scope.auth.user.email)
+                    .replace("{{options}}",'<span ng-bind="ListView.emailConfirmation"></span>');
 
                 el.html(m)
                 hljs.highlightBlock(el[0])

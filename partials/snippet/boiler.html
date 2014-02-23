@@ -1,0 +1,23 @@
+  <h2>Boilerplate Form</h2>
+  <pre style="overflow:hidden;" highlight="$location.absUrl()"><code>
+  &lt;!doctype html&gt;
+    &lt;body&gt;
+      &lt;form id="MySelector"&gt;
+        &lt;input type="text" name="givenname" placeholder="Name"&gt;
+        &lt;input type="text" name="message" placeholder="Message"&gt;
+        &lt;input type="submit"&gt;
+      &lt;/form&gt;
+
+      &lt;script type="application/javascript" src="http://fireform.org/fireform.js"&gt;&lt;/script&gt;
+      &lt;script type="application/javascript"&gt;
+          /* See more options at http://fireform.org/docs */
+           var options = {}
+              options.simpleValidation=false,
+              options.simpleValidation="custom-submit-success",
+              options.callback=function(err, val){console.log(err,'callback')}
+              {{email}}
+            
+          new Fireform('#MySelector', '{{location}}', options)
+      &lt;/script&gt;
+  &lt;/body&gt;
+ </code></pre>
