@@ -32,12 +32,12 @@ angular.module('myApp',
 
         $rootScope.getTmplUrlforAuth= function(loggedin, loggedout){
             return $rootScope.auth.user ?  loggedin : loggedout;
-        }
-
-        $rootScope.initHighlighting= function(loggedin, loggedout){
-            setTimeout(function(){hljs.initHighlighting()},500)//when in doubt setTimeout!!  hljs.initHighlighting messes up {{angular-tmpl-var}} so we set timeout to make sure it happens after and in window scope
-
-        }
+        } 
+        //might need this at some point to edit tmpls
+        // $rootScope.initHighlighting= function(loggedin, loggedout){
+        //   //  debugger
+        //   //  setTimeout(function(){hljs.initHighlighting()},1000)//when in doubt setTimeout!!  hljs.initHighlighting messes up {{angular-tmpl-var}} so we set timeout to make sure it happens after and in window scope
+        // }
 
         $rootScope.getTmplUrlforVal= function(loggedin, loggedout, bool){
             return bool ?  loggedin : loggedout;
