@@ -23,9 +23,25 @@
 
 
 <p> Change the <b>DOM selector</b> to point to your <b>&lt;form&gt;</b> tag and the <b>formRepositoryLink</b> to a <a href='/add'>fireform link</a>. </p>
+	<p>Fireform will listen for a click event on the form's <b>type="submit"</b> input.  Once submitted; the form's content will be uploaded, the submit button will be disabled and the succses class will be added to the form.</p> 
+
+	<p><b>You can submit the form with javascript too:</b></p>
+<!-- 	<pre style="overflow:hidden;" ><code> 
+      &lt;script type="application/javascript"&gt;
+      		var fireform = new Fireform('#MySelector',  'http://fireform/formRepositoryLink');
+      		fireform.submit();
+      &lt;/script&gt;
+     </code></pre>
+ -->
+	<pre style="overflow:hidden;"><code class=" hljs xml"> 
+      <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span>&gt;</span><span class="javascript">
+      		<span class="hljs-keyword">var</span> fireform = <span class="hljs-keyword">new</span> Fireform(<span class="hljs-string">'#MySelector'</span>,  <span class="hljs-string">'http://fireform/formRepositoryLink'</span>);
+      		fireform.submit();
+      </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+     </code></pre>
 
 
-     <h3>Full Example</h3>
+     <h3>Full Working Example</h3>
       <pre style="overflow:hidden;" class="ng-scope"><code class="ng-binding hljs xml">
   <span class="hljs-doctype">&lt;!doctype html&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
@@ -43,7 +59,7 @@
               formValidationClass:<span class="hljs-string">"custom-submit-success"</span>,
               callback:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err, val)</span> {</span> console.log(err,<span class="hljs-string">"callback"</span>) }
             }
-          <span class="hljs-keyword">new</span> Fireform(<span class="hljs-string">'#MySelector'</span>, <span class="hljs-string">'{{$location.absUrl()}}'</span>, options)
+          <span class="hljs-keyword">new</span> Fireform(<span class="hljs-string">'#MySelector'</span>, <span class="hljs-string">'http://fireform.org/publicexample'</span>, options)
       </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
  </code></pre>
