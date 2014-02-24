@@ -215,7 +215,7 @@
     <div ng-hide="ListView.emailConfirmation && !ListView.emailNotification || !ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && ListView.emailNotification" 
           ng-include="'partials/snippet/boiler.html'"></div>
 </div>
-      <div class="right" ng-hide="!user.emailAuth">
+      <div class="right" ><!--<div class="right" ng-hide="!user.emailAuth">-->        
         <div class="right email-options">
           <p class="button"  ng-class="ListView.emailConfirmation?'on':'off'" ng-click="setEmailConfirmation()" ></i> Send Email Confirmation<i class="check fa fa-check"></i></p>
           <p class="button"  ng-class="ListView.emailNotification?'on':'off'" ng-click="setEmailNotification()" ></i> Get Email Notification<i class="check fa fa-check"></i></p>
