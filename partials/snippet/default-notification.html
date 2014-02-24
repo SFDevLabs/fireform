@@ -4,15 +4,21 @@
 <!--     <pre style="overflow:hidden;" ><code> 
       &lt;script type="application/javascript" src="http://fireform.org/fireform.js"&gt;&lt;/script&gt;
       &lt;script type="application/javascript"&gt;
-      		new Fireform('#MySelector', '{{$location.absUrl()}}');
+          options={
+                 emailNotification:"{{auth.user.email}}",
+          }
+          new Fireform('#MySelector', '{{$location.absUrl()}}', options);
       &lt;/script&gt;
      </code></pre>
 
  -->
-
+{{$location.absUrl()}}
  <pre style="overflow:hidden;" class="ng-scope"><code class="ng-binding hljs xml"> 
       <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"http://fireform.org/fireform.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span>&gt;</span><span class="javascript">
-      		<span class="hljs-keyword">new</span> Fireform(<span class="hljs-string">'#MySelector'</span>, <span class="hljs-string">'{{$location.absUrl()}}'</span>);
+          options={
+                 emailNotification:<span class="hljs-string">"{{auth.user.email}}"</span>,
+          }
+          <span class="hljs-keyword">new</span> Fireform(<span class="hljs-string">'#MySelector'</span>, <span class="hljs-string">'{{$location.absUrl()}}'</span>, options);
       </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
      </code></pre>
