@@ -4,21 +4,107 @@
 		<h1>Docs</h1>
 		<nav id="left">
 		  <ul>
-		    <li><a href="#getting-started">Getting Started</a></li>
-		    <li><a href="#options">Options</a></li>
-		    <li><a href="#examples">Examples</a></li>
+		    <li><a href="docs/#getting-started">Getting Started</a></li>
+		    <li><a href="docs/#options">Options</a></li>
+		    <li><a href="docs/#examples">Examples</a></li>
 		  </ul>
 		</nav>
 		<section id="right">
 			<article id="getting-started">
 				<h2>Getting Started</h2>
+				<p>The easiest way to get started is to drop the following code into your webpage.  </p>
+
+					 <pre style="overflow:hidden;" class="ng-scope"><code class="ng-binding hljs xml"> 
+      <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"http://fireform.org/fireform.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span>&gt;</span><span class="javascript">
+      		<span class="hljs-keyword">new</span> Fireform(<span class="hljs-string">'#MySelector'</span>, <span class="hljs-string">'http://fireform/formRepositoryLink'</span>);
+      </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+     </code></pre>
+
+
+<p> Change the <b>DOM selector</b> to point to your <b>&lt;form&gt;</b> tag and the <b>formRepositoryLink</b> to a <a href='/add'>fireform link</a>. </p>
+
+
+     <h3>Full Example</h3>
+      <pre style="overflow:hidden;" class="ng-scope"><code class="ng-binding hljs xml">
+  <span class="hljs-doctype">&lt;!doctype html&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">form</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"MySelector"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"givenname"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"Name"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"message"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"Message"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"http://fireform.org/fireform.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span>&gt;</span><span class="javascript">
+          <span class="hljs-comment">/* See more options at http://fireform.org/docs */</span>
+           <span class="hljs-keyword">var</span> options = {
+              simpleValidation:<span class="hljs-literal">false</span>,
+              formValidationClass:<span class="hljs-string">"custom-submit-success"</span>,
+              callback:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err, val)</span> {</span> console.log(err,<span class="hljs-string">"callback"</span>) }
+            }
+          <span class="hljs-keyword">new</span> Fireform(<span class="hljs-string">'#MySelector'</span>, <span class="hljs-string">'{{$location.absUrl()}}'</span>, options)
+      </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+ </code></pre>
+
 			</article>
 			<article id="options">
 				<h2>Options</h2>
+				<p> You can pass an options object into the Fireform function. </p>
+
+<pre style="overflow:hidden;"><code class=" hljs xml"> 
+      <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span>&gt;</span><span class="javascript">
+      		options={
+      			successClass:<span class="hljs-string">'success-class'</span>,  <span class="hljs-comment">//String: Class applied to form after submition.</span>
+			failedClass:<span class="hljs-string">'failed-class'</span>,  <span class="hljs-comment">//String: Class applied to form upon failer.</span>
+			formValidationClass:<span class="hljs-string">'validation-class'</span>, <span class="hljs-comment">//String: Class applied to form on bad validation.</span>
+			inputValidationClass:<span class="hljs-string">'validation-class'</span>, <span class="hljs-comment">//String: Class applied to input on bad validation.</span>
+			simpleValidation:<span class="hljs-literal">true</span> <span class="hljs-comment">//Bool: Simple validation to ensure all inputs have a value.</span>
+			<span class="hljs-comment">//Send an email to this address when a new form is posted.*</span>
+			emailNotification: <span class="hljs-string">'myemail@example.com'</span>
+			<span class="hljs-comment">//Send an email confirmation to a specific email collected in the form.*</span>
+			emailConfirmationName:<span class="hljs-string">'emailInputName'</span><span class="hljs-comment">//String: Name attribute of the email input.</span>
+			emailConfirmationSubject:<span class="hljs-string">'Subject Text'</span><span class="hljs-comment">//String: Email subject.</span>
+			emailConfirmationBodyHTML:<span class="hljs-string">'Body HTML'</span><span class="hljs-comment">//String: Shows in most modern email clients.</span>
+			emailConfirmationBodyText:<span class="hljs-string">'Body Text'</span><span class="hljs-comment">//String: Body Text fallback.</span>
+			callback: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err, val)</span>{</span> } <span class="hljs-comment">//Function: Fired after successful submition.</span>
+      		}
+      		<span class="hljs-keyword">new</span> Fireform(<span class="hljs-string">'#MySelector'</span>, <span class="hljs-string">'http://fireform/formRepositoryLink'</span>, options);
+      </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+     </code></pre>
+
+				<p> *Email Notifications and Confirmations must be activated on the form's table page. </p>
+
+
+
+<!-- 					 <pre style="overflow:hidden;" ><code> 
+      &lt;script type="application/javascript"&gt;
+      		options={
+      			successClass:'success-class',  //String: Class applied to form after submition.
+			failedClass:'failed-class',  //String: Class applied to form upon failer.
+			formValidationClass:'validation-class', //String: Class applied to form on bad validation.
+			inputValidationClass:'validation-class', //String: Class applied to input on bad validation.
+			simpleValidation:true //Bool: Simple validation to ensure all inputs have a value.
+			//Send an email to this address when a new form is posted.*
+			emailNotification: 'myemail@example.com'
+			//Send an email confirmation to a specific email collected in the form.*
+			emailConfirmationName:'emailInputName'//String: Name attribute of the email input.
+			emailConfirmationSubject:'Subject Text'//String: Email subject.
+			emailConfirmationBodyHTML:'Body HTML'//String: Shows in most modern email clients.
+			emailConfirmationBodyText:'Body Text'//String: Body Text fallback.
+			callback: function(err, val){ } //Function: Fired after successful submition.
+      		}
+      		new Fireform('#MySelector', 'http://fireform/formRepositoryLink', options);
+      &lt;/script&gt;
+     </code></pre> -->
+
 			</article>
 			<article id="examples">
 				<h2>Examples</h2>
-				 <p> <a href="/publicexample">Example</a></p>
+				 <p> <a href="/example">Example Form Page</a></p>
+
+				 <p> <a href="/publicexample">Example Results Table</a></p>
 
 			</article>
 		</section>
