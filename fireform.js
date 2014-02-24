@@ -1,6 +1,6 @@
 Fireform = function (selector, fireBaseRepo, options){
             that=this;
-
+            //here is where we define our various options that we wull use 
             this.error=function(text){console.error(text)};
             var formDOMObject,
                 inputs, 
@@ -15,6 +15,7 @@ Fireform = function (selector, fireBaseRepo, options){
                 that.emailConfirmationSubject = options.emailConfirmationSubject? options.emailConfirmationSubject:undefined;
                 that.emailConfirmationBodyHTML = options.emailConfirmationBodyHTML? options.emailConfirmationBodyHTML:undefined;
                 that.emailConfirmationBodyText = options.emailConfirmationBodyText? options.emailConfirmationBodyText:undefined;
+                that.user=undefined;
 
 
             if (typeof selector!=="string"){
@@ -129,6 +130,7 @@ Fireform = function (selector, fireBaseRepo, options){
             }
 
             this.getRepo=function(url){
+                var user_repo_tuple, source_tuple, source, user_repo_tuple, user, repo
                 if ( url.match("fireform.org/publicexample") || url.match("fireform/publicexample") ) {return "https://fireform.firebaseio.com/example/formPosts.json" }//check for example url
                 source_tuple=url.split("://")[1].split('/list/')
                 source=source_tuple[0].split('.org')[0]//split the .com
@@ -139,11 +141,12 @@ Fireform = function (selector, fireBaseRepo, options){
             }
 
             this.getEmailRepo=function(url){
+                var user_repo_tuple, source_tuple, source, user_repo_tuple, user, repo
                 if ( url.match("fireform.org/publicexample") ) {return null }//check for example url
                 source_tuple=url.split("://")[1].split('/list/')
                 source=source_tuple[0].split('.org')[0]//split the .com
                 user_repo_tuple=source_tuple[1].split('/')
-                user=user_repo_tuple[0]
+                user=that.user=user_repo_tuple[0]
                 repo=user_repo_tuple[1]
                 return "https://"+source+".firebaseio.com/users/simplelogin:"+user+"/"
             }
@@ -168,7 +171,7 @@ Fireform = function (selector, fireBaseRepo, options){
                 emailPayload.fireBaseRepo=fireBaseRepo;
                 emailPayload.payloadText=payloadText;
                 emailPayload.payloadHTML=payloadHTML;
-                emailPayload.uid = "simplelogin:"+user
+                emailPayload.uid = that.user?"simplelogin:"+that.user:undefined;
                 emailPayload.fireFormRepo=that.repo;
 
 
@@ -185,10 +188,6 @@ Fireform = function (selector, fireBaseRepo, options){
                     xmlhttpEmailC.send( JSON.stringify(emailPayload) );
                 }
 
-                
-
-
-
 
                 if (that.emailNotification){
                     emailPayload.emailNotification= that.emailNotification? that.emailNotification:undefined;
@@ -198,8 +197,6 @@ Fireform = function (selector, fireBaseRepo, options){
                     xmlhttpEmailN.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                     xmlhttpEmailN.send( JSON.stringify(emailPayload) );
                 };
-
-
 
                 xmlhttp.onreadystatechange=function(){
                     if (xmlhttp.readyState == 4) {
