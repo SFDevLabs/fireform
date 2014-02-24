@@ -36,6 +36,12 @@ Fireform = function (selector, fireBaseRepo, options){
                 this.error('DOM elments is not a <form>')
                 return
             }
+
+            if (!fireBaseRepo || fireBaseRepo.length==-0){
+                this.error('No Fireform URL entered')
+                return
+            }
+
             this.formDOMObject=formDOMObject
 
             this.inputs=inputs=formDOMObject.elements
@@ -171,7 +177,7 @@ Fireform = function (selector, fireBaseRepo, options){
                     emailPayload.emailConfirmationFrom=that.emailConfirmationFrom? that.emailConfirmationFrom:'no-reply@'+window.location.host;
                     emailPayload.emailConfirmationSubject=that.emailConfirmationSubject? that.emailConfirmationSubject:'Confirming your submition to'+window.location.host;
                     emailPayload.emailConfirmationBodyText=that.emailConfirmationBodyText? that.emailConfirmationBodyText:'Thanks for you submition!';
-                    emailPayload.emailConfirmationBodyHTML=that.emailConfirmationBodyHTML? that.emailConfirmationBodyHTML:'<p>Thanks for your submition!<p>';
+                    emailPayload.emailConfirmationBodyHTML=that.emailConfirmationBodyHTML? '<div></div>'+that.emailConfirmationBodyHTML:'<div></div><p>Thanks for your submition!<p>'; //front div is a hack for zapier
                     var urlEmailC = 'https://fireform.firebaseio.com/emailQConfirmation.json'//this.getEmailRepo(fireBaseRepo)
                     var xmlhttpEmailC = new XMLHttpRequest;  //this.getRepo(fireBaseRepo);
                     xmlhttpEmailC.open("POST",urlEmailC,true);
