@@ -345,6 +345,11 @@ ul li.multiple ul li {
 .modal-content .update.active {
   display: block;
 }
+#delete-confirmation {
+  position: absolute;
+  margin-top: -30px;
+  margin-left: 15px;
+}
 .public #page-header {
   background: #bbb;
 }
@@ -879,7 +884,7 @@ color: #666 {
 #loading {
   position: absolute;
 }
-img {
+#loading img {
   display: block;
   margin: 0 auto;
   margin-top: 0em;
