@@ -198,8 +198,11 @@ p {
 .example-form pre {
   margin-top: -1.5em;
 }
+pre {
+  font-family: 'Monaco', 'Courier', monospace;
+}
 .example-form ul li:first-child,
-ul li:first-child label {
+.example-form ul li:first-child label {
   margin-top: 0em;
   padding-top: 0em;
   padding-bottom: 0em;
@@ -495,9 +498,16 @@ article {
   top: 1em;
   right: 2.5em;
 }
+.public.home em {
+  color: #8e2409;
+}
 .public.home p#tagline {
   font-size: 2.5em;
   line-height: 1.5em;
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0.9375em;
   font-weight: 300;
   text-align: center;
   color: #000;
@@ -509,6 +519,9 @@ article {
   padding-top: 0em;
   padding-bottom: 0em;
   margin-bottom: 1em;
+}
+.public.home header {
+  background: transparent url("../img/spark.png") center bottom no-repeat;
 }
 .public.home h1 {
   border: 0;
@@ -524,8 +537,45 @@ article {
   opacity: 0.6;
   transition: opacity 1s;
 }
+.public.home .three-up img {
+  width: auto;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+.demo {
+  text-align: center;
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 1.875em;
+}
+.public.home .demo li {
+  background: rgba(0,0,0,0.05);
+  border-radius: 100em;
+  height: 8.75em;
+  width: 8.75em;
+  display: inline-block;
+  padding: 1.25em;
+  margin: 0 1.25em;
+  vertical-align: middle;
+  transition: all 0.5s;
+}
+.public.home .demo li:hover {
+  background: rgba(0,0,0,0.02);
+  transition: all 0.5s;
+}
+.public.home ul li i {
+  font-size: 3.75em;
+  display: block;
+  margin: 0.5em auto 0 auto;
+}
+.demo p {
+  margin: 0;
+}
 .public.home h1:hover {
   opacity: 0.8;
+}
+#powered-by h2 {
+  margin: 0;
 }
 input[type="text"],
 textarea,
@@ -635,6 +685,9 @@ input[type=submit] {
 .modal p.button {
   margin: 0;
 }
+.modal .button.solid.right {
+  margin-top: 0.5em;
+}
 .checkbox li p {
   margin: 0;
 }
@@ -740,8 +793,8 @@ input[type=submit]:hover,
   margin-top: -17.25em;
 }
 .code.modal-content {
-  height: 40em;
-  margin-top: -20em;
+  height: 43.75em;
+  margin-top: -21.875em;
 }
 .code-wrapper {
   box-sizing: border-box;
@@ -826,7 +879,7 @@ color: #666 {
 #loading {
   position: absolute;
 }
-#loading img {
+img {
   display: block;
   margin: 0 auto;
   margin-top: 0em;
@@ -849,7 +902,11 @@ td {
 .table-container {
   clear: both;
   overflow: scroll;
-  padding: 0px 10px 0px 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 1.25em;
+  width: 100%;
 }
 table {
   clear: both;
@@ -876,6 +933,7 @@ table th {
 table th span.ng-scope,
 table a {
   display: block;
+  white-space: nowrap;
 }
 table th i.field-type {
   border-right: 1px solid rgba(0,0,0,0.2);
@@ -926,7 +984,12 @@ ul.field,
 #code {
   display: none;
 }
-@media screen and (min-width: 0em) and (max-width: 71.1875em) {
+@media screen and (min-width: 0em) and (max-width: 73em) {
+  .public.home p#login {
+    position: relative;
+    top: 0;
+    right: auto;
+  }
   nav#left ul {
     border: 0;
     padding: 0;
@@ -964,9 +1027,11 @@ ul.field,
     border-bottom-width: 0.04em;
     padding-bottom: 0.26em;
   }
+  .app h2,
   h2 {
     font-size: 1.375em;
     line-height: 1.3636363636363635em;
+    font-weight: normal;
   }
   .app h2 {
     margin-top: 1.3636363636363635em;
@@ -1005,8 +1070,7 @@ ul.field,
     height: 2.5em;
   }
   .public.home nav ul li a,
-  header nav ul li a,
-  .button.action {
+  header nav ul li a {
     padding: 0.25em 0.5em;
     margin: 0 0.25em;
   }
@@ -1048,7 +1112,7 @@ ul.field,
     font-size: 0.9375em;
     line-height: 2em;
   }
-  footer {
+  .app footer {
     margin-top: 1.875em;
     padding-top: 0em;
     padding-bottom: 3.75em;
