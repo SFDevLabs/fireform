@@ -11,6 +11,9 @@ dark-gray = #666
 mid-gray = #bbb
 light-gray = #ddd
 
+thirty-white = rgba(255,255,255,0.30)
+fifty-white = rgba(255,255,255,0.50)
+
 two-gray = rgba(0,0,0,0.02)
 five-gray = rgba(0,0,0,0.05)
 ten-gray = rgba(0,0,0,0.1)
@@ -100,14 +103,20 @@ h3
 	rhythm(2, 0, 0, 1, 30px)
 
 .modal h3
-.account h2
-	rhythm(0, 0, 0, 0)
-
 .sidebar h2
 h4
 	font-weight: normal
 	adjust-font-size-to(25px)
 	rhythm(2, 0, 0, 1, 30px)
+
+.modal h3
+.account h2
+	rhythm(0, 0, 0, 0)
+
+.modal h2
+	margin-top: 0
+	border-color: light-gray
+	trailing-border(1px, .25, 30px, solid)
 
 .full h2
 .modal h4
@@ -181,6 +190,7 @@ ul li.multiple ul li
 	trailing-border(1px, 1)
 	border-color: light-gray
 
+.checkbox label
 .example-form ul li label
 .example-form ul li.multiple p
 	color: black
@@ -447,6 +457,13 @@ input[type=submit]
 	text-align: center
 	text-transform: uppercase
 
+.button
+	transition: all 0.5s
+
+.button:hover
+	background: thirty-white
+	transition: all 0.5s
+
 .button.solid
 	background: fifty-gray
 	color: white
@@ -463,6 +480,20 @@ input[type=submit]
 
 .inline
 	rhythm(0, 0, 0, 0)
+
+.app .checkbox input
+.app .checkbox label
+	display: inline
+	width: auto
+
+.checkbox
+	rhythm(0, 0, 1, 0)
+
+.modal p.button
+	margin: 0
+
+.checkbox li p
+	margin: 0
 
 .inline li
 	display: inline-block
@@ -540,7 +571,9 @@ input[type=submit]:hover
 
 .fadeIn
 	opacity: 1;
-	transition: opacity .1s ease-in;	
+	transition: opacity .1s ease-in;
+	position: relative
+	z-index: 1	
 
 .modal
 	position: fixed
@@ -563,8 +596,8 @@ input[type=submit]:hover
 	z-index: 9000
 
 .edit.modal-content
-	height: 20em
-	margin-top: -10em
+	height: 34.5em
+	margin-top: -17.25em
 
 .code.modal-content
 	height: 40em
@@ -603,7 +636,6 @@ input[type=submit]:hover
 
 // form controls
 
-
 #content header
 	trailing-border(1px, 1, 16px, solid)
 	border-color: twenty-gray
@@ -623,6 +655,9 @@ input[type=submit]:hover
 .controls p
 	display: inline-block
 	width: auto
+
+.controls .button
+	margin-left: 0.625em
 
 
 .email-options .button
@@ -645,8 +680,18 @@ input[type=submit]:hover
 
 // form data table
 
+#loading img
+	display: block
+	margin: 0 auto
+	rhythm(0, 3, 3, 0)
+
 .form .container
 	padding-bottom: 0
+
+.fadeOut
+	opacity: 0 !important
+	position: absolute
+	z-index: 0
 
 th, 
 td
@@ -709,7 +754,10 @@ table th a:hover
 	background: two-blue
 
 table tr:nth-child(odd) td
-	background: five-gray
+	background: fifty-white
+
+table tr:nth-child(even) td
+	background: thirty-white
 
 .account label
 	display: block

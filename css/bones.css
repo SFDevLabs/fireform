@@ -1,3 +1,4 @@
+.modal .checkbox li,
 .sidebar,
 .content,
 .two-up li,
@@ -85,6 +86,7 @@
   .container.shell {
     padding: 0;
   }
+  .modal .checkbox li:first-child,
   .two-up li,
   .three-up li,
   .col {
@@ -117,6 +119,7 @@
   .span_5 {
     width: 39.3333333333%;
   }
+  .modal .checkbox li,
   #center,
   .two-up li,
   .account #left,
