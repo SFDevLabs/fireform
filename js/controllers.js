@@ -244,6 +244,7 @@ angular.module('myApp.controllers', [])
 
         $scope.$location = $location;
 
+        //This tells us when the page loads*/
         $scope.pageLoaded = false;
         $scope.pageLoadedFade = false;
 
@@ -265,13 +266,22 @@ angular.module('myApp.controllers', [])
         }
     }
 ])
-.controller('listViewExampleCtrl', ['$rootScope','$scope', 'loginService', 'syncData', '$location',
-    function($rootScope, $scope, loginService, syncData, $location) {
+.controller('listViewExampleCtrl', ['$rootScope','$scope', 'loginService', 'syncData', '$location', '$timeout',
+    function($rootScope, $scope, loginService, syncData, $location, $timeout) {
         $scope.ListView = syncData('example');
         $scope.$location = $location;
 
 
   
 
+        //This tells us when the page loads*/
+        $scope.pageLoaded = false;
+        $scope.pageLoadedFade = false;
+        $scope.ListView.$on('loaded',function(data){
+            $scope.pageLoadedFade = true;
+            $timeout(function(){
+                $scope.pageLoaded = true;
+            },300);
+        });
     }
 ]);
