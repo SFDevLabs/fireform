@@ -92,6 +92,11 @@
                     <p id="success-message">
                         Success, your form was submitted. Check it out <a target="_blank" href="http://fireform.org/publicexample">here</a>!
                     </p>  
+                    <p id="validation-message">
+                        Dang Nabit, the form was not completely <b>filled out</b>. <br>But Fireform does have simple validation. See the <a target="_blank" href="http://fireform.org/docs">Docs</a>!
+                    </p>  
+
+
                 </form>
             </div>
 
@@ -169,7 +174,7 @@
                         <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
                       <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"http://fireform.org/fireform.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
                       <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span>&gt;</span><span class="javascript">
-                            <span class="hljs-keyword">new</span> Fireform(<span class="hljs-string">'#MySelector'</span>, <span class="hljs-string">'{{$location.absUrl()}}'</span>);
+                            <span class="hljs-keyword">new</span> Fireform(<span class="hljs-string">'#MySelector'</span>, <span class="hljs-string">'http://fireform/publicexample'</span>);
                       </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
                     </code>
                 </pre>
@@ -180,7 +185,7 @@
         <script type="application/javascript">
               /* See how to customize at http://fireform.org/docs */
                var options = {
-                  simpleValidation:false,
+                  simpleValidation:true,
                   callback:function(err, val){console.log(err,'callback')}
                 }
               new Fireform('#MySelector', 'http://fireform.org/publicexample', options)
