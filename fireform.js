@@ -1,3 +1,4 @@
+/*2014 SFDevLabs.com, MIT License*/
 Fireform = function (selector, fireBaseRepo, options){
             that=this;
             //here is where we define our various options that we wull use 
