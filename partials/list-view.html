@@ -1,16 +1,9 @@
 <header id="page-header" ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></header>
 
-  <div ng-class="pageLoaded?'fadeOut':''" class="fadeIn" >Loading</div>
+<div ng-class="pageLoaded?'fadeOut':''" class="fadeIn full" id="loading"><img src="/img/loading.gif" alt="Loading data" /></div>
 
 <div ng-class="pageLoaded?'fadeIn':''" class="faded" body-class-inject="app form" id="content" ng-init="rowsHeader=[];rows=[];scrollTop();">
 
-<style>
-
-.fadeOut{
-  opacity: 0 !important;
-}
-
-</style>
 
   <div  class="container">
     <header>
@@ -169,25 +162,34 @@
 <div class="modal" ng-class="editModal" ng-init="editModal='hide'">
   <div class="modal-content edit">
 
-      <h3>Edit {{ListView.id}}</h3>
+      <h2>Edit {{ListView.id}}</h2>
 
-
-      <section >
-        <h4><i class="fa fa-envelope-o"></i> Email Options</h4>
-        <p class="button send"  ng-class="ListView.emailConfirmation?'on':'off'" ng-click="ListView.emailConfirmation=ListView.emailConfirmation?false:true" ><i class="fa fa-level-up"></i> Send Confirmation</p>
-        <p class="button get"  ng-class="ListView.emailNotification?'on':'off'" ng-click="setEmailNotification()" ><i class="fa fa-level-down"></i> Get Notifications</p>
+      <section>
+        <h3><i class="fa fa-envelope-o"></i> Email Options</h3>
+        <ul class="checkbox">
+          <li>
+            <input type="checkbox" id="send-confirmation" ng-checked="ListView.emailConfirmation?'checked':''" ng-click="setEmailConfirmation()" />
+            <label for="send-confirmation">Send Confirmation</label>
+            <p>When checked, this will send an email confirmation to the form submitter with the data they submitted.</p>
+          </li>
+          <li>
+            <input type="checkbox" id="get-notifications" ng-checked="ListView.emailNotification?'checked':''" ng-click="setEmailNotification()" />
+            <label for="get-notifications">Get Notifications</label>
+            <p>When checked, this sends a notification of each form submission to your email address.</p>
+          </li>
+        </ul>
       </section>
 
       <section>
-        <h4>CSV Export Options</h4>
-        <ul class="inline">
+        <h3><i class="fa fa-table"></i> CSV Export Options</h3>
+        <ul class="checkbox">
           <li>
             <input type="checkbox" name="labels" id="labels" ng-model="labels" ng-init="labels=true" ng-checked="labels">
-            <label for="labels">CSV labels</label>
+            <label for="labels">Include column names</label>
           </li>
           <li>
             <input type="checkbox" name="quotes" id="quotes" ng-model="quotes" ng-init="quotes=false">
-            <label for="quotes">CSV Quotes</label>
+            <label for="quotes">Include quotation marks</label>
           </li>
         </ul>
       </section>

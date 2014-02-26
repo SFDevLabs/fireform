@@ -102,12 +102,6 @@ h3 {
   margin-bottom: 1em;
 }
 .modal h3,
-.account h2 {
-  margin-top: 0em;
-  padding-top: 0em;
-  padding-bottom: 0em;
-  margin-bottom: 0em;
-}
 .sidebar h2,
 h4 {
   font-weight: normal;
@@ -117,6 +111,20 @@ h4 {
   padding-top: 0em;
   padding-bottom: 0em;
   margin-bottom: 1em;
+}
+.modal h3,
+.account h2 {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0em;
+}
+.modal h2 {
+  margin-top: 0;
+  border-color: #ddd;
+  border-bottom-style: solid;
+  border-bottom-width: 0.03333333333333333em;
+  padding-bottom: 0.21666666666666667em;
 }
 .full h2,
 .modal h4 {
@@ -223,6 +231,7 @@ ul li.multiple ul li {
   padding-bottom: 1.8125em;
   border-color: #ddd;
 }
+.checkbox label,
 .example-form ul li label,
 .example-form ul li.multiple p {
   color: #000;
@@ -561,6 +570,13 @@ input[type=submit],
   text-align: center;
   text-transform: uppercase;
 }
+.button {
+  transition: all 0.5s;
+}
+.button:hover {
+  background: rgba(255,255,255,0.3);
+  transition: all 0.5s;
+}
 .button.solid {
   background: rgba(0,0,0,0.5);
   color: #fff;
@@ -580,6 +596,23 @@ input[type=submit] {
   padding-top: 0em;
   padding-bottom: 0em;
   margin-bottom: 0em;
+}
+.app .checkbox input,
+.app .checkbox label {
+  display: inline;
+  width: auto;
+}
+.checkbox {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 1.875em;
+  margin-bottom: 0em;
+}
+.modal p.button {
+  margin: 0;
+}
+.checkbox li p {
+  margin: 0;
 }
 .inline li {
   display: inline-block;
@@ -655,6 +688,8 @@ input[type=submit]:hover,
 .fadeIn {
   opacity: 1;
   transition: opacity 0.1s ease-in;
+  position: relative;
+  z-index: 1;
 }
 .modal {
   position: fixed;
@@ -677,8 +712,8 @@ input[type=submit]:hover,
   z-index: 9000;
 }
 .edit.modal-content {
-  height: 20em;
-  margin-top: -10em;
+  height: 34.5em;
+  margin-top: -17.25em;
 }
 .code.modal-content {
   height: 40em;
@@ -745,6 +780,9 @@ input[type=submit]:hover,
   display: inline-block;
   width: auto;
 }
+.controls .button {
+  margin-left: 0.625em;
+}
 .email-options .button {
   background-color: #3265be;
   color: #fff;
@@ -761,8 +799,21 @@ background-color: transparent,
 color: #666 {
   transition: all 0.5s;
 }
+#loading img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 0em;
+  padding-top: 5.625em;
+  padding-bottom: 5.625em;
+  margin-bottom: 0em;
+}
 .form .container {
   padding-bottom: 0;
+}
+.fadeOut {
+  opacity: 0 !important;
+  position: absolute;
+  z-index: 0;
 }
 th,
 td {
@@ -825,7 +876,10 @@ table th a:hover {
   background: rgba(50,101,190,0.2);
 }
 table tr:nth-child(odd) td {
-  background: rgba(0,0,0,0.05);
+  background: rgba(255,255,255,0.5);
+}
+table tr:nth-child(even) td {
+  background: rgba(255,255,255,0.3);
 }
 .account label {
   display: block;
