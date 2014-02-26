@@ -252,7 +252,7 @@
 
       <span id="delete-confirmation" ng-class="deleteConfirmation" ng-init="deleteConfirmation='hide'">
         <p>Are you sure you want to delete "{{ListView.id}}"?</p>
-        <button ng-click="deleteList()">Confirm</button> 
+        <button class="action button" ng-click="deleteList()">Confirm</button> 
       </span>
 
       <p class="close-button" ng-click="editModal='hide'; bodyClassClick('app form');"><i class="fa fa-times"></i></p> 

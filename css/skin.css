@@ -815,6 +815,9 @@ input[type=submit]:hover,
   height: 34.5em;
   margin-top: -17.25em;
 }
+#delete-confirmation p {
+  margin-bottom: 0;
+}
 .code.modal-content {
   height: 43.75em;
   margin-top: -21.875em;
