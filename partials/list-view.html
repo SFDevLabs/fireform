@@ -3,9 +3,7 @@
 <div body-class-inject="app form" id="content" ng-init="rowsHeader=[];rows=[];scrollTop();">
 
   <div class="container">
-
     <header>
-
       <h1>{{ListView.id}}{{$location.url}}</h1>
 
     </header>
@@ -113,13 +111,7 @@
     </div>
       
     <p><a ng-hide="$location.$$url==='/publicexample' || rows.length===0" href="/list">&lsaquo; Back to all forms</a></p>
-      <div class="right" ng-hide="!user.emailAuth">
-        <div class="right email-options">
-          <h3><i class="fa fa-envelope-o"></i> Email Notifications</h3>
-          <p class="button send"  ng-class="ListView.emailConfirmation?'on':'off'" ng-click="ListView.emailConfirmation=ListView.emailConfirmation?false:true" ><i class="fa fa-level-up"></i> Send Confirmation</p>
-          <p class="button get"  ng-class="ListView.emailNotification?'on':'off'" ng-click="setEmailNotification()" ><i class="fa fa-level-down"></i> Get Notifications</p>
-        </div>
-      </div>
+
 
   </div>
 </div>
@@ -127,45 +119,46 @@
 <footer ng-include="'partials/footer.html'"></footer>
 
 
-<div class="modal faded" ng-class="codeModal" ng-init="codeModal='hide';snippet=true;">
+
+ <div class="modal" ng-class="codeModal" ng-init="codeModal='hide faded';snippet=true;initHighlighting();" >
   <div class="modal-content">
     <button ng-hide="!snippet" ng-click="snippet=snippet?false:true" style="float:right;">Boilerplate Form</button>
     <button ng-hide="snippet" ng-click="snippet=snippet?false:true" style="float:right;">JavaScript Snippet</button>
 
-    <div ng-hide="!snippet">
-      <h2>JavaScript Snippet</h2> 
-      <p>Copy this snippet and paste it into your HTML underneath your &lt;form&gt;.</p>
-      <pre style="overflow:hidden;" highlight="$location.absUrl()"><code> 
-        &lt;script type="application/javascript" src="http://fireform.org/fireform.js"&gt;&lt;/script&gt;
-        &lt;script type="application/javascript"&gt;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new Fireform('#MySelector', '{{location}}');
-        &lt;/script&gt;
-       </code></pre>
+<div ng-hide="!snippet">
+    <div ng-hide="!ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && !ListView.emailNotification || !ListView.emailConfirmation && !ListView.emailNotification" 
+          ng-include="'partials/snippet/default-notification-confirmation.html'">
     </div>
-    <div ng-hide="snippet">
-      <h2>Boilerplate Form</h2>
-      <pre style="overflow:hidden;" highlight="$location.absUrl()"><code>
-      &lt;!doctype html&gt;
-        &lt;body&gt;
-          &lt;form id="MySelector"&gt;
-            &lt;input type="text" name="givenname" placeholder="Name"&gt;
-            &lt;input type="text" name="message" placeholder="Message"&gt;
-            &lt;input type="submit"&gt;
-          &lt;/form&gt;
+    <div ng-hide="ListView.emailConfirmation && !ListView.emailNotification || ListView.emailConfirmation && ListView.emailNotification || !ListView.emailConfirmation && !ListView.emailNotification" 
+          ng-include="'partials/snippet/default-notification.html'">
+    </div>
+    <div ng-hide="!ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && ListView.emailNotification || !ListView.emailConfirmation && !ListView.emailNotification" 
+         ng-include="'partials/snippet/default-confirmation.html'">
+    </div>
+    <div ng-hide="ListView.emailConfirmation && !ListView.emailNotification || !ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && ListView.emailNotification" 
+          ng-include="'partials/snippet/default.html'"></div>
+</div>
+<div ng-hide="snippet">
+    <div ng-hide="!ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && !ListView.emailNotification || !ListView.emailConfirmation && !ListView.emailNotification" 
+          ng-include="'partials/snippet/boiler-notification-confirmation.html'">
+    </div>
+    <div ng-hide="ListView.emailConfirmation && !ListView.emailNotification || ListView.emailConfirmation && ListView.emailNotification || !ListView.emailConfirmation && !ListView.emailNotification" 
+          ng-include="'partials/snippet/boiler-notification.html'">
+    </div>
+    <div ng-hide="!ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && ListView.emailNotification || !ListView.emailConfirmation && !ListView.emailNotification" 
+         ng-include="'partials/snippet/boiler-confirmation.html'">
+    </div>
+    <div ng-hide="ListView.emailConfirmation && !ListView.emailNotification || !ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && ListView.emailNotification" 
+          ng-include="'partials/snippet/boiler.html'"></div>
+</div>
+      <div ng-hide="$location.$$url==='/publicexample'" class="right" ><!--<div class="right" ng-hide="!user.emailAuth || $location.$$url==='/publicexample">-->        
+        <div class="right email-options">
+          <p class="button"  ng-class="ListView.emailConfirmation?'on':'off'" ng-click="setEmailConfirmation()" ></i> Send Email Confirmation<i class="check fa fa-check"></i></p>
+          <p class="button"  ng-class="ListView.emailNotification?'on':'off'" ng-click="setEmailNotification()" ></i> Get Email Notification<i class="check fa fa-check"></i></p>
+        </div>
+      </div>
 
-          &lt;script type="application/javascript" src="http://fireform.org/fireform.js"&gt;&lt;/script&gt;
-          &lt;script type="application/javascript"&gt;
-              /* See more options at http://fireform.org/docs */
-               var options = {
-                  simpleValidation:false,
-                  successClass: "custom-submit-success",
-                  callback:function(err, val){console.log(err,'callback')}
-                }
-              new Fireform('#MySelector', '{{location}}', options)
-          &lt;/script&gt;
-      &lt;/body&gt;
-     </code></pre>
-     </div>
+
     <p class="close-button" ng-click="codeModal='hide'; bodyClassClick('app form');"><i class="fa fa-times"></i></p> 
   </div>
 </div>

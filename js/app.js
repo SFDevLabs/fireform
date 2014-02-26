@@ -29,8 +29,18 @@ angular.module('myApp',
         $rootScope.bodyClassClick = function(bodyClass) {
             $rootScope.bodyClass=bodyClass;
         };
+
         $rootScope.getTmplUrlforAuth= function(loggedin, loggedout){
             return $rootScope.auth.user ?  loggedin : loggedout;
+        } 
+        //might need this at some point to edit tmpls
+        // $rootScope.initHighlighting= function(loggedin, loggedout){
+        //   //  debugger
+        //   //  setTimeout(function(){hljs.initHighlighting()},1000)//when in doubt setTimeout!!  hljs.initHighlighting messes up {{angular-tmpl-var}} so we set timeout to make sure it happens after and in window scope
+        // }
+
+        $rootScope.getTmplUrlforVal= function(loggedin, loggedout, bool){
+            return bool ?  loggedin : loggedout;
         }
 
         $rootScope.timeoutSet= function(variable, value, duration){
@@ -50,6 +60,8 @@ angular.module('myApp',
             };
             scopefind[key]=val;
         }
+
+
 
         $rootScope.scrollTop=function(x, y){ 
             x=x?x:0,

@@ -232,16 +232,18 @@ angular.module('myApp.controllers', [])
         $scope.emailNotification = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc+'/emailNotification');
 
         $scope.setEmailNotification = function() {
-            var val = $scope.emailNotification?false:true
+            var val = $scope.emailNotification.$value?false:true;
             $scope.emailNotification.$set(val); 
 
         }
 
          $scope.setEmailConfirmation = function() {
-
+            var val = $scope.emailConfirmation.$value?false:true;
+            $scope.emailConfirmation.$set(val); 
         }
 
         $scope.$location = $location;
+
 
         //delete this form. by calling remove on the firebase object
         $scope.deleteList = function() {
@@ -254,6 +256,9 @@ angular.module('myApp.controllers', [])
     function($rootScope, $scope, loginService, syncData, $location) {
         $scope.ListView = syncData('example');
         $scope.$location = $location;
+
+
+  
 
     }
 ]);

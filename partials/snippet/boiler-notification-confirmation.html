@@ -1,0 +1,49 @@
+  <h2>Boilerplate Form</h2>
+<!--   <pre style="overflow:hidden;"><code>
+  &lt;!doctype html&gt;
+    &lt;body&gt;
+      &lt;form id="MySelector"&gt;
+        &lt;input type="text" name="givenname" placeholder="Name"&gt;
+        &lt;input type="email" name="inputexample" placeholder="Email"&gt;
+        &lt;input type="submit"&gt;
+      &lt;/form&gt;
+
+      &lt;script type="application/javascript" src="http://fireform.org/fireform.js"&gt;&lt;/script&gt;
+      &lt;script type="application/javascript"&gt;
+          /* See more options at http://fireform.org/docs */
+          options={
+            emailNotification:"{{auth.user.email}}",
+            emailConfirmationName:"inputexample",  //The email input we will send a confirmation to 
+            emailConfirmationFrom:"{{auth.user.email}}",  //Email appears as sent by this address.
+            emailConfirmationSubject:"Thanks for Signing Up",
+            emailConfirmationBodyHTML:"&lt;p&gtYou have been signed up!&lt;/p&gt",
+            emailConfirmationBodyText:"You have been signed up!"
+          }
+          new Fireform('#MySelector', '{{$location.absUrl()}}', options)
+      &lt;/script&gt;
+  &lt;/body&gt;
+ </code></pre> -->
+ <pre style="overflow:hidden;" class="ng-scope"><code class="ng-binding hljs xml">
+  <span class="hljs-doctype">&lt;!doctype html&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">form</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"MySelector"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"givenname"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"Name"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"email"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"inputexample"</span> <span class="hljs-attribute">placeholder</span>=<span class="hljs-value">"Email"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">form</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"http://fireform.org/fireform.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span>&gt;</span><span class="javascript">
+          <span class="hljs-comment">/* See more options at http://fireform.org/docs */</span>
+          options={
+            emailNotification:<span class="hljs-string">"{{auth.user.email}}"</span>,
+            emailConfirmationName:<span class="hljs-string">"inputexample"</span>,  <span class="hljs-comment">//The email input we will send a confirmation to </span>
+            emailConfirmationFrom:<span class="hljs-string">"{{auth.user.email}}"</span>,  <span class="hljs-comment">//Email appears as sent by this address.</span>
+            emailConfirmationSubject:<span class="hljs-string">"Thanks for Signing Up"</span>,
+            emailConfirmationBodyHTML:<span class="hljs-string">"&lt;p&gt;You have been signed up!&lt;/p&gt;"</span>,
+            emailConfirmationBodyText:<span class="hljs-string">"You have been signed up!"</span>
+          }
+          <span class="hljs-keyword">new</span> Fireform(<span class="hljs-string">'#MySelector'</span>, <span class="hljs-string">'{{$location.absUrl()}}'</span>, options)
+      </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+ </code></pre>
