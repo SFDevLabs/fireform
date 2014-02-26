@@ -25,7 +25,7 @@
     <div ng-hide="rows.length>0">
       <p class="empty">No data submitted yet.</p>
     </div>
-
+  </div>
 
     <!-- Table starts here-->
     <div class="table-container">
@@ -109,11 +109,9 @@
       </table>
 
     </div>
-      
+
+<div class="container">
     <p><a ng-hide="$location.$$url==='/publicexample' || rows.length===0" href="/list">&lsaquo; Back to all forms</a></p>
-
-
-  </div>
 </div>
 
 <footer ng-include="'partials/footer.html'"></footer>
@@ -121,7 +119,7 @@
 
 
  <div class="modal" ng-class="codeModal" ng-init="codeModal='hide faded';snippet=true;initHighlighting();" >
-  <div class="modal-content">
+  <div class="modal-content code">
     <button ng-hide="!snippet" ng-click="snippet=snippet?false:true" style="float:right;">Boilerplate Form</button>
     <button ng-hide="snippet" ng-click="snippet=snippet?false:true" style="float:right;">JavaScript Snippet</button>
 
@@ -151,12 +149,7 @@
     <div ng-hide="ListView.emailConfirmation && !ListView.emailNotification || !ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && ListView.emailNotification" 
           ng-include="'partials/snippet/boiler.html'"></div>
 </div>
-      <div ng-hide="$location.$$url==='/publicexample'" class="right" ><!--<div class="right" ng-hide="!user.emailAuth || $location.$$url==='/publicexample">-->        
-        <div class="right email-options">
-          <p class="button"  ng-class="ListView.emailConfirmation?'on':'off'" ng-click="setEmailConfirmation()" ></i> Send Email Confirmation<i class="check fa fa-check"></i></p>
-          <p class="button"  ng-class="ListView.emailNotification?'on':'off'" ng-click="setEmailNotification()" ></i> Get Email Notification<i class="check fa fa-check"></i></p>
-        </div>
-      </div>
+
 
 
     <p class="close-button" ng-click="codeModal='hide'; bodyClassClick('app form');"><i class="fa fa-times"></i></p> 
@@ -164,7 +157,7 @@
 </div>
 
 <div class="modal" ng-class="editModal" ng-init="editModal='hide'">
-  <div class="modal-content">
+  <div class="modal-content edit">
 
       <h3>Edit {{ListView.id}}</h3>
 
