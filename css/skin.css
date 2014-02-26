@@ -854,7 +854,7 @@ color: #666 {
 }
 #loading,
 position: absolute,
-img {
+#loading img {
   display: block;
   margin: 0 auto;
   margin-top: 0em;
