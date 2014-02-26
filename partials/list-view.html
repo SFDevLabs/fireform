@@ -1,8 +1,18 @@
 <header id="page-header" ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></header>
 
-<div body-class-inject="app form" id="content" ng-init="rowsHeader=[];rows=[];scrollTop();">
+  <div ng-class="pageLoaded?'fadeOut':''" class="fadeIn" >Loading</div>
 
-  <div class="container">
+<div ng-class="pageLoaded?'fadeIn':''" class="faded" body-class-inject="app form" id="content" ng-init="rowsHeader=[];rows=[];scrollTop();">
+
+<style>
+
+.fadeOut{
+  opacity: 0 !important;
+}
+
+</style>
+
+  <div  class="container">
     <header>
       <h1>{{ListView.id}}{{$location.url}}</h1>
 
@@ -22,13 +32,13 @@
 
  
 
-    <div ng-hide="rows.length>0">
+    <div ng-hide="rows.length>0 || !pageLoaded">
       <p class="empty">No data submitted yet.</p>
     </div>
   </div>
-
     <!-- Table starts here-->
-    <div class="table-container">
+    <div  
+  <div  class="table-container">
      <table ng-hide="rows.length===0" ng-class="sorted">
         <tr>
           <!-- Header Loop Created from rowsHeader-->
@@ -114,7 +124,7 @@
     <p><a ng-hide="$location.$$url==='/publicexample' || rows.length===0" href="/list">&lsaquo; Back to all forms</a></p>
 </div>
 
-<footer ng-include="'partials/footer.html'"></footer>
+<footer ng-class="pageLoaded?'fadeIn':''" class='faded' ng-include="'partials/footer.html'"></footer>
 
 
 
@@ -161,7 +171,8 @@
 
       <h3>Edit {{ListView.id}}</h3>
 
-      <section ng-hide="!user.emailAuth">
+
+      <section >
         <h4><i class="fa fa-envelope-o"></i> Email Options</h4>
         <p class="button send"  ng-class="ListView.emailConfirmation?'on':'off'" ng-click="ListView.emailConfirmation=ListView.emailConfirmation?false:true" ><i class="fa fa-level-up"></i> Send Confirmation</p>
         <p class="button get"  ng-class="ListView.emailNotification?'on':'off'" ng-click="setEmailNotification()" ><i class="fa fa-level-down"></i> Get Notifications</p>

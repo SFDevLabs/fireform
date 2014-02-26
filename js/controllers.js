@@ -218,8 +218,8 @@ angular.module('myApp.controllers', [])
     }
 ])
 
-.controller('listViewCtrl', ['$rootScope','$scope', 'loginService', 'syncData', '$location',
-    function($rootScope, $scope, loginService, syncData, $location) {
+.controller('listViewCtrl', ['$rootScope','$scope', 'loginService', 'syncData', '$location', '$timeout',
+    function($rootScope, $scope, loginService, syncData, $location, $timeout) {
         syncData(['users', $scope.auth.user.uid]).$bind($scope, 'user');
         var uid= $scope.auth.user.uid.replace("simplelogin:","")
         ,loc = $location.$$path.replace('/list/'+uid+'/', '')
@@ -243,6 +243,19 @@ angular.module('myApp.controllers', [])
         }
 
         $scope.$location = $location;
+
+        $scope.pageLoaded = false;
+        $scope.pageLoadedFade = false;
+
+        $scope.ListView.$on('loaded',function(data){
+            $scope.pageLoadedFade = true;
+            $timeout(function(){
+                $scope.pageLoaded = true;
+            },300);
+
+        });
+
+
 
 
         //delete this form. by calling remove on the firebase object
