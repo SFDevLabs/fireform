@@ -64,10 +64,10 @@ angular.module('myApp',
 
 
         $rootScope.scrollTop=function(x, y){ 
+          debugger
             x=x?x:0,
             y=y?y:0,
-            document.documentElement.scrollLeft=x,
-            document.documentElement.scrollTop=y;
+            window.scrollTo(x,y)
         }
 
 
