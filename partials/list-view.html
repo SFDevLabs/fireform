@@ -26,9 +26,11 @@
 
     </div>
 
-    <div ng-hide="!ListView.welcomMessage" ng-class="welcomAlert" class="alert fadeIn" style="width:100%; background-color: lightblue; padding:5px;">
+    <div ng-hide="!ListView.welcomMessage" ng-class="welcomAlert" class="alert fadeIn">
       ListView.welcomMessage = " {{ListView.welcomMessage}} "
-      <p ng-click="welcomAlert='fadeOut';timeoutSet('welcomAlert','hide','500'); removeWelcome();">Cose</p>
+      <a class="close" ng-click="welcomAlert='fadeOut';timeoutSet('welcomAlert','hide','500'); removeWelcome();">
+        <i class="fa fa-times"></i>
+      </a>
     </div>
 
 
@@ -188,15 +190,17 @@
       <h2>Edit {{ListView.id}}</h2>
 
       <section>
+        <span  ng-class='updateCodeWarn' class="update">Please update <a href="javascript:null;" ng-click="editModal='fadeOut'; timeoutSet('editModal','hide','700'); timeoutSet('codeModal','fadeIn faded','700'); codeModal='faded'; updateCodeWarn=''">update </a>your site's Fireform code!</span>
         <h3><i class="fa fa-envelope-o"></i> Email Options</h3>
+
         <ul class="checkbox">
           <li>
-            <input type="checkbox" id="send-confirmation" ng-checked="ListView.emailConfirmation?'checked':''" ng-click="setEmailConfirmation()" />
+            <input type="checkbox" id="send-confirmation" ng-checked="ListView.emailConfirmation?'checked':''" ng-click="setEmailConfirmation(); updateCodeWarn='active' " />
             <label for="send-confirmation">Send Confirmation</label>
             <p>When checked, this will send an email confirmation to the form submitter with the data they submitted.</p>
           </li>
           <li>
-            <input type="checkbox" id="get-notifications" ng-checked="ListView.emailNotification?'checked':''" ng-click="setEmailNotification()" />
+            <input type="checkbox" id="get-notifications" ng-checked="ListView.emailNotification?'checked':''" ng-click="setEmailNotification(); updateCodeWarn='active' " />
             <label for="get-notifications">Get Notifications</label>
             <p>When checked, this sends a notification of each form submission to your email address.</p>
           </li>
@@ -217,12 +221,12 @@
         </ul>
       </section>
 
-      <p id="delete" class="button"><i class="fa fa-trash-o"></i> Delete Form</p>
+      <p id="delete" ng-click="deleteConfirmation=''" class="button"><i class="fa fa-trash-o"></i> Delete Form</p>
 
-      <div id="delete-confirmation" ng-class="deleteConfirmation" ng-init="deleteConfirmation='hide'">
+      <span id="delete-confirmation" ng-class="deleteConfirmation" ng-init="deleteConfirmation='hide'">
         <p>Are you sure you want to delete "{{ListView.id}}"?</p>
         <button ng-click="deleteList()">Confirm</button> 
-      </div>
+      </span>
 
       <p class="close-button" ng-click="editModal='hide'; bodyClassClick('app form');"><i class="fa fa-times"></i></p> 
 
