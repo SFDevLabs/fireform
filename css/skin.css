@@ -133,6 +133,17 @@ h4 {
   padding-bottom: 0em;
   margin-bottom: 0em;
 }
+.alert {
+  width: 100%;
+  background-color: #eee;
+  padding: 25px;
+}
+.alert .close {
+  right: 0px;
+  top: 0px;
+  position: absolute;
+  font-size: 1.5em;
+}
 .sidebar p:last-child,
 .sidebar h2 {
   margin-top: 0em;
@@ -152,18 +163,24 @@ h4 {
 .submit-success #success-message {
   display: block;
 }
-.form-validation-failed {
-  border: 1px solid;
+.form-validation-failed #validation-message {
+  display: block;
+}
+.submit[disabled] {
+  opacity: 0;
 }
 .input-validation-failed {
-  background-color: #c66;
+  border: 2px solid #c66 !important;
 }
-.input-validation-failed:after {
-  content: "-";
+.input-validation-failed:before {
+  content: "*";
   color: #8e2409;
-  padding: 0px 20px;
+  margin: 0px -10px;
 }
 #success-message {
+  display: none;
+}
+#validation-message {
   display: none;
 }
 label,
@@ -317,6 +334,13 @@ ul li.multiple ul li {
   padding-top: 0em;
   padding-bottom: 0em;
   margin-bottom: 0em;
+}
+.modal-content .update {
+  float: right;
+  display: none;
+}
+.modal-content .update.active {
+  display: block;
 }
 .public #page-header {
   background: #bbb;
