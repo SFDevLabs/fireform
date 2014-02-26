@@ -1,56 +1,4 @@
 <header id="page-header" ng-include="getTmplUrlforAuth('partials/app-header.html','partials/public-header.html')"></header>
-<!-- Kill me -->
-<style>
-  .overflow{
-    overflow: hidden;
-  }
-  .modal{
-    position:fixed;
-    top: 0px;
-    left:0px;
-    background: rgba(0, 0, 0, 0.5); 
-    width:100%;
-    height:100%;
-    overflow: scroll;
-  }
-  .modal .modal-inner{
-    margin: 200px auto;
-    background-color: #eee;
-    width: 70%;
-    padding: 50px;
-    font-size: 1.2em;
-  }
-
-  .faded{
-    opacity: 0;
-    -webkit-transition: opacity .1s ease-in;
-       -moz-transition: opacity .1s ease-in;
-        -ms-transition: opacity .1s ease-in;
-         -o-transition: opacity .1s ease-in;
-            transition: opacity .1s ease-in;
-  }
-
-  .fadeIn{
-    opacity: 1;
-  }
-
-  .email-options .button{
-    background-color: #2d6199;
-    color:#fff;
-
-  }
-  .email-options .off .check{
-    display:none;
-  }
-
-  .email-options .off{
-    background-color: rgba(255, 255, 255, 0);
-    color: #666;
-  }
-
-</style>
-<!-- Kill me -->
-
 
 <div body-class-inject="app form" id="content" ng-init="rowsHeader=[];rows=[];scrollTop();">
 
@@ -60,40 +8,24 @@
 
       <h1>{{ListView.id}}{{$location.url}}</h1>
 
-
-
-
-      <div class="right">
-        <p id="delete" class="button" ng-click="timeoutSet('deleteModal','fadeIn faded','10'); deleteModal='faded'"; ng-hide="$location.$$url==='/publicexample'"><i class="fa fa-trash-o"></i> Delete</p>
-        <p ng-click="timeoutSet('codeModal','fadeIn faded','10'); codeModal='faded'; bodyClassClick('app form overflow');"  class="action button"><i class="fa fa-code"></i> Get Code</p>
-      </div>
     </header>
 
-
-
-
-
     <div class="controls">
+
       <p class="left"><a ng-hide="$location.$$url==='/publicexample'" href="/list" class="breadcrumb">&lsaquo; Back to all forms</a></p>
+
       <div class="right">
-        <ul class="inline">
-          <li>
-            <input type="checkbox" name="labels" id="labels" ng-model="labels" ng-init="labels=true" ng-checked="labels">
-            <label for="labels">CSV labels</label>
-          </li>
-          <li>
-            <input type="checkbox" name="quotes" id="quotes" ng-model="quotes" ng-init="quotes=false">
-            <label for="quotes">CSV Quotes</label>
-          </li>
-        </ul>
+        <p class="button" ng-click="timeoutSet('editModal','fadeIn faded','10'); editModal='faded'; bodyClassClick('app form modal-open');"; ng-hide="$location.$$url==='/publicexample'"><i class="fa fa-pencil-square-o"></i> Edit Form</p>
         <p id="download" class="button solid" ng-click="JSON2CSV(rows, labels, quotes)";><i class="fa fa-download"></i> Download CSV</p>
+        <p ng-click="timeoutSet('codeModal','fadeIn faded','10'); codeModal='faded'; bodyClassClick('app form modal-open');"  class="action button"><i class="fa fa-code"></i> Get Code</p>
       </div>
+
     </div>
 
  
 
     <div ng-hide="rows.length>0">
-      No data submitted yet.
+      <p class="empty">No data submitted yet.</p>
     </div>
 
 
@@ -183,8 +115,9 @@
     <p><a ng-hide="$location.$$url==='/publicexample' || rows.length===0" href="/list">&lsaquo; Back to all forms</a></p>
       <div class="right" ng-hide="!user.emailAuth">
         <div class="right email-options">
-          <p class="button"  ng-class="ListView.emailConfirmation?'on':'off'" ng-click="ListView.emailConfirmation=ListView.emailConfirmation?false:true" ></i> Send Email Confirmation<i class="check fa fa-check"></i></p>
-          <p class="button"  ng-class="ListView.emailNotification?'on':'off'" ng-click="setEmailNotification()" ></i> Get Email Notification<i class="check fa fa-check"></i></p>
+          <h3><i class="fa fa-envelope-o"></i> Email Notifications</h3>
+          <p class="button send"  ng-class="ListView.emailConfirmation?'on':'off'" ng-click="ListView.emailConfirmation=ListView.emailConfirmation?false:true" ><i class="fa fa-level-up"></i> Send Confirmation</p>
+          <p class="button get"  ng-class="ListView.emailNotification?'on':'off'" ng-click="setEmailNotification()" ><i class="fa fa-level-down"></i> Get Notifications</p>
         </div>
       </div>
 
@@ -237,17 +170,44 @@
   </div>
 </div>
 
-
-<div  class="modal" ng-class="deleteModal" ng-init="deleteModal='hide'">
+<div class="modal" ng-class="editModal" ng-init="editModal='hide'">
   <div class="modal-content">
-      <div>Are you sure you want to delete "{{ListView.id}}"? </div>  
-      <br>
-      <button ng-click="deleteList()">Confirm</button> 
-      <p class="close-button" ng-click="deleteModal='hide'; bodyClassClick('app form');"><i class="fa fa-times"></i></p> 
+
+      <h3>Edit {{ListView.id}}</h3>
+
+      <section ng-hide="!user.emailAuth">
+        <h4><i class="fa fa-envelope-o"></i> Email Options</h4>
+        <p class="button send"  ng-class="ListView.emailConfirmation?'on':'off'" ng-click="ListView.emailConfirmation=ListView.emailConfirmation?false:true" ><i class="fa fa-level-up"></i> Send Confirmation</p>
+        <p class="button get"  ng-class="ListView.emailNotification?'on':'off'" ng-click="setEmailNotification()" ><i class="fa fa-level-down"></i> Get Notifications</p>
+      </section>
+
+      <section>
+        <h4>CSV Export Options</h4>
+        <ul class="inline">
+          <li>
+            <input type="checkbox" name="labels" id="labels" ng-model="labels" ng-init="labels=true" ng-checked="labels">
+            <label for="labels">CSV labels</label>
+          </li>
+          <li>
+            <input type="checkbox" name="quotes" id="quotes" ng-model="quotes" ng-init="quotes=false">
+            <label for="quotes">CSV Quotes</label>
+          </li>
+        </ul>
+      </section>
+
+      <p id="delete" class="button"><i class="fa fa-trash-o"></i> Delete Form</p>
+
+      <div id="delete-confirmation" ng-class="deleteConfirmation" ng-init="deleteConfirmation='hide'">
+        <p>Are you sure you want to delete "{{ListView.id}}"?</p>
+        <button ng-click="deleteList()">Confirm</button> 
+      </div>
+
+      <p class="close-button" ng-click="editModal='hide'; bodyClassClick('app form');"><i class="fa fa-times"></i></p> 
 
   </div>
 
-    <!-- This pulls data into a directive where we formate it for the root scope-->
-    <div style="display:none;" tabletop ng-repeat="(keyF, valueF) in ListView.formPosts" ></div>  
+  <!-- This pulls data into a directive where we formate it for the root scope-->
+  <div style="display:none;" tabletop ng-repeat="(keyF, valueF) in ListView.formPosts" ></div>  
 
 </div>
+

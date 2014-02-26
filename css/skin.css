@@ -19,7 +19,7 @@ textarea {
 .block p,
 a {
   text-decoration: none;
-  color: #2d6199;
+  color: #3265be;
   transition: color 0.75s;
 }
 .app #content ul li a:hover h2,
@@ -125,6 +125,14 @@ p {
   padding-top: 0em;
   padding-bottom: 0em;
   margin-bottom: 1em;
+}
+.empty {
+  font-size: 2.5em;
+  line-height: 1.5em;
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0.375em;
 }
 .hide {
   display: none;
@@ -506,11 +514,16 @@ input[type=submit]:hover,
   clear: both;
   float: none;
 }
-#content header {
-  border-bottom-style: solid;
-  border-bottom-width: 0.0625em;
-  padding-bottom: 1.8125em;
-  border-color: rgba(0,0,0,0.2);
+.modal-open {
+  overflow: hidden;
+}
+.faded {
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
+}
+.fadeIn {
+  opacity: 1;
+  transition: opacity 0.1s ease-in;
 }
 .modal {
   position: fixed;
@@ -564,6 +577,12 @@ input[type=submit]:hover,
 .close-button:after {
   content: none;
 }
+#content header {
+  border-bottom-style: solid;
+  border-bottom-width: 0.0625em;
+  padding-bottom: 1.8125em;
+  border-color: rgba(0,0,0,0.2);
+}
 .controls {
   border-bottom-style: solid;
   border-bottom-width: 0.0625em;
@@ -587,6 +606,22 @@ input[type=submit]:hover,
 .controls p {
   display: inline-block;
   width: auto;
+}
+.email-options .button {
+  background-color: #3265be;
+  color: #fff;
+  transition: all 0.5s;
+}
+.email-options .button:hover {
+  background-color: #1e4167;
+}
+.email-options .off .check {
+  display: none;
+}
+.email-options .off.button,
+background-color: transparent,
+color: #666 {
+  transition: all 0.5s;
 }
 th,
 td {

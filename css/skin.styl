@@ -21,7 +21,7 @@ seventy-gray = rgba(0,0,0,0.7)
 
 red = #8e2409
 orange = #be4c00
-dark-blue = #2d6199
+dark-blue = #1e4167
 light-blue = #3265be
 
 one-blue = rgba(50, 101, 190, 0.1)
@@ -44,7 +44,7 @@ textarea
 .block p
 a
 	text-decoration: none
-	color: dark-blue
+	color: light-blue
 	transition: color 0.75s
 
 .app #content ul li a:hover h2
@@ -113,8 +113,12 @@ p
 	adjust-font-size-to(18px)
 	rhythm(1, 0, 0, 1, 30px)
 
+.empty
+	adjust-font-size-to(40px)
+	rhythm(0, 0, 0, 0.5, 40px)
+
 .hide
-	display:none
+	display: none
 
 .app.home #content ul
 .list #content ul
@@ -431,9 +435,19 @@ input[type=submit]:hover
 	clear: both
 	float: none
 
-#content header
-	trailing-border(1px, 1, 16px, solid)
-	border-color: twenty-gray
+
+// modal
+
+.modal-open
+	overflow: hidden
+
+.faded
+	opacity: 0;
+	transition: opacity .1s ease-in;
+
+.fadeIn
+	opacity: 1;
+	transition: opacity .1s ease-in;	
 
 .modal
 	position: fixed
@@ -484,9 +498,15 @@ input[type=submit]:hover
 	margin-top: 0.15em
 
 .close-button:before,
-.close-button:after {
-	content: none;
-}
+.close-button:after
+	content: none
+
+// form controls
+
+
+#content header
+	trailing-border(1px, 1, 16px, solid)
+	border-color: twenty-gray
 
 .controls
 	trailing-border(1px, 1, 16px, solid)
@@ -503,6 +523,27 @@ input[type=submit]:hover
 .controls p
 	display: inline-block
 	width: auto
+
+
+.email-options .button
+	background-color: light-blue
+	color: #fff
+	transition: all 0.5s
+
+.email-options .button:hover
+	background-color: dark-blue
+
+.email-options .off .check
+	display: none
+
+.email-options .off.button
+    background-color: transparent
+    color: #666
+	transition: all 0.5s
+
+
+
+// form data table
 
 th, 
 td
