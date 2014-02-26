@@ -442,15 +442,23 @@ article
 	rhythm(0, 0, 0, 1)
 
 .public.home .demo li
+	position: relative
 	background: five-gray
 	border-radius: 100em
-	height: 8.75em
-	width: 8.75em
+	height: 11.25em
+	width: 11.25em
 	display: inline-block
-	padding: 1.25em
 	margin: 0 1.25em
 	vertical-align: middle
 	transition: all 0.5s
+
+.public.home .demo li a
+	display: block
+	width: 100%
+	height: 100%
+	position: absolute
+	top: 0
+	left: 0
 
 .public.home .demo li:hover
 	background: two-gray
@@ -459,7 +467,7 @@ article
 .public.home ul li i
 	font-size: 3.75em
 	display: block
-	margin: 0.5em auto 0 auto
+	margin: 0.875em auto 0 auto
 
 .demo p
 	margin: 0
@@ -756,9 +764,12 @@ input[type=submit]:hover
 
 // form data table
 
-#loading
+
+#loading.fadeIn
+#loading 
 	position: absolute
-  	
+	width: 100%
+
 #loading img
 	display: block
 	margin: 0 auto
@@ -867,6 +878,12 @@ ul.field,
 
 @media screen and (min-width: 0em) and (max-width: 73em)
 
+	.public.home .three-up li
+	.public.home .three-up li img
+		float: none
+		clear: both
+		margin: 0 auto
+
 	.public.home p#login
 		position: relative
 		top: 0
@@ -876,7 +893,7 @@ ul.field,
 		border: 0
 		padding: 0
 
-	nav#left ul li {
+	nav#left ul li
 		rhythm(0, 0, 0, 1, 18px)
 		display: block;
 		float: left;
@@ -885,7 +902,6 @@ ul.field,
 		padding: 0.5em 1.25em;
 		margin-right: 1.25em;
 		border-radius: 0.3125em;
-	}
 		
 	#left
 	#right
