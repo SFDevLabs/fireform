@@ -19,7 +19,7 @@
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic,700italic"/>
         <link rel="stylesheet" type="text/css" href="../css/bones.css"/>
         <link rel="stylesheet" type="text/css" href="../css/skin.css"/>
-
+        <link type="text/css" rel="stylesheet" href="http://fireform/css/monokai_sublime.min.css?now=1393381085455">
     </head>
 
     <body class="public example-form">
@@ -28,25 +28,154 @@
 
             <h1>Fireform Example: Contact Form</h1>
             
-            <p>This form submits to <a target="_blank" href="http://fireform.org/publicexample">fireform.org/publicexample</a>.</p>
+            <div class="content left">
+                <form id="MySelector">
+                    <ul>
+                        <li>
+                            <label for="first-name">First Name</label>
+                            <input type="text" name="FirstName" id="first-name" />
+                        </li>
+                        <li>
+                            <label for="last-name">Last Name</label>
+                            <input type="text" name="LastName" id="last-name" />
+                        </li>
+                        <li class="multiple">
+                            <p>Neighborhood</p>
+                            <ul>
+                                <li>
+                                    <input type="radio" name="Neighborhood" id="south-of-market" value="South of Market" />
+                                    <label for="south-of-market">South of Market</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="Neighborhood" id="tenderloin" value="Tenderloin" />
+                                    <label for="tenderloin">Tenderloin</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="Neighborhood" id="nob-hill" value="Nob Hill" />
+                                    <label for="nob-hill">Nob Hill</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="Neighborhood" id="north-beach" value="North Beach" />
+                                    <label for="north-beach">North Beach</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="Neighborhood" id="russian-hill" value="Russian Hill" />
+                                    <label for="russian-hill">Russian Hill</label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="multiple">
+                            <p>Which of our events have you attended?</p>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" name="BeerFriday" id="beer-friday" />
+                                    <label for="beer-friday">Beer Friday</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" name="WineWednesday" id="wine-wednesday" />
+                                    <label for="wine-wednesday">Wine Wednesday</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" name="MilkshakeMonday" id="milkshake-monday" />
+                                    <label for="milkshake-monday">Milkshake Monday</label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <label for="message">Any comments?</label>
+                            <textarea name="Message" id="message"></textarea>
+                        </li>
+                    </ul>
+                    <p class="submit">
+                        <input type="submit" value="Submit Form" />
+                    </p>
+                    <p id="success-message">
+                        Success, your form was submitted. Check it out <a target="_blank" href="http://fireform.org/publicexample">here</a>!
+                    </p>  
+                </form>
+            </div>
 
-            <form id="MySelector">
-                <input type="text" name="givenname" placeholder="Name">
-                <input type="number" name="age" placeholder="Age">
-                <br>
-                Southpaw:<input type="checkbox" name="southpaw">
-                <br>
-                Bantamweight:<input type="radio" name="weightclass" value="bantamweight">
-                Welterweight:<input type="radio" name="weightclass" value="welterweight">
-                HeavyWeight:<input type="radio"  name="weightclass" value="heavyweight">
-                <br>
-                <input type="submit">
-                <p id="success-message">
-                    Success, your form was submitted. Check it out <a target="_blank" href="http://fireform.org/publicexample">here</a>!
-                </p>  
-            </form>
+            <div class="sidebar right">
 
+                <h2>Want to see the collected form data?</h2>
+                <p>This form submits to <a target="_blank" href="http://fireform.org/publicexample">fireform.org/publicexample</a>.<a class="button solid" target="_blank" href="http://fireform.org/publicexample">View Backend</a></p>
+
+                <h2>Need the form code?</h2>
+                <p>Scroll down to see the form code below, ready to copy and paste. <a class="button solid" href="#code-snippet">View Code</a></p>
+            </div>
+
+            <section class="full" id="code-snippet">
+                <h2>Form Code</h2>
+                <pre style="overflow:hidden;">                    
+                    <code class=" hljs xml">
+                        <span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"first-name"</span>&gt;</span>First Name<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"FirstName"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"first-name"</span> /&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"last-name"</span>&gt;</span>Last Name<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"LastName"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"last-name"</span> /&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"multiple"</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Neighborhood<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"radio"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"Neighborhood"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"south-of-market"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"South of Market"</span> /&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"south-of-market"</span>&gt;</span>South of Market<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"radio"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"Neighborhood"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"tenderloin"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"Tenderloin"</span> /&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"tenderloin"</span>&gt;</span>Tenderloin<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"radio"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"Neighborhood"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"nob-hill"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"Nob Hill"</span> /&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"nob-hill"</span>&gt;</span>Nob Hill<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"radio"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"Neighborhood"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"north-beach"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"North Beach"</span> /&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"north-beach"</span>&gt;</span>North Beach<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"radio"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"Neighborhood"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"russian-hill"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"Russian Hill"</span> /&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"russian-hill"</span>&gt;</span>Russian Hill<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"multiple"</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Which of our events have you attended?<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"BeerFriday"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"beer-friday"</span> /&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"beer-friday"</span>&gt;</span>Beer Friday<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"WineWednesday"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"wine-wednesday"</span> /&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"wine-wednesday"</span>&gt;</span>Wine Wednesday<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"MilkshakeMonday"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"milkshake-monday"</span> /&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"milkshake-monday"</span>&gt;</span>Milkshake Monday<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"message"</span>&gt;</span>Any comments?<span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-title">textarea</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"Message"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"message"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">textarea</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-title">p</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"submit"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"submit"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"Submit Form"</span> /&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"http://fireform.org/fireform.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+                      <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span>&gt;</span><span class="javascript">
+                            <span class="hljs-keyword">new</span> Fireform(<span class="hljs-string">'#MySelector'</span>, <span class="hljs-string">'{{$location.absUrl()}}'</span>);
+                      </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+                    </code>
+                </pre>
+            </section>
         </div>
+        <script src="../js/vendor/highlight.min.js"></script>
         <script type="application/javascript" src="http://fireform.org/fireform.js"></script>
         <script type="application/javascript">
               /* See how to customize at http://fireform.org/docs */
@@ -56,25 +185,5 @@
                 }
               new Fireform('#MySelector', 'http://fireform.org/publicexample', options)
         </script>
-        <style type="text/css">
-
-            .submit-success #success-message{
-                display: block;
-            }
-            .form-validation-failed{
-                border: 1px solid;
-            }
-            .input-validation-failed{
-                background-color: #CC6666;
-            }
-            .input-validation-failed[type="radio"]:after{
-                content:"-";
-                color:red;
-                padding: 0px 20px;
-            }
-            #success-message{
-                display: none;
-            }
-        </style>
     </body>
 </html>

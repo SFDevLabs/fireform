@@ -13,6 +13,8 @@ body,
 input,
 textarea {
   font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .app #content ul li a h2,
 .app #content ul li a p,
@@ -31,8 +33,7 @@ a:hover {
 }
 h1,
 h2,
-h3,
-h4 {
+h3 {
   font-weight: 300;
 }
 h1 {
@@ -107,7 +108,9 @@ h3 {
   padding-bottom: 0em;
   margin-bottom: 0em;
 }
+.sidebar h2,
 h4 {
+  font-weight: normal;
   font-size: 1.5625em;
   line-height: 1.2em;
   margin-top: 2em;
@@ -115,12 +118,47 @@ h4 {
   padding-bottom: 0em;
   margin-bottom: 1em;
 }
+.full h2,
 .modal h4 {
   margin-top: 0em;
   padding-top: 0em;
   padding-bottom: 0em;
   margin-bottom: 0em;
 }
+.sidebar p:last-child,
+.sidebar h2 {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0.46875em;
+}
+.sidebar a.button {
+  margin-top: 0.5em;
+}
+.sidebar p {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 1.875em;
+}
+.submit-success #success-message {
+  display: block;
+}
+.form-validation-failed {
+  border: 1px solid;
+}
+.input-validation-failed {
+  background-color: #c66;
+}
+.input-validation-failed:after {
+  content: "-";
+  color: #8e2409;
+  padding: 0px 20px;
+}
+#success-message {
+  display: none;
+}
+label,
 ol li,
 ul li,
 p {
@@ -131,6 +169,87 @@ p {
   padding-top: 0em;
   padding-bottom: 0em;
   margin-bottom: 1em;
+}
+.example-form pre {
+  margin-top: -1.5em;
+}
+.example-form ul li:first-child,
+ul li:first-child label {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 1.875em;
+}
+.example-form ul li ul li:first-child,
+ul li ul li {
+  font-size: 1em;
+  line-height: 1.875em;
+  margin-top: 0.9375em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 0.9375em;
+}
+ul li.multiple {
+  margin-top: 1.875em;
+  padding-top: 0.9375em;
+  padding-bottom: 0.9375em;
+  margin-bottom: 1.875em;
+  border-bottom-style: solid;
+  border-bottom-width: 0.0625em;
+  padding-bottom: 1.8125em;
+  border-top-style: solid;
+  border-top-width: 0.0625em;
+  padding-top: 1.8125em;
+  border-color: #ddd;
+}
+ul li.multiple + li.multiple {
+  border-top-style: solid;
+  border-top-width: 0em;
+  padding-top: 0em;
+}
+.example-form ul li.multiple ul li:first-child,
+.example-form header p,
+ul li.multiple p,
+ul li.multiple ul li {
+  margin: 0;
+}
+.example-form header {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  margin-bottom: 1.875em;
+  border-bottom-style: solid;
+  border-bottom-width: 0.0625em;
+  padding-bottom: 1.8125em;
+  border-color: #ddd;
+}
+.example-form ul li label,
+.example-form ul li.multiple p {
+  color: #000;
+}
+.example-form ul li.multiple ul li label {
+  color: #666;
+}
+.example-form .content.left {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 3.75em;
+  margin-bottom: 0em;
+}
+.example-form section {
+  border-top-style: solid;
+  border-top-width: 0.0625em;
+  padding-top: 0.40625em;
+  margin-top: 0em;
+  padding-top: 1.875em;
+  padding-bottom: 3.75em;
+  margin-bottom: 0em;
+  border-color: rgba(0,0,0,0.2);
+}
+.sidebar {
+  padding: 1.25em;
+  background: rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.2);
 }
 .empty {
   font-size: 2.5em;
@@ -375,10 +494,13 @@ article {
 .public.home h1:hover {
   opacity: 0.8;
 }
+input[type="text"],
+textarea,
 .app input,
 #center input,
 #left ul,
 #left ul li {
+  box-sizing: border-box;
   width: 100%;
 }
 .app.account input[type=text],
@@ -391,6 +513,9 @@ article {
   padding-top: 0em;
   padding-bottom: 0em;
   margin-bottom: 3.75em;
+}
+textarea {
+  min-height: 200px;
 }
 nav#left ul li {
   border-bottom-style: solid;
@@ -414,8 +539,9 @@ textarea {
   border-radius: 0.3125em;
   cursor: pointer;
 }
-input[type=password,
-type=text] {
+textarea,
+input[type=password],
+input[type=text] {
   border: 2px solid #bbb;
   border-top-color: rgba(0,0,0,0.2);
 }
@@ -471,7 +597,6 @@ header nav ul li a,
 }
 input[type=submit],
 .button.action {
-  font-weight: 300;
   background: #8e2409;
   border: 2px solid #8e2409;
   color: #fff;

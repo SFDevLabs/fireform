@@ -38,6 +38,8 @@ body
 input
 textarea
 	font-family: 'Lato', sans-serif
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
 
 .app #content ul li a h2
 .app #content ul li a p
@@ -57,7 +59,6 @@ a:hover
 h1
 h2
 h3
-h4
 	font-weight: 300
 
 h1
@@ -102,19 +103,103 @@ h3
 .account h2
 	rhythm(0, 0, 0, 0)
 
+.sidebar h2
 h4
+	font-weight: normal
 	adjust-font-size-to(25px)
 	rhythm(2, 0, 0, 1, 30px)
 
+.full h2
 .modal h4
 	rhythm(0, 0, 0, 0)
 
+.sidebar p:last-child
+.sidebar h2
+	rhythm(0, 0, 0, 0.25)
+
+.sidebar a.button
+	margin-top: 0.5em
+
+.sidebar p
+	rhythm(0, 0, 0, 1)
+
+
+.submit-success #success-message
+	display: block
+
+.form-validation-failed
+	border: 1px solid
+
+.input-validation-failed
+	background-color: #CC6666
+
+.input-validation-failed:after
+	content: "-"
+	color: red
+	padding: 0px 20px
+
+#success-message
+	display: none
+
+label
 ol li
 ul li
 p
 	color: dark-gray
 	adjust-font-size-to(18px)
 	rhythm(1, 0, 0, 1, 30px)
+
+.example-form pre
+	margin-top: -1.5em
+
+.example-form ul li:first-child
+ul li:first-child label
+	rhythm(0, 0, 0, 1)
+
+.example-form ul li ul li:first-child
+ul li ul li
+	adjust-font-size-to(16px)
+	rhythm(0.5, 0, 0, 0.5)	
+
+ul li.multiple
+	rhythm(1, 0.5, 0.5, 1)	
+	trailing-border(1px)
+	leading-border(1px)
+	border-color: light-gray
+
+ul li.multiple + li.multiple
+	leading-border(0, 0)
+
+.example-form ul li.multiple ul li:first-child
+.example-form header p
+ul li.multiple p
+ul li.multiple ul li
+	margin: 0
+
+.example-form header
+	rhythm(0, 0, 0, 1)
+	trailing-border(1px, 1)
+	border-color: light-gray
+
+.example-form ul li label
+.example-form ul li.multiple p
+	color: black
+
+.example-form ul li.multiple ul li label
+	color: dark-gray
+
+.example-form .content.left
+	rhythm(0, 0, 2, 0, 16px)	
+
+.example-form section
+	leading-border(1px, .25, 16px, solid)
+	rhythm(0, 1, 2, 0, 16px)
+	border-color: twenty-gray
+
+.sidebar
+	padding: 1.25em
+	background: ten-gray
+	border: 1px solid twenty-gray
 
 .empty
 	adjust-font-size-to(40px)
@@ -302,10 +387,13 @@ article
 .public.home h1:hover
 	opacity: 0.8
 
+input[type="text"]
+textarea
 .app input
 #center input
 #left ul
 #left ul li
+	box-sizing: border-box
 	width: 100%
 
 .app.account input[type=text]
@@ -316,7 +404,8 @@ article
 .account form
 	rhythm(0, 0, 0, 2)
 	
-
+textarea
+	min-height: 200px
 
 nav#left ul li
 	trailing-border(1px, 1, 18px, solid)
@@ -335,7 +424,9 @@ textarea
 	border-radius: 0.3125em
 	cursor: pointer
 
-input[type=password, type=text]
+textarea
+input[type=password]
+input[type=text]
 	border: 2px solid mid-gray
 	border-top-color: twenty-gray
 
@@ -389,7 +480,6 @@ header nav ul li a
 
 input[type=submit]
 .button.action
-	font-weight: 300
 	background: red
 	border: 2px solid red
 	color: white
