@@ -7,9 +7,12 @@
 
   <div  class="container">
     <header>
-      <h1>{{ListView.id}}{{$location.url}}</h1>
+      <h1>{{ListView.id}}</h1>
 
     </header>
+
+
+
 
     <div class="controls">
 
@@ -23,7 +26,27 @@
 
     </div>
 
- 
+    <div ng-hide="!ListView.welcomMessage" ng-class="welcomAlert" class="alert fadeIn" style="width:100%; background-color: lightblue; padding:5px;">
+      ListView.welcomMessage = " {{ListView.welcomMessage}} "
+      <p ng-click="welcomAlert='fadeOut';timeoutSet('welcomAlert','hide','500'); removeWelcome();">Cose</p>
+    </div>
+
+
+
+ <!--     Remove me-->  
+        <br>
+        <br>
+        <br>
+        <br>
+
+  <a ng-click="addWelcomeRemoveMe()">addWelcomeRemoveMe</a>
+        <br>
+        <br>
+        <br>
+        <br>
+
+ <!--     Remove me-->  
+
 
     <div ng-hide="rows.length>0 || !pageLoaded">
       <p class="empty">No data submitted yet.</p>

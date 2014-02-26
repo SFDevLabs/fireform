@@ -75,10 +75,10 @@ angular.module('myApp.controllers', [])
                             //Create the form by setting the object in firebase
                             newList.$set({
                                 id: $scope.formName,
-                                _created: String(new Date())
+                                _created: String(new Date()),
+                                welcomMessage: true
                             });
-
-                            $location.path('/list');
+                            $location.path('/list/'+user.id+"/"+$scope.formName);
                         });
                     }
                 });
@@ -197,7 +197,9 @@ angular.module('myApp.controllers', [])
                 //Create the form by setting the object in firebase
                 newList.$set({
                     id: $scope.newList,
-                    _created: String(new Date())
+                    _created: String(new Date()),
+                  //  welcomMessage: true;
+
                 });
                 //redirect to the new form
                 $location.path( "/list/"+uid+"/"+$scope.newList );
@@ -230,16 +232,21 @@ angular.module('myApp.controllers', [])
 
         $scope.emailConfirmation = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc+'/emailConfirmation');
         $scope.emailNotification = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc+'/emailNotification');
+        $scope.welcomMessage = syncData('users/' + $scope.auth.user.uid + '/lists/' + loc+'/welcomMessage');
+
 
         $scope.setEmailNotification = function() {
             var val = $scope.emailNotification.$value?false:true;
             $scope.emailNotification.$set(val); 
 
         }
-
-         $scope.setEmailConfirmation = function() {
+        $scope.setEmailConfirmation = function() {
             var val = $scope.emailConfirmation.$value?false:true;
             $scope.emailConfirmation.$set(val); 
+        }
+
+        $scope.removeWelcome = function() {
+            $scope.welcomMessage.$set(false);
         }
 
         $scope.$location = $location;
@@ -256,8 +263,13 @@ angular.module('myApp.controllers', [])
 
         });
 
+        //remove me
+        $scope.addWelcomeRemoveMe = function() {
+            $scope.welcomMessage.$set(true); 
 
 
+            $scope.welcomAlert='';
+        }
 
         //delete this form. by calling remove on the firebase object
         $scope.deleteList = function() {
@@ -270,7 +282,6 @@ angular.module('myApp.controllers', [])
     function($rootScope, $scope, loginService, syncData, $location, $timeout) {
         $scope.ListView = syncData('example');
         $scope.$location = $location;
-
 
   
 
