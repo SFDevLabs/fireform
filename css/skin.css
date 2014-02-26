@@ -91,6 +91,7 @@ h2 {
   margin-bottom: 0em;
   font-weight: 300;
 }
+.alert h2,
 .modal h2,
 .account h2,
 h3 {
@@ -101,6 +102,7 @@ h3 {
   padding-bottom: 0em;
   margin-bottom: 1em;
 }
+.alert h3,
 .modal h3,
 .sidebar h2,
 h4 {
@@ -112,6 +114,7 @@ h4 {
   padding-bottom: 0em;
   margin-bottom: 1em;
 }
+.alert h3,
 .modal h3,
 .account h2 {
   margin-top: 0em;
@@ -119,12 +122,19 @@ h4 {
   padding-bottom: 0em;
   margin-bottom: 0em;
 }
+.alert h2,
 .modal h2 {
   margin-top: 0;
   border-color: #ddd;
   border-bottom-style: solid;
   border-bottom-width: 0.03333333333333333em;
   padding-bottom: 0.21666666666666667em;
+}
+.alert h2 {
+  margin-top: 0em;
+  padding-top: 0em;
+  padding-bottom: 0.46875em;
+  margin-bottom: 0.46875em;
 }
 .full h2,
 .modal h4 {
@@ -136,13 +146,10 @@ h4 {
 .alert {
   width: 100%;
   background-color: #eee;
-  padding: 25px;
-}
-.alert .close {
-  right: 0px;
-  top: 0px;
-  position: absolute;
-  font-size: 1.5em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 1.25em;
 }
 .sidebar p:last-child,
 .sidebar h2 {
@@ -695,6 +702,9 @@ input[type=submit] {
   padding-bottom: 1.875em;
   margin-bottom: 0em;
 }
+.alert .checkbox li {
+  margin: 0;
+}
 .modal p.button {
   margin: 0;
 }
@@ -827,6 +837,9 @@ input[type=submit]:hover,
   cursor: pointer;
   text-align: center;
   transition: all 0.5s;
+}
+.alert .close-button {
+  background: #fff;
 }
 .close-button:hover {
   background: #fff;

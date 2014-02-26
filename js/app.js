@@ -64,7 +64,6 @@ angular.module('myApp',
 
 
         $rootScope.scrollTop=function(x, y){ 
-          debugger
             x=x?x:0,
             y=y?y:0,
             window.scrollTo(x,y)

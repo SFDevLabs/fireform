@@ -27,27 +27,54 @@
     </div>
 
     <div ng-hide="!ListView.welcomMessage" ng-class="welcomAlert" class="alert fadeIn">
-      ListView.welcomMessage = " {{ListView.welcomMessage}} "
-      <a class="close" ng-click="welcomAlert='fadeOut';timeoutSet('welcomAlert','hide','500'); removeWelcome();">
-        <i class="fa fa-times"></i>
-      </a>
+      <section>
+
+        <h2><i class="fa fa-envelope-o"></i> Email Options</h2>
+
+        <ul class="checkbox">
+          <li>
+            <input type="checkbox" id="send-confirmation" ng-checked="ListView.emailConfirmation?'checked':''" ng-click="setEmailConfirmation(); updateCodeWarn='active' " />
+            <label for="send-confirmation">Send Confirmation</label>
+            <p>When checked, this will send an email confirmation to the form submitter with the data they submitted.</p>
+          </li>
+          <li>
+            <input type="checkbox" id="get-notifications" ng-checked="ListView.emailNotification?'checked':''" ng-click="setEmailNotification(); updateCodeWarn='active' " />
+            <label for="get-notifications">Get Notifications</label>
+            <p>When checked, this sends a notification of each form submission to your email address.</p>
+          </li>
+        </ul>
+      </section>
+    
+    <div ng-hide="!snippet">
+        <div ng-hide="!ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && !ListView.emailNotification || !ListView.emailConfirmation && !ListView.emailNotification" 
+              ng-include="'partials/snippet/default-notification-confirmation.html'">
+        </div>
+        <div ng-hide="ListView.emailConfirmation && !ListView.emailNotification || ListView.emailConfirmation && ListView.emailNotification || !ListView.emailConfirmation && !ListView.emailNotification" 
+              ng-include="'partials/snippet/default-notification.html'">
+        </div>
+        <div ng-hide="!ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && ListView.emailNotification || !ListView.emailConfirmation && !ListView.emailNotification" 
+             ng-include="'partials/snippet/default-confirmation.html'">
+        </div>
+        <div ng-hide="ListView.emailConfirmation && !ListView.emailNotification || !ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && ListView.emailNotification" 
+              ng-include="'partials/snippet/default.html'"></div>
     </div>
-
-
-
- <!--     Remove me-->  
-        <br>
-        <br>
-        <br>
-        <br>
-
-  <a ng-click="addWelcomeRemoveMe()">addWelcomeRemoveMe</a>
-        <br>
-        <br>
-        <br>
-        <br>
-
- <!--     Remove me-->  
+    <div ng-hide="snippet">
+        <div ng-hide="!ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && !ListView.emailNotification || !ListView.emailConfirmation && !ListView.emailNotification" 
+              ng-include="'partials/snippet/boiler-notification-confirmation.html'">
+        </div>
+        <div ng-hide="ListView.emailConfirmation && !ListView.emailNotification || ListView.emailConfirmation && ListView.emailNotification || !ListView.emailConfirmation && !ListView.emailNotification" 
+              ng-include="'partials/snippet/boiler-notification.html'">
+        </div>
+        <div ng-hide="!ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && ListView.emailNotification || !ListView.emailConfirmation && !ListView.emailNotification" 
+             ng-include="'partials/snippet/boiler-confirmation.html'">
+        </div>
+        <div ng-hide="ListView.emailConfirmation && !ListView.emailNotification || !ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && ListView.emailNotification" 
+              ng-include="'partials/snippet/boiler.html'"></div>
+    </div>
+      <p class="close-button" ng-click="welcomAlert='fadeOut';timeoutSet('welcomAlert','hide','500'); removeWelcome();">
+        <i class="fa fa-times"></i>
+      </p>
+    </div>
 
 
     <div ng-hide="rows.length>0 || !pageLoaded">
@@ -148,8 +175,8 @@
 
  <div class="modal" ng-class="codeModal" ng-init="codeModal='hide faded';snippet=true;initHighlighting();" >
   <div class="modal-content code">
-    <button ng-hide="!snippet" ng-click="snippet=snippet?false:true" style="float:right;">Boilerplate Form</button>
-    <button ng-hide="snippet" ng-click="snippet=snippet?false:true" style="float:right;">JavaScript Snippet</button>
+    <button ng-hide="!snippet" ng-click="snippet=snippet?false:true" class="button solid right">Boilerplate Form</button>
+    <button ng-hide="snippet" ng-click="snippet=snippet?false:true" class="button solid right">JavaScript Snippet</button>
 
 <div ng-hide="!snippet">
     <div ng-hide="!ListView.emailConfirmation && ListView.emailNotification || ListView.emailConfirmation && !ListView.emailNotification || !ListView.emailConfirmation && !ListView.emailNotification" 

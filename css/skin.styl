@@ -96,12 +96,14 @@ h2
 	rhythm(0, 0, 0, 0, 30px)
 	font-weight: 300
 
+.alert h2
 .modal h2
 .account h2
 h3
 	adjust-font-size-to(30px)
 	rhythm(2, 0, 0, 1, 30px)
 
+.alert h3
 .modal h3
 .sidebar h2
 h4
@@ -109,14 +111,19 @@ h4
 	adjust-font-size-to(25px)
 	rhythm(2, 0, 0, 1, 30px)
 
+.alert h3
 .modal h3
 .account h2
 	rhythm(0, 0, 0, 0)
 
+.alert h2
 .modal h2
 	margin-top: 0
 	border-color: light-gray
 	trailing-border(1px, .25, 30px, solid)
+
+.alert h2
+	rhythm(0, 0, 0.25, 0.25)
 
 .full h2
 .modal h4
@@ -124,13 +131,11 @@ h4
 
 .alert
 	width: 100%;
-	background-color: #eee;
-	padding: 25px;
-	.close
-		right: 0px;
-		top: 0px;
-		position: absolute;
-		font-size: 1.5em;
+	background-color: #eee
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+	padding: 1.25em;
 
 .sidebar p:last-child
 .sidebar h2
@@ -570,6 +575,9 @@ input[type=submit]
 .checkbox
 	rhythm(0, 0, 1, 0)
 
+.alert .checkbox li
+	margin: 0
+
 .modal p.button
 	margin: 0
 
@@ -705,6 +713,9 @@ input[type=submit]:hover
 	cursor: pointer
 	text-align: center
 	transition: all 0.5s
+
+.alert .close-button
+	background: white
 
 .close-button:hover
 	background: white

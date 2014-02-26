@@ -1,3 +1,4 @@
+.alert .checkbox li,
 .modal .checkbox li,
 .sidebar,
 .content,
@@ -94,6 +95,7 @@
   .container.shell {
     padding: 0;
   }
+  .alert .checkbox li:first-child,
   .modal .checkbox li:first-child,
   .two-up li,
   .three-up li,
@@ -128,6 +130,7 @@
     width: 39.3333333333%;
   }
   .center.two-up,
+  .alert .checkbox li,
   .modal .checkbox li,
   #center,
   .two-up li,
