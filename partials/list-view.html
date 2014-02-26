@@ -166,7 +166,7 @@
     </div>
 
 <div class="container">
-    <p><a ng-hide="$location.$$url==='/publicexample' || rows.length===0" href="/list">&lsaquo; Back to all forms</a></p>
+    <p><a ng-hide="$location.$$url==='/publicexample' || rows.length<10" href="/list">&lsaquo; Back to all forms</a></p>
 </div>
 
 <footer ng-class="pageLoaded?'fadeIn':''" class='faded' ng-include="'partials/footer.html'"></footer>
