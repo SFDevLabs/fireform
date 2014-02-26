@@ -161,8 +161,11 @@ p
 .example-form pre
 	margin-top: -1.5em
 
+pre
+	font-family: 'Monaco', 'Courier', monospace
+
 .example-form ul li:first-child
-ul li:first-child label
+.example-form ul li:first-child label
 	rhythm(0, 0, 0, 1)
 
 .example-form ul li ul li:first-child
@@ -373,8 +376,12 @@ article
 	top: 1em
 	right: 2.5em
 
+.public.home em
+	color: #8e2409
+
 .public.home p#tagline
 	adjust-font-size-to(40px)
+	rhythm(0, 0, 0, 0.5)
 	font-weight: 300
 	text-align: center
 	color: black
@@ -382,6 +389,9 @@ article
 .public.home p#sign-up
 	adjust-font-size-to(30px)
 	rhythm(0, 0, 0, 1, 30px)
+
+.public.home header
+	background: transparent url('../img/spark.png') center bottom no-repeat	
 
 .public.home h1
 	border: 0
@@ -394,8 +404,42 @@ article
 	opacity: 0.6
 	transition: opacity 1s
 
+.public.home .three-up img
+	width: auto
+	border: 1px solid twenty-gray
+
+.demo
+	text-align: center
+	rhythm(0, 0, 0, 1)
+
+.public.home .demo li
+	background: five-gray
+	border-radius: 100em
+	height: 8.75em
+	width: 8.75em
+	display: inline-block
+	padding: 1.25em
+	margin: 0 1.25em
+	vertical-align: middle
+	transition: all 0.5s
+
+.public.home .demo li:hover
+	background: two-gray
+	transition: all 0.5s
+
+.public.home ul li i
+	font-size: 3.75em
+	display: block
+	margin: 0.5em auto 0 auto
+
+.demo p
+	margin: 0
+
 .public.home h1:hover
 	opacity: 0.8
+
+#powered-by h2
+	margin: 0
 
 input[type="text"]
 textarea
@@ -491,6 +535,9 @@ input[type=submit]
 
 .modal p.button
 	margin: 0
+
+.modal .button.solid.right
+	margin-top: 0.5em
 
 .checkbox li p
 	margin: 0
@@ -600,8 +647,8 @@ input[type=submit]:hover
 	margin-top: -17.25em
 
 .code.modal-content
-	height: 40em
-	margin-top: -20em
+	height: 43.75em
+	margin-top: -21.875em
 
 .code-wrapper
 	box-sizing: border-box
@@ -703,7 +750,12 @@ td
 .table-container
 	clear: both
 	overflow: scroll
-	padding: 0px 10px 0px 10px;
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+	padding: 0 1.25em
+	width: 100%
+
 
 table
 	clear: both
@@ -730,6 +782,7 @@ table th
 table th span.ng-scope
 table a
 	display: block
+	white-space: nowrap
 
 table th i.field-type
 	border-right: 1px solid twenty-gray
@@ -783,7 +836,12 @@ ul.field,
 
 
 
-@media screen and (min-width: 0em) and (max-width: 71.1875em)
+@media screen and (min-width: 0em) and (max-width: 73em)
+
+	.public.home p#login
+		position: relative
+		top: 0
+		right: auto
 
 	nav#left ul
 		border: 0
@@ -816,8 +874,10 @@ ul.field,
 		adjust-font-size-to(25px)
 		trailing-border(1px, .25, 25px, solid)
 
+	.app h2
 	h2
 		adjust-font-size-to(22px)
+		font-weight: normal
 
 	.app h2
 		rhythm(1, 0, 0, 0, 22px)
@@ -847,7 +907,6 @@ ul.field,
 
 	.public.home nav ul li a
 	header nav ul li a
-	.button.action
 		padding: 0.25em 0.5em
 		margin: 0 0.25em
 
@@ -876,7 +935,7 @@ ul.field,
 	.list #content ul li p
 		adjust-font-size-to(15px)
 
-	footer
+	.app footer
 		rhythm(1, 0, 2, 0)
 		background: light-gray
 
@@ -889,3 +948,4 @@ ul.field,
 
 	footer .container
 		border: 0
+
