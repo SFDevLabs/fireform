@@ -12,10 +12,10 @@ Fireform = function (selector, fireBaseRepo, options){
                 inputValidationClass = options && options.inputValidationClass? options.inputValidationClass:"input-validation-failed",
                 simpleValidation = options && options.simpleValidation? options.simpleValidation:false;
                 that.emailNotification = options && options.emailNotification? options.emailNotification:undefined;
-                that.emailConfirmationName = options.emailConfirmationName? options.emailConfirmationName:undefined;
-                that.emailConfirmationSubject = options.emailConfirmationSubject? options.emailConfirmationSubject:undefined;
-                that.emailConfirmationBodyHTML = options.emailConfirmationBodyHTML? options.emailConfirmationBodyHTML:undefined;
-                that.emailConfirmationBodyText = options.emailConfirmationBodyText? options.emailConfirmationBodyText:undefined;
+                that.emailConfirmationName = options && options.emailConfirmationName? options.emailConfirmationName:undefined;
+                that.emailConfirmationSubject = options && options.emailConfirmationSubject? options.emailConfirmationSubject:undefined;
+                that.emailConfirmationBodyHTML = options && options.emailConfirmationBodyHTML? options.emailConfirmationBodyHTML:undefined;
+                that.emailConfirmationBodyText = options && options.emailConfirmationBodyText? options.emailConfirmationBodyText:undefined;
                 that.user=undefined;
 
 
