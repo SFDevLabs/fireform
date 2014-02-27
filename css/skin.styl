@@ -288,6 +288,7 @@ ul li.multiple ul li
 	margin-top -30px
 	margin-left 15px
 
+.public.login header
 .public #page-header
 	background: mid-gray
 
@@ -409,6 +410,7 @@ article
 	position: absolute
 	top: 1em
 	right: 2.5em
+	z-index: 100
 
 .public.home em
 	color: #8e2409
@@ -892,16 +894,36 @@ ul.field,
 
 @media screen and (min-width: 0em) and (max-width: 73em)
 
-	.public.home .three-up li
-	.public.home .three-up li img
-		float: none
-		clear: both
-		margin: 0 auto
+	label
+	ol li
+	ul li
+	p
+	adjust-font-size-to(14px)
+	rhythm(1, 0, 0, 1, 30px)
+
+	h1
+	h2
+	h3
+	.post-number
+	.app ul li h2
+		font-weight: 400
+
+	ul li.multiple input
+	ul li.multiple label
+		display: inline
+		width: auto
+
+	.public.home .demo li:first-child
+		margin-bottom: 1.25em
+
+	.public.home .inline li:first-child
+		margin-bottom: 0
 
 	.public.home p#login
 		position: relative
 		top: 0
 		right: auto
+		margin-bottom: 0
 
 	nav#left ul
 		border: 0
@@ -910,12 +932,16 @@ ul.field,
 	nav#left ul li
 		rhythm(0, 0, 0, 1, 18px)
 		display: block;
-		float: left;
 		border: 2px solid light-gray;
 		width: auto;
-		padding: 0.5em 1.25em;
+		float: left;
 		margin-right: 1.25em;
 		border-radius: 0.3125em;
+
+	nav#left ul li a
+		display: block
+		padding: 0.5em 1.25em;
+		
 		
 	#left
 	#right
@@ -923,7 +949,6 @@ ul.field,
 
 	input
 	input[type=submit]
-		min-width: 100%
 		max-width: 100%
 
 	.public.home p#tagline
@@ -957,7 +982,7 @@ ul.field,
 		text-align: center
 
 	.public.home h1
-		height: 3.75em
+		height: 5em
 
 	header nav h1 a
 		float: none
@@ -978,15 +1003,18 @@ ul.field,
 	.public.home nav ul li:first-child
 		margin-right: 0
 
+	.public.home p#sign-up
+		adjust-font-size-to(20px)
+
 	.public.home nav ul li
 		width: 100%
 
 	.public.home nav ul
 		rhythm(5, 2.5, 0, 0, 60px)
 
-	.public.home h1 + p
-		adjust-font-size-to(25px)
-		rhythm(0, 0, 0, 0, 25px)
+	.public.home p#tagline
+		adjust-font-size-to(40px)
+		rhythm(0, 0, 0, 1, 40px)
 
 	.list #content ul li h2
 		adjust-font-size-to(18px)
@@ -996,15 +1024,126 @@ ul.field,
 
 	.app footer
 		rhythm(1, 0, 2, 0)
-		background: light-gray
-
-	.app.home footer
-	.add footer
-	.list footer
-	.form footer
-	.account footer
-		background: mid-gray
-
-	footer .container
 		border: 0
+
+	.app footer .container
+		leading-border(1px, 1, 16px, solid)
+
+	footer .right
+		float: left
+		clear: both
+		
+	.app.account input[type=text]
+	.app.account input[type=password]
+		width: 100%
+
+	.app.add #center ul li
+	.app.add #center p
+		float: left
+		clear: none
+
+	.app.add #center ul li
+		width: 70%
+
+	.app.add #center p
+		width: 30%
+
+	.app.add #center ul li input
+		border-bottom-right-radius: 0
+		border-top-right-radius: 0
+
+	.app.add #center input[type=submit]
+		border-top-left-radius: 0
+		border-bottom-left-radius: 0
+		min-width: 0
+
+	.app.form .controls .right
+		float: left
+
+	.app.form .controls .button
+		adjust-font-size-to(16px)
+		margin-left: 0
+		margin-right: 0.625em
+
+	.app.form .controls p.left
+		margin-bottom: 0
+		padding-bottom: 0
+
+	.sidebar.right
+		margin-bottom: 2.5em
+
+
+@media screen and (min-width: 0em) and (max-width: 43.75em)
+
+	.app.add #center p
+	.app.add #center ul li
+		width: 100%
+		float: none
+
+	.app.add #center ul li input
+	.app.add #center input[type=submit]
+		border-radius: 0.3125em
+	
+	.public.home section
+		rhythm(0, 1, 1, 0)
+
+	input
+	input[type=submit]
+		min-width: 100%
+		max-width: 100%
+
+	.public.home h1
+		height: 3.75em
+
+	.public.home p#tagline
+		adjust-font-size-to(25px)
+		rhythm(0, 0, 0, 1.5, 40px)
+
+	.public.home .three-up li
+	.public.home .three-up li img
+		float: none
+		clear: both
+		margin: 0 auto
+
+	.public.home footer .container
+		padding-left: 0
+		padding-right: 0
+
+	.public.home .three-up p
+		adjust-font-size-to(14px)
+		margin-top: 0.625em
+
+	.public.home p#sign-up
+		adjust-font-size-to(16px)
+
+	.public.home .solid.button
+		adjust-font-size-to(14px)
+
+	.account form ul li
+		margin: 0
+
+	.account form ul li label
+		margin-bottom: 0.625em
+
+	.controls .left
+	.controls .right
+		width: 100%
+
+	.controls .left
+		margin-bottom: 0
+		padding-bottom: 0
+
+	.controls .button
+		float: none
+		display: block
+		margin-left: 0
+		margin-right: 0
+
+	nav#left ul
+		rhythm(0, 0, 0, 1, 18px)
+
+	nav#left ul li
+		margin-bottom: 0.5em
+		margin-right: 0;
+		float: none
 
