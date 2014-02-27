@@ -38,6 +38,7 @@
   .wrapped li {
     padding: 0 5%;
   }
+  nav#left ul li,
   .sidebar.right,
   .content.left,
   .three-up li,

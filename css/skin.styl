@@ -409,6 +409,7 @@ article
 	position: absolute
 	top: 1em
 	right: 2.5em
+	z-index: 100
 
 .public.home em
 	color: #8e2409
@@ -892,11 +893,33 @@ ul.field,
 
 @media screen and (min-width: 0em) and (max-width: 73em)
 
+	label
+	ol li
+	ul li
+	p
+	adjust-font-size-to(14px)
+	rhythm(1, 0, 0, 1, 30px)
+
+	h1
+	h2
+	h3
+	.post-number
+	.app ul li h2
+		font-weight: 400
+
+	ul li.multiple input
+	ul li.multiple label
+		display: inline
+		width: auto
+
 	.public.home .three-up li
 	.public.home .three-up li img
 		float: none
 		clear: both
 		margin: 0 auto
+
+	.public.home .three-up li:first-child
+		margin-bottom: 1.25em
 
 	.public.home p#login
 		position: relative
@@ -908,14 +931,18 @@ ul.field,
 		padding: 0
 
 	nav#left ul li
-		rhythm(0, 0, 0, 1, 18px)
+		rhythm(0, 0, 0, 0.25, 18px)
 		display: block;
-		float: left;
 		border: 2px solid light-gray;
 		width: auto;
-		padding: 0.5em 1.25em;
+		float: left;
 		margin-right: 1.25em;
 		border-radius: 0.3125em;
+
+	nav#left ul li a
+		display: block
+		padding: 0.5em 1.25em;
+		
 		
 	#left
 	#right
@@ -1005,6 +1032,36 @@ ul.field,
 	.account footer
 		background: mid-gray
 
-	footer .container
+	.app footer .container
 		border: 0
+
+
+@media screen and (min-width: 0em) and (max-width: 25em)
+	.account form ul li
+		margin: 0
+
+	.account form ul li label
+		margin-bottom: 0.625em
+
+	.controls .left
+	.controls .right
+		width: 100%
+
+	.controls .left
+		margin-bottom: 0
+		padding-bottom: 0
+
+	.controls .button
+		float: none
+		display: block
+		margin-left: 0
+		margin-right: 0
+
+	nav#left ul
+		rhythm(0, 0, 0, 1, 18px)
+
+	nav#left ul li
+		margin-bottom: 0.5em
+		margin-right: 0;
+		float: none
 
