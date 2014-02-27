@@ -152,6 +152,16 @@
                 </a>
               </span>
 
+             <span ng-switch-default ng-init="reverse=false">
+                <a class="asc" href="javascript:null" root-scope ng-click="setVarInScope('predicate',{col:key.fireformName,value:'value',reverse:reverse}, '$parent', '$parent'); reverse=reverse?false:true;">
+                  <i class="fa fa-font field-type"></i>
+                  {{key.fireformName}}
+                  <span ng-hide="reverse"><i class="fa fa-sort-desc"></i></span>
+                  <span ng-hide="!reverse"><i class="fa fa-sort-asc"></i></span>
+                </a>
+              </span>
+
+
           </th>
         </tr>
         <tr ng-repeat="item in rows | orderObjectBy:predicate.col:predicate.value:predicate.reverse" >
