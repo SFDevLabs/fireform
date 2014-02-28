@@ -16,7 +16,7 @@
 
     <div class="controls">
 
-      <p class="left"><a ng-hide="$location.$$url==='/publicexample'" href="/list" class="breadcrumb">&lsaquo; Back to all forms</a></p>
+      <p ng-hide="$location.$$url==='/publicexample'" class="left"><a ng-hide="$location.$$url==='/publicexample'" href="/list" class="breadcrumb">&lsaquo; Back to all forms</a></p>
 
       <div class="right">
         <p class="button" ng-click="timeoutSet('editModal','fadeIn faded','10'); editModal='faded'; bodyClassClick('app form modal-open');"; ng-hide="$location.$$url==='/publicexample'"><i class="fa fa-pencil-square-o"></i> Form Options</p>
@@ -81,9 +81,10 @@
       <p class="empty">No data submitted yet.</p>
     </div>
   </div>
-    <!-- Table starts here-->
-    <div  
-  <div  class="table-container">
+
+  <!-- Table starts here-->
+
+  <div class="table-container">
      <table ng-hide="rows.length===0" ng-class="sorted">
         <tr>
           <!-- Header Loop Created from rowsHeader-->

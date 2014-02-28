@@ -237,13 +237,11 @@ p {
 nav:before,
 article:before,
 section:before,
-ul:before,
 div:before,
 p:before,
 nav:after,
 article:after,
 section:after,
-ul:after,
 div:after,
 p:after {
   content: "";
@@ -252,7 +250,6 @@ p:after {
 nav:after,
 article:after,
 section:after,
-ul:after,
 div:after,
 p:after {
   clear: both;
