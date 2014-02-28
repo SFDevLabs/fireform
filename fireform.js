@@ -13,6 +13,7 @@ Fireform = function (selector, fireBaseRepo, options){
                 simpleValidation = options && options.simpleValidation? options.simpleValidation:false;
                 that.emailNotification = options && options.emailNotification? options.emailNotification:undefined;
                 that.emailConfirmationName = options && options.emailConfirmationName? options.emailConfirmationName:undefined;
+                that.emailConfirmationFrom = options && options.emailConfirmationFrom? options.emailConfirmationFrom:undefined;
                 that.emailConfirmationSubject = options && options.emailConfirmationSubject? options.emailConfirmationSubject:undefined;
                 that.emailConfirmationBodyHTML = options && options.emailConfirmationBodyHTML? options.emailConfirmationBodyHTML:undefined;
                 that.emailConfirmationBodyText = options && options.emailConfirmationBodyText? options.emailConfirmationBodyText:undefined;
