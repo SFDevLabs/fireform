@@ -155,7 +155,7 @@ h4
 	display: block
 
 .submit input[disabled]
-	opacity:.4
+	opacity .4
 
 .input-validation-failed
 	border: 2px solid #c66 !important
@@ -493,7 +493,7 @@ article
 #powered-by h2
 	margin: 0
 
-input[type="text"]
+input[type="text"][type="email"]
 textarea
 .app input
 #center input
@@ -524,6 +524,7 @@ nav#left ul li
 header nav ul li a
 .button
 input[type=text]
+input[type=email]
 input[type=password]
 input[type=submit]
 textarea
@@ -792,6 +793,18 @@ input[type=submit]:hover
     color: #666
 	transition: all 0.5s
 
+//context us
+
+.success-message
+	display none
+
+.submit-success .success-message
+	display inline
+
+.submit-success ul
+	opacity .4
+.submit-success submit
+	opacity .4
 
 
 // form data table

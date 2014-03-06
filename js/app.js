@@ -27,12 +27,24 @@ angular.module('myApp',
         };
 
         $rootScope.bodyClassClick = function(bodyClass) {
-            $rootScope.bodyClass=bodyClass;
+            $rootScope.bodyClassModal=bodyClass;
         };
 
         $rootScope.getTmplUrlforAuth= function(loggedin, loggedout){
             return $rootScope.auth.user ?  loggedin : loggedout;
         } 
+        $rootScope.ffContact= function(loggedin, loggedout){
+          var options={
+                  emailNotification:"team@sfdevlabs.com",
+                  emailConfirmationName:"email",  //The form input we get the email from.
+                  emailConfirmationFrom:"team@sfdevlabs.com",  //Email appears as sent by this address.
+                  emailConfirmationSubject:"Fireform Contact Verification",
+                  emailConfirmationBodyHTML:"<h2>Thanks for reaching out!</h2><p>We will be in touch shortly.</p>",
+                  emailConfirmationBodyText:"Thanks for reaching out! We will be in touch shortly"
+                }
+          new Fireform('#FireFormContact', 'http://fireform/list/26/contactUsFF', options); 
+        } 
+
         //might need this at some point to edit tmpls
         // $rootScope.initHighlighting= function(loggedin, loggedout){
         //   //  debugger
