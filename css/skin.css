@@ -453,6 +453,9 @@ footer .container {
   border-color: rgba(0,0,0,0.2);
   text-align: left;
 }
+footer .options p {
+  margin-left: 0.5em;
+}
 footer span,
 footer a.logo {
   display: block;
