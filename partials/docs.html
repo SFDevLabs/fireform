@@ -71,21 +71,25 @@
 
 <pre style="overflow:hidden;"><code class=" hljs xml"> 
       <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span>&gt;</span><span class="javascript">
-      		options={
-      			<span class="hljs-comment">//String: Class applied to form after submition.</span>
-      			successClass:<span class="hljs-string">'success-class'</span>, 
-			failedClass:<span class="hljs-string">'failed-class'</span>,  <span class="hljs-comment">//String: Class applied to form upon failer.</span>
-			formValidationClass:<span class="hljs-string">'validation-class'</span>, <span class="hljs-comment">//String: Class applied to form on bad validation.</span>
-			inputValidationClass:<span class="hljs-string">'validation-class'</span>, <span class="hljs-comment">//String: Class applied to input on bad validation.</span>
-			simpleValidation:<span class="hljs-literal">true</span> <span class="hljs-comment">//Bool: Simple validation to ensure all inputs have a value.</span>
-			<span class="hljs-comment">//Send an email to this address when a new form is posted.*</span>
-			emailNotification: <span class="hljs-string">'myemail@example.com'</span>
-			<span class="hljs-comment">//Send an email confirmation to a specific email collected in the form.*</span>
-			emailConfirmationName:<span class="hljs-string">'emailInputName'</span><span class="hljs-comment">//String: Name attribute of the email input.</span>
-			emailConfirmationSubject:<span class="hljs-string">'Subject Text'</span><span class="hljs-comment">//String: Email subject.</span>
-			emailConfirmationBodyHTML:<span class="hljs-string">'Body HTML'</span><span class="hljs-comment">//String: Shows in most modern email clients.</span>
-			emailConfirmationBodyText:<span class="hljs-string">'Body Text'</span><span class="hljs-comment">//String: Body Text fallback.</span>
-			callback: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err, val)</span>{</span> } <span class="hljs-comment">//Function: Fired after successful submition.</span>
+      	options={
+      		<span class="hljs-comment">//String: Class applied to form after submition.</span>
+      		successClass:<span class="hljs-string">'success-class'</span>,
+    		<span class="hljs-comment">//String: Class applied to form upon failer.</span>
+		failedClass:<span class="hljs-string">'failed-class'</span>,
+		<span class="hljs-comment">//String: Class applied to form on bad validation.</span>
+		formValidationClass:<span class="hljs-string">'validation-class'</span>,
+		<span class="hljs-comment">//String: Class applied to input on bad validation.</span>
+		inputValidationClass:<span class="hljs-string">'validation-class'</span>,
+		<span class="hljs-comment">//Bool: Simple validation to ensure all inputs have a value.</span>
+		simpleValidation:<span class="hljs-literal">true</span>
+		<span class="hljs-comment">//Send an email to this address when a new form is posted.*</span>
+		emailNotification: <span class="hljs-string">'myemail@example.com'</span>
+		<span class="hljs-comment">//Send an email confirmation to a specific email collected in the form.*</span>
+		emailConfirmationName:<span class="hljs-string">'emailInputName'</span><span class="hljs-comment">//String: Name attribute of the email input.</span>
+		emailConfirmationSubject:<span class="hljs-string">'Subject Text'</span><span class="hljs-comment">//String: Email subject.</span>
+		emailConfirmationBodyHTML:<span class="hljs-string">'Body HTML'</span><span class="hljs-comment">//String: Shows in most modern email clients.</span>
+		emailConfirmationBodyText:<span class="hljs-string">'Body Text'</span><span class="hljs-comment">//String: Body Text fallback.</span>
+		callback: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err, val)</span>{</span> } <span class="hljs-comment">//Function: Fired after successful submition.</span>
       		}
       		<span class="hljs-keyword">new</span> Fireform(<span class="hljs-string">'#MySelector'</span>, <span class="hljs-string">'http://fireform/formRepositoryLink'</span>, options);
       </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
