@@ -1,6 +1,7 @@
 /*2014 SFDevLabs.com, MIT License*/
 Fireform = function (selector, fireBaseRepo, options){
             that=this;
+            if (window.location.href.indexOf('file')===0){ console.warn('WARNING: Please run Fireform on page served from a web server to garentee functionality.')}
             //here is where we define our various options that we wull use 
             this.error=function(text){console.error(text)};
             var formDOMObject,
@@ -61,8 +62,9 @@ Fireform = function (selector, fireBaseRepo, options){
             this.submit = function(e){
                 var validation=true;
                 var validationRadio;
-                if (event) event.preventDefault();
-                else if (e && e.preventDefault) event.preventDefault();
+
+                if (e && e.preventDefault){e.preventDefault();}
+                else if(event && event.preventDefault){event.preventDefault();}
 
                 var payLoad={};
                 payLoad._time={}
@@ -122,12 +124,14 @@ Fireform = function (selector, fireBaseRepo, options){
                     else if(simpleValidation)
                         inputs[i].className=inputs[i].className.replace(new RegExp(inputValidationClass, 'g'),"");
                 }
-                if ( (validation && validationRadio)|| !simpleValidation)
+                if ( (validation && validationRadio)|| !simpleValidation){
                     that.submitForm(fireBaseRepo, payLoad),
                     formDOMObject.className=formDOMObject.className.replace(new RegExp(formValidationClass, 'g'),"");
-                else
+                }else{
                     formDOMObject.className += " "+formValidationClass,
                     that.error('Validation Failed. Classname '+formValidationClass+' Added to inputs');
+                };
+            return false;
                     
             }
 
