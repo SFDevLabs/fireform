@@ -829,7 +829,7 @@ input[type=submit]:hover,
   z-index: 9000;
 }
 .edit.modal-content {
-  height: 34.5em;
+  height: 38.5em;
   margin-top: -17.25em;
 }
 #delete-confirmation p {
