@@ -142,8 +142,11 @@ Fireform = function (selector, fireBaseRepo, options){
                 source=source_tuple[0].split('.org')[0]//split the .com
                 user_repo_tuple=source_tuple[1].split('/')
                 user= that.user = user_repo_tuple[0]
+                if (!isNaN(Number(user))){
+                    user= that.user = 'simplelogin:'+user
+                }
                 repo=that.repo=user_repo_tuple[1]
-                return "https://"+source+".firebaseio.com/users/simplelogin:"+user+"/lists/"+repo+"/formPosts.json"
+                return "https://"+source+".firebaseio.com/users/"+user+"/lists/"+repo+"/formPosts.json"
             }
 
             this.getEmailRepo=function(url){
@@ -154,7 +157,7 @@ Fireform = function (selector, fireBaseRepo, options){
                 user_repo_tuple=source_tuple[1].split('/')
                 user=that.user=user_repo_tuple[0]
                 repo=user_repo_tuple[1]
-                return "https://"+source+".firebaseio.com/users/simplelogin:"+user+"/"
+                return "https://"+source+".firebaseio.com/users/"+user+"/"
             }
 
 
@@ -177,7 +180,7 @@ Fireform = function (selector, fireBaseRepo, options){
                 emailPayload.fireBaseRepo=fireBaseRepo;
                 emailPayload.payloadText=payloadText;
                 emailPayload.payloadHTML=payloadHTML;
-                emailPayload.uid = that.user?"simplelogin:"+that.user:undefined;
+                emailPayload.uid = that.user?that.user:undefined;
                 emailPayload.fireFormRepo=that.repo;
 
 
