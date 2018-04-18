@@ -23,7 +23,7 @@
 
 
 <p> Change the <b>DOM selector</b> to point to your <b>&lt;form&gt;</b> tag and the <b>formRepositoryLink</b> to a <a href='/add'>fireform link</a>. </p>
-	<p>Fireform will listen for a click event on the form's <b>type="submit"</b> input.  Once submitted; the form's content will be uploaded, the submit button will be disabled and the succses class will be added to the form.</p> 
+	<p>Fireform will listen for a click event on the form's <b>type="submit"</b> input.  Once submitted; the form's content will be uploaded, the submit button will be disabled and the success class will be added to the form.</p> 
 
 	<p><b>You can submit the form with javascript too:</b></p>
 <!-- 	<pre style="overflow:hidden;" ><code> 
@@ -72,7 +72,7 @@
 <pre style="overflow:hidden;"><code class=" hljs xml"> 
       <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"application/javascript"</span>&gt;</span><span class="javascript">
       		options={
-      			<span class="hljs-comment">//String: Class applied to form after submition.</span><br>
+      			<span class="hljs-comment">//String: Class applied to form after submission.</span><br>
       			successClass:<span class="hljs-string">'success-class'</span>, 
 			failedClass:<span class="hljs-string">'failed-class'</span>,  <span class="hljs-comment">//String: Class applied to form upon failer.</span>
 			formValidationClass:<span class="hljs-string">'validation-class'</span>, <span class="hljs-comment">//String: Class applied to form on bad validation.</span>
@@ -85,7 +85,7 @@
 			emailConfirmationSubject:<span class="hljs-string">'Subject Text'</span><span class="hljs-comment">//String: Email subject.</span>
 			emailConfirmationBodyHTML:<span class="hljs-string">'Body HTML'</span><span class="hljs-comment">//String: Shows in most modern email clients.</span>
 			emailConfirmationBodyText:<span class="hljs-string">'Body Text'</span><span class="hljs-comment">//String: Body Text fallback.</span>
-			callback: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err, val)</span>{</span> } <span class="hljs-comment">//Function: Fired after successful submition.</span>
+			callback: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err, val)</span>{</span> } <span class="hljs-comment">//Function: Fired after successful submission.</span>
       		}
 
       		<span class="hljs-keyword">new</span> Fireform(<span class="hljs-string">'#MySelector'</span>, <span class="hljs-string">'http://fireform/formRepositoryLink'</span>, options);
@@ -99,7 +99,7 @@
 <!-- 					 <pre style="overflow:hidden;" ><code> 
       &lt;script type="application/javascript"&gt;
       		options={
-      			successClass:'success-class',  //String: Class applied to form after submition.
+      			successClass:'success-class',  //String: Class applied to form after submission.
 			failedClass:'failed-class',  //String: Class applied to form upon failer.
 			formValidationClass:'validation-class', //String: Class applied to form on bad validation.
 			inputValidationClass:'validation-class', //String: Class applied to input on bad validation.
@@ -111,7 +111,7 @@
 			emailConfirmationSubject:'Subject Text'//String: Email subject.
 			emailConfirmationBodyHTML:'Body HTML'//String: Shows in most modern email clients.
 			emailConfirmationBodyText:'Body Text'//String: Body Text fallback.
-			callback: function(err, val){ } //Function: Fired after successful submition.
+			callback: function(err, val){ } //Function: Fired after successful submission.
       		}
       		new Fireform('#MySelector', 'http://fireform/formRepositoryLink', options);
       &lt;/script&gt;
